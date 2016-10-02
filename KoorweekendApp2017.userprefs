@@ -1,0 +1,13 @@
+﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017 Status">
+    <Files>
+      <File FileName="KoorweekendApp2017 Status" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.51933A8B-2E4D-4B3A-B7CD-9284186AFFA8" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
