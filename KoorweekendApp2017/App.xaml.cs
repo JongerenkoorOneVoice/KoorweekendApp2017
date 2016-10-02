@@ -8,7 +8,27 @@ namespace KoorweekendApp2017
 		{
 			InitializeComponent();
 
-			MainPage = new KoorweekendApp2017Page();
+
+			MainPage = new KoorweekendApp2017Page()
+			{
+				Master = new ContentPage(){
+					Content = new Label
+					{
+						Text = "menu"
+					},
+					Title = "MasterPage"
+				},
+				Detail = new NavigationPage( new ContentPage()
+				{
+					Content = new Label
+					{
+						Text = "test"
+					},
+					Title = "DetailPage"
+				}),
+				Title = "MasterDetail"
+			};
+
 		}
 
 		protected override void OnStart()
