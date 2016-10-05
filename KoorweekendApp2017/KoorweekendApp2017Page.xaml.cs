@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace KoorweekendApp2017
 {
@@ -7,32 +8,18 @@ namespace KoorweekendApp2017
 		public KoorweekendApp2017Page()
 		{
 			InitializeComponent();
+			menuPage.ListView.ItemSelected += OnItemSelected;
+		}
 
-			var layout = new StackLayout();
-			layout.Children.Add(new Label { Text = "Test1", Margin = new Thickness(0, 50, 0, 0) });
-			layout.Children.Add(new Label { Text = "Test2" });
-	
-		
-
-			Master = new ContentPage()
+		void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+		{
+			var item = e.SelectedItem as MasterPageItem;
+			if (item != null)
 			{
-				Content = new Label
-				{
-					Text = "menu",
-					Margin = new Thickness(10, 20, 10 ,10),
-					TextColor = Color.White
-				},
-				Title = "MasterPage",
-				BackgroundColor = Color.Pink
-			};
-
-			Detail = new NavigationPage(new ContentPage()
-			{
-				Content =  layout,
-				Title = "DetailPage"
-			});
-			Title = "MasterDetail";
-		
+				Detail = new MainNavigationPage((Page)Activator.CreateInstance(item.TargetType));
+				menuPage.ListView.SelectedItem = null;
+				IsPresented = false;
+			}
 		}
 	}
 }
