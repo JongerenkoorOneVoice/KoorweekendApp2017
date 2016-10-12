@@ -7,7 +7,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-
+using ZXing.Net.Mobile.Forms;
+using System.Threading.Tasks;
 namespace KoorweekendApp2017.Droid
 {
 	[Activity(Label = "KoorweekendApp2017.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -21,8 +22,18 @@ namespace KoorweekendApp2017.Droid
 			base.OnCreate(bundle);
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
+            /*
+            var x = new MainNavigationPage();
+            x.PushAsync(new Page1());
+            LoadApplication(new App() { MainPage =  x});
+            */
+            LoadApplication(new App());
 
-			LoadApplication(new App());
-		}
-	}
+        }
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            global::ZXing.Net.Mobile.Forms.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
 }

@@ -16,19 +16,19 @@ namespace KoorweekendApp2017
 			var masterPageItems = new List<MasterPageItem>();
 			masterPageItems.Add(new MasterPageItem
 			{
-				Title = "HomePage",
+				Title = "Home",
 				IconSource = "contacts.png",
 				TargetType = typeof(HomePage)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
-				Title = "MainMenuPage",
-				IconSource = "todo.png",
-				TargetType = typeof(HomePage)
+				Title = "Repertoire",
+				IconSource = "icon.png",
+				TargetType = typeof(RepertoirePage)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
-				Title = "ContactPage",
+				Title = "Koorleden",
 				IconSource = "reminders.png",
 				TargetType = typeof(ContactPage)
 			});
