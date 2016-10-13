@@ -1,20 +1,20 @@
-﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default">
+﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017 Status">
     <Files>
-      <File FileName="KoorweekendApp2017/MainMenuPage.xaml.cs" Line="30" Column="5" />
-      <File FileName="KoorweekendApp2017/HomePage.xaml.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/KoorweekendApp2017Page.xaml.cs" Line="23" Column="4" />
-      <File FileName="KoorweekendApp2017/MainNavigationPage.xaml.cs" Line="13" Column="30" />
-      <File FileName="KoorweekendApp2017/obj/Debug/KoorweekendApp2017.KoorweekendApp2017Page.xaml.g.cs" Line="24" Column="1" />
-      <File FileName="iOS/AppDelegate.cs" Line="21" Column="3" />
-      <File FileName="KoorweekendApp2017/ContactPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Helpers/RestHelper.cs" Line="59" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" Line="19" Column="1" />
       <File FileName="KoorweekendApp2017 Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.Droid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/KoorweekendApp2017/ContactPage.xaml.cs" line="27" column="23" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/KoorweekendApp2017/ContactPage.xaml.cs" line="23" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" line="19" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/KoorweekendApp2017/Helpers/RestHelper.cs" line="50" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" line="18" column="32" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.51933A8B-2E4D-4B3A-B7CD-9284186AFFA8" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

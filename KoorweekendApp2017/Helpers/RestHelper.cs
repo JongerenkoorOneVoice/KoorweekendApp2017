@@ -32,7 +32,7 @@ namespace KoorweekendApp2017.Helpers
 
             try
             {
-                using (HttpWebResponse response = (HttpWebResponse)(await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, null)))
+				using (HttpWebResponse response = (HttpWebResponse)(await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, null).ConfigureAwait(false)))
                 {
                     using (Stream responseStream = response.GetResponseStream())
                     {
