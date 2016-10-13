@@ -73,4 +73,3 @@ C:\Users\Nieuwenhuijzen\Dropbox\KoorweekendApp2017\Droid\obj\Debug\android\asset
 C:\Users\Nieuwenhuijzen\Dropbox\KoorweekendApp2017\Droid\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 C:\Users\Nieuwenhuijzen\Dropbox\KoorweekendApp2017\Droid\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
 C:\Users\Nieuwenhuijzen\Dropbox\KoorweekendApp2017\Droid\obj\Debug\KoorweekendApp2017.Droid.dll.mdb
-C:\Users\Nieuwenhuijzen\Dropbox\KoorweekendApp2017\Droid\bin\Debug\KoorweekendApp2017.Droid.dll.mdb

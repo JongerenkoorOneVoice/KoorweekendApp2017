@@ -3,13 +3,13 @@
 		xmlns="http://xamarin.com/schemas/2014/forms"
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 		xmlns:local="clr-namespace:KoorweekendApp2017"
-		x:Class="KoorweekendApp2017.KoorweekendApp2017Page"
+		x:Class="KoorweekendApp2017.Pages.KoorweekendApp2017Page"
 		Padding="0,40,0,0"
 		Icon="hamburger.png">
 	<MasterDetailPage.Master>
-		<local:MainMenuPage x:Name="menuPage"/>
+		<local:Pages.MainMenuPage x:Name="menuPage"/>
 	</MasterDetailPage.Master>
 	<MasterDetailPage.Detail>
-		<local:MainNavigationPage></local:MainNavigationPage>
+    <local:Pages.MainNavigationPage/>
 	</MasterDetailPage.Detail>
 </MasterDetailPage>

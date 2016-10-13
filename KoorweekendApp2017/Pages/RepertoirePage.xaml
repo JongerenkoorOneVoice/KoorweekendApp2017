@@ -2,7 +2,7 @@
 <ContentPage
   xmlns="http://xamarin.com/schemas/2014/forms"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-  x:Class="KoorweekendApp2017.RepertoirePage"
+  x:Class="KoorweekendApp2017.Pages.RepertoirePage"
   Title="Repertoire">
   <ContentPage.Content>
     <Label Text="Repertoire"></Label>

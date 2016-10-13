@@ -1,2 +1,0 @@
-android.app.Application
-com.jongerenkooronevoice.koorweekendapp2017

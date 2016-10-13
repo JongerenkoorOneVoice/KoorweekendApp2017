@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace KoorweekendApp2017
+namespace KoorweekendApp2017.Pages
 {
     public partial class RepertoirePage : ContentPage
     {

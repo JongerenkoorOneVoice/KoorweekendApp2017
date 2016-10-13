@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using KoorweekendApp2017.Pages;
+using Xamarin.Forms;
 
 namespace KoorweekendApp2017
 {

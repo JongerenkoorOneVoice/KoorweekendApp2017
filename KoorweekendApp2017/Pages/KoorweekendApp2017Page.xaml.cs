@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace KoorweekendApp2017
+namespace KoorweekendApp2017.Pages
 {
 	public partial class KoorweekendApp2017Page : MasterDetailPage
 	{

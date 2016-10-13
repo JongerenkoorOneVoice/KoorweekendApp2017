@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KoorweekendApp2017 {
+namespace KoorweekendApp2017.Pages {
     using System;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;

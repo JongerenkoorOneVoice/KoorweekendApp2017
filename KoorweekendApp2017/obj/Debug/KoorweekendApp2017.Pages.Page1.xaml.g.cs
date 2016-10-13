@@ -14,15 +14,11 @@ namespace KoorweekendApp2017.Pages {
     using Xamarin.Forms.Xaml;
     
     
-    public partial class KoorweekendApp2017Page : global::Xamarin.Forms.MasterDetailPage {
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::KoorweekendApp2017.Pages.MainMenuPage menuPage;
+    public partial class Page1 : global::Xamarin.Forms.ContentPage {
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
-            this.LoadFromXaml(typeof(KoorweekendApp2017Page));
-            menuPage = this.FindByName<global::KoorweekendApp2017.Pages.MainMenuPage>("menuPage");
+            this.LoadFromXaml(typeof(Page1));
         }
     }
 }
