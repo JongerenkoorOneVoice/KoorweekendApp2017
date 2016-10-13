@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KoorweekendApp2017.Helpers;
+using KoorweekendApp2017.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +15,7 @@ namespace KoorweekendApp2017
         public RepertoirePage()
         {
             InitializeComponent();
+            List<Song> songs = RestHelper.GetRestDataFromUrl<Song>("http://www.jongerenkooronevoice.nl/songs/all").Result;
         }
     }
 }
