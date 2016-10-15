@@ -9,6 +9,7 @@ namespace KoorweekendApp2017.Pages
 		{
 			InitializeComponent();
 			menuPage.ListView.ItemSelected += OnItemSelected;
+
 		}
 
 		void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -21,5 +22,7 @@ namespace KoorweekendApp2017.Pages
 				IsPresented = false;
 			}
 		}
+
+
 	}
 }

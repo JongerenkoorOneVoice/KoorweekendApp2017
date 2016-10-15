@@ -1,19 +1,54 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017 Status">
     <Files>
-      <File FileName="KoorweekendApp2017/Helpers/RestHelper.cs" Line="59" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" Line="19" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/ContactArchivePage.xaml.cs" Line="35" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/MainMenuPage.xaml.cs" Line="33" Column="44" />
+      <File FileName="iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/ContactSinglePage.xaml.cs" Line="15" Column="4" />
+      <File FileName="KoorweekendApp2017/obj/Debug/KoorweekendApp2017.Pages.ContactSinglePage.xaml.g.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" Line="18" Column="1" />
+      <File FileName="KoorweekendApp2017/Models/Contact.cs" Line="19" Column="25" />
+      <File FileName="KoorweekendApp2017/Pages/HomePage.xaml.cs" Line="13" Column="4" />
+      <File FileName="Droid/Page1.xaml.cs" Line="32" Column="10" />
       <File FileName="KoorweekendApp2017 Status" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="KoorweekendApp2017" expanded="True">
+            <Node name="KoorweekendApp2017" expanded="True">
+              <Node name="Helpers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Pages" expanded="True">
+                <Node name="ContactArchivePage.xaml" expanded="True" />
+                <Node name="ContactSinglePage.xaml" expanded="True" />
+                <Node name="HomePage.xaml" expanded="True" />
+                <Node name="KoorweekendApp2017Page.xaml" expanded="True" />
+                <Node name="MainMenuPage.xaml" expanded="True" />
+                <Node name="MainNavigationPage.xaml" expanded="True" />
+                <Node name="RepertoirePage.xaml" expanded="True" />
+              </Node>
+              <Node name="App.xaml" expanded="True" />
+            </Node>
+            <Node name="KoorweekendApp2017.Droid" expanded="True">
+              <Node name="Page1.xaml" expanded="True">
+                <Node name="Page1.xaml.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="KoorweekendApp2017.iOS" expanded="True">
+              <Node name="References" expanded="True" />
+              <Node name="Packages" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/KoorweekendApp2017/ContactPage.xaml.cs" line="27" column="23" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/KoorweekendApp2017/ContactPage.xaml.cs" line="23" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" line="19" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/KoorweekendApp2017/Helpers/RestHelper.cs" line="50" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" line="18" column="32" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.51933A8B-2E4D-4B3A-B7CD-9284186AFFA8" />

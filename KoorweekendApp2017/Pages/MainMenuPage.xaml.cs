@@ -30,7 +30,7 @@ namespace KoorweekendApp2017.Pages
             {
                 Title = "Koorleden",
                 IconSource = "reminders.png",
-                TargetType = typeof(ContactPage)
+                TargetType = typeof(ContactArchivePage)
             });
 
             listView.ItemsSource = masterPageItems;
