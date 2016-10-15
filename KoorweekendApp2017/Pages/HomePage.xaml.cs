@@ -10,6 +10,7 @@ namespace KoorweekendApp2017.Pages
 		public HomePage()
 		{
 			InitializeComponent();
+			DisplayAlert("Widht", "test", "hoi");
 		}
 	}
 }

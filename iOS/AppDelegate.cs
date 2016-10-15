@@ -14,7 +14,8 @@ namespace KoorweekendApp2017.iOS
 		{
 			global::Xamarin.Forms.Forms.Init();
 
-			LoadApplication(new App());
+			App oneVoiceApp = new App();        
+			LoadApplication(oneVoiceApp);
 
 			return base.FinishedLaunching(app, options);
 		}

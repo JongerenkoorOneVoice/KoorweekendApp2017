@@ -12,6 +12,7 @@ namespace KoorweekendApp2017.Pages
         public MainMenuPage()
         {
             InitializeComponent();
+	
 
             var masterPageItems = new List<MasterPageItem>();
             masterPageItems.Add(new MasterPageItem

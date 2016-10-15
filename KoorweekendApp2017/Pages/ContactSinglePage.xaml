@@ -3,19 +3,19 @@
 		xmlns="http://xamarin.com/schemas/2014/forms"
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 		x:Class="KoorweekendApp2017.Pages.ContactSinglePage"
-		Title="{Binding FirstName}">
+		Title="{Binding FirstName}"
+		Padding="15,15,15,0">
 	<ContentPage.Content>
 		<StackLayout VerticalOptions="FillAndExpand">
-		<Label Text="{Binding FirstName}"></Label>
-		<Label Text="{Binding LastName}"></Label>
-			<Label Text="{Binding Address}"></Label>
-			<Label Text="{Binding AreaCode}"></Label>
-			<Label Text="{Binding City}"></Label>
-			<Label Text="{Binding Phone1}"></Label>
-			<Label Text="{Binding Mobile1}"></Label>
-			<Label Text="{Binding Email1}"></Label>
-			<Label Text="{Binding BirthDate}"></Label>
-			<Label Text="{Binding StartDate}"></Label>
+		<Label Text="{Binding FullName}" HorizontalTextAlignment="Center"></Label>
+		<Label Text="{Binding Address}" HorizontalTextAlignment="Center"></Label>
+		<Label Text="{Binding AreaCode}" HorizontalTextAlignment="Center"></Label>
+		<Label Text="{Binding City}" HorizontalTextAlignment="Center"></Label>
+		<Label Text="{Binding Phone1}" HorizontalTextAlignment="Center"></Label>
+		<Label Text="{Binding Mobile1}" HorizontalTextAlignment="Center"></Label>
+		<Label Text="{Binding Email1}" HorizontalTextAlignment="Center"></Label>
+		<Label Text="{Binding BirthDate}" HorizontalTextAlignment="Center"></Label>
+		<Label Text="{Binding StartDate}" HorizontalTextAlignment="Center"></Label>
 	
 			
 

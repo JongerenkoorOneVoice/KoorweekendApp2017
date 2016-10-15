@@ -23,12 +23,13 @@ namespace KoorweekendApp2017.Droid
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
-            /*
+			/*
             var x = new MainNavigationPage();
             x.PushAsync(new Page1());
             LoadApplication(new App() { MainPage =  x});
             */
-            LoadApplication(new App());
+			App oneVoiceApp = new App();
+            LoadApplication(oneVoiceApp);
 
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)

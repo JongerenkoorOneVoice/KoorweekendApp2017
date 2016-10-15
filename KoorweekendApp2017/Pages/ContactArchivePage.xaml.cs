@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using KoorweekendApp2017.Helpers;
 using KoorweekendApp2017.Models;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace KoorweekendApp2017.Pages
 {
@@ -20,8 +21,9 @@ namespace KoorweekendApp2017.Pages
 				InitializeComponent();
 				contactListView.ItemSelected += OnContactSelected;
 				List<Contact> contacts = RestHelper.GetRestDataFromUrl<Contact>("http://www.jongerenkooronevoice.nl/contacts/all").Result;
+				contacts = contacts.OrderBy(contact => contact.FirstName).ToList();
 				contactListView.ItemsSource = contacts;
-				var x = contactListView.ItemTemplate;
+
 
 			}
 			catch (Exception ex)
@@ -38,6 +40,7 @@ namespace KoorweekendApp2017.Pages
 				Navigation.PushAsync(new ContactSinglePage() { BindingContext = item });
 				//Detail = new MainNavigationPage((Page)Activator.CreateInstance(typeof(ContactSinglePage)));
 				contactListView.SelectedItem = null;
+			
 				//IsPresented = false;
 			}
 		}

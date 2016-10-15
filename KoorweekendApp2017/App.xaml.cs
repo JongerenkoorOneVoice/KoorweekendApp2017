@@ -5,11 +5,12 @@ namespace KoorweekendApp2017
 {
 	public partial class App : Application
 	{
+
+		//public DeviceData CurrentDevice = new DeviceData();
+
 		public App()
 		{
 			InitializeComponent();
-
-
 			MainPage = new KoorweekendApp2017Page();
 
 		}
