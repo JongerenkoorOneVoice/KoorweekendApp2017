@@ -1,14 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Paths>
   <Jars></Jars>
-  <ResolvedResourceDirectories>
-    <ResolvedResourceDirectory>/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/Droid/obj/Debug/__library_projects__/ZXingNetMobile/library_project_imports/res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/Droid/obj/Debug/__library_projects__/ZXing.Net.Mobile.Forms.Android/library_project_imports/res</ResolvedResourceDirectory>
-  </ResolvedResourceDirectories>
+  <ResolvedResourceDirectories />
   <ResolvedAssetDirectories />
   <ResolvedEnvironmentFiles />
-  <ResolvedResourceDirectoryStamps>
-    <ResolvedResourceDirectoryStamp>/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/Droid/obj/Debug/__library_projects__/ZXingNetMobile.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/Droid/obj/Debug/__library_projects__/ZXing.Net.Mobile.Forms.Android.stamp</ResolvedResourceDirectoryStamp>
-  </ResolvedResourceDirectoryStamps>
+  <ResolvedResourceDirectoryStamps />
 </Paths>
