@@ -1,10 +1,9 @@
 ﻿using System;
 namespace KoorweekendApp2017.Models
 {
-	public class Contact
+	public class Contact : DatabaseItemBase
 	{
 
-		public int Id { get; set; }
 		public string LastModified { get; set; }
 		public string FirstName { get; set; }
 		public string LastName { get; set; }

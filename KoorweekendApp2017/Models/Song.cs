@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace KoorweekendApp2017.Models
 {
-    class Song
+    class Song : DatabaseItemBase
     {
-        public Int32 Id { get; set; }
+
         public String LastModified { get; set; }
         public String Title { get; set; }
         public String Lyrics { get; set; }
