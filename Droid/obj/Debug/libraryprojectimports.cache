@@ -1,24 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Paths>
   <Jars></Jars>
-<<<<<<< HEAD
-  <ResolvedResourceDirectories />
-  <ResolvedAssetDirectories />
-  <ResolvedEnvironmentFiles />
-  <ResolvedResourceDirectoryStamps />
-=======
   <ResolvedResourceDirectories>
-    <ResolvedResourceDirectory>C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/Droid/obj/Debug/__library_projects__/ZXingNetMobile/library_project_imports/res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/Droid/obj/Debug/__library_projects__/ZXing.Net.Mobile.Forms.Android/library_project_imports/res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
   <ResolvedAssetDirectories>
-    <ResolvedAssetDirectory>obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\assets</ResolvedAssetDirectory>
-    <ResolvedAssetDirectory>obj\Debug\__library_projects__\Xamarin.Forms.Platform\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj/Debug/__library_projects__/ZXingNetMobile/library_project_imports/assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj/Debug/__library_projects__/ZXing.Net.Mobile.Forms.Android/library_project_imports/assets</ResolvedAssetDirectory>
   </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
-    <ResolvedResourceDirectoryStamp>C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/Droid/obj/Debug/__library_projects__/ZXingNetMobile.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>/Users/marcvannieuwenhuijzen/Projects/KoorweekendApp2017/Droid/obj/Debug/__library_projects__/ZXing.Net.Mobile.Forms.Android.stamp</ResolvedResourceDirectoryStamp>
   </ResolvedResourceDirectoryStamps>
->>>>>>> GitHub/master
 </Paths>

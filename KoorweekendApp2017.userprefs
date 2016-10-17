@@ -1,7 +1,11 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/App.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017 Status">
     <Files>
       <File FileName="KoorweekendApp2017/App.xaml.cs" Line="26" Column="32" />
+      <File FileName="KoorweekendApp2017/Pages/ContactArchivePage.xaml.cs" Line="46" Column="4" />
+      <File FileName="KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" Line="35" Column="37" />
+      <File FileName="KoorweekendApp2017/Pages/SongSinglePage.xaml.cs" Line="6" Column="35" />
+      <File FileName="KoorweekendApp2017 Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />

@@ -46,6 +46,9 @@
     <EmbeddedResource Include="Pages\Koorweekend2017\Koorweekend2017Spel2Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SongSinglePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -92,6 +95,9 @@
     <Compile Include="Models\DatabaseItemBase.cs" />
     <Compile Include="Interfaces\ISQLite.cs" />
     <Compile Include="BusinessObjects\LocalDatabase.cs" />
+    <Compile Include="Pages\SongSinglePage.xaml.cs">
+      <DependentUpon>SongSinglePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
