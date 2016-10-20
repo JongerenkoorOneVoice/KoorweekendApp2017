@@ -10,7 +10,13 @@ namespace KoorweekendApp2017.BusinessObjects
 	{
 		private static SQLiteConnection Database { get; set;}
 
-		public SettingsTable Settings { get; set;}
+		public SettingTable Settings { get; set; }
+
+		public ContactTable Contacts { get; set; }
+
+		public SongTable Songs { get; set; }
+
+		public EventTable Events { get; set; }
 
 		public LocalDatabase(SQLiteConnection database)
 		{
@@ -18,42 +24,120 @@ namespace KoorweekendApp2017.BusinessObjects
 			Database.CreateTable<Contact>();
 			Database.CreateTable<Setting>();
 			Database.CreateTable<Song>();
-			//Database.CreateTable<Event>();
-			Settings = new SettingsTable();
+			Database.CreateTable<Event>();
+			Settings = new SettingTable();
+			Contacts = new ContactTable();
+			Songs = new SongTable();
+			Events = new EventTable();
+
 		}
 
-		public class SettingsTable
+		public class SettingTable
 		{
 			public Setting GetByKey(string key)
 			{
 				return (from i in Database.Table<Setting>() where i.Key == key select i).ToList().FirstOrDefault();
 			}
+
+			public List<Setting> GetAll()
+			{
+				return (from i in Database.Table<Setting>() select i).ToList();
+			}
+
+			public void RemoveByKey(string key)
+			{
+				Database.Delete(key);
+
+			}
+
+			public void RemoveAll()
+			{
+				Database.DeleteAll<Setting>();
+			}
+
+			public void Set(string key, string value)
+			{
+				Setting setting = GetByKey(key);
+				if (setting == null)
+				{
+					setting = new Setting();
+				}
+				setting.Key = key;
+				setting.Value = value;
+				Database.InsertOrReplace(setting);
+			}
 		}
 
-		public IEnumerable<Contact> GetItems()
+		public class ContactTable
 		{
-			return (from i in Database.Table<Contact>() select i).ToList();
+			public Contact GetById(int id)
+			{
+				return (from i in Database.Table<Contact>() where i.Id == id select i).ToList().FirstOrDefault();
+			}
+
+			public List<Contact> GetAll()
+			{
+				return (from i in Database.Table<Contact>() select i).ToList();
+			}
+
+			public void RemoveById(int id)
+			{
+				var contact = GetById(id);
+				Database.Delete(contact);
+			}
+
+			public void UpdateOrInsert(Contact contact)
+			{
+				Database.InsertOrReplace(contact);
+			}
 		}
 
-		public Int32 InsertContact(Contact contact)
+		public class SongTable
 		{
-			//Database.Insert(contact);
-			return 0;
+			public Song GetById(int id)
+			{
+				return (from i in Database.Table<Song>() where i.Id == id select i).ToList().FirstOrDefault();
+			}
+
+			public List<Song> GetAll()
+			{
+				return (from i in Database.Table<Song>() select i).ToList();
+			}
+
+			public void RemoveById(int id)
+			{
+				var song = GetById(id);
+				Database.Delete(song);
+			}
+
+			public void UpdateOrInsert(Song song)
+			{
+				Database.InsertOrReplace(song);
+			}
 		}
 
-		public Setting GetSettingByKey(string key)
+		public class EventTable
 		{
-			return (from i in Database.Table<Setting>() where i.Key == key select i).ToList().FirstOrDefault();
-		}
+			public Event GetById(int id)
+			{
+				return (from i in Database.Table<Event>() where i.Id == id select i).ToList().FirstOrDefault();
+			}
 
-		public Int32 InsertSetting(Setting setting)
-		{
-			return Database.Insert(setting);
-		}
+			public List<Event> GetAll()
+			{
+				return (from i in Database.Table<Event>() select i).ToList();
+			}
 
-		public Dictionary<String, Setting> GetAllSettings()
-		{
-			return (from i in Database.Table<Setting>() select i).ToDictionary(x=> x.Key, x=> x);
+			public void RemoveById(int id)
+			{
+				var eventItem = GetById(id);
+				Database.Delete(eventItem);
+			}
+
+			public void UpdateOrInsert(Event song)
+			{
+				Database.InsertOrReplace(song);
+			}
 		}
 
 		/*

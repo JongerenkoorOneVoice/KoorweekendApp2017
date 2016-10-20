@@ -55,6 +55,9 @@
     <EmbeddedResource Include="Pages\EventSinglePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SettingsArchivePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -112,6 +115,10 @@
       <DependentUpon>EventSinglePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Tasks\DataSync.cs" />
+    <Compile Include="Pages\SettingsArchivePage.xaml.cs">
+      <DependentUpon>SettingsArchivePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -181,6 +188,7 @@
     <Folder Include="Pages\Koorweekend2017\" />
     <Folder Include="Interfaces\" />
     <Folder Include="BusinessObjects\" />
+    <Folder Include="Tasks\" />
     <Folder Include="Tasks\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

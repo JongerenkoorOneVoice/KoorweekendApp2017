@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using KoorweekendApp2017.BusinessObjects;
 using KoorweekendApp2017.Models;
 using KoorweekendApp2017.Pages;
+using KoorweekendApp2017.Tasks;
 using SQLite;
 using Xamarin.Forms;
 
@@ -13,15 +15,20 @@ namespace KoorweekendApp2017
 
 		//public DeviceData CurrentDevice = new DeviceData();
 
-		public static  LocalDatabase Database { get; set; }
+		public static LocalDatabase Database { get; set; }
 
 		public App()
 		{
 			InitializeComponent();
-			MainPage = new KoorweekendApp2017Page();
-
 			var db = DependencyService.Get<ISQLite>().GetConnection();
 			Database = new LocalDatabase(db);
+			DataSync.UpdateContactsInDbFromApi();
+			DataSync.UpdateSongsInDbFromApi();
+			DataSync.UpdateEventsInDbFromApi();
+
+			MainPage = new KoorweekendApp2017Page();
+
+			//var x = Database.Settings.
 
 			/*
 			Contact x = new Contact();
@@ -85,5 +92,7 @@ namespace KoorweekendApp2017
 		{
 			// Handle when your app resumes
 		}
+
+
 	}
 }

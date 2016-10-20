@@ -51,7 +51,7 @@ namespace KoorweekendApp2017.Helpers
             }
             catch(Exception ex)
             {
-                // do something;
+				var a = ex;
             }
 
             return returnValue;

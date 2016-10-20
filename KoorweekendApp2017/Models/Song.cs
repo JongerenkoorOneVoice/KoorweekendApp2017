@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace KoorweekendApp2017.Models
 {
-    class Song : DatabaseItemBase
+    public class Song : DatabaseItemBase
     {
 
-        public String LastModified { get; set; }
+        public DateTime LastModified { get; set; }
         public String Title { get; set; }
         public String Lyrics { get; set; }
 

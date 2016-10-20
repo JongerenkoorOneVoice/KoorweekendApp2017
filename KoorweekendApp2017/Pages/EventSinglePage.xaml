@@ -8,10 +8,10 @@
 	<ContentPage.Content>
 		<StackLayout VerticalOptions="FillAndExpand">
 			<Label Text="{Binding Title}" HorizontalTextAlignment="Center"></Label>
-			<Label Text="{Binding StartDate}" HorizontalTextAlignment="Center"></Label>
-			<Label Text="{Binding StartTime}" HorizontalTextAlignment="Center"></Label>
-			<Label Text="{Binding EndDate}" HorizontalTextAlignment="Center"></Label>
-			<Label Text="{Binding EndTime}" HorizontalTextAlignment="Center"></Label>
+			<Label Text="{Binding StartDateFormatted}" HorizontalTextAlignment="Center"></Label>
+			<Label Text="{Binding StartTimeFormatted}" HorizontalTextAlignment="Center"></Label>
+			<Label Text="{Binding EndDateFormatted}" HorizontalTextAlignment="Center"></Label>
+			<Label Text="{Binding EndTimeFormatted}" HorizontalTextAlignment="Center"></Label>
 			<Label Text="{Binding Address}" HorizontalTextAlignment="Center"></Label>
 			<Label Text="{Binding AreaCode}" HorizontalTextAlignment="Center"></Label>
 			<Label Text="{Binding City}" HorizontalTextAlignment="Center"></Label>

@@ -18,7 +18,7 @@ namespace KoorweekendApp2017.Pages
 			{
 				InitializeComponent();
 				songListView.ItemSelected += OnSongSelected;
-				List<Song> songs = RestHelper.GetRestDataFromUrl<Song>("http://www.jongerenkooronevoice.nl/songs/all").Result;
+				List<Song> songs = App.Database.Songs.GetAll();
 				songs = songs.OrderBy(song => song.Title).ToList();
 				songListView.ItemsSource = songs;
 

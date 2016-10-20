@@ -14,8 +14,8 @@
 		<Label Text="{Binding Phone1}" HorizontalTextAlignment="Center"></Label>
 		<Label Text="{Binding Mobile1}" HorizontalTextAlignment="Center"></Label>
 		<Label Text="{Binding Email1}" HorizontalTextAlignment="Center"></Label>
-		<Label Text="{Binding BirthDate}" HorizontalTextAlignment="Center"></Label>
-		<Label Text="{Binding StartDate}" HorizontalTextAlignment="Center"></Label>
+		<Label Text="{Binding BirthDateFormatted}" HorizontalTextAlignment="Center"></Label>
+		<Label Text="{Binding StartDateFormatted}" HorizontalTextAlignment="Center"></Label>
 	
 			
 

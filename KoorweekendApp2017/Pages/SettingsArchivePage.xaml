@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage 
+<ContentPage
 		xmlns="http://xamarin.com/schemas/2014/forms"
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-		x:Class="KoorweekendApp2017.Pages.ContactArchivePage"
-		Title="Koorleden">
-	<ContentPage.Content>
+		x:Class="KoorweekendApp2017.Pages.SettingsArchivePage"
+		Title="Instellingen">
+  <ContentPage.Content>
 		<StackLayout VerticalOptions="FillAndExpand">
-			
             <ListView
-					x:Name="contactListView"
+					x:Name="settingListView"
 					VerticalOptions="FillAndExpand"
 					SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell  Text="{Binding FullName}" Detail="{Binding StartDateFormatted, StringFormat='Lid sinds {0:F0}'}"/>
+                        <TextCell Text="{Binding Key}" Detail="{Binding Value}"></TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

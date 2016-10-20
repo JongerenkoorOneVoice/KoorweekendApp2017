@@ -13,5 +13,6 @@ namespace KoorweekendApp2017
 		[PrimaryKey]
 		public int Id { get; set; }
 
+
 	}
 }

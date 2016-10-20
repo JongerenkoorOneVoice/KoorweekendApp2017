@@ -20,7 +20,7 @@ namespace KoorweekendApp2017.Pages
 			{
 				InitializeComponent();
 				contactListView.ItemSelected += OnContactSelected;
-				List<Contact> contacts = RestHelper.GetRestDataFromUrl<Contact>("http://www.jongerenkooronevoice.nl/contacts/all").Result;
+				List<Contact> contacts = App.Database.Contacts.GetAll();
 				contacts = contacts.OrderBy(contact => contact.FirstName).ToList();
 				contactListView.ItemsSource = contacts;
 

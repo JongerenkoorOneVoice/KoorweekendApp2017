@@ -45,6 +45,12 @@ namespace KoorweekendApp2017.Pages
 				IconSource = "reminders.png",
 				TargetType = typeof(Koorweekend2017Page)
 			});
+			masterPageItems.Add(new MasterPageItem
+			{
+				Title = "Instellingen",
+				IconSource = "reminders.png",
+				TargetType = typeof(SettingsArchivePage)
+			});
 
             listView.ItemsSource = masterPageItems;
         }

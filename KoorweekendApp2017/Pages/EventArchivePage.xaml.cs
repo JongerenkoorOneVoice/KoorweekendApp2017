@@ -15,7 +15,7 @@ namespace KoorweekendApp2017.Pages
 			{
 				InitializeComponent();
 				eventListView.ItemSelected += OnEventSelected;
-				List<Event> events = RestHelper.GetRestDataFromUrl<Event>("http://www.jongerenkooronevoice.nl/apievents/all").Result;
+				List<Event> events = App.Database.Events.GetAll();
 				events = events.OrderBy(e => e.Title).ToList();
 				eventListView.ItemsSource = events;
 
