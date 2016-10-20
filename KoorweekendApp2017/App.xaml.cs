@@ -1,4 +1,6 @@
-﻿using KoorweekendApp2017.BusinessObjects;
+﻿using System;
+using System.Collections.Generic;
+using KoorweekendApp2017.BusinessObjects;
 using KoorweekendApp2017.Models;
 using KoorweekendApp2017.Pages;
 using SQLite;
@@ -20,6 +22,7 @@ namespace KoorweekendApp2017
 
 			var db = DependencyService.Get<ISQLite>().GetConnection();
 			Database = new LocalDatabase(db);
+
 			/*
 			Contact x = new Contact();
 			x.Id = 999;
@@ -37,6 +40,34 @@ namespace KoorweekendApp2017
 			var a = Database.GetItems();
 			var b = a;
 			*/
+
+			Setting setting = Database.GetSettingByKey("lastContactUpdate");
+			String value = Database.Settings.GetByKey("lastContactUpdate").Value;
+
+			//if (setting == null)
+			//{
+			/*
+				Database.InsertSetting(
+					new Setting()
+					{
+						Key = "lastContactUpdate",
+						Value = DateTime.Now.ToString()
+					}
+			  	);
+
+				Database.InsertSetting(
+					new Setting()
+					{
+						Key = "lastContactUpdate",
+						Value = DateTime.Now.AddDays(1).ToString()
+					}
+			  	);
+
+*/
+			//}
+
+			    //Dictionary<String, Setting> settings = Database.GetAllSettings();
+			//var x = settings;    
 
 		}
 

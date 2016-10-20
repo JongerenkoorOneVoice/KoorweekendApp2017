@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage 
+<ContentPage
 		xmlns="http://xamarin.com/schemas/2014/forms"
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-		x:Class="KoorweekendApp2017.Pages.ContactArchivePage"
-		Title="Koorleden">
+		x:Class="KoorweekendApp2017.Pages.EventArchivePage"
+		Title="Agenda">
 	<ContentPage.Content>
 		<StackLayout VerticalOptions="FillAndExpand">
-			
             <ListView
-					x:Name="contactListView"
+					x:Name="eventListView"
 					VerticalOptions="FillAndExpand"
 					SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell Text="{Binding FullName}"/>
+                        <ImageCell Text="{Binding Title}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

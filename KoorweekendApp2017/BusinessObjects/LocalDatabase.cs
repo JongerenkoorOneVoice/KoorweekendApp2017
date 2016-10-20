@@ -10,11 +10,24 @@ namespace KoorweekendApp2017.BusinessObjects
 	{
 		private static SQLiteConnection Database { get; set;}
 
+		public SettingsTable Settings { get; set;}
+
 		public LocalDatabase(SQLiteConnection database)
 		{
 			Database = database;
 			Database.CreateTable<Contact>();
+			Database.CreateTable<Setting>();
+			Database.CreateTable<Song>();
+			//Database.CreateTable<Event>();
+			Settings = new SettingsTable();
+		}
 
+		public class SettingsTable
+		{
+			public Setting GetByKey(string key)
+			{
+				return (from i in Database.Table<Setting>() where i.Key == key select i).ToList().FirstOrDefault();
+			}
 		}
 
 		public IEnumerable<Contact> GetItems()
@@ -28,6 +41,20 @@ namespace KoorweekendApp2017.BusinessObjects
 			return 0;
 		}
 
+		public Setting GetSettingByKey(string key)
+		{
+			return (from i in Database.Table<Setting>() where i.Key == key select i).ToList().FirstOrDefault();
+		}
+
+		public Int32 InsertSetting(Setting setting)
+		{
+			return Database.Insert(setting);
+		}
+
+		public Dictionary<String, Setting> GetAllSettings()
+		{
+			return (from i in Database.Table<Setting>() select i).ToDictionary(x=> x.Key, x=> x);
+		}
 
 		/*
 		public IEnumerable<TodoItem> GetItemsNotDone()

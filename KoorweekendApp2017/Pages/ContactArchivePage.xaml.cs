@@ -32,6 +32,7 @@ namespace KoorweekendApp2017.Pages
 			}
 		}
 
+
 		void OnContactSelected(object sender, SelectedItemChangedEventArgs e)
 		{
 			var item = e.SelectedItem as Contact;
