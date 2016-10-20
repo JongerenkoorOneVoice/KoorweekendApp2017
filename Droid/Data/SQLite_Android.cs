@@ -6,8 +6,8 @@ using SQLite;
 [assembly: Xamarin.Forms.Dependency(typeof(SQLite_Android))]
 namespace KoorweekendApp2017.Droid
 {
-	public class SQLite_Android
-	{
+	public class SQLite_Android : ISQLite
+    {
 		public SQLite_Android()
 		{
 		}

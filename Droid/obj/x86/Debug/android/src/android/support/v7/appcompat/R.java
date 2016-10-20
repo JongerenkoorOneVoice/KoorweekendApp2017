@@ -2796,6 +2796,8 @@ containing a value of this type.
         public static int zxingscannerfragmentlayout=0x7f03003a;
     }
     public static final class string {
+        public static int ApplicationName=0x7f080028;
+        public static int Hello=0x7f080027;
         public static int abc_action_bar_home_description=0x7f08000f;
         public static int abc_action_bar_home_description_format=0x7f080010;
         public static int abc_action_bar_home_subtitle_description_format=0x7f080011;

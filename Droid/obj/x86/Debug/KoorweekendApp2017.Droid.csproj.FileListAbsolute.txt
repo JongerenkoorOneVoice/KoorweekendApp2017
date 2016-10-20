@@ -87,6 +87,13 @@ C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Deb
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\com.jongerenkooronevoice.koorweekendapp2017-Signed.apk
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\FormsViewGroup.dll
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\KoorweekendApp2017.dll
+C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\SQLite-net.dll
+C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\SQLite.Net.dll
+C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\SQLite.Net.Platform.XamarinAndroid.dll
+C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\SQLitePCLRaw.batteries_green.dll
+C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\SQLitePCLRaw.core.dll
+C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\SQLitePCLRaw.lib.e_sqlite3.dll
+C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\SQLitePCLRaw.provider.e_sqlite3.dll
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\System.Net.Http.Extensions.dll
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\System.Net.Http.Primitives.dll
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\Xamarin.Android.Support.Animated.Vector.Drawable.dll
@@ -120,6 +127,8 @@ C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Deb
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\Xamarin.Forms.Xaml.pdb
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\Xamarin.Forms.Xaml.xml
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\Xamarin.Forms.Xaml.dll.mdb
+C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\SQLite-net.xml
+C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\SQLite-net.dll.mdb
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\bin\x86\Debug\Newtonsoft.Json.xml
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\obj\x86\Debug\KoorweekendApp2017.Droid.csprojResolveAssemblyReference.cache
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\obj\x86\Debug\KoorweekendApp2017.Droid.Page1.xaml.g.cs
@@ -158,6 +167,7 @@ C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\obj\x86\Deb
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\obj\x86\Debug\android\assets\Mono.Android.dll.mdb
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\obj\x86\Debug\android\assets\Mono.CSharp.dll.mdb
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\obj\x86\Debug\android\assets\mscorlib.dll.mdb
+C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\obj\x86\Debug\android\assets\SQLite-net.dll.mdb
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\obj\x86\Debug\android\assets\System.ComponentModel.Composition.dll.mdb
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\obj\x86\Debug\android\assets\System.Core.dll.mdb
 C:\Users\Nieuwenhuijzen\Documents\Projecten\KoorweekendApp2017\Droid\obj\x86\Debug\android\assets\System.dll.mdb

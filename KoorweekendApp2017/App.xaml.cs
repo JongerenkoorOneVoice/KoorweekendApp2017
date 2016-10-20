@@ -41,8 +41,8 @@ namespace KoorweekendApp2017
 			var b = a;
 			*/
 
-			Setting setting = Database.GetSettingByKey("lastContactUpdate");
-			String value = Database.Settings.GetByKey("lastContactUpdate").Value;
+			//Setting setting = Database.GetSettingByKey("lastContactUpdate");
+			//String value = Database.Settings.GetByKey("lastContactUpdate").Value;
 
 			//if (setting == null)
 			//{
