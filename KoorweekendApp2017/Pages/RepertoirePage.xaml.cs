@@ -13,6 +13,7 @@ namespace KoorweekendApp2017.Pages
     public partial class RepertoirePage : ContentPage
     {
         public List<Song> Songs = new List<Song>();
+		public String oldSearchValue = String.Empty;
 
         public RepertoirePage()
         {
@@ -24,8 +25,8 @@ namespace KoorweekendApp2017.Pages
                 Songs = App.Database.Songs.GetAll();
                 Songs = Songs.OrderBy(song => song.Title).ToList();
                 songListView.ItemsSource = Songs;
-                mainSearchBar.TextChanged += OnSearchButtonPressed;
-                
+                mainSearchBar.TextChanged += OnTextChanged;
+                mainSearchBar.Focused += MainSearchFocused;
             }
 			catch (Exception ex)
 			{
@@ -46,9 +47,9 @@ namespace KoorweekendApp2017.Pages
 			}
 		}
 
-        void OnSearchButtonPressed(object sender, EventArgs args)
+        void OnTextChanged(object sender, EventArgs args)
         {
-            string searchValue = mainSearchBar.Text.ToLower();
+            string searchValue = mainSearchBar.Text == null ? String.Empty : mainSearchBar.Text.ToLower();
 
             
             if(searchValue == String.Empty)
@@ -62,5 +63,17 @@ namespace KoorweekendApp2017.Pages
                 songListView.ItemsSource = foundSongs;
             }
         }
+
+		void MainSearchFocused(object sender, EventArgs args)
+		{
+
+			string searchValue = mainSearchBar.Text == null ? String.Empty : mainSearchBar.Text.ToLower();
+			if (String.IsNullOrEmpty(searchValue) && oldSearchValue.Length > 0)
+			{
+				//mainSearchBar.Unfocus();
+				songListView.Focus();
+			}
+
+		}
     }
 }

@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>KoorweekendApp2017.Droid</RootNamespace>
     <AssemblyName>KoorweekendApp2017.Droid</AssemblyName>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -182,6 +182,9 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\SQLite_Android.cs" />
+    <Compile Include="Tasks\ApiContactSyncTask.cs" />
+    <Compile Include="Tasks\ApiEventSyncTask.cs" />
+    <Compile Include="Tasks\ApiSongSyncTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -214,6 +217,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Tasks\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

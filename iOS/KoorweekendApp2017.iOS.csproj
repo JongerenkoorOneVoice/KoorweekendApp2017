@@ -159,6 +159,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Data\" />
+    <Folder Include="Tasks\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -173,12 +174,18 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Data\SQLite_iOS.cs" />
+    <Compile Include="Tasks\ApiContactSyncTask.cs" />
+    <Compile Include="Tasks\ApiSongSyncTask.cs" />
+    <Compile Include="Tasks\ApiEventSyncTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="zxing.net.mobile.forms">
       <Version>2.1.12</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\app_logo_red.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

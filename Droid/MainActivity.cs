@@ -9,6 +9,10 @@ using Android.Widget;
 using Android.OS;
 using ZXing.Net.Mobile.Forms;
 using System.Threading.Tasks;
+using KoorweekendApp2017.Messages;
+using Xamarin.Forms;
+using KoorweekendApp2017.Droid.Tasks;
+
 namespace KoorweekendApp2017.Droid
 {
 	[Activity(Label = "KoorweekendApp2017.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -22,12 +26,45 @@ namespace KoorweekendApp2017.Droid
 			base.OnCreate(bundle);
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
-            ZXing.Net.Mobile.Forms.Android.Platform.Init();
-			/*
-            var x = new MainNavigationPage();
-            x.PushAsync(new Page1());
-            LoadApplication(new App() { MainPage =  x});
-            */
+            //ZXing.Net.Mobile.Forms.Android.Platform.Init();
+
+			MessagingCenter.Subscribe<StartApiContactSyncMessage>(this, "StartApiContactSyncMessage", async message =>
+			{
+				var intent = new Intent(this, typeof(ApiContactSyncTask));
+				StartService(intent);
+			});
+
+			MessagingCenter.Subscribe<StopApiContactSyncMessage>(this, "StartStopContactSyncMessage", message =>
+			{
+				var intent = new Intent(this, typeof(ApiContactSyncTask));
+				StopService(intent);
+			});
+
+			MessagingCenter.Subscribe<StartApiSongSyncMessage>(this, "StartApiSongSyncMessage", async message =>
+			{
+				var intent = new Intent(this, typeof(ApiSongSyncTask));
+				StartService(intent);
+			});
+
+			MessagingCenter.Subscribe<StopApiSongSyncMessage>(this, "StopApiSongSyncMessage", message =>
+			{
+				var intent = new Intent(this, typeof(ApiSongSyncTask));
+				StopService(intent);
+			});
+
+	
+			MessagingCenter.Subscribe<StartApiEventSyncMessage>(this, "StartApiEventSyncMessage", async message =>
+			{
+				var intent = new Intent(this, typeof(ApiEventSyncTask));
+				StartService(intent);
+			});
+
+			MessagingCenter.Subscribe<StopApiEventSyncMessage>(this, "StopApiEventSyncMessage", message =>
+			{
+				var intent = new Intent(this, typeof(ApiEventSyncTask));
+				StopService(intent);
+			});
+
 			App oneVoiceApp = new App();
             LoadApplication(oneVoiceApp);
 

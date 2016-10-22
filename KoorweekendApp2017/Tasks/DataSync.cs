@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using KoorweekendApp2017.Helpers;
+using KoorweekendApp2017.Messages;
 using KoorweekendApp2017.Models;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 
 namespace KoorweekendApp2017.Tasks
 {
@@ -76,6 +80,7 @@ namespace KoorweekendApp2017.Tasks
 			}
 			App.Database.Settings.Set("lastEventsUpdate", DateTime.Now.ToString());
 		}
+
 
 	}
 }

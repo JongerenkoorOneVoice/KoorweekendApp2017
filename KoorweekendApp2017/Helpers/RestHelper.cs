@@ -30,8 +30,7 @@ namespace KoorweekendApp2017.Helpers
             //string password = "";
             // request.Headers.Add("Authorization", "Basic " + String.Format("{0}:{1}", username, password));
 
-            try
-            {
+     
 				using (HttpWebResponse response = (HttpWebResponse)(await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, null).ConfigureAwait(false)))
                 {
                     using (Stream responseStream = response.GetResponseStream())
@@ -48,11 +47,7 @@ namespace KoorweekendApp2017.Helpers
                 }
 
                 returnValue = GetModelFromJson<List<T>>(rawData);
-            }
-            catch(Exception ex)
-            {
-				var a = ex;
-            }
+     
 
             return returnValue;
 
@@ -65,7 +60,7 @@ namespace KoorweekendApp2017.Helpers
             JToken data = getJTokenData(rawDataDynamic);
 
 
-            Boolean dataIsArray = data.Type == JTokenType.Array;
+            //Boolean dataIsArray = data.Type == JTokenType.Array;
             String temp = data.ToJSON();
             //if (!dataIsArray) temp = String.Format("[{0}]", temp);
 
