@@ -1,5 +1,4 @@
 ﻿using System.Threading;
-using UIKit;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
