@@ -6,6 +6,9 @@
   Title="Repertoire">
   <ContentPage.Content>
 		<StackLayout VerticalOptions="FillAndExpand">
+      <SearchBar x:Name="mainSearchBar">
+        </SearchBar>
+        
             <ListView
 					x:Name="songListView"
 					VerticalOptions="FillAndExpand"

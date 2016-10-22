@@ -12,18 +12,21 @@ namespace KoorweekendApp2017.Pages
 {
     public partial class RepertoirePage : ContentPage
     {
+        public List<Song> Songs = new List<Song>();
+
         public RepertoirePage()
-        {           
+        {
+            InitializeComponent();
+            //songListView.ItemsSource = 
 			try
 			{
-				InitializeComponent();
 				songListView.ItemSelected += OnSongSelected;
-				List<Song> songs = App.Database.Songs.GetAll();
-				songs = songs.OrderBy(song => song.Title).ToList();
-				songListView.ItemsSource = songs;
-
-
-			}
+                Songs = App.Database.Songs.GetAll();
+                Songs = Songs.OrderBy(song => song.Title).ToList();
+                songListView.ItemsSource = Songs;
+                mainSearchBar.TextChanged += OnSearchButtonPressed;
+                
+            }
 			catch (Exception ex)
 			{
 				var a = ex.Message;
@@ -42,5 +45,22 @@ namespace KoorweekendApp2017.Pages
 				//IsPresented = false;
 			}
 		}
+
+        void OnSearchButtonPressed(object sender, EventArgs args)
+        {
+            string searchValue = mainSearchBar.Text;
+
+            
+            if(searchValue == String.Empty)
+            {
+                songListView.ItemsSource = Songs;
+            }
+            else
+            {
+                List<Song> foundSongs = Songs.FindAll(
+                x => x.Title.ToLower().Contains(searchValue) == true || x.Lyrics.ToLower().Contains(searchValue) == true);
+                songListView.ItemsSource = foundSongs;
+            }
+        }
     }
 }
