@@ -12,20 +12,21 @@ namespace KoorweekendApp2017.Pages
 		
 
 		public ListView ContactListView { get { return contactListView; } }
+        public List<Contact> Contacts = new List<Contact>();
 
-
-		public ContactArchivePage()
+        public ContactArchivePage()
 		{
 			try
 			{
 				InitializeComponent();
 				contactListView.ItemSelected += OnContactSelected;
-				List<Contact> contacts = App.Database.Contacts.GetAll();
-				contacts = contacts.OrderBy(contact => contact.FirstName).ToList();
-				contactListView.ItemsSource = contacts;
+				Contacts = App.Database.Contacts.GetAll();
+				Contacts = Contacts.OrderBy(Contact => Contact.FirstName).ToList();
+				contactListView.ItemsSource = Contacts;
+                mainSearchBar.TextChanged += OnSearchButtonPressed;
 
 
-			}
+            }
 			catch (Exception ex)
 			{
 				var a = ex.Message;
@@ -45,5 +46,23 @@ namespace KoorweekendApp2017.Pages
 				//IsPresented = false;
 			}
 		}
-	}
+        void OnSearchButtonPressed(object sender, EventArgs args)
+        {
+            string searchValue = mainSearchBar.Text.ToLower();
+
+
+            if (searchValue == String.Empty)
+            {
+                contactListView.ItemsSource = Contacts;
+            }
+            else
+            {
+                List<Contact> foundContacts = Contacts.FindAll(
+                    x => x.FullName.ToLower().Contains(searchValue) == true);
+                contactListView.ItemsSource = foundContacts;
+            }
+        }
+
+
+    }
 }

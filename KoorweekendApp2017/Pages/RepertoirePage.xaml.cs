@@ -48,7 +48,7 @@ namespace KoorweekendApp2017.Pages
 
         void OnSearchButtonPressed(object sender, EventArgs args)
         {
-            string searchValue = mainSearchBar.Text;
+            string searchValue = mainSearchBar.Text.ToLower();
 
             
             if(searchValue == String.Empty)
