@@ -13,7 +13,7 @@ namespace KoorweekendApp2017.Pages
 
 		public ListView ContactListView { get { return contactListView; } }
         public List<Contact> Contacts = new List<Contact>();
-
+        public String oldSearchValue = String.Empty;
         public ContactArchivePage()
 		{
 			try
@@ -24,6 +24,8 @@ namespace KoorweekendApp2017.Pages
 				Contacts = Contacts.OrderBy(Contact => Contact.FirstName).ToList();
 				contactListView.ItemsSource = Contacts;
                 mainSearchBar.TextChanged += OnSearchButtonPressed;
+                mainSearchBar.Focused += MainSearchFocused;
+
 
 
             }
@@ -49,8 +51,6 @@ namespace KoorweekendApp2017.Pages
         void OnSearchButtonPressed(object sender, EventArgs args)
         {
             string searchValue = mainSearchBar.Text.ToLower();
-
-
             if (searchValue == String.Empty)
             {
                 contactListView.ItemsSource = Contacts;
@@ -61,8 +61,22 @@ namespace KoorweekendApp2017.Pages
                     x => x.FullName.ToLower().Contains(searchValue) == true);
                 contactListView.ItemsSource = foundContacts;
             }
+
+            oldSearchValue = searchValue;
         }
 
+        void MainSearchFocused(object sender, EventArgs args)
+        {
+
+            string searchValue = mainSearchBar.Text == null ? String.Empty : mainSearchBar.Text.ToLower();
+            if (String.IsNullOrEmpty(searchValue) && oldSearchValue.Length > 0)
+            {
+                //mainSearchBar.Unfocus();
+                contactListView.Focus();
+            }
+     
+        }
+        
 
     }
 }
