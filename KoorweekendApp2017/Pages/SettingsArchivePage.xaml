@@ -6,12 +6,20 @@
 		Title="Instellingen">
   <ContentPage.Content>
 		<StackLayout VerticalOptions="FillAndExpand">
+			<TableView Intent="Settings">
+				<TableRoot>
+					<TableSection Title="Options">
+			      		<SwitchCell x:Name="errorLogSwitch" Text="Errorlog in menu (restart app)" On="{Binding ShowErrorLogInMenu}" />
+        			</TableSection>
+				</TableRoot>
+			</TableView>
+			
             <ListView
 					x:Name="settingListView"
 					VerticalOptions="FillAndExpand"
 					SeparatorVisibility="None">
                 <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:Name="secondItem">
                         <TextCell Text="{Binding Key}" Detail="{Binding Value}"></TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
