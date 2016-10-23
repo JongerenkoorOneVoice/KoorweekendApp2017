@@ -1,21 +1,48 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017.git Status">
     <Files>
-      <File FileName="iOS/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="Droid/MainActivity.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" Line="17" Column="3" />
-      <File FileName="iOS/Main.cs" Line="17" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/ContactSinglePage.xaml.cs" Line="9" Column="3" />
-      <File FileName="KoorweekendApp2017/Pages/ContactArchivePage.xaml.cs" Line="71" Column="1" />
+      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="18" Column="4" />
+      <File FileName="iOS/AppDelegate.cs" Line="24" Column="1" />
+      <File FileName="iOS/Tasks/ApiContactSyncTask.cs" Line="29" Column="11" />
+      <File FileName="iOS/Tasks/ApiEventSyncTask.cs" Line="29" Column="11" />
+      <File FileName="iOS/Tasks/ApiSongSyncTask.cs" Line="30" Column="11" />
+      <File FileName="Droid/Tasks/ApiContactSyncTask.cs" Line="31" Column="6" />
+      <File FileName="Droid/Tasks/ApiEventSyncTask.cs" Line="32" Column="6" />
+      <File FileName="Droid/Tasks/ApiSongSyncTask.cs" Line="32" Column="6" />
+      <File FileName="KoorweekendApp2017/App.xaml.cs" Line="30" Column="1" />
       <File FileName="KoorweekendApp2017.git Status" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="KoorweekendApp2017" expanded="True">
+            <Node name="KoorweekendApp2017" expanded="True">
+              <Node name="Packages" expanded="True" />
+              <Node name="Helpers" expanded="True" />
+              <Node name="Tasks" expanded="True">
+                <Node name="DataSync.cs" selected="True" />
+              </Node>
+              <Node name="App.xaml" expanded="True" />
+            </Node>
+            <Node name="KoorweekendApp2017.Droid" expanded="True">
+              <Node name="ComponentReferenceFolder" expanded="True" />
+              <Node name="Tasks" expanded="True" />
+            </Node>
+            <Node name="KoorweekendApp2017.iOS" expanded="True">
+              <Node name="ComponentReferenceFolder" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Resources" expanded="True" />
+              <Node name="Tasks" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/iOS/Tasks/LongRunningTask.cs" line="29" column="14" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/iOS/Tasks/LongRunningTask.cs" line="23" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" line="52" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/iOS/Tasks/ApiContactSyncTask.cs" line="34" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.51933A8B-2E4D-4B3A-B7CD-9284186AFFA8" />

@@ -23,7 +23,7 @@ namespace KoorweekendApp2017.Droid.Tasks{
 		{
 			_cts = new CancellationTokenSource();
 
-			Task.Run(() =>
+			Task.Run( async () =>
 			{
 				try
 				{

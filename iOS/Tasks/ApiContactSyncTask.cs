@@ -1,10 +1,9 @@
 ﻿using System.Threading;
-using UIKit;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using KoorweekendApp2017.Messages;
-
+using UIKit;
 
 namespace KoorweekendApp2017.iOS.Tasks{
                             
@@ -27,11 +26,12 @@ namespace KoorweekendApp2017.iOS.Tasks{
 			try
 			{
 
-				KoorweekendApp2017.Tasks.DataSync.UpdateContactsInDbFromApi();
+				await KoorweekendApp2017.Tasks.DataSync.UpdateContactsInDbFromApi();
 
 			}
-			catch (OperationCanceledException)
+			catch (OperationCanceledException ex)
 			{
+				var a = ex;
 			}
 			finally
 			{
