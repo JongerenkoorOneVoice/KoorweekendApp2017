@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDisplayName</key>
-	<string>KoorweekendApp2017</string>
-	<key>CFBundleName</key>
-	<string>KoorweekendApp2017</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.jongerenkooronevoice.koorweekendapp2017</string>
 	<key>CFBundleShortVersionString</key>
@@ -48,5 +44,7 @@
 	</array>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
+	<key>CFBundleName</key>
+	<string>One Voice</string>
 </dict>
 </plist>
