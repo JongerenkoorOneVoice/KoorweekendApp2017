@@ -51,6 +51,12 @@ namespace KoorweekendApp2017.Pages
 				IconSource = "reminders.png",
 				TargetType = typeof(SettingsArchivePage)
 			});
+			masterPageItems.Add(new MasterPageItem
+			{
+				Title = "DebugLog",
+				IconSource = "reminders.png",
+				TargetType = typeof(LogArchivePage)
+			});
 
             listView.ItemsSource = masterPageItems;
         }

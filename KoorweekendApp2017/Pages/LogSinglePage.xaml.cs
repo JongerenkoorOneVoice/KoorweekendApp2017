@@ -5,13 +5,11 @@ using Xamarin.Forms;
 
 namespace KoorweekendApp2017.Pages
 {
-	public partial class HomePage : ContentPage
+	public partial class LogSinglePage : ContentPage
 	{
-		public HomePage()
+		public LogSinglePage()
 		{
 			InitializeComponent();
-			NavigationPage.SetTitleIcon(this, "app_logo_red.jpg");
-
 		}
 	}
 }

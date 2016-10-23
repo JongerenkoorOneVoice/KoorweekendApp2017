@@ -58,6 +58,12 @@
     <EmbeddedResource Include="Pages\SettingsArchivePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\LogArchivePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\LogSinglePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -126,6 +132,13 @@
     <Compile Include="Messages\StopApiSongSyncMessage.cs" />
     <Compile Include="Messages\StartApiEventSyncMessage.cs" />
     <Compile Include="Messages\StopApiEventSyncMessage.cs" />
+    <Compile Include="Pages\LogArchivePage.xaml.cs">
+      <DependentUpon>LogArchivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LogSinglePage.xaml.cs">
+      <DependentUpon>LogSinglePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LogItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

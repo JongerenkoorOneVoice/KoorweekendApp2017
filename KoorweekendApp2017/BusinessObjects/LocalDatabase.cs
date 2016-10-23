@@ -18,6 +18,8 @@ namespace KoorweekendApp2017.BusinessObjects
 
 		public EventTable Events { get; set; }
 
+		public LogItemTable LogItems { get; set; }
+
 		public LocalDatabase(SQLiteConnection database)
 		{
 			Database = database;
@@ -25,11 +27,12 @@ namespace KoorweekendApp2017.BusinessObjects
 			Database.CreateTable<Setting>();
 			Database.CreateTable<Song>();
 			Database.CreateTable<Event>();
+			Database.CreateTable<LogItem>();
 			Settings = new SettingTable();
 			Contacts = new ContactTable();
 			Songs = new SongTable();
 			Events = new EventTable();
-
+			LogItems = new LogItemTable();
 		}
 
 		public class SettingTable
@@ -137,6 +140,30 @@ namespace KoorweekendApp2017.BusinessObjects
 			public void UpdateOrInsert(Event song)
 			{
 				Database.InsertOrReplace(song);
+			}
+		}
+
+		public class LogItemTable
+		{
+			public LogItem GetById(int id)
+			{
+				return (from i in Database.Table<LogItem>() where i.Id == id select i).ToList().FirstOrDefault();
+			}
+
+			public List<LogItem> GetAll()
+			{
+				return (from i in Database.Table<LogItem>() select i).ToList();
+			}
+
+			public void RemoveById(int id)
+			{
+				var logItem = GetById(id);
+				Database.Delete(logItem);
+			}
+
+			public void UpdateOrInsert(LogItem logItem)
+			{
+				Database.InsertOrReplace(logItem);
 			}
 		}
 
