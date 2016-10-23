@@ -14,8 +14,9 @@ namespace KoorweekendApp2017.Tasks
 	public static class DataSync
 	{
 
-		public static async Task UpdateContactsInDbFromApi()
+		public static void UpdateContactsInDbFromApi()
 		{
+
 			if(CrossConnectivity.Current.IsConnected){
 
 				var task = Task.Run(async () =>
@@ -49,7 +50,7 @@ namespace KoorweekendApp2017.Tasks
 			}
 		}
 
-		public static async Task UpdateSongsInDbFromApi()
+		public static void UpdateSongsInDbFromApi()
 		{
 			if (CrossConnectivity.Current.IsConnected)
 			{
@@ -87,7 +88,7 @@ namespace KoorweekendApp2017.Tasks
 			}
 		}
 
-		public static async Task UpdateEventsInDbFromApi()
+		public static void UpdateEventsInDbFromApi()
 		{
 			if (CrossConnectivity.Current.IsConnected)
 			{

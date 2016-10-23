@@ -26,7 +26,7 @@ namespace KoorweekendApp2017.iOS.Tasks{
 			try
 			{
 
-				await KoorweekendApp2017.Tasks.DataSync.UpdateContactsInDbFromApi();
+				KoorweekendApp2017.Tasks.DataSync.UpdateContactsInDbFromApi();
 
 			}
 			catch (OperationCanceledException ex)

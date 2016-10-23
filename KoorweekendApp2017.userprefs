@@ -1,15 +1,8 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017.git Status">
     <Files>
-      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="18" Column="4" />
-      <File FileName="iOS/AppDelegate.cs" Line="24" Column="1" />
-      <File FileName="iOS/Tasks/ApiContactSyncTask.cs" Line="29" Column="11" />
-      <File FileName="iOS/Tasks/ApiEventSyncTask.cs" Line="29" Column="11" />
-      <File FileName="iOS/Tasks/ApiSongSyncTask.cs" Line="30" Column="11" />
-      <File FileName="Droid/Tasks/ApiContactSyncTask.cs" Line="31" Column="6" />
-      <File FileName="Droid/Tasks/ApiEventSyncTask.cs" Line="32" Column="6" />
-      <File FileName="Droid/Tasks/ApiSongSyncTask.cs" Line="32" Column="6" />
-      <File FileName="KoorweekendApp2017/App.xaml.cs" Line="30" Column="1" />
+      <File FileName="iOS/Tasks/ApiSongSyncTask.cs" Line="30" Column="5" />
+      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="77" Column="1" />
       <File FileName="KoorweekendApp2017.git Status" />
     </Files>
     <Pads>
