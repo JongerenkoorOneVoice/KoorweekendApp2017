@@ -11,6 +11,20 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017
 		public Koorweekend2017Page()
 		{
 			InitializeComponent();
+			game1Button.Clicked += game1Button_Clicked;
+			game2Button.Clicked += game2Button_Clicked;
+
+
+		}
+
+		void game1Button_Clicked(object sender, EventArgs e)
+		{
+			this.Navigation.PushAsync(new Koorweekend2017Spel1Page());
+		}
+
+		void game2Button_Clicked(object sender, EventArgs e)
+		{
+			this.Navigation.PushAsync(new Koorweekend2017Spel2Page());
 		}
 	}
 }
