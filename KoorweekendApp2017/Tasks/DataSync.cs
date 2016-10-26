@@ -17,17 +17,17 @@ namespace KoorweekendApp2017.Tasks
 		public static void UpdateContactsInDbFromApi()
 		{
 
-			if(CrossConnectivity.Current.IsConnected){
+			//if(CrossConnectivity.Current.IsConnected){
 
-				var task = Task.Run(async () =>
-				{
-					return await CrossConnectivity.Current.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
-				});
+			//	var task = Task.Run(async () =>
+			//	{
+			//		return await CrossConnectivity.Current.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
+			//	});
 
-				bool hasInternet =  task.Result;
+			//	bool hasInternet =  task.Result;
 
-				if (hasInternet)
-				{
+			//	if (hasInternet)
+			//	{
 					DateTime lastUpdate = DateTime.Parse("1010-01-01");
 					Setting lastUpdatedSetting = App.Database.Settings.GetByKey("lastContactsUpdate");
 					if (lastUpdatedSetting != null)
@@ -46,23 +46,23 @@ namespace KoorweekendApp2017.Tasks
 						}
 					}
 					App.Database.Settings.Set("lastContactsUpdate", DateTime.Now.ToString());
-				}
-			}
+			//	}
+			//}
 		}
 
 		public static void UpdateSongsInDbFromApi()
 		{
-			if (CrossConnectivity.Current.IsConnected)
-			{
+			//if (CrossConnectivity.Current.IsConnected)
+			//{
 
-				var task = Task.Run(async () =>
-				{
-					return await CrossConnectivity.Current.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
-				});
-				bool hasInternet = task.Result;
+			//	var task = Task.Run(async () =>
+			//	{
+			//		return await CrossConnectivity.Current.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
+			//	});
+			//	bool hasInternet = task.Result;
 
-				if (hasInternet)
-				{
+			//	if (hasInternet)
+			//	{
 
 					DateTime lastUpdate = DateTime.Parse("1010-01-01");
 					Setting lastUpdatedSetting = App.Database.Settings.GetByKey("lastSongUpdate");
@@ -83,24 +83,24 @@ namespace KoorweekendApp2017.Tasks
 						}
 					}
 					App.Database.Settings.Set("lastSongUpdate", DateTime.Now.ToString());
-				}
+			//	}
 			
-			}
+			//}
 		}
 
 		public static void UpdateEventsInDbFromApi()
 		{
-			if (CrossConnectivity.Current.IsConnected)
-			{
+			//if (CrossConnectivity.Current.IsConnected)
+			//{
 
-				var task = Task.Run(async () =>
-				{
-					return await CrossConnectivity.Current.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
-				});
-				bool hasInternet = task.Result;
+			//	var task = Task.Run(async () =>
+			//	{
+			//		return await CrossConnectivity.Current.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
+			//	});
+			//	bool hasInternet = task.Result;
 
-				if (hasInternet)
-				{
+			//	if (hasInternet)
+			//	{
 
 					DateTime lastUpdate = DateTime.Parse("1010-01-01");
 					Setting lastUpdatedSetting = App.Database.Settings.GetByKey("lastEventsUpdate");
@@ -122,9 +122,9 @@ namespace KoorweekendApp2017.Tasks
 					}
 					App.Database.Settings.Set("lastEventsUpdate", DateTime.Now.ToString());
 				}
-			}
+		//	}
 
-		}
+		//}
 
 
 	}
