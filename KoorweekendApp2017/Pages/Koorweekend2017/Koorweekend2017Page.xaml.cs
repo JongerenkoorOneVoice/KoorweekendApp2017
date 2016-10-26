@@ -19,7 +19,14 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017
 
 		void game1Button_Clicked(object sender, EventArgs e)
 		{
-			this.Navigation.PushAsync(new Koorweekend2017Spel1Page());
+			try
+			{
+				this.Navigation.PushAsync(new Koorweekend2017Spel1Page());
+			}
+			catch (Exception ex)
+			{
+				var a = ex;
+			}
 		}
 
 		void game2Button_Clicked(object sender, EventArgs e)

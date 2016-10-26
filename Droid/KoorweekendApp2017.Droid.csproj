@@ -173,6 +173,22 @@
     <Reference Include="Connectivity.Plugin">
       <HintPath>..\packages\Xam.Plugin.Connectivity.1.0.3\lib\MonoAndroid10\Connectivity.Plugin.dll</HintPath>
     </Reference>
+    <Reference Include="CocosSharp">
+      <HintPath>..\packages\CocosSharp.1.7.1.0\lib\MonoAndroid10\CocosSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>..\packages\CocosSharp.1.7.1.0\lib\MonoAndroid10\Lidgren.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\packages\CocosSharp.1.7.1.0\lib\MonoAndroid10\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="box2d">
+      <HintPath>..\packages\CocosSharp.Forms.1.7.1.0\lib\MonoAndroid10\box2d.dll</HintPath>
+    </Reference>
+    <Reference Include="CocosSharp.Forms">
+      <HintPath>..\packages\CocosSharp.Forms.1.7.1.0\lib\MonoAndroid10\CocosSharp.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK-1.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KoorweekendApp2017\KoorweekendApp2017.csproj">

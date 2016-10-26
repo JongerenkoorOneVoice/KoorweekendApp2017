@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Connectivity.Plugin;
 using KoorweekendApp2017.Helpers;
 using KoorweekendApp2017.Messages;
 using KoorweekendApp2017.Models;
 using Newtonsoft.Json;
+using Plugin.Connectivity;
 using Xamarin.Forms;
 
 namespace KoorweekendApp2017.Tasks
