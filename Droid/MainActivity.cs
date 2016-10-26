@@ -28,7 +28,7 @@ namespace KoorweekendApp2017.Droid
 			global::Xamarin.Forms.Forms.Init(this, bundle);
             //ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
-			MessagingCenter.Subscribe<StartApiContactSyncMessage>(this, "StartApiContactSyncMessage", async message =>
+			MessagingCenter.Subscribe<StartApiContactSyncMessage>(this, "StartApiContactSyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiContactSyncTask));
 				StartService(intent);
@@ -40,7 +40,7 @@ namespace KoorweekendApp2017.Droid
 				StopService(intent);
 			});
 
-			MessagingCenter.Subscribe<StartApiSongSyncMessage>(this, "StartApiSongSyncMessage", async message =>
+			MessagingCenter.Subscribe<StartApiSongSyncMessage>(this, "StartApiSongSyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiSongSyncTask));
 				StartService(intent);
@@ -53,7 +53,7 @@ namespace KoorweekendApp2017.Droid
 			});
 
 	
-			MessagingCenter.Subscribe<StartApiEventSyncMessage>(this, "StartApiEventSyncMessage", async message =>
+			MessagingCenter.Subscribe<StartApiEventSyncMessage>(this, "StartApiEventSyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiEventSyncTask));
 				StartService(intent);
