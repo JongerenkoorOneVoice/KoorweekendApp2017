@@ -25,19 +25,19 @@ namespace KoorweekendApp2017.Pages
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Home",
-				IconSource = "contacts.png",
+				IconSource = "app_logo_red.jpg",
 				TargetType = typeof(HomePage)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Repertoire",
-				IconSource = "icon.png",
+				IconSource = "https://www.hookist.com/wp-content/uploads/2015/03/HOOKIST-LOGO-Transparent-no-text.png",
 				TargetType = typeof(RepertoirePage)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Koorleden",
-				IconSource = "reminders.png",
+				IconSource = "http://kazete.com.tr/img/blogger/0.png",
 				TargetType = typeof(ContactArchivePage)
 			});
 			masterPageItems.Add(new MasterPageItem

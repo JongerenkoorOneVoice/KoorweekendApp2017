@@ -5,6 +5,10 @@
   x:Class="KoorweekendApp2017.Pages.HomePage"
   Title="Home">
 	<ContentPage.Content>
-		<Label Text="Home"></Label>
+    <StackLayout HorizontalOptions="Center">
+      <Label Text="http://www.jongerenkooronevoice.nl/" x:Name="label">
+      </Label>
+      <Image Source="https://s-media-cache-ak0.pinimg.com/564x/df/80/e9/df80e97a31123cb16afde6589fa8af89.jpg"/>
+    </StackLayout>
 	</ContentPage.Content>
 </ContentPage>
