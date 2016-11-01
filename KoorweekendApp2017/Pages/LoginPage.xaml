@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+		xmlns="http://xamarin.com/schemas/2014/forms"
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		x:Class="KoorweekendApp2017.LoginPage"
+		Title="Aanmelden">
+
+	 	<RelativeLayout>
+			<Image Source="AppBackground.jpg" Aspect="AspectFill" Scale="1.5" TranslationY="50"></Image>
+			<Button x:Name="btnNext" Text="Verder"></Button>
+			<StackLayout Padding="15,15,15,15">
+	    		<Label Text="Deze app is alleen beschikbaar voor de leden van Jongerenkoor One Voice. Vul hieronder je mailadres in zodat we kunnen controleren dat je lid bent."></Label>
+				<Entry x:Name ="userMail" Keyboard="Email" Placeholder="Mailadres" Text=""></Entry>
+
+			</StackLayout>
+  		</RelativeLayout>
+
+</ContentPage>

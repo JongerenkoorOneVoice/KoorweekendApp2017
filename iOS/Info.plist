@@ -41,10 +41,15 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
+		<string>fetch</string>
 	</array>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>CFBundleName</key>
 	<string>One Voice</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Om dit spel te spelen hebben we toegang tot je GPS nodig.</string>
+	<key>Custom PropertNSLocationAlwaysUsageDescriptiony</key>
+	<string>Om dit spel te spelen hebben we toegang tot je GPS nodig.</string>
 </dict>
 </plist>
