@@ -13,26 +13,10 @@
                         <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" customColorSpace="calibratedWhite" colorSpace="calibratedRGB" red="1" green="0" blue="0" alpha="1"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="12" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="SplashScreenBackground.jpg">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="-66" width="768" height="1024"/>
-                                </variation>
-                            </imageView>
-                        </subviews>
-                        <accessibility key="accessibilityConfiguration">
-                            <accessibilityConfiguration key="traits" image="YES"/>
-                        </accessibility>
-                    </view>
                     <connections/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="20" key="view" image="SplashScreenBackground.jpg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    </imageView>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,8 +28,4 @@
         <image name="AppBackground.jpg" width="864" height="1258"/>
         <image name="SplashScreenBackground.jpg" width="1365" height="2048"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedScreenMetrics key="destination"/>
-        <simulatedOrientationMetrics key="orientation"/>
-    </simulatedMetricsContainer>
 </document>

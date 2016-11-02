@@ -232,8 +232,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\app_logo_red.jpg" />
-    <BundleResource Include="Resources\AppBackground.jpg" />
     <BundleResource Include="Resources\SplashScreenBackground.jpg" />
+    <BundleResource Include="SplashScreenBackground.jpg" />
+    <BundleResource Include="Resources\AppBackground.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
