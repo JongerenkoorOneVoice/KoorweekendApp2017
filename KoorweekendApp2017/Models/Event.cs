@@ -128,7 +128,7 @@ namespace KoorweekendApp2017.Models
 		{
 			get
 			{
-				return StartDate.ToString("hh:mm", new CultureInfo("nl-NL"));
+				return EndTime.ToString("hh:mm", new CultureInfo("nl-NL"));
 			}
 		}
 

@@ -30,7 +30,7 @@ namespace KoorweekendApp2017.Pages
 					Song songForEvent = App.Database.Songs.GetById(songId);
 					if (songForEvent == null)
 					{
-						// Try to update the data from the webservice
+						// Try to update the data from the webservicev
 						DataSync.UpdateSongsInDbFromApi(true);
 						songForEvent = App.Database.Songs.GetById(songId);
 						if (songForEvent == null)
