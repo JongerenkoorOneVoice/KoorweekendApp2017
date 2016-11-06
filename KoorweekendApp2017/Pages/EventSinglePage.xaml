@@ -15,6 +15,16 @@
 			<Label Text="{Binding Address}" HorizontalTextAlignment="Center"></Label>
 			<Label Text="{Binding AreaCode}" HorizontalTextAlignment="Center"></Label>
 			<Label Text="{Binding City}" HorizontalTextAlignment="Center"></Label>
+			<ListView
+					x:Name="songForEventListView"
+					VerticalOptions="FillAndExpand"
+					SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding Title}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
