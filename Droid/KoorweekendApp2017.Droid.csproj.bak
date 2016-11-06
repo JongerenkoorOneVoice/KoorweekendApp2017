@@ -189,6 +189,30 @@
       <HintPath>..\packages\CocosSharp.Forms.1.7.1.0\lib\MonoAndroid10\CocosSharp.Forms.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK-1.0" />
+    <Reference Include="Plugin.CurrentActivity">
+      <HintPath>..\packages\Plugin.CurrentActivity.1.0.1\lib\MonoAndroid10\Plugin.CurrentActivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Permissions.Abstractions">
+      <HintPath>..\packages\Plugin.Permissions.1.1.7\lib\MonoAndroid10\Plugin.Permissions.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Permissions">
+      <HintPath>..\packages\Plugin.Permissions.1.1.7\lib\MonoAndroid10\Plugin.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Geolocator.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Geolocator.3.0.4\lib\MonoAndroid10\Plugin.Geolocator.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Geolocator">
+      <HintPath>..\packages\Xam.Plugin.Geolocator.3.0.4\lib\MonoAndroid10\Plugin.Geolocator.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Compass.Abstractions">
+      <HintPath>..\packages\Plugin.Compass.2.0.0\lib\MonoAndroid10\Plugin.Compass.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Compass">
+      <HintPath>..\packages\Plugin.Compass.2.0.0\lib\MonoAndroid10\Plugin.Compass.dll</HintPath>
+    </Reference>
+    <Reference Include="GeoCoordinatePortable">
+      <HintPath>..\packages\GeoCoordinate.1.1.0\lib\portable-net45+wp80+win+wpa81\GeoCoordinatePortable.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KoorweekendApp2017\KoorweekendApp2017.csproj">
@@ -207,6 +231,7 @@
     <Compile Include="Tasks\ApiContactSyncTask.cs" />
     <Compile Include="Tasks\ApiEventSyncTask.cs" />
     <Compile Include="Tasks\ApiSongSyncTask.cs" />
+    <Compile Include="MainApplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
