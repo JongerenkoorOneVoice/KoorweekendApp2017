@@ -4,27 +4,77 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 		x:Class="KoorweekendApp2017.Pages.EventSinglePage"
 		Title="{Binding Title}"
-		Padding="15,15,15,0">
+		Padding="0,0,0,0"
+	
+	>
 	<ContentPage.Content>
-		<StackLayout VerticalOptions="FillAndExpand">
-			<Label Text="{Binding Title}" HorizontalTextAlignment="Center"></Label>
-			<Label Text="{Binding StartDateFormatted}" HorizontalTextAlignment="Center"></Label>
-			<Label Text="{Binding StartTimeFormatted}" HorizontalTextAlignment="Center"></Label>
-			<Label Text="{Binding EndDateFormatted}" HorizontalTextAlignment="Center"></Label>
-			<Label Text="{Binding EndTimeFormatted}" HorizontalTextAlignment="Center"></Label>
-			<Label Text="{Binding Address}" HorizontalTextAlignment="Center"></Label>
-			<Label Text="{Binding AreaCode}" HorizontalTextAlignment="Center"></Label>
-			<Label Text="{Binding City}" HorizontalTextAlignment="Center"></Label>
+		<RelativeLayout>
+			<Image
+				Source="PageBackground.jpg"
+				VerticalOptions="StartAndExpand"
+				HorizontalOptions="StartAndExpand"
+				Aspect="Fill"
+			/>
+			
+			<ScrollView  Orientation = "Vertical" VerticalOptions="StartAndExpand">
+		<StackLayout VerticalOptions="FillAndExpand" Spacing="0">
+			<Label Margin="15,10,15,15" Text="{Binding Title}" HorizontalTextAlignment="Center" Font="Bold"></Label>
+			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" Margin="0,0,0,15">
+				<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+					<Label Margin="15,0,15,0" Text="Van" HorizontalTextAlignment="End" Font="Bold,15"></Label>
+					<Label Margin="15,0,15,0" Text="{Binding StartDateFormattedWithLinebreaks}" HorizontalTextAlignment="End"></Label>
+					<Label Margin="15,-5,15,0" Text="{Binding StartTimeFormatted}" HorizontalTextAlignment="End"></Label>
+				</StackLayout>
+				<BoxView  VerticalOptions="Fill" WidthRequest="1" BackgroundColor="Black"/>		
+				<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+					<Label Margin="15,0,15,0" Text="Tot" HorizontalTextAlignment="Start" Font="Bold,15"></Label>
+					<Label Margin="15,0,15,0" Text="{Binding EndDateFormattedWithLinebreaks}" HorizontalTextAlignment="Start"></Label>
+					<Label Margin="15,-5,15,0" Text="{Binding EndTimeFormatted}" HorizontalTextAlignment="Start"></Label>
+				</StackLayout>
+			</StackLayout>
+			<Label Margin="15,0,15,0" Text="Adres" HorizontalTextAlignment="Center" Font="Bold,15"></Label>
+			<Label Margin="15,10,15,0" Text="{Binding Address}" HorizontalTextAlignment="Center"></Label>
+			<Label Margin="15,0,15,0" Text="{Binding AreaCode}" HorizontalTextAlignment="Center"></Label>
+			<Label Margin="15,0,15,15" Text="{Binding City}" HorizontalTextAlignment="Center"></Label>
+					
+			<Label x:Name="songsHeaderTitle" Margin="15,10,15,5" Text="We zingen de volgende nummers" HorizontalTextAlignment="Center" Font="Bold"></Label>
+			<!--TableView Intent="Data" x:Name="songForEventListView">
+			    <TableRoot>
+			        <TableSection Title="Ring">
+			            <ViewCell>
+                        	<Label
+								Text="{Binding Title}"
+								HorizontalTextAlignment="Center"
+								VerticalTextAlignment="Center"
+								VerticalOptions="StartAndExpand"
+							>
+							</Label>
+						</ViewCell>
+			        </TableSection>
+			    </TableRoot>
+			</TableView-->
 			<ListView
 					x:Name="songForEventListView"
 					VerticalOptions="FillAndExpand"
-					SeparatorVisibility="None">
+					SeparatorVisibility="None"
+					BackgroundColor="Transparent"
+				>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell Text="{Binding Title}"/>
+                        <ViewCell>
+                        	<Label
+								Text="{Binding Title}"
+								HorizontalTextAlignment="Center"
+								VerticalTextAlignment="Center"
+								VerticalOptions="FillAndExpand"
+
+							></Label>
+						</ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 		</StackLayout>
+		</ScrollView>
+				</RelativeLayout>
 	</ContentPage.Content>
 </ContentPage>

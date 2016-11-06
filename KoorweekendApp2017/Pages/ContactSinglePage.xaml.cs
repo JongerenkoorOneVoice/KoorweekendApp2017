@@ -49,5 +49,6 @@ namespace KoorweekendApp2017.Pages
                 Telefoon.GestureRecognizers.Add(phoneOpen);
             }
         }
+
     }
 }

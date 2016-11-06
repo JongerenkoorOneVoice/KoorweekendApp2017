@@ -14,7 +14,7 @@ namespace KoorweekendApp2017.Tasks
 	public static class DataSync
 	{
 
-		public static void UpdateContactsInDbFromApi()
+		public static void UpdateContactsInDbFromApi(bool shouldUpdateAll = false)
 		{
 
 			//if(CrossConnectivity.Current.IsConnected){
@@ -28,29 +28,30 @@ namespace KoorweekendApp2017.Tasks
 
 			//	if (hasInternet)
 			//	{
-					DateTime lastUpdate = DateTime.Parse("1010-01-01");
-					Setting lastUpdatedSetting = App.Database.Settings.GetByKey("lastContactsUpdate");
-					if (lastUpdatedSetting != null)
-					{
-						lastUpdate = DateTime.Parse(lastUpdatedSetting.Value);
-						lastUpdate = lastUpdate.AddDays(-1);
-					}
+			DateTime lastUpdate = DateTime.Parse("1010-01-01");
+			Setting lastUpdatedSetting = App.Database.Settings.GetByKey("lastContactsUpdate");
+			if (lastUpdatedSetting != null && !shouldUpdateAll)
+			{
+				lastUpdate = DateTime.Parse(lastUpdatedSetting.Value);
+				lastUpdate = lastUpdate.AddDays(-1);
+			}
 
-					string query = String.Format("http://www.jongerenkooronevoice.nl/contacts/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
-					List<Contact> contacts = RestHelper.GetRestDataFromUrl<Contact>(query).Result;
-					if (contacts != null)
-					{
-						foreach (Contact contact in contacts)
-						{
-							App.Database.Contacts.UpdateOrInsert(contact);
-						}
-					}
-					App.Database.Settings.Set("lastContactsUpdate", DateTime.Now.ToString());
+			string query = String.Format("http://www.jongerenkooronevoice.nl/contacts/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
+
+			List<Contact> contacts = RestHelper.GetRestDataFromUrl<Contact>(query).Result;
+			if (contacts != null)
+			{
+				foreach (Contact contact in contacts)
+				{
+					App.Database.Contacts.UpdateOrInsert(contact);
+				}
+			}
+			App.Database.Settings.Set("lastContactsUpdate", DateTime.Now.ToString());
 			//	}
 			//}
 		}
 
-		public static void UpdateSongsInDbFromApi()
+		public static void UpdateSongsInDbFromApi(bool shouldUpdateAll = false)
 		{
 			//if (CrossConnectivity.Current.IsConnected)
 			//{
@@ -66,7 +67,7 @@ namespace KoorweekendApp2017.Tasks
 
 					DateTime lastUpdate = DateTime.Parse("1010-01-01");
 					Setting lastUpdatedSetting = App.Database.Settings.GetByKey("lastSongUpdate");
-					if (lastUpdatedSetting != null)
+					if (lastUpdatedSetting != null && !shouldUpdateAll)
 					{
 						lastUpdate = DateTime.Parse(lastUpdatedSetting.Value);
 						lastUpdate = lastUpdate.AddDays(-1);
@@ -88,7 +89,7 @@ namespace KoorweekendApp2017.Tasks
 			//}
 		}
 
-		public static void UpdateEventsInDbFromApi()
+		public static void UpdateEventsInDbFromApi(bool shouldUpdateAll = false)
 		{
 			//if (CrossConnectivity.Current.IsConnected)
 			//{
@@ -104,7 +105,7 @@ namespace KoorweekendApp2017.Tasks
 
 					DateTime lastUpdate = DateTime.Parse("1010-01-01");
 					Setting lastUpdatedSetting = App.Database.Settings.GetByKey("lastEventsUpdate");
-					if (lastUpdatedSetting != null)
+					if (lastUpdatedSetting != null && !shouldUpdateAll)
 					{
 						lastUpdate = DateTime.Parse(lastUpdatedSetting.Value);
 						lastUpdate = lastUpdate.AddDays(-1);

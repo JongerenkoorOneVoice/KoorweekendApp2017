@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using KoorweekendApp2017.Tasks;
 
 namespace KoorweekendApp2017.Pages
 {
@@ -22,17 +23,26 @@ namespace KoorweekendApp2017.Pages
 			try
 			{
 				songListView.ItemSelected += OnSongSelected;
-                Songs = App.Database.Songs.GetAll();
-                Songs = Songs.OrderBy(song => song.Title).ToList();
-                songListView.ItemsSource = Songs;
+                
                 mainSearchBar.TextChanged += OnTextChanged;
                 mainSearchBar.Focused += MainSearchFocused;
+
+				songListView.IsPullToRefreshEnabled = true;
+				songListView.Refreshing += ReloadSongsFromWebservice;
+				SetupRepertoireDataForList();
             }
 			catch (Exception ex)
 			{
 				var a = ex.Message;
 			}
         }
+
+		private void SetupRepertoireDataForList()
+		{
+			Songs = App.Database.Songs.GetAll();
+			Songs = Songs.OrderBy(Songs => Songs.Title).ToList();
+			songListView.ItemsSource = Songs;
+		}
 
 		void OnSongSelected(object sender, SelectedItemChangedEventArgs e)
 		{
@@ -73,6 +83,15 @@ namespace KoorweekendApp2017.Pages
 				//mainSearchBar.Unfocus();
 				songListView.Focus();
 			}
+
+		}
+
+		void ReloadSongsFromWebservice(object sender, EventArgs args)
+		{
+			DataSync.UpdateSongsInDbFromApi(true);
+			SetupRepertoireDataForList();
+			ListView listView = sender as ListView;
+			listView.EndRefresh();
 
 		}
     }

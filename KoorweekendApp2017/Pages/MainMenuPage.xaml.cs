@@ -30,6 +30,12 @@ namespace KoorweekendApp2017.Pages
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
+				Title = "Nieuws",
+				IconSource = "https://www.hookist.com/wp-content/uploads/2015/03/HOOKIST-LOGO-Transparent-no-text.png",
+				TargetType = typeof(NewsArchive)
+			});
+			masterPageItems.Add(new MasterPageItem
+			{
 				Title = "Repertoire",
 				IconSource = "https://www.hookist.com/wp-content/uploads/2015/03/HOOKIST-LOGO-Transparent-no-text.png",
 				TargetType = typeof(RepertoirePage)
@@ -45,6 +51,12 @@ namespace KoorweekendApp2017.Pages
 				Title = "Agenda",
 				IconSource = "reminders.png",
 				TargetType = typeof(EventArchivePage)
+			});
+			masterPageItems.Add(new MasterPageItem
+			{
+				Title = "Koorkleding",
+				IconSource = "reminders.png",
+				TargetType = typeof(ChoirUniform)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{

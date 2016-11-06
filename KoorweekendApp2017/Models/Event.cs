@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using Newtonsoft.Json;
 using SQLite;
 
 namespace KoorweekendApp2017.Models
 {
-	public class Event: DatabaseItemBase
+	public class Event : DatabaseItemBase
 	{
 
 		public DateTime LastModified { get; set; }
@@ -20,20 +21,59 @@ namespace KoorweekendApp2017.Models
 		public string AreaCode { get; set; }
 
 		[Ignore]
-		public List<int> Songs { get; set; }
+		private List<int> _songs {get; set;}
 
 		[Ignore]
-		public List<Song> SongItems { get; set; }
+		public List<int> Songs
+		{
+			get
+			{
+				return _songs;
+			}
+			set
+			{
+				_songs = value;
+			}
+		}
+
+		[Ignore]
+		private List<Song> _songItems { get; set; }
+
+		[Ignore]
+		public List<Song> SongItems
+		{
+			get
+			{
+				if (_songItems == null)
+				{
+					throw new Exception("SongItems must be required from de database manually");
+				}
+				return _songItems;
+			}
+			set
+			{
+				_songItems = value;
+				_songs = _songItems.Select(x => x.Id).ToList();
+
+			}
+		}
 
 		public String SongsIds
 		{
 			get
 			{
-				return JsonConvert.SerializeObject(Songs);
+				return JsonConvert.SerializeObject(_songs);
 			}
 			set
 			{
-				Songs = JsonConvert.DeserializeObject<List<int>>(value);
+				if (!String.IsNullOrEmpty(value))
+				{
+
+					_songs = JsonConvert.DeserializeObject<List<int>>(value);
+				}
+				else {
+					throw new Exception("The json value for SongIds is invalid");
+				}
 			}
 		
 		}
@@ -48,11 +88,29 @@ namespace KoorweekendApp2017.Models
 		}
 
 		[Ignore]
+		public String StartDateFormattedWithLinebreaks
+		{
+			get
+			{
+				return StartDate.ToString("dddd\r\nd MMM yyyy", new CultureInfo("nl-NL"));
+			}
+		}
+
+		[Ignore]
 		public String StartTimeFormatted
 		{
 			get
 			{
 				return StartTime.ToString("hh:mm", new CultureInfo("nl-NL"));
+			}
+		}
+
+		[Ignore]
+		public String EndDateFormattedWithLinebreaks
+		{
+			get
+			{
+				return EndDate.ToString("dddd\r\nd MMM yyyy", new CultureInfo("nl-NL"));
 			}
 		}
 

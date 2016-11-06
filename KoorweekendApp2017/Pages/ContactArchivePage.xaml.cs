@@ -4,6 +4,7 @@ using KoorweekendApp2017.Helpers;
 using KoorweekendApp2017.Models;
 using Xamarin.Forms;
 using System.Linq;
+using KoorweekendApp2017.Tasks;
 
 namespace KoorweekendApp2017.Pages
 {
@@ -19,10 +20,13 @@ namespace KoorweekendApp2017.Pages
 			try
 			{
 				InitializeComponent();
-				contactListView.ItemSelected += OnContactSelected;
-				Contacts = App.Database.Contacts.GetAll();
-				Contacts = Contacts.OrderBy(Contact => Contact.FirstName).ToList();
-				contactListView.ItemsSource = Contacts;
+				ContactListView.ItemSelected += OnContactSelected;
+				ContactListView.IsPullToRefreshEnabled = true;
+				ContactListView.Refreshing += ReloadContactsFromWebservice;
+				SetupContactDataForList();
+
+
+
                 mainSearchBar.TextChanged += OnTextChanged;
                 mainSearchBar.Focused += MainSearchFocused;
 
@@ -35,6 +39,12 @@ namespace KoorweekendApp2017.Pages
 			}
 		}
 
+		private void SetupContactDataForList()
+		{
+			Contacts = App.Database.Contacts.GetAll();
+			Contacts = Contacts.OrderBy(Contact => Contact.FirstName).ToList();
+			ContactListView.ItemsSource = Contacts;
+		}
 
 		void OnContactSelected(object sender, SelectedItemChangedEventArgs e)
 		{
@@ -43,7 +53,7 @@ namespace KoorweekendApp2017.Pages
 			{
 				Navigation.PushAsync(new ContactSinglePage() { BindingContext = item });
 				//Detail = new MainNavigationPage((Page)Activator.CreateInstance(typeof(ContactSinglePage)));
-				contactListView.SelectedItem = null;
+				ContactListView.SelectedItem = null;
 			
 				//IsPresented = false;
 			}
@@ -53,13 +63,13 @@ namespace KoorweekendApp2017.Pages
             string searchValue = mainSearchBar.Text == null ? String.Empty : mainSearchBar.Text.ToLower();
             if (searchValue == String.Empty)
             {
-                contactListView.ItemsSource = Contacts;
+                ContactListView.ItemsSource = Contacts;
             }
             else
             {
                 List<Contact> foundContacts = Contacts.FindAll(
                     x => x.FullName.ToLower().Contains(searchValue) == true);
-                contactListView.ItemsSource = foundContacts;
+                ContactListView.ItemsSource = foundContacts;
             }
 
             oldSearchValue = searchValue;
@@ -72,11 +82,18 @@ namespace KoorweekendApp2017.Pages
             if (String.IsNullOrEmpty(searchValue) && oldSearchValue.Length > 0)
             {
                 //mainSearchBar.Unfocus();
-                contactListView.Focus();
+                ContactListView.Focus();
             }
      
         }
         
+		void ReloadContactsFromWebservice(object sender, EventArgs args)
+		{
+			DataSync.UpdateContactsInDbFromApi(true);
+			SetupContactDataForList();
+			ListView listView = sender as ListView;
+			listView.EndRefresh();
 
+		}
     }
 }

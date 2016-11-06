@@ -123,7 +123,8 @@ namespace KoorweekendApp2017.BusinessObjects
 		{
 			public Event GetById(int id)
 			{
-				return (from i in Database.Table<Event>() where i.Id == id select i).ToList().FirstOrDefault();
+				Event eventItem = (from i in Database.Table<Event>() where i.Id == id select i).ToList().FirstOrDefault();
+				return eventItem;
 			}
 
 			public List<Event> GetAll()
@@ -137,9 +138,9 @@ namespace KoorweekendApp2017.BusinessObjects
 				Database.Delete(eventItem);
 			}
 
-			public void UpdateOrInsert(Event song)
+			public void UpdateOrInsert(Event eventItem)
 			{
-				Database.InsertOrReplace(song);
+				Database.InsertOrReplace(eventItem);
 			}
 		}
 

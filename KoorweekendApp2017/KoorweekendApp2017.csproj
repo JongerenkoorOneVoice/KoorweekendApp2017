@@ -66,6 +66,15 @@
     <EmbeddedResource Include="Pages\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ChoirUniform.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\NewsArchive.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\NewsSingle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -144,6 +153,15 @@
     <Compile Include="Scenes\Game1Scene1.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ChoirUniform.xaml.cs">
+      <DependentUpon>ChoirUniform.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NewsArchive.xaml.cs">
+      <DependentUpon>NewsArchive.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NewsSingle.xaml.cs">
+      <DependentUpon>NewsSingle.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
