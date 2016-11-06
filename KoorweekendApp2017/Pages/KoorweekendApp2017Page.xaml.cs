@@ -17,7 +17,15 @@ namespace KoorweekendApp2017.Pages
 			var item = e.SelectedItem as MasterPageItem;
 			if (item != null)
 			{
-				Detail = new LoginPage();//new MainNavigationPage((Page)Activator.CreateInstance(item.TargetType));
+				if (item.TargetType == typeof(LoginPage))
+				{
+					Detail = new LoginPage();
+				}
+				else
+				{
+					Detail = new MainNavigationPage((Page)Activator.CreateInstance(item.TargetType));
+				}
+		
 				menuPage.ListView.SelectedItem = null;
 				IsPresented = false;
 			}
