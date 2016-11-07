@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/SongSinglePage.xaml.cs">
     <Files>
       <File FileName="KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" Line="45" Column="4" />
       <File FileName="KoorweekendApp2017/Pages/ContactArchivePage.xaml.cs" Line="97" Column="4" />
@@ -7,13 +7,14 @@
       <File FileName="iOS/AppDelegate.cs" Line="46" Column="1" />
       <File FileName="KoorweekendApp2017/Pages/KoorweekendApp2017Page.xaml.cs" Line="12" Column="4" />
       <File FileName="KoorweekendApp2017/Models/Event.cs" Line="104" Column="34" />
-      <File FileName="KoorweekendApp2017/Pages/EventSinglePage.xaml.cs" Line="24" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/EventSinglePage.xaml.cs" Line="22" Column="47" />
       <File FileName="KoorweekendApp2017/BusinessObjects/LocalDatabase.cs" Line="113" Column="18" />
-      <File FileName="KoorweekendApp2017/Models/Song.cs" Line="12" Column="37" />
+      <File FileName="KoorweekendApp2017/Models/Song.cs" Line="15" Column="39" />
       <File FileName="KoorweekendApp2017/Pages/ChoirUniform.xaml.cs" Line="1" Column="1" />
       <File FileName="KoorweekendApp2017/Pages/NewsArchive.xaml.cs" Line="16" Column="1" />
       <File FileName="KoorweekendApp2017/Pages/NewsSingle.xaml.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/MainMenuPage.xaml.cs" Line="60" Column="7" />
+      <File FileName="KoorweekendApp2017/Pages/MainMenuPage.xaml.cs" Line="35" Column="37" />
+      <File FileName="KoorweekendApp2017/Pages/SongSinglePage.xaml.cs" Line="37" Column="8" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />

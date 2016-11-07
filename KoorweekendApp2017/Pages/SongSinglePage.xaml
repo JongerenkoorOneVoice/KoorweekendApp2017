@@ -8,6 +8,7 @@
 	<ContentPage.Content>
 		<ScrollView Padding="15,15,15,0">
 			<StackLayout VerticalOptions="FillAndExpand">
+				<WebView x:Name="youtubeVideoView"></WebView>
 				<Label Text="{Binding Title}" FontAttributes="Bold" HorizontalTextAlignment="Start"></Label>
 				<Label Text="{Binding Lyrics}" HorizontalTextAlignment="Start"></Label>
 			</StackLayout>

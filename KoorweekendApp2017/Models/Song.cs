@@ -12,7 +12,7 @@ namespace KoorweekendApp2017.Models
         public DateTime LastModified { get; set; }
         public String Title { get; set; }
         public String Lyrics { get; set; }
-
+		public String YoutubeId { get; set; }
 
     }
 }
