@@ -25,37 +25,37 @@ namespace KoorweekendApp2017.Pages
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Home",
-				IconSource = "app_logo_red.jpg",
+				IconSource = "Home3.png",
 				TargetType = typeof(HomePage)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Nieuws",
-				IconSource = "https://www.hookist.com/wp-content/uploads/2015/03/HOOKIST-LOGO-Transparent-no-text.png",
+				IconSource = "News.png",
 				TargetType = typeof(NewsArchive)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Repertoire",
-				IconSource = "https://www.hookist.com/wp-content/uploads/2015/03/HOOKIST-LOGO-Transparent-no-text.png",
+				IconSource = "Music2.png",
 				TargetType = typeof(RepertoirePage)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Koorleden",
-				IconSource = "http://kazete.com.tr/img/blogger/0.png",
+				IconSource = "Koorleden2.png",
 				TargetType = typeof(ContactArchivePage)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Agenda",
-				IconSource = "reminders.png",
+				IconSource = "Agenda3.png",
 				TargetType = typeof(EventArchivePage)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Koorkleding",
-				IconSource = "reminders.png",
+				IconSource = "Kleding.png",
 				TargetType = typeof(ChoirUniform)
 			});
 			masterPageItems.Add(new MasterPageItem
