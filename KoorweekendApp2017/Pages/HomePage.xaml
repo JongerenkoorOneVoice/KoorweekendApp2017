@@ -6,9 +6,13 @@
   Title="Home">
 	<ContentPage.Content>
     <StackLayout HorizontalOptions="Center">
-      <Label Text="http://www.jongerenkooronevoice.nl/" x:Name="label">
-      </Label>
-      <Image Source="https://s-media-cache-ak0.pinimg.com/564x/df/80/e9/df80e97a31123cb16afde6589fa8af89.jpg"/>
+      <Label Text="Onevoice" Font="Bold,40" x:Name="label" TextColor="#FF0000" HorizontalOptions="Center"/>
+      <Label Text="Verjaardagen:" Font="Bold,20" HorizontalOptions="Center"/>
+      <Label Text="... is ... jarig" HorizontalOptions="Center"/>
+      <Label Text="Uitvoeringen:" Font="Bold,20" HorizontalOptions="Center"/>
+      <Label Text="... hebben we uitvoering in..." HorizontalOptions="Center"/>
+      <Label Text="Nieuws:" Font="Bold,20" HorizontalOptions="Center"/>
+      <Label Text="Deze week hebben we..." HorizontalOptions="Center"/>
     </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

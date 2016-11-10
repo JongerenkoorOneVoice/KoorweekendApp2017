@@ -200,7 +200,6 @@
       <InProject>false</InProject>
     </ImageAsset>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
@@ -239,22 +238,31 @@
     <BundleResource Include="Resources\PageBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\News.png" />
+    <BundleResource Include="Resources\Agenda.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Music2.png" />
+    <BundleResource Include="Resources\Home.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Koorleden2.png" />
+    <BundleResource Include="Resources\Instellingen.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Kleding.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Home3.png" />
+    <BundleResource Include="Resources\Koorleden.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Agenda3.png" />
+    <BundleResource Include="Resources\Koorweekend.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Music.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\News.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

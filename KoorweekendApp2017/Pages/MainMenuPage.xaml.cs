@@ -25,7 +25,7 @@ namespace KoorweekendApp2017.Pages
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Home",
-				IconSource = "Home3.png",
+				IconSource = "Home.png",
 				TargetType = typeof(HomePage)
 			});
 			masterPageItems.Add(new MasterPageItem
@@ -37,19 +37,19 @@ namespace KoorweekendApp2017.Pages
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Repertoire",
-				IconSource = "Music2.png",
+				IconSource = "Music.png",
 				TargetType = typeof(RepertoirePage)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Koorleden",
-				IconSource = "Koorleden2.png",
+				IconSource = "Koorleden.png",
 				TargetType = typeof(ContactArchivePage)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Agenda",
-				IconSource = "Agenda3.png",
+				IconSource = "Agenda.png",
 				TargetType = typeof(EventArchivePage)
 			});
 			masterPageItems.Add(new MasterPageItem
@@ -61,19 +61,19 @@ namespace KoorweekendApp2017.Pages
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Koorweekend 2017",
-				IconSource = "reminders.png",
+				IconSource = "Koorweekend.png",
 				TargetType = typeof(Koorweekend2017Page)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Test Login",
-				IconSource = "reminders.png",
+				IconSource = "Login.png",
 				TargetType = typeof(LoginPage)
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Instellingen",
-				IconSource = "reminders.png",
+				IconSource = "Instellingen.png",
 				TargetType = typeof(SettingsArchivePage)
 			});
 

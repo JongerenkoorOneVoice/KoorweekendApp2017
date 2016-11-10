@@ -13,13 +13,11 @@ namespace KoorweekendApp2017.Pages
             InitializeComponent();
             var linkOpen = new TapGestureRecognizer();
             linkOpen.Tapped += (s, e) => {
-                Device.OpenUri(new Uri(((Label)s).Text));
+                Device.OpenUri(new Uri("http://www.jongerenkooronevoice.nl/"));
             };
             label.GestureRecognizers.Add(linkOpen);
 
-
-
-			NavigationPage.SetTitleIcon(this, "app_logo_red.jpg");
+            NavigationPage.SetTitleIcon(this, "app_logo_red.jpg");
         }
 
     }
