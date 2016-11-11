@@ -15,7 +15,6 @@ namespace KoorweekendApp2017.Pages
         {
             InitializeComponent();
 			LoadItems();
-
             
         }
 
@@ -49,7 +48,7 @@ namespace KoorweekendApp2017.Pages
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Agenda",
-				IconSource = "Agenda.png",
+				IconSource = "calendar_small.png",
 				TargetType = typeof(EventArchivePage)
 			});
 			masterPageItems.Add(new MasterPageItem
