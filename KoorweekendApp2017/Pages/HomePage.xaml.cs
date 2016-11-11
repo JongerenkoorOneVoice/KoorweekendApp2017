@@ -17,7 +17,8 @@ namespace KoorweekendApp2017.Pages
             };
             label.GestureRecognizers.Add(linkOpen);
 
-            NavigationPage.SetTitleIcon(this, "app_logo_red.jpg");
+            
+
         }
 
     }
