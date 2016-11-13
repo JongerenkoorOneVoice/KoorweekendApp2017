@@ -11,7 +11,9 @@
     <Image Source="http://kazete.com.tr/img/blogger/0.png" HorizontalOptions="Center"></Image>
     <Label Text="{Binding FullName}" HorizontalTextAlignment="Center" Font="Bold,20"></Label>
       <Label Text="Adres:" HorizontalTextAlignment="Center" Font="Bold"></Label>
+          
 		<Label Text="{Binding Address}" HorizontalTextAlignment="Center" x:Name="Adres"></Label>
+          
       <Label Text="Postcode:" HorizontalTextAlignment="Center" Font="Bold"></Label>
 		<Label Text="{Binding AreaCode}" HorizontalTextAlignment="Center"></Label>
       <Label Text="Woonplaats:" HorizontalTextAlignment="Center" Font="Bold"></Label>

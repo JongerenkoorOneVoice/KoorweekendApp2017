@@ -3,16 +3,41 @@
   xmlns="http://xamarin.com/schemas/2014/forms"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   x:Class="KoorweekendApp2017.Pages.HomePage"
-  Title="Home">
+  Title="Home"
+  BackgroundColor="#404040">
 	<ContentPage.Content>
-    <StackLayout HorizontalOptions="Center">
-      <Label Text="Onevoice" Font="Bold,40" x:Name="label" TextColor="#FF0000" HorizontalOptions="Center"/>
-      <Label Text="Verjaardagen:" Font="Bold,20" HorizontalOptions="Center"/>
-      <Label Text="... is ... jarig" HorizontalOptions="Center"/>
-      <Label Text="Uitvoeringen:" Font="Bold,20" HorizontalOptions="Center"/>
-      <Label Text="... hebben we uitvoering in..." HorizontalOptions="Center"/>
-      <Label Text="Nieuws:" Font="Bold,20" HorizontalOptions="Center"/>
-      <Label Text="Deze week hebben we..." HorizontalOptions="Center"/>
-    </StackLayout>
+    <Grid x:Name="controlGrid" RowSpacing="5" ColumnSpacing="5" Padding="0,5,0,5">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      
+      <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="Red">
+      <Image x:Name="label" Source="onevoice_logo_app_less.png" HorizontalOptions="Center" />
+      </StackLayout>
+      
+      <StackLayout Grid.Row="0" Grid.Column="1" BackgroundColor="Red">
+      <Label Text="Verjaardagen:" Font="Bold,18" HorizontalOptions="Center"  TextColor="White"/>
+      <Label Text="... is ... jarig" HorizontalOptions="Center" TextColor="White"/>
+      </StackLayout>
+
+      <StackLayout Grid.Row="1" Grid.Column="0" BackgroundColor="Red">
+      <Label Text="Uitvoeringen:" Font="Bold,18" HorizontalOptions="Center" TextColor="White"/>
+      <Label Text="... hebben we uitvoering in..." HorizontalOptions="Center" TextColor="White"/>
+      </StackLayout>
+
+      <StackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="Red">
+      <Label Text="Nieuws: Het nieuws is" Font="Bold,18" HorizontalOptions="Center" TextColor="White"/>
+      <Label Text="Deze week hebben we..." HorizontalOptions="Center" TextColor="White"/>
+      </StackLayout>
+    </Grid>
 	</ContentPage.Content>
 </ContentPage>

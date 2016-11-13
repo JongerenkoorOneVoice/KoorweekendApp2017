@@ -30,7 +30,7 @@ namespace KoorweekendApp2017
 			MessagingCenter.Send(new StartApiSongSyncMessage(), "StartApiSongSyncMessage");
 			MessagingCenter.Send(new StartApiEventSyncMessage(), "StartApiEventSyncMessage");
 
-
+            
 			//MessagingCenter.Send(new StopApiContactSyncMessage(), "StopApiContactSyncMessage");
 			MainPage = new KoorweekendApp2017Page();
 

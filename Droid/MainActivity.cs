@@ -15,7 +15,7 @@ using KoorweekendApp2017.Droid.Tasks;
 
 namespace KoorweekendApp2017.Droid
 {
-	[Activity(Label = "One Voice", Icon = "@drawable/app_logo_red", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity(Label = "One Voice", Icon = "@drawable/onevoice_logo_app_less", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 		protected override void OnCreate(Bundle bundle)

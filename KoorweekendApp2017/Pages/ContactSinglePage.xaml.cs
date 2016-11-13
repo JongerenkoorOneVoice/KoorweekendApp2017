@@ -11,7 +11,22 @@ namespace KoorweekendApp2017.Pages
 		{
 
             InitializeComponent();
-            
+            /*
+            Contact contact = new Contact();
+
+            DateTime birthDate = contact.BirthDate == null ? DateTime.MinValue : (DateTime)contact.BirthDate;
+            if(birthDate != DateTime.MinValue)
+            {
+                DateTime nextBirthday = birthDate;
+                nextBirthday = nextBirthday.AddYears(DateTime.Now.Year - birthDate.Year);
+                if(nextBirthday < DateTime.Now)
+                {
+                    nextBirthday = nextBirthday.AddYears(1);
+                }
+                
+            }
+            */
+
         }
 
         protected override void OnAppearing()
@@ -33,7 +48,7 @@ namespace KoorweekendApp2017.Pages
                 Email.TextColor = Color.FromHex("#0645AD");
                 var emailOpen = new TapGestureRecognizer();
                 emailOpen.Tapped += (s, e) => {
-                        
+                    Device.OpenUri(new Uri(string.Format("mailto:{0}", Email.Text)));
                 };
                 Email.GestureRecognizers.Add(emailOpen);
             }
