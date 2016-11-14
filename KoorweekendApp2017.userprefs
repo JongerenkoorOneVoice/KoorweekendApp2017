@@ -1,25 +1,10 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/LoginPage.xaml">
     <Files>
-      <File FileName="KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" Line="45" Column="4" />
-      <File FileName="KoorweekendApp2017/Pages/ContactArchivePage.xaml.cs" Line="97" Column="4" />
-      <File FileName="KoorweekendApp2017/Pages/EventArchivePage.xaml.cs" Line="36" Column="39" />
-      <File FileName="iOS/AppDelegate.cs" Line="46" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/KoorweekendApp2017Page.xaml.cs" Line="12" Column="4" />
-      <File FileName="KoorweekendApp2017/Models/Event.cs" Line="104" Column="34" />
-      <File FileName="KoorweekendApp2017/Pages/EventSinglePage.xaml.cs" Line="22" Column="47" />
-      <File FileName="KoorweekendApp2017/BusinessObjects/LocalDatabase.cs" Line="113" Column="18" />
-      <File FileName="KoorweekendApp2017/Models/Song.cs" Line="15" Column="39" />
-      <File FileName="KoorweekendApp2017/Pages/ChoirUniform.xaml.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/NewsArchive.xaml.cs" Line="16" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/NewsSingle.xaml.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/MainMenuPage.xaml.cs" Line="35" Column="37" />
-      <File FileName="KoorweekendApp2017/Pages/SongSinglePage.xaml.cs" Line="37" Column="8" />
-      <File FileName="iOS/Info.plist" />
+      <File FileName="KoorweekendApp2017/Pages/LoginPage.xaml" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
-  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.Droid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/iOS/Tasks/ApiContactSyncTask.cs" line="34" column="1" />
@@ -27,6 +12,6 @@
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Scenes/Game1Scene1.cs" line="200" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.560BF23C-1449-4B36-9CB2-8F5B8CFF4F30" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
