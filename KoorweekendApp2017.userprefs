@@ -1,7 +1,26 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/LoginPage.xaml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/AppDelegate.cs">
     <Files>
-      <File FileName="KoorweekendApp2017/Pages/LoginPage.xaml" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/LoginPage.xaml" Line="15" Column="4" />
+      <File FileName="KoorweekendApp2017/Pages/KoorweekendApp2017Page.xaml.cs" Line="36" Column="2" />
+      <File FileName="KoorweekendApp2017/App.xaml.cs" Line="50" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/KoorweekendApp2017Page.xaml" Line="10" Column="48" />
+      <File FileName="KoorweekendApp2017/Pages/LoginPage.xaml.cs" Line="25" Column="1" />
+      <File FileName="KoorweekendApp2017/Helpers/RestHelper.cs" Line="37" Column="22" />
+      <File FileName="KoorweekendApp2017/Models/AuthenitcationResult.cs" Line="8" Column="33" />
+      <File FileName="KoorweekendApp2017/Models/CustomDevice.cs" Line="20" Column="4" />
+      <File FileName="iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="KoorweekendApp2017/Helpers/AuthenticationHelper.cs" Line="40" Column="6" />
+      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="49" Column="7" />
+      <File FileName="KoorweekendApp2017/BusinessObjects/LocalDatabase.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Extensions/StringExtensions.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1Page.xaml.cs" Line="41" Column="4" />
+      <File FileName="KoorweekendApp2017/Pages/ContactSinglePage.xaml" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/obj/Debug/KoorweekendApp2017.Pages.LoginPage.xaml.g.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Enums/AuthorizationCode.cs" Line="14" Column="1" />
+      <File FileName="KoorweekendApp2017/Enums/LoginPageIds.cs" Line="4" Column="26" />
+      <File FileName="KoorweekendApp2017/Models/LoginPageItem.cs" Line="9" Column="42" />
+      <File FileName="iOS/AppDelegate.cs" Line="55" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
@@ -10,6 +29,8 @@
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/iOS/Tasks/ApiContactSyncTask.cs" line="34" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Page.xaml.cs" line="28" column="16" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Scenes/Game1Scene1.cs" line="200" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/LoginPage.xaml.cs" line="79" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/LoginPage.xaml.cs" line="60" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.560BF23C-1449-4B36-9CB2-8F5B8CFF4F30" />

@@ -38,7 +38,7 @@ namespace KoorweekendApp2017.Tasks
 
 			string query = String.Format("http://www.jongerenkooronevoice.nl/contacts/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
 
-			List<Contact> contacts = RestHelper.GetRestDataFromUrl<Contact>(query).Result;
+			List<Contact> contacts = RestHelper.GetRestDataFromUrl<List<Contact>>(query).Result;
 			if (contacts != null)
 			{
 				foreach (Contact contact in contacts)
@@ -74,7 +74,7 @@ namespace KoorweekendApp2017.Tasks
 					}
 
 					string query = String.Format("http://www.jongerenkooronevoice.nl/songs/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
-					List<Song> songs = RestHelper.GetRestDataFromUrl<Song>(query).Result;
+					List<Song> songs = RestHelper.GetRestDataFromUrl<List<Song>>(query).Result;
 					if (songs != null)
 					{
 						foreach (Song song in songs)
@@ -112,7 +112,7 @@ namespace KoorweekendApp2017.Tasks
 					}
 
 					string query = String.Format("http://www.jongerenkooronevoice.nl/apievents/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
-					List<Event> events = RestHelper.GetRestDataFromUrl<Event>(query).Result;
+					List<Event> events = RestHelper.GetRestDataFromUrl<List<Event>>(query).Result;
 					if (events != null)
 					{
 						foreach (Event eventItem in events)

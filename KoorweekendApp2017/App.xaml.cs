@@ -30,9 +30,22 @@ namespace KoorweekendApp2017
 			MessagingCenter.Send(new StartApiSongSyncMessage(), "StartApiSongSyncMessage");
 			MessagingCenter.Send(new StartApiEventSyncMessage(), "StartApiEventSyncMessage");
 
-            
+
 			//MessagingCenter.Send(new StopApiContactSyncMessage(), "StopApiContactSyncMessage");
-			MainPage = new KoorweekendApp2017Page();
+
+			//var authTask = AuthenticationHelper.IsAuthenticated();
+			//authTask.RunSynchronously();
+			//App.Database.Settings.RemoveByKey("lastSuccessfullAuthentication");
+			//App.Database.Settings.RemoveByKey("lastAuthenticationResult");
+			//App.Database.Settings.RemoveByKey("lastAuthenticationEmailAddressTried");
+			var isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
+			if (!isAuthenticated)
+			{
+				MainPage = new LoginPage();
+			}
+			else {
+				MainPage = new KoorweekendApp2017Page();
+			}
 
 
 

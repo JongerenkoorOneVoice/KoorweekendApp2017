@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using KoorweekendApp2017.Helpers;
 using KoorweekendApp2017.Models;
+using Newtonsoft.Json;
 using SQLite;
 
 namespace KoorweekendApp2017.BusinessObjects
@@ -49,7 +51,8 @@ namespace KoorweekendApp2017.BusinessObjects
 
 			public void RemoveByKey(string key)
 			{
-				Database.Delete(key);
+				Setting tmpSetting = GetByKey(key);
+				Database.Delete(tmpSetting);
 
 			}
 
@@ -58,7 +61,7 @@ namespace KoorweekendApp2017.BusinessObjects
 				Database.DeleteAll<Setting>();
 			}
 
-			public void Set(string key, string value)
+			public void Set(string key, string value, bool parseJson = true)
 			{
 				Setting setting = GetByKey(key);
 				if (setting == null)
@@ -66,8 +69,31 @@ namespace KoorweekendApp2017.BusinessObjects
 					setting = new Setting();
 				}
 				setting.Key = key;
-				setting.Value = value;
+				if (parseJson) setting.Value = JsonConvert.SerializeObject(value);
+				else setting.Value = value;
 				Database.InsertOrReplace(setting);
+			}
+
+			public void Set(string key, object o)
+			{
+				string value = JsonConvert.SerializeObject(o);
+				Set(key, value, false);
+			}
+
+			public void Set(Setting setting)
+			{
+				Set(setting.Key, setting.Value);
+			}
+
+			public T GetValue<T>(string key)
+			{
+				Setting setting = GetByKey(key);
+				if (setting != null)
+				{
+					return RestHelper.GetModelFromJson<T>(setting.Value);
+				}
+				return default(T);
+
 			}
 		}
 

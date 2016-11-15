@@ -6,12 +6,57 @@
 		Title="Aanmelden">
 	 	<RelativeLayout>
 			<Image Source="AppBackground.jpg" Aspect="AspectFill" Scale="1.5" TranslationY="50"></Image>
-			<Button x:Name="btnNext" Text="Verder"></Button>
-			<StackLayout Padding="15,15,15,15">
-	    		<Label Text="Deze app is alleen beschikbaar voor de leden van Jongerenkoor One Voice. Vul hieronder je mailadres in zodat we kunnen controleren dat je lid bent."></Label>
-				<Entry x:Name ="userMail" Keyboard="Email" Placeholder="Mailadres" Text=""></Entry>
+			<Frame
+				x:Name="page"
+				Margin="15,50,15,15"
+				Padding="15,15,15,15"
+				HasShadow="false"
+				BackgroundColor="#DFFF"
+				HorizontalOptions="FillAndExpand"
+				>
+			<StackLayout VerticalOptions="FillAndExpand">
+				<Label
+					x:Name="pageTitle"
+					Text=""
+					Margin="0,0,0, 15"
+					Font="Bold"
+					HorizontalTextAlignment="Center"
+					HorizontalOptions="Fill"
+					>
+				</Label>
+	    		<Label
+					x:Name="pageText"
+					Text=""
+					Margin="0,0,0, 50"
+					HorizontalTextAlignment="Center"
+					HorizontalOptions="StartAndExpand">
+				</Label>
+				<Entry x:Name ="pageMailInput" Keyboard="Email" Placeholder="Mailadres" Text=""></Entry>
 
 			</StackLayout>
+			</Frame>
+			<Button
+				x:Name="pageButton"
+				Text=""
+				TextColor="White" 
+				BackgroundColor="Transparent"
+				HorizontalOptions="Fill"
+				Margin="15, 15, 15, 15"
+				BorderColor="White"
+				BorderWidth="1"
+				BorderRadius="5"
+				RelativeLayout.YConstraint = "{ConstraintExpression 
+					Type=RelativeToParent,
+					Property=Height,
+					Factor=1,
+					Constant=-100}"
+				RelativeLayout.WidthConstraint = "{ConstraintExpression 
+					Type=RelativeToParent,
+					Property=Width,
+					Factor=1,
+					Constant=0}"
+			>
+			</Button>
   		</RelativeLayout>
 
 </ContentPage>
