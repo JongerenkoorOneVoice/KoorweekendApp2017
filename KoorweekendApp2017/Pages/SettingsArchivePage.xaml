@@ -10,6 +10,7 @@
 				<TableRoot>
 					<TableSection Title="Options">
 			      		<SwitchCell x:Name="errorLogSwitch" Text="Errorlog in menu (restart app)" On="{Binding ShowErrorLogInMenu}" />
+						<SwitchCell x:Name="loginOnStartupSwitch" Text="Login on next start (restart app)" On="{Binding LoginOnNextStartup}" />
         			</TableSection>
 				</TableRoot>
 			</TableView>

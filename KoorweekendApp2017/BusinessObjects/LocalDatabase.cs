@@ -52,7 +52,10 @@ namespace KoorweekendApp2017.BusinessObjects
 			public void RemoveByKey(string key)
 			{
 				Setting tmpSetting = GetByKey(key);
-				Database.Delete(tmpSetting);
+				if (tmpSetting != null)
+				{
+					Database.Delete(tmpSetting);
+				}
 
 			}
 
