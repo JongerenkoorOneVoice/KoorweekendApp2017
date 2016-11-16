@@ -35,25 +35,22 @@ namespace KoorweekendApp2017
 
 			//var authTask = AuthenticationHelper.IsAuthenticated();
 			//authTask.RunSynchronously();
-			bool forceLogin = App.Database.Settings.GetValue<Boolean>("loginOnNextStart");
-			if (forceLogin)
+			Boolean? forceLogin = App.Database.Settings.GetValue<Boolean?>("loginOnNextStart");
+			if (forceLogin != null && forceLogin == true)
 			{
 				App.Database.Settings.RemoveByKey("lastSuccessfullAuthentication");
 				App.Database.Settings.RemoveByKey("lastAuthenticationResult");
 				App.Database.Settings.RemoveByKey("lastAuthenticationEmailAddressTried");
 			}
 
-			Task.Run(AuthenticationHelper.IsAuthenticated).ContinueWith(async (task) => {
-				bool isAuthenticated = await task;
-				if (!isAuthenticated)
-				{
-					MainPage = new LoginPage();
-				}
-				else {
-					MainPage = new KoorweekendApp2017Page();
-				}
-
-			});
+			var isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
+			if (!isAuthenticated)
+			{
+				MainPage = new LoginPage();
+			}
+			else {
+				MainPage = new KoorweekendApp2017Page();
+			}
 
 
 
