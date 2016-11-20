@@ -2,27 +2,32 @@
 <ContentPage 
 		xmlns="http://xamarin.com/schemas/2014/forms"
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="http://schemas.android.com/apk/res/android"
 		x:Class="KoorweekendApp2017.Pages.MainMenuPage"
 		Title="Menu">
 	<ContentPage.Content>
-		<RelativeLayout VerticalOptions="FillAndExpand">
-			<Image
-				Source="MenuBackground.jpg"
-				VerticalOptions="StartAndExpand"
-				HorizontalOptions="StartAndExpand"
-				Aspect="Fill"
+      <RelativeLayout VerticalOptions="FillAndExpand">
+        <Image
+          Source="MenuBackground.jpg"
+          VerticalOptions="StartAndExpand"
+          HorizontalOptions="StartAndExpand"
+          Aspect="Fill"
 			/>
-            <ListView
-					x:Name="listView"
-					VerticalOptions="FillAndExpand"
-					SeparatorVisibility="None"
-					BackgroundColor="Transparent">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ImageCell TextColor="White" Text="{Binding Title}" ImageSource="{Binding IconSource}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </RelativeLayout>
+        <ListView
+      x:Name="listView"
+      VerticalOptions="FillAndExpand"
+      HorizontalOptions="FillAndExpand"
+      Margin="0,25,0,0"
+      RelativeLayout.HeightConstraint="{ConstraintExpression
+      Type=RelativeToParent,Property=Height,Factor=1,Constant=0}"
+      SeparatorVisibility="None"
+      BackgroundColor="Transparent">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ImageCell TextColor="White" Text="{Binding Title}" ImageSource="{Binding IconSource}" />
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+      </RelativeLayout>
 	</ContentPage.Content>
 </ContentPage>
