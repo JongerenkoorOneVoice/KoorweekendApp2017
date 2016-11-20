@@ -51,5 +51,7 @@
 	<string>Om dit spel te spelen hebben we toegang tot je GPS nodig.</string>
 	<key>Custom PropertNSLocationAlwaysUsageDescriptiony</key>
 	<string>Om dit spel te spelen hebben we toegang tot je GPS nodig.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Om een foto te kunnen maken moet je toegang tot je camera geven.</string>
 </dict>
 </plist>

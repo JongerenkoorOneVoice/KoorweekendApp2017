@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using KoorweekendApp2017.Models;
 using Xamarin.Forms;
+using XLabs.Ioc;
+using XLabs.Platform.Device;
+using XLabs.Platform.Services.Media;
 
 namespace KoorweekendApp2017.Pages
 {
 	public partial class ContactSinglePage : ContentPage
 	{
+		private IMediaPicker _mediaPicker {get; set;}
+
+		private readonly TaskScheduler _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+
 		public ContactSinglePage()
 		{
 
-            InitializeComponent();
-            /*
+			InitializeComponent();
+			/*
             Contact contact = new Contact();
 
             DateTime birthDate = contact.BirthDate == null ? DateTime.MinValue : (DateTime)contact.BirthDate;
@@ -27,7 +35,76 @@ namespace KoorweekendApp2017.Pages
             }
             */
 
-        }
+			_mediaPicker = DependencyService.Get<IMediaPicker>();
+	
+			var openCamera = new TapGestureRecognizer();
+			openCamera.Tapped += OnImageTap;
+
+			userImage.GestureRecognizers.Add(openCamera);
+
+		}
+
+		private void Setup()
+		{
+			if (_mediaPicker != null)
+			{
+				return;
+			}
+
+			var device = Resolver.Resolve<IDevice>();
+
+			_mediaPicker = DependencyService.Get<IMediaPicker>();
+			//RM: hack for working on windows phone? 
+			if (_mediaPicker == null)
+			{
+				_mediaPicker = device.MediaPicker;
+			}
+		}
+
+		public void OnImageTap(object s, EventArgs e)
+		{
+			TakePicture().ContinueWith(x =>
+			{
+				var jeej = x;
+
+			});
+			
+		}
+
+		private async Task TakePicture()
+		{
+			Setup();
+
+			ImageSource takenImageSource = null;
+
+			await this._mediaPicker.TakePhotoAsync(
+				new CameraMediaStorageOptions
+				{
+					DefaultCamera = CameraDevice.Front,
+					MaxPixelDimension = 400
+			}).ContinueWith(t=>{
+				
+				 if (t.IsFaulted)
+				 {
+					 var s = t.Exception.InnerException.ToString();
+				 }
+				 else if (t.IsCanceled)
+				 {
+					 var canceled = true;
+				 }
+				 else
+				 {
+					var mediaFile = t.Result;
+
+					 takenImageSource = ImageSource.FromStream(() => mediaFile.Source);
+					userImage.Source = takenImageSource;
+					 //return mediaFile;
+				 }
+				//return t.Result;
+			}, _scheduler);
+	
+
+		}
 
         protected override void OnAppearing()
         {

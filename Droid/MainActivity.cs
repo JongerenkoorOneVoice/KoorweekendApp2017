@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 using KoorweekendApp2017.Messages;
 using Xamarin.Forms;
 using KoorweekendApp2017.Droid.Tasks;
+using XLabs.Ioc;
+using XLabs.Platform.Device;
+using XLabs.Platform.Services;
 
 namespace KoorweekendApp2017.Droid
 {
@@ -64,6 +67,16 @@ namespace KoorweekendApp2017.Droid
 				var intent = new Intent(this, typeof(ApiEventSyncTask));
 				StopService(intent);
 			});
+
+			base.OnCreate(bundle);
+			#region Resolver Init
+			SimpleContainer container = new SimpleContainer();
+			container.Register<IDevice>(t => AndroidDevice.CurrentDevice);
+			container.Register<IDisplay>(t => t.Resolve<IDevice>().Display);
+			container.Register<INetwork>(t => t.Resolve<IDevice>().Network);
+
+			Resolver.SetResolver(container.GetResolver());
+			#endregion
 
 			App oneVoiceApp = new App();
             LoadApplication(oneVoiceApp);

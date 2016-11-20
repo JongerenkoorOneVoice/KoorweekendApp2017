@@ -1,43 +1,14 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/App.xaml.cs">
-    <Files>
-      <File FileName="KoorweekendApp2017/Pages/LoginPage.xaml" Line="14" Column="28" />
-      <File FileName="KoorweekendApp2017/Pages/KoorweekendApp2017Page.xaml.cs" Line="36" Column="2" />
-      <File FileName="KoorweekendApp2017/App.xaml.cs" Line="38" Column="82" />
-      <File FileName="KoorweekendApp2017/Pages/KoorweekendApp2017Page.xaml" Line="10" Column="48" />
-      <File FileName="KoorweekendApp2017/Pages/LoginPage.xaml.cs" Line="48" Column="18" />
-      <File FileName="KoorweekendApp2017/Helpers/RestHelper.cs" Line="74" Column="1" />
-      <File FileName="KoorweekendApp2017/Models/AuthenitcationResult.cs" Line="8" Column="33" />
-      <File FileName="KoorweekendApp2017/Models/CustomDevice.cs" Line="20" Column="4" />
-      <File FileName="iOS/Main.cs" Line="17" Column="1" />
-      <File FileName="KoorweekendApp2017/Helpers/AuthenticationHelper.cs" Line="15" Column="68" />
-      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="124" Column="10" />
-      <File FileName="KoorweekendApp2017/BusinessObjects/LocalDatabase.cs" Line="58" Column="6" />
-      <File FileName="KoorweekendApp2017/Extensions/StringExtensions.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1Page.xaml.cs" Line="41" Column="4" />
-      <File FileName="KoorweekendApp2017/Pages/ContactSinglePage.xaml" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/obj/Debug/KoorweekendApp2017.Pages.LoginPage.xaml.g.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Enums/AuthorizationCode.cs" Line="14" Column="1" />
-      <File FileName="KoorweekendApp2017/Enums/LoginPageIds.cs" Line="9" Column="13" />
-      <File FileName="KoorweekendApp2017/Models/LoginPageItem.cs" Line="10" Column="29" />
-      <File FileName="iOS/AppDelegate.cs" Line="55" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/SettingsArchivePage.xaml" Line="12" Column="46" />
-      <File FileName="KoorweekendApp2017/Pages/SettingsArchivePage.xaml.cs" Line="52" Column="70" />
-      <File FileName="KoorweekendApp2017/Pages/LogArchivePage.xaml" Line="10" Column="26" />
-      <File FileName="KoorweekendApp2017/Pages/LogSinglePage.xaml" Line="6" Column="24" />
-      <File FileName="KoorweekendApp2017/Pages/LogSinglePage.xaml.cs" Line="16" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/ContactArchivePage.xaml.cs" Line="23" Column="1" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/iOS/Tasks/ApiContactSyncTask.cs" line="34" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Page.xaml.cs" line="28" column="16" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Scenes/Game1Scene1.cs" line="200" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/ContactArchivePage.xaml.cs" line="23" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.560BF23C-1449-4B36-9CB2-8F5B8CFF4F30" />
+  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.6b3f1a7103aa0dd08d1300dd11832d83fc34d816" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
 </Properties>

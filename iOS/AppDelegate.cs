@@ -7,6 +7,9 @@ using KoorweekendApp2017.Messages;
 using KoorweekendApp2017.iOS.Tasks;
 using UIKit;
 using Xamarin.Forms;
+using XLabs.Ioc;
+using XLabs.Platform.Device;
+using XLabs.Platform.Services;
 
 namespace KoorweekendApp2017.iOS
 {
@@ -54,7 +57,14 @@ namespace KoorweekendApp2017.iOS
 			App oneVoiceApp = new App();        
 			LoadApplication(oneVoiceApp);
 
+			#region Resolver Init
+			SimpleContainer container = new SimpleContainer();
+			container.Register<IDevice>(t => AppleDevice.CurrentDevice);
+			container.Register<IDisplay>(t => t.Resolve<IDevice>().Display);
+			container.Register<INetwork>(t => t.Resolve<IDevice>().Network);
 
+			Resolver.SetResolver(container.GetResolver());
+			#endregion
 
 			return base.FinishedLaunching(app, options);
 		}
