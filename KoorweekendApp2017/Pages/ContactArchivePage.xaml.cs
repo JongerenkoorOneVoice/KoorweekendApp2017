@@ -25,8 +25,6 @@ namespace KoorweekendApp2017.Pages
 				ContactListView.Refreshing += ReloadContactsFromWebservice;
 				SetupContactDataForList();
 
-
-
                 mainSearchBar.TextChanged += OnTextChanged;
                 mainSearchBar.Focused += MainSearchFocused;
 
