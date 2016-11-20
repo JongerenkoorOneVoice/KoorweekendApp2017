@@ -7,38 +7,40 @@
 		Padding="0,0,0,0"
 	
 	>
-	<ContentPage.Content>
-		<RelativeLayout>
-			<Image
+  <ContentPage.Content>
+    <RelativeLayout>
+      <Image
 				Source="PageBackground.jpg"
 				VerticalOptions="StartAndExpand"
 				HorizontalOptions="StartAndExpand"
 				Aspect="Fill"
 			/>
-			
-			<ScrollView  Orientation = "Vertical" VerticalOptions="StartAndExpand">
-		<StackLayout VerticalOptions="FillAndExpand" Spacing="0">
-			<Label Margin="15,10,15,15" Text="{Binding Title}" HorizontalTextAlignment="Center" Font="Bold"></Label>
-			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" Margin="0,0,0,15">
-				<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-					<Label Margin="15,0,15,0" Text="Van" HorizontalTextAlignment="End" Font="Bold,15"></Label>
-					<Label Margin="15,0,15,0" Text="{Binding StartDateFormattedWithLinebreaks}" HorizontalTextAlignment="End"></Label>
-					<Label Margin="15,-5,15,0" Text="{Binding StartTimeFormatted}" HorizontalTextAlignment="End"></Label>
-				</StackLayout>
-				<BoxView  VerticalOptions="Fill" WidthRequest="1" BackgroundColor="Black"/>		
-				<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-					<Label Margin="15,0,15,0" Text="Tot" HorizontalTextAlignment="Start" Font="Bold,15"></Label>
-					<Label Margin="15,0,15,0" Text="{Binding EndDateFormattedWithLinebreaks}" HorizontalTextAlignment="Start"></Label>
-					<Label Margin="15,-5,15,0" Text="{Binding EndTimeFormatted}" HorizontalTextAlignment="Start"></Label>
-				</StackLayout>
-			</StackLayout>
-			<Label Margin="15,0,15,0" Text="Adres" HorizontalTextAlignment="Center" Font="Bold,15"></Label>
-			<Label Margin="15,10,15,0" Text="{Binding Address}" HorizontalTextAlignment="Center"></Label>
-			<Label Margin="15,0,15,0" Text="{Binding AreaCode}" HorizontalTextAlignment="Center"></Label>
-			<Label Margin="15,0,15,15" Text="{Binding City}" HorizontalTextAlignment="Center"></Label>
-					
-			<Label x:Name="songsHeaderTitle" Margin="15,10,15,5" Text="We zingen de volgende nummers" HorizontalTextAlignment="Center" Font="Bold"></Label>
-			<!--TableView Intent="Data" x:Name="songForEventListView">
+
+      <ScrollView  Orientation = "Vertical" VerticalOptions="StartAndExpand">
+        <StackLayout VerticalOptions="FillAndExpand" Spacing="0">
+          <Label Margin="15,10,15,15" Text="{Binding Title}" HorizontalTextAlignment="Center" Font="Bold"></Label>
+          <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" Margin="0,0,0,15">
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+              <Label Margin="15,0,15,0" Text="Van" HorizontalTextAlignment="End" Font="Bold,15"></Label>
+              <Label Margin="15,0,15,0" Text="{Binding StartDateFormattedWithLinebreaks}" HorizontalTextAlignment="End"></Label>
+              <Label Margin="15,-5,15,0" Text="{Binding StartTimeFormatted}" HorizontalTextAlignment="End"></Label>
+            </StackLayout>
+            <BoxView  VerticalOptions="Fill" WidthRequest="1" BackgroundColor="Black"/>
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+              <Label Margin="15,0,15,0" Text="Tot" HorizontalTextAlignment="Start" Font="Bold,15"></Label>
+              <Label Margin="15,0,15,0" Text="{Binding EndDateFormattedWithLinebreaks}" HorizontalTextAlignment="Start"></Label>
+              <Label Margin="15,-5,15,0" Text="{Binding EndTimeFormatted}" HorizontalTextAlignment="Start"></Label>
+            </StackLayout>
+          </StackLayout>
+          <Label Margin="15,0,15,0" Text="Adres" HorizontalTextAlignment="Center" Font="Bold,15"></Label>
+          <Label Margin="15,10,15,0" Text="{Binding Address}" HorizontalTextAlignment="Center" x:Name="Adres"></Label>
+          <Label Margin="15,0,15,0" Text="{Binding AreaCode}" HorizontalTextAlignment="Center"></Label>
+          <Label Margin="15,0,15,8" Text="{Binding City}" HorizontalTextAlignment="Center" x:Name="Plaats"></Label>
+          <Label Text="Let op, Wanneer google maps niet geinstalleerd is" HorizontalTextAlignment="Center" Font="11"></Label>
+          <Label Text="maakt de app gebruik van een webbrowser" HorizontalTextAlignment="Center" Font="11" Margin="0,0,0,15"></Label>
+
+          <Label x:Name="songsHeaderTitle" Margin="15,10,15,5" Text="We zingen de volgende nummers" HorizontalTextAlignment="Center" Font="Bold"></Label>
+          <!--TableView Intent="Data" x:Name="songForEventListView">
 			    <TableRoot>
 			        <TableSection Title="Ring">
 			            <ViewCell>
@@ -53,28 +55,28 @@
 			        </TableSection>
 			    </TableRoot>
 			</TableView-->
-			<ListView
-					x:Name="songForEventListView"
-					VerticalOptions="FillAndExpand"
-					SeparatorVisibility="None"
-					BackgroundColor="Transparent"
+          <ListView
+              x:Name="songForEventListView"
+              VerticalOptions="FillAndExpand"
+              SeparatorVisibility="None"
+              BackgroundColor="Transparent"
 				>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                        	<Label
-								Text="{Binding Title}"
-								HorizontalTextAlignment="Center"
-								VerticalTextAlignment="Center"
-								VerticalOptions="FillAndExpand"
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <Label
+        Text="{Binding Title}"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        VerticalOptions="FillAndExpand"
 
 							></Label>
-						</ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-		</StackLayout>
-		</ScrollView>
-				</RelativeLayout>
-	</ContentPage.Content>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+        </StackLayout>
+      </ScrollView>
+    </RelativeLayout>
+  </ContentPage.Content>
 </ContentPage>

@@ -48,7 +48,7 @@ namespace KoorweekendApp2017.Pages
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Agenda",
-				IconSource = "calendar_small.png",
+				IconSource = "Agenda.png",
 				TargetType = typeof(EventArchivePage)
 			});
 			masterPageItems.Add(new MasterPageItem
