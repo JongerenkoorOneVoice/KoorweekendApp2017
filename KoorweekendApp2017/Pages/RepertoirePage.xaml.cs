@@ -14,6 +14,9 @@ namespace KoorweekendApp2017.Pages
     public partial class RepertoirePage : ContentPage
     {
         public List<Song> Songs = new List<Song>();
+		public List<SongOccasion> SongOccasions = new List<SongOccasion>();
+
+
 		public String oldSearchValue = String.Empty;
 
         public RepertoirePage()

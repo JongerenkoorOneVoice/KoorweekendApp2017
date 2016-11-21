@@ -57,6 +57,7 @@ namespace KoorweekendApp2017.Pages
 				IconSource = "Kleding.png",
 				TargetType = typeof(ChoirUniform)
 			});
+			/*
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Koorweekend 2017",
@@ -69,13 +70,14 @@ namespace KoorweekendApp2017.Pages
 				IconSource = "Login.png",
 				TargetType = typeof(LoginPage)
 			});
+			*/
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Instellingen",
 				IconSource = "Instellingen.png",
 				TargetType = typeof(SettingsArchivePage)
 			});
-
+			/*
 			Setting showErrorLogInMenu = App.Database.Settings.GetByKey("showErrorLogInMenu");
 
 			if (showErrorLogInMenu != null)
@@ -92,7 +94,7 @@ namespace KoorweekendApp2017.Pages
 				}
 			}
 
-
+*/
 
 			listView.ItemsSource = masterPageItems;
 		}
