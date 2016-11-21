@@ -292,10 +292,10 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon.png" />
-    <AndroidResource Include="Resources\drawable\filter-25.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\filter-25.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\filter-25.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\filter-25.png" />
+    <AndroidResource Include="Resources\drawable\filter_25.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\filter_25.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\filter_25.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\filter_25.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="zxing.net.mobile.forms">

@@ -312,7 +312,7 @@
     <BundleResource Include="Resources\PageBackground.jpg" />
     <BundleResource Include="Resources\onevoice_logo_app_less.png" />
     <BundleResource Include="Resources\calendar_small.png" />
-    <BundleResource Include="Resources\filter-25.png" />
+    <BundleResource Include="Resources\filter_25.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Agenda.png" />
