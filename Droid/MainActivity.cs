@@ -68,7 +68,6 @@ namespace KoorweekendApp2017.Droid
 				StopService(intent);
 			});
 
-			base.OnCreate(bundle);
 			#region Resolver Init
 			SimpleContainer container = new SimpleContainer();
 			container.Register<IDevice>(t => AndroidDevice.CurrentDevice);

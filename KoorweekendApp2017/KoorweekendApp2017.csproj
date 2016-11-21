@@ -244,20 +244,25 @@
     <Reference Include="ExifLib">
       <HintPath>..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
     </Reference>
-    <Reference Include="XLabs.Core">
-      <HintPath>..\packages\XLabs.Core.2.0.5782\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\XLabs.Core.dll</HintPath>
+    <Reference Include="XLabs.Core, Version=1.0.5974.18420, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XLabs.Core.2.2.0-pre02\lib\portable-net45+win+wpa81+MonoAndroid+xamarinios+MonoTouch\XLabs.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="XLabs.Ioc">
-      <HintPath>..\packages\XLabs.IoC.2.0.5782\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10\XLabs.Ioc.dll</HintPath>
+    <Reference Include="XLabs.Forms, Version=2.0.5974.23350, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XLabs.Forms.2.2.0-pre02\lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.Forms.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="XLabs.Platform">
-      <HintPath>..\packages\XLabs.Platform.2.0.5782\lib\portable-net45+netcore45+wpa81+wp8\XLabs.Platform.dll</HintPath>
+    <Reference Include="XLabs.IOC, Version=2.0.5974.18421, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XLabs.IoC.2.2.0-pre02\lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.IOC.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="XLabs.Serialization">
-      <HintPath>..\packages\XLabs.Serialization.2.0.5782\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.dll</HintPath>
+    <Reference Include="XLabs.Platform, Version=2.0.5974.23229, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XLabs.Platform.2.2.0-pre02\lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.Platform.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="XLabs.Forms">
-      <HintPath>..\packages\XLabs.Forms.2.0.5782\lib\portable-net45+netcore45+wpa81+wp8\XLabs.Forms.dll</HintPath>
+    <Reference Include="XLabs.Serialization, Version=2.0.5974.18420, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XLabs.Serialization.2.2.0-pre02\lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.Serialization.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -285,16 +290,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\Koorweekend2017\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="BusinessObjects\" />
-    <Folder Include="Tasks\" />
-    <Folder Include="Tasks\" />
-    <Folder Include="Messages\" />
-    <Folder Include="Scenes\" />
-    <Folder Include="Enums\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
