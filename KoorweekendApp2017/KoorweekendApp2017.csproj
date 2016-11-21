@@ -170,6 +170,9 @@
     <Compile Include="Enums\AuthorizationCode.cs" />
     <Compile Include="Enums\LoginPageIds.cs" />
     <Compile Include="Models\LoginPageItem.cs" />
+    <Compile Include="Models\SongOccasion.cs" />
+    <Compile Include="Messages\StartApiSongOccasionSyncMessage.cs" />
+    <Compile Include="Messages\StopApiSongOccasionSyncMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http.Extensions">

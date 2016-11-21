@@ -290,6 +290,7 @@
     <Compile Include="Tasks\ApiContactSyncTask.cs" />
     <Compile Include="Tasks\ApiSongSyncTask.cs" />
     <Compile Include="Tasks\ApiEventSyncTask.cs" />
+    <Compile Include="Tasks\ApiSongOccasionSyncTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="zxing.net.mobile.forms">
@@ -311,6 +312,7 @@
     <BundleResource Include="Resources\PageBackground.jpg" />
     <BundleResource Include="Resources\onevoice_logo_app_less.png" />
     <BundleResource Include="Resources\calendar_small.png" />
+    <BundleResource Include="Resources\filter-25.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Agenda.png" />
