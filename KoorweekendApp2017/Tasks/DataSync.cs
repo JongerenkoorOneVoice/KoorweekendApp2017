@@ -127,6 +127,40 @@ namespace KoorweekendApp2017.Tasks
 
 		//}
 
+		public static void UpdateSongOccasionsInDbFromApi(bool shouldUpdateAll = false)
+		{
+			//if (CrossConnectivity.Current.IsConnected)
+			//{
 
+			//	var task = Task.Run(async () =>
+			//	{
+			//		return await CrossConnectivity.Current.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
+			//	});
+			//	bool hasInternet = task.Result;
+
+			//	if (hasInternet)
+			//	{
+			/*
+			DateTime lastUpdate = DateTime.Parse("1010-01-01");
+			Setting lastUpdatedSetting = App.Database.Settings.GetByKey("lastEventsUpdate");
+			if (lastUpdatedSetting != null && !shouldUpdateAll)
+			{
+				lastUpdate = DateTime.Parse(lastUpdatedSetting.Value);
+				lastUpdate = lastUpdate.AddDays(-1);
+			}
+*/
+			//string query = String.Format("http://www.jongerenkooronevoice.nl/apievents/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
+			string query = "http://www.jongerenkooronevoice.nl/songoccasions/all";
+			List<SongOccasion> occasions = RestHelper.GetRestDataFromUrl<List<SongOccasion>>(query).Result;
+			if (occasions != null)
+			{
+				foreach (SongOccasion occasion in occasions)
+				{
+					App.Database.SongOccasions.UpdateOrInsert(occasion);
+
+				}
+			}
+			App.Database.Settings.Set("lastSongOccasionsUpdate", DateTime.Now.ToString());
+		}
 	}
 }

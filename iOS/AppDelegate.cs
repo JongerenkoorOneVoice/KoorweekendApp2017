@@ -54,6 +54,17 @@ namespace KoorweekendApp2017.iOS
 				apiEventSync.Stop();
 			});
 
+			ApiSongOccasionSyncTask apiSongOccasionSync = new ApiSongOccasionSyncTask();
+			MessagingCenter.Subscribe<StartApiSongOccasionSyncMessage>(this, "StartApiSongOccasionSyncMessage", async message =>
+			{
+				apiSongOccasionSync.Start(); // don't use await
+			});
+
+			MessagingCenter.Subscribe<StopApiSongOccasionSyncMessage>(this, "StopApiSongOccasionSyncMessage", message =>
+			{
+				apiSongOccasionSync.Stop();
+			});
+
 			App oneVoiceApp = new App();        
 			LoadApplication(oneVoiceApp);
 
