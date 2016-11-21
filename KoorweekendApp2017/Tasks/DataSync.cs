@@ -91,56 +91,7 @@ namespace KoorweekendApp2017.Tasks
 
 		public static void UpdateEventsInDbFromApi(bool shouldUpdateAll = false)
 		{
-			//if (CrossConnectivity.Current.IsConnected)
-			//{
 
-			//	var task = Task.Run(async () =>
-			//	{
-			//		return await CrossConnectivity.Current.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
-			//	});
-			//	bool hasInternet = task.Result;
-
-			//	if (hasInternet)
-			//	{
-
-					DateTime lastUpdate = DateTime.Parse("1010-01-01");
-					Setting lastUpdatedSetting = App.Database.Settings.GetByKey("lastEventsUpdate");
-					if (lastUpdatedSetting != null && !shouldUpdateAll)
-					{
-						lastUpdate = DateTime.Parse(lastUpdatedSetting.Value);
-						lastUpdate = lastUpdate.AddDays(-1);
-					}
-
-					string query = String.Format("http://www.jongerenkooronevoice.nl/apievents/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
-					List<Event> events = RestHelper.GetRestDataFromUrl<List<Event>>(query).Result;
-					if (events != null)
-					{
-						foreach (Event eventItem in events)
-						{
-							App.Database.Events.UpdateOrInsert(eventItem);
-
-						}
-					}
-					App.Database.Settings.Set("lastEventsUpdate", DateTime.Now.ToString());
-				}
-		//	}
-
-		//}
-
-		public static void UpdateSongOccasionsInDbFromApi(bool shouldUpdateAll = false)
-		{
-			//if (CrossConnectivity.Current.IsConnected)
-			//{
-
-			//	var task = Task.Run(async () =>
-			//	{
-			//		return await CrossConnectivity.Current.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
-			//	});
-			//	bool hasInternet = task.Result;
-
-			//	if (hasInternet)
-			//	{
-			/*
 			DateTime lastUpdate = DateTime.Parse("1010-01-01");
 			Setting lastUpdatedSetting = App.Database.Settings.GetByKey("lastEventsUpdate");
 			if (lastUpdatedSetting != null && !shouldUpdateAll)
@@ -148,7 +99,22 @@ namespace KoorweekendApp2017.Tasks
 				lastUpdate = DateTime.Parse(lastUpdatedSetting.Value);
 				lastUpdate = lastUpdate.AddDays(-1);
 			}
-*/
+
+			string query = String.Format("http://www.jongerenkooronevoice.nl/apievents/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
+			List<Event> events = RestHelper.GetRestDataFromUrl<List<Event>>(query).Result;
+			if (events != null)
+			{
+				foreach (Event eventItem in events)
+				{
+					App.Database.Events.UpdateOrInsert(eventItem);
+
+				}
+			}
+			App.Database.Settings.Set("lastEventsUpdate", DateTime.Now.ToString());
+		}
+
+		public static void UpdateSongOccasionsInDbFromApi(bool shouldUpdateAll = false)
+		{
 			//string query = String.Format("http://www.jongerenkooronevoice.nl/apievents/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
 			string query = "http://www.jongerenkooronevoice.nl/songoccasions/all";
 			List<SongOccasion> occasions = RestHelper.GetRestDataFromUrl<List<SongOccasion>>(query).Result;

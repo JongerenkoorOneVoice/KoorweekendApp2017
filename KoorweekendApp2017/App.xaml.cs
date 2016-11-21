@@ -23,14 +23,14 @@ namespace KoorweekendApp2017
 			InitializeComponent();
 			var db = DependencyService.Get<ISQLite>().GetConnection();
 			Database = new LocalDatabase(db);
-			//DataSync.UpdateContactsInDbFromApi();
-			//DataSync.UpdateSongsInDbFromApi();
-			//DataSync.UpdateEventsInDbFromApi();
-			MessagingCenter.Send(new StartApiContactSyncMessage(), "StartApiContactSyncMessage");
+            //DataSync.UpdateContactsInDbFromApi();
+            //DataSync.UpdateSongsInDbFromApi();
+            //DataSync.UpdateEventsInDbFromApi();
+
+            MessagingCenter.Send(new StartApiSongOccasionSyncMessage(), "StartApiSongOccasionSyncMessage");
+            MessagingCenter.Send(new StartApiContactSyncMessage(), "StartApiContactSyncMessage");
 			MessagingCenter.Send(new StartApiSongSyncMessage(), "StartApiSongSyncMessage");
 			MessagingCenter.Send(new StartApiEventSyncMessage(), "StartApiEventSyncMessage");
-			MessagingCenter.Send(new StartApiSongOccasionSyncMessage(), "StartApiSongOccasionSyncMessage");
-
 
 			//MessagingCenter.Send(new StopApiContactSyncMessage(), "StopApiContactSyncMessage");
 
