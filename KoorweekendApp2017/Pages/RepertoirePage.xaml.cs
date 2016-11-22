@@ -169,6 +169,7 @@ namespace KoorweekendApp2017.Pages
 		{
 			DataSync.UpdateSongsInDbFromApi(true);
 			SetupRepertoireDataForList();
+			FilterRepertoire();
 			ListView listView = sender as ListView;
 			listView.EndRefresh();
 

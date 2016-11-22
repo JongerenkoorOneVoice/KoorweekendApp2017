@@ -1,17 +1,18 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Tasks/ApiSongSyncTask.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/RepertoirePage.xaml.cs">
     <Files>
-      <File FileName="iOS/AppDelegate.cs" Line="50" Column="1" />
+      <File FileName="iOS/AppDelegate.cs" Line="61" Column="1" />
       <File FileName="iOS/Main.cs" Line="17" Column="50" />
       <File FileName="KoorweekendApp2017/App.xaml.cs" Line="34" Column="4" />
-      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="17" Column="47" />
-      <File FileName="iOS/Tasks/ApiContactSyncTask.cs" Line="1" Column="1" />
-      <File FileName="iOS/Tasks/ApiEventSyncTask.cs" Line="1" Column="1" />
-      <File FileName="iOS/Tasks/ApiSongOccasionSyncTask.cs" Line="1" Column="1" />
-      <File FileName="iOS/Tasks/ApiSongSyncTask.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="99" Column="50" />
+      <File FileName="iOS/Tasks/ApiContactSyncTask.cs" Line="21" Column="1" />
+      <File FileName="iOS/Tasks/ApiEventSyncTask.cs" Line="22" Column="1" />
+      <File FileName="iOS/Tasks/ApiSongOccasionSyncTask.cs" Line="22" Column="1" />
+      <File FileName="iOS/Tasks/ApiSongSyncTask.cs" Line="22" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" Line="66" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.Droid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
