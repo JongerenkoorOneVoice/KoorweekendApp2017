@@ -29,10 +29,10 @@ namespace KoorweekendApp2017.Tasks
 			//	if (hasInternet)
 			//	{
 			DateTime lastUpdate = DateTime.Parse("1010-01-01");
-			Setting lastUpdatedSetting = App.Database.Settings.GetByKey("lastContactsUpdate");
-			if (lastUpdatedSetting != null && !shouldUpdateAll)
+			String lastUpdatedString = App.Database.Settings.GetValue<String>("lastContactsUpdate");
+			if (!String.IsNullOrEmpty(lastUpdatedString)  && !shouldUpdateAll)
 			{
-				lastUpdate = DateTime.Parse(lastUpdatedSetting.Value);
+				lastUpdate = DateTime.Parse(lastUpdatedString);
 				lastUpdate = lastUpdate.AddDays(-1);
 			}
 
@@ -66,10 +66,10 @@ namespace KoorweekendApp2017.Tasks
 			//	{
 
 					DateTime lastUpdate = DateTime.Parse("1010-01-01");
-					Setting lastUpdatedSetting = App.Database.Settings.GetByKey("lastSongUpdate");
-					if (lastUpdatedSetting != null && !shouldUpdateAll)
+					String lastUpdatedString = App.Database.Settings.GetValue<String>("lastSongUpdate");
+					if (!String.IsNullOrEmpty(lastUpdatedString)  && !shouldUpdateAll)
 					{
-						lastUpdate = DateTime.Parse(lastUpdatedSetting.Value);
+						lastUpdate = DateTime.Parse(lastUpdatedString);
 						lastUpdate = lastUpdate.AddDays(-1);
 					}
 
@@ -93,10 +93,10 @@ namespace KoorweekendApp2017.Tasks
 		{
 
 			DateTime lastUpdate = DateTime.Parse("1010-01-01");
-			Setting lastUpdatedSetting = App.Database.Settings.GetByKey("lastEventsUpdate");
-			if (lastUpdatedSetting != null && !shouldUpdateAll)
+			String lastUpdatedString = App.Database.Settings.GetValue<String>("lastEventsUpdate");
+			if (!String.IsNullOrEmpty(lastUpdatedString) && !shouldUpdateAll)
 			{
-				lastUpdate = DateTime.Parse(lastUpdatedSetting.Value);
+				lastUpdate = DateTime.Parse(lastUpdatedString);
 				lastUpdate = lastUpdate.AddDays(-1);
 			}
 

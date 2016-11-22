@@ -27,10 +27,11 @@ namespace KoorweekendApp2017
             //DataSync.UpdateSongsInDbFromApi();
             //DataSync.UpdateEventsInDbFromApi();
 
-            MessagingCenter.Send(new StartApiSongOccasionSyncMessage(), "StartApiSongOccasionSyncMessage");
+            
             MessagingCenter.Send(new StartApiContactSyncMessage(), "StartApiContactSyncMessage");
 			MessagingCenter.Send(new StartApiSongSyncMessage(), "StartApiSongSyncMessage");
 			MessagingCenter.Send(new StartApiEventSyncMessage(), "StartApiEventSyncMessage");
+			MessagingCenter.Send(new StartApiSongOccasionSyncMessage(), "StartApiSongOccasionSyncMessage");
 
 			//MessagingCenter.Send(new StopApiContactSyncMessage(), "StopApiContactSyncMessage");
 
