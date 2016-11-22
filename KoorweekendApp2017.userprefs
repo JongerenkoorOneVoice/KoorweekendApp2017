@@ -1,8 +1,8 @@
-﻿<Properties StartupConfiguration="{F109F4DB-41F1-41E5-9502-61EAFE494B15}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017.git Status">
+﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Models/Song.cs">
     <Files>
-      <File FileName="KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" Line="19" Column="3" />
-      <File FileName="KoorweekendApp2017/Pages/RepertoirePage.xaml" Line="22" Column="15" />
+      <File FileName="KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" Line="29" Column="17" />
+      <File FileName="KoorweekendApp2017/Pages/RepertoirePage.xaml" Line="20" Column="39" />
       <File FileName="KoorweekendApp2017/Pages/MainNavigationPage.xaml.cs" Line="1" Column="1" />
       <File FileName="KoorweekendApp2017/Pages/MainMenuPage.xaml.cs" Line="94" Column="6" />
       <File FileName="Droid/Tasks/ApiSongOccasionSyncTask.cs" Line="30" Column="6" />
@@ -10,10 +10,12 @@
       <File FileName="iOS/Main.cs" Line="17" Column="1" />
       <File FileName="iOS/AppDelegate.cs" Line="57" Column="27" />
       <File FileName="Droid/MainActivity.cs" Line="71" Column="101" />
-      <File FileName="KoorweekendApp2017.git Status" />
+      <File FileName="KoorweekendApp2017/Models/Song.cs" Line="20" Column="3" />
+      <File FileName="KoorweekendApp2017/Models/Event.cs" Line="37" Column="4" />
+      <File FileName="KoorweekendApp2017/Models/SongOccasion.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.Droid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>

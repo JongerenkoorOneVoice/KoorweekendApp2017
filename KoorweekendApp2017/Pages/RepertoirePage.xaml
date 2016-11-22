@@ -17,6 +17,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+			<Picker x:Name="songOccasionsFilter"></Picker>
         </StackLayout>
 	</ContentPage.Content>
 </ContentPage>
