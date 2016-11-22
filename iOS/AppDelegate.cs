@@ -20,51 +20,56 @@ namespace KoorweekendApp2017.iOS
 		{
 			global::Xamarin.Forms.Forms.Init();
 
-
-			ApiContactSyncTask apiContactSync = new ApiContactSyncTask();
-			MessagingCenter.Subscribe<StartApiContactSyncMessage>(this, "StartApiContactSyncMessage", async message =>
+			try
 			{
-				apiContactSync.Start(); // don't use await
-			});
+				ApiContactSyncTask apiContactSync = new ApiContactSyncTask();
+				MessagingCenter.Subscribe<StartApiContactSyncMessage>(this, "StartApiContactSyncMessage", async message =>
+				{
+					apiContactSync.Start(); // don't use await
+				});
 
-			MessagingCenter.Subscribe<StopApiContactSyncMessage>(this, "StartStopContactSyncMessage", message =>
+				MessagingCenter.Subscribe<StopApiContactSyncMessage>(this, "StartStopContactSyncMessage", message =>
+				{
+					apiContactSync.Stop();
+				});
+
+				ApiSongSyncTask apiSongSync = new ApiSongSyncTask();
+				MessagingCenter.Subscribe<StartApiSongSyncMessage>(this, "StartApiSongSyncMessage", async message =>
+				{
+					apiSongSync.Start(); // don't use await
+				});
+
+				MessagingCenter.Subscribe<StopApiSongSyncMessage>(this, "StopApiSongSyncMessage", message =>
+				{
+					apiSongSync.Stop();
+				});
+
+				ApiEventSyncTask apiEventSync = new ApiEventSyncTask();
+				MessagingCenter.Subscribe<StartApiEventSyncMessage>(this, "StartApiEventSyncMessage", async message =>
+				{
+					apiEventSync.Start(); // don't use await
+				});
+
+				MessagingCenter.Subscribe<StopApiEventSyncMessage>(this, "StopApiEventSyncMessage", message =>
+				{
+					apiEventSync.Stop();
+				});
+
+				ApiSongOccasionSyncTask apiSongOccasionSync = new ApiSongOccasionSyncTask();
+				MessagingCenter.Subscribe<StartApiSongOccasionSyncMessage>(this, "StartApiSongOccasionSyncMessage", async message =>
+				{
+					apiSongOccasionSync.Start(); // don't use await
+				});
+
+				MessagingCenter.Subscribe<StopApiSongOccasionSyncMessage>(this, "StopApiSongOccasionSyncMessage", message =>
+				{
+					apiSongOccasionSync.Stop();
+				});
+			}
+			catch (Exception ex)
 			{
-				apiContactSync.Stop();
-			});
-
-			ApiSongSyncTask apiSongSync = new ApiSongSyncTask();
-			MessagingCenter.Subscribe<StartApiSongSyncMessage>(this, "StartApiSongSyncMessage", async message =>
-			{
-				apiSongSync.Start(); // don't use await
-			});
-
-			MessagingCenter.Subscribe<StopApiSongSyncMessage>(this, "StopApiSongSyncMessage", message =>
-			{
-				apiSongSync.Stop();
-			});
-
-			ApiEventSyncTask apiEventSync = new ApiEventSyncTask();
-			MessagingCenter.Subscribe<StartApiEventSyncMessage>(this, "StartApiEventSyncMessage", async message =>
-			{
-				apiEventSync.Start(); // don't use await
-			});
-
-			MessagingCenter.Subscribe<StopApiEventSyncMessage>(this, "StopApiEventSyncMessage", message =>
-			{
-				apiEventSync.Stop();
-			});
-
-			ApiSongOccasionSyncTask apiSongOccasionSync = new ApiSongOccasionSyncTask();
-			MessagingCenter.Subscribe<StartApiSongOccasionSyncMessage>(this, "StartApiSongOccasionSyncMessage", async message =>
-			{
-				apiSongOccasionSync.Start(); // don't use await
-			});
-
-			MessagingCenter.Subscribe<StopApiSongOccasionSyncMessage>(this, "StopApiSongOccasionSyncMessage", message =>
-			{
-				apiSongOccasionSync.Stop();
-			});
-
+				var y = ex;
+			}
 			App oneVoiceApp = new App();        
 			LoadApplication(oneVoiceApp);
 

@@ -16,7 +16,7 @@ namespace KoorweekendApp2017.Pages
         public List<Song> Songs = new List<Song>();
 		public List<SongOccasion> SongOccasions = new List<SongOccasion>();
 
-
+		//songOccasionsFilter
 		public String oldSearchValue = String.Empty;
 
         public RepertoirePage()
@@ -32,13 +32,99 @@ namespace KoorweekendApp2017.Pages
 
 				songListView.IsPullToRefreshEnabled = true;
 				songListView.Refreshing += ReloadSongsFromWebservice;
+
+				songOccasionsFilter.IsVisible = false;
+				songOccasionsFilter.SelectedIndexChanged += (sender, e) =>
+				{
+					if (songOccasionsFilter.SelectedIndex != -1)
+					{
+						FilterRepertoire();
+
+							songOccasionsFilter.BackgroundColor = Color.Red;
+							songOccasionsFilter.TextColor = Color.White;
+							songOccasionsFilter.Unfocus();
+
+					}
+				};
+
+				songOccasionsFilter.Unfocused += (sender, e) => {
+					if (songOccasionsFilter.SelectedIndex == -1 || songOccasionsFilter.SelectedIndex == 0)
+					{
+						songOccasionsFilter.Unfocus();
+						songOccasionsFilter.IsVisible = false;
+					}
+				
+				};
+
+
+				ToolbarItems.Add(new ToolbarItem("Filter", "filter_25.png", () =>
+				{
+						songOccasionsFilter.IsVisible = true;
+						songOccasionsFilter.Focus();
+				}));
+
+
+
 				SetupRepertoireDataForList();
+				SetupPickerData();
+
+
             }
 			catch (Exception ex)
 			{
 				var a = ex.Message;
 			}
         }
+
+		private void FilterRepertoire()
+		{
+			List<Song> filteredSongs = new List<Song>();
+			filteredSongs.AddRange(Songs);
+
+
+			if (songOccasionsFilter.SelectedIndex != -1 && songOccasionsFilter.SelectedIndex != 0)
+			{
+				string filterName = songOccasionsFilter.Items[songOccasionsFilter.SelectedIndex];
+				int currentFilterId = SongOccasions.Find(x => x.Title == filterName).Id;
+				filteredSongs = filteredSongs.FindAll(x => x.SongOccasions.Contains(currentFilterId));
+			}
+
+			string searchValue = mainSearchBar.Text == null ? String.Empty : mainSearchBar.Text.ToLower();
+			if (searchValue == String.Empty)
+			{
+				songListView.ItemsSource = filteredSongs;
+			}
+			else
+			{
+				filteredSongs = filteredSongs.FindAll(
+				x => x.Title.ToLower().Contains(searchValue) == true || x.Lyrics.ToLower().Contains(searchValue) == true);
+				songListView.ItemsSource = filteredSongs;
+			}
+		}
+
+		private void SetupPickerData()
+		{
+			SongOccasions = App.Database.SongOccasions.GetAll();
+			List<int> indexedOccasionsFromSongs = new List<int>();
+			foreach (Song song in Songs)
+			{
+				foreach (int occasionId in song.SongOccasions)
+				{
+					if (!indexedOccasionsFromSongs.Contains(occasionId))
+						indexedOccasionsFromSongs.Add(occasionId);
+				}
+			}
+
+			List<String> pickerFilterNames = SongOccasions
+				.Where(x => indexedOccasionsFromSongs.Contains(x.Id))
+				.Select(x => x.Title).ToList();
+
+			songOccasionsFilter.Items.Add("Alle");
+			foreach (String filterName in pickerFilterNames)
+			{
+				songOccasionsFilter.Items.Add(filterName);
+			}
+		}
 
 		private void SetupRepertoireDataForList()
 		{
@@ -62,19 +148,9 @@ namespace KoorweekendApp2017.Pages
 
         void OnTextChanged(object sender, EventArgs args)
         {
-            string searchValue = mainSearchBar.Text == null ? String.Empty : mainSearchBar.Text.ToLower();
 
+			FilterRepertoire();
             
-            if(searchValue == String.Empty)
-            {
-                songListView.ItemsSource = Songs;
-            }
-            else
-            {
-                List<Song> foundSongs = Songs.FindAll(
-                x => x.Title.ToLower().Contains(searchValue) == true || x.Lyrics.ToLower().Contains(searchValue) == true);
-                songListView.ItemsSource = foundSongs;
-            }
         }
 
 		void MainSearchFocused(object sender, EventArgs args)
@@ -93,6 +169,7 @@ namespace KoorweekendApp2017.Pages
 		{
 			DataSync.UpdateSongsInDbFromApi(true);
 			SetupRepertoireDataForList();
+			FilterRepertoire();
 			ListView listView = sender as ListView;
 			listView.EndRefresh();
 
