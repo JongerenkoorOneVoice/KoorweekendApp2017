@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using KoorweekendApp2017.Models;
 using Xamarin.Forms;
@@ -73,6 +74,7 @@ namespace KoorweekendApp2017.Pages
 			
 		}
 
+
 		private async Task TakePicture()
 		{
 			Setup();
@@ -96,10 +98,25 @@ namespace KoorweekendApp2017.Pages
 				 }
 				 else
 				 {
-					var mediaFile = t.Result;
+					MediaFile mediaFile = t.Result;
 
 					 takenImageSource = ImageSource.FromStream(() => mediaFile.Source);
 					userImage.Source = takenImageSource;
+
+					byte[] bytes = null;
+					using (MemoryStream ms = new MemoryStream())
+					{
+						mediaFile.Source.CopyTo(ms);
+						bytes = ms.ToArray();
+
+					}
+
+					String base64Image = String.Empty;
+					if (bytes != null)
+					{
+						base64Image = Convert.ToBase64String(bytes);
+					}
+					var zomaar = base64Image;
 					 //return mediaFile;
 				 }
 				//return t.Result;
