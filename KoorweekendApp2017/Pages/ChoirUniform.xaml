@@ -1,6 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KoorweekendApp2017.ChoirUniform" Title="Koorkleding">
+<ContentPage 
+  xmlns="http://xamarin.com/schemas/2014/forms" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+  x:Class="KoorweekendApp2017.ChoirUniform" 
+  Title="Koorkleding" >
   <ContentPage.Content>
-  <Image x:Name="Kleding" Source="KledingV.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit"/>
+    <ScrollView>
+      <Grid x:Name="controlGrid" RowSpacing="5" ColumnSpacing="5" Padding="0,5,0,5">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="30"/>
+          <RowDefinition Height="225"/>
+          <RowDefinition Height="225"/>
+          <RowDefinition Height="30"/>
+          <RowDefinition Height="200"/>
+          <RowDefinition Height="150"/>
+          <RowDefinition Height="280"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#64b6ba" Margin="30,0,30,0">
+          <Label Text="Zomer 2017" Font="Bold,24" HorizontalOptions="Center"/>
+        </StackLayout>
+        
+        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#7fe4e8">
+          <Label Text="Dames:" Font="Bold,16" HorizontalOptions="Center"/>
+          <Label Text="Licht grijze met witte kleding. Dit" HorizontalOptions="Center" />
+          <Label Text="mag eventueel gemengd op één" HorizontalTextAlignment="Center"/>
+          <Label Text="kledingstuk (bijv. strepen of print)." HorizontalTextAlignment="Center"/>
+          <Label Text="Turquoise kleurige accessoires in"  HorizontalTextAlignment="Center"/>
+          <Label Text="lijn met de kleurenkaart die jullie" HorizontalTextAlignment="Center"/>
+          <Label Text="Ontvangen. Schoenen ook in deze" HorizontalTextAlignment="Center"/>
+          <Label Text="kleurstelling (wit, grijs, turquoise en" HorizontalTextAlignment="Center"/>
+          <Label Text="zwart mag ook)." HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        
+        <Image Source="Kleding_Z2.png" Grid.Row="1" Grid.Column="2" VerticalOptions="FillAndExpand" />
+    
+        <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="#7fe4e8">
+          <Label Text="Heren:" Font="Bold,16" HorizontalOptions="Center"/>
+          <Label Text="Licht grijze met witte kleding. Dit" HorizontalOptions="Center" />
+          <Label Text="mag eventueel gemengd op één" HorizontalTextAlignment="Center"/>
+          <Label Text="kledingstuk (bijv. brede strepen of " HorizontalTextAlignment="Center"/>
+          <Label Text="print). Eventueel turquoise kleurige"  HorizontalTextAlignment="Center"/>
+          <Label Text="stropdas of andere accessoire (bijv." HorizontalTextAlignment="Center"/>
+          <Label Text="mannensjaaltje). Schoenen ook in" HorizontalTextAlignment="Center"/>
+          <Label Text="deze kleurstelling (wit, grijs," HorizontalTextAlignment="Center"/>
+          <Label Text="turquoise en zwart mag ook)." HorizontalTextAlignment="Center"/>
+        </StackLayout>
+    
+        <Image Source="Kleding_Z1.png" Grid.Row="2" Grid.Column="0" VerticalOptions="FillAndExpand" />
+          
+        <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#64b6ba" Margin="30,0,30,0">
+          <Label Text="Winter 2017" Font="Bold,24" HorizontalOptions="Center"/>
+        </StackLayout>  
+        
+         <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#7fe4e8">
+          <Label Text="Dames:" Font="Bold,16" HorizontalOptions="Center"/>
+          <Label Text="Zwarte en witte kleding. Dit mag" HorizontalOptions="Center" />
+          <Label Text="eventueel gemengd op 1 kledingstuk" HorizontalTextAlignment="Center"/>
+          <Label Text="(bijv. strepen of print). Turquoise" HorizontalTextAlignment="Center"/>
+          <Label Text="kleurige accessoires in lijn met de"  HorizontalTextAlignment="Center"/>
+          <Label Text="Kleurenkaart die jullie ontvangen." HorizontalTextAlignment="Center"/>
+          <Label Text="Schoenen ook in de kleurstelling" HorizontalTextAlignment="Center"/>
+          <Label Text="(wit, zwart, turquoise)" HorizontalTextAlignment="Center"/>
+        </StackLayout>          
+        
+         <Image Source="Kleding_W1.png" Grid.Row="4" Grid.Column="2" VerticalOptions="FillAndExpand" />
+        
+         <StackLayout Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="#7fe4e8">
+          <Label Text="Heren:" Font="Bold,16" HorizontalOptions="Center"/>
+          <Label Text="Zwarte en witte kleding," HorizontalOptions="Center" />
+          <Label Text="turquoise kleurige smalle stropdas." HorizontalTextAlignment="Center"/>
+          <Label Text="Je mag bijv. ook een trui over een" HorizontalTextAlignment="Center"/>
+          <Label Text="overhemd. Schoenen ook in deze"  HorizontalTextAlignment="Center"/>
+          <Label Text="kleurstelling (wit, zwart, turquoise)." HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        
+       <Image Source="Kleding_W2.png" Grid.Row="5" Grid.Column="0" VerticalOptions="FillAndExpand" />
+        
+         <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#7fe4e8">
+          <Label Text="Disclaimer:" Font="Bold,16" HorizontalOptions="Center"/>
+          <Label Text="Liefst wit én zwart/grijs beide dragen (dus niet geheel " HorizontalTextAlignment="Center"/>    
+          <Label Text="wit). Wit moet écht wit of off-white zijn, en dus geen " HorizontalTextAlignment="Center"/>
+          <Label Text="créme. Als je een print op je kleren hebt, mag deze " HorizontalTextAlignment="Center"/>
+          <Label Text="niet te druk zijn of een 'twijfelachtige' tekst. Grote" HorizontalTextAlignment="Center"/>
+          <Label Text="gaten in broeken mogen niet. Turquoise mag niet afsteken " HorizontalTextAlignment="Center"/>
+          <Label Text="bij de kleurenkaart, maar het hoeft dus niet dezelfde " HorizontalTextAlignment="Center"/>
+          <Label Text="kleur te zijn (als je accessoire in lijn is met de " HorizontalTextAlignment="Center"/>
+          <Label Text="kleurenkaart is het goed). Turquoise is dus alleen " HorizontalTextAlignment="Center"/>
+          <Label Text="voor accessoires, het mogen geen kledingstukken zijn." HorizontalTextAlignment="Center"/>
+          <Label Text="Als je twijfelt, vraag het het bestuur!" Font="Bold" HorizontalOptions="Center"/>
+        </StackLayout>
+    
+      </Grid>
+    </ScrollView>
   </ContentPage.Content>
 </ContentPage>

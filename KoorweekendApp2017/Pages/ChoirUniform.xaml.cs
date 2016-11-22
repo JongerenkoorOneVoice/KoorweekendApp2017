@@ -10,15 +10,6 @@ namespace KoorweekendApp2017
 		public ChoirUniform()
 		{
 			InitializeComponent();
-            /* var pinchGesture = new PinchGestureRecognizer();
-            pinchGesture.PinchUpdated += OnPinchUpdated;
-            Kleding.GestureRecognizers.Add(pinchGesture);
-        }
-
-        void OnPinchUpdated(object sender, PinchGestureUpdatedEventArgs e)
-        { 
-
-        }*/
 		}
 	}
 }
