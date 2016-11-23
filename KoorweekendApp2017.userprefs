@@ -1,19 +1,38 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/ContactSinglePage.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Helpers/RestHelper.cs">
     <Files>
-      <File FileName="KoorweekendApp2017/Pages/EventArchivePage.xaml" Line="9" Column="10" />
-      <File FileName="KoorweekendApp2017/Pages/ContactSinglePage.xaml.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/ContactSinglePage.xaml.cs" Line="110" Column="9" />
+      <File FileName="KoorweekendApp2017/Helpers/HomePageHelper.cs" Line="167" Column="1" />
+      <File FileName="KoorweekendApp2017/Helpers/RestHelper.cs" Line="118" Column="27" />
+      <File FileName="KoorweekendApp2017/Helpers/AuthenticationHelper.cs" Line="102" Column="3" />
+      <File FileName="KoorweekendApp2017/BusinessObjects/LocalDatabase.cs" Line="122" Column="31" />
+      <File FileName="KoorweekendApp2017/Interfaces/IOneVoiceDatabase.cs" Line="1" Column="14" />
+      <File FileName="KoorweekendApp2017/Interfaces/IDatabaseItem.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Interfaces/ISQLite.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/HomePage.xaml" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/HomePage.xaml.cs" Line="52" Column="1" />
+      <File FileName="packages/HtmlAgilityPack.1.4.9.5/readme.txt" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Models/BibleVerse.cs" Line="11" Column="4" />
+      <File FileName="KoorweekendApp2017/obj/Debug/KoorweekendApp2017.Pages.KoorweekendApp2017Page.xaml.g.cs" Line="24" Column="1" />
+      <File FileName="KoorweekendApp2017/Extensions/StringExtensions.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Page.xaml.cs" line="28" column="16" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Scenes/Game1Scene1.cs" line="200" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/iOS/AppDelegate.cs" line="71" column="16" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/ContactSinglePage.xaml.cs" line="109" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/HomePage.xaml.cs" line="52" column="14" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Helpers/HomePageHelper.cs" line="167" column="15" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Helpers/HomePageHelper.cs" line="170" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Helpers/HomePageHelper.cs" line="163" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/HomePage.xaml.cs" line="50" column="10" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Helpers/RestHelper.cs" line="50" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.6b3f1a7103aa0dd08d1300dd11832d83fc34d816" />
+  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.560BF23C-1449-4B36-9CB2-8F5B8CFF4F30" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
 </Properties>

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using KoorweekendApp2017.Helpers;
+using KoorweekendApp2017.Interfaces;
 using KoorweekendApp2017.Models;
 using Newtonsoft.Json;
 using SQLite;
 
 namespace KoorweekendApp2017.BusinessObjects
 {
-	public class LocalDatabase
+	public class LocalDatabase: IOneVoiceDatabase
 	{
 		private static SQLiteConnection Database { get; set;}
 
@@ -113,7 +114,7 @@ namespace KoorweekendApp2017.BusinessObjects
 
 			public List<Contact> GetAll()
 			{
-				return (from i in Database.Table<Contact>() select i).ToList();
+				return (from i in Database.Table<Contact>() select i).OrderBy(i => i.FirstName).ToList();
 			}
 
 			public void RemoveById(int id)

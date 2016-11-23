@@ -83,6 +83,11 @@ namespace KoorweekendApp2017
 					if (authResult.Code == AuthorizationCode.Authorized)
 					{
 						App.Database.Settings.Set("lastSuccessfullAuthentication", DateTime.Now);
+						Contact authenticatedContact = App.Database.Contacts.GetAll().Find(x => x.Email1 == emailaddress);
+						if (authenticatedContact != null)
+						{
+							App.Database.Settings.Set("authenticatedContactId", authenticatedContact.Id);
+						}
 						result = true;
 					}
 				}
@@ -93,6 +98,13 @@ namespace KoorweekendApp2017
 			}
 
 			return result;
+		}
+
+		public static Contact GetAuthenticatedContact()
+		{
+			Int32 contactId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
+			Contact authenticatedContact = App.Database.Contacts.GetById(contactId);
+			return authenticatedContact;
 		}
 	}
 }

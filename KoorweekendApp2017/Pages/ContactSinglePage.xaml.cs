@@ -100,7 +100,7 @@ namespace KoorweekendApp2017.Pages
 				 {
 					MediaFile mediaFile = t.Result;
 
-					 takenImageSource = ImageSource.FromStream(() => mediaFile.Source);
+					takenImageSource = ImageSource.FromStream(() => mediaFile.Source);
 					userImage.Source = takenImageSource;
 
 					byte[] bytes = null;

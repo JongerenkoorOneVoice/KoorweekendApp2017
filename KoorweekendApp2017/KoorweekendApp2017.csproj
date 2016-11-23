@@ -173,6 +173,9 @@
     <Compile Include="Models\SongOccasion.cs" />
     <Compile Include="Messages\StartApiSongOccasionSyncMessage.cs" />
     <Compile Include="Messages\StopApiSongOccasionSyncMessage.cs" />
+    <Compile Include="Helpers\HomePageHelper.cs" />
+    <Compile Include="Interfaces\IOneVoiceDatabase.cs" />
+    <Compile Include="Models\BibleVerse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http.Extensions">

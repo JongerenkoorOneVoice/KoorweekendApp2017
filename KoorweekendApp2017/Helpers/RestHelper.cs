@@ -13,8 +13,8 @@ using System.Text;
 
 namespace KoorweekendApp2017.Helpers
 {
-    public static class RestHelper
-    {
+	public static class RestHelper
+	{
 
 		public async static Task<T> GetRestDataFromUrl<T>(string requestUrl)
 		{
@@ -31,24 +31,35 @@ namespace KoorweekendApp2017.Helpers
 			//string password = "";
 			// request.Headers.Add("Authorization", "Basic " + String.Format("{0}:{1}", username, password));
 
-
-			using (HttpWebResponse response = (HttpWebResponse)(await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, null).ConfigureAwait(false)))
+			try
 			{
-				using (Stream responseStream = response.GetResponseStream())
+				using (HttpWebResponse response = (HttpWebResponse)(await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, null).ConfigureAwait(false)))
 				{
-					if (responseStream != null)
+					using (Stream responseStream = response.GetResponseStream())
 					{
-						using (StreamReader reader = new StreamReader(responseStream))
+						if (responseStream != null)
 						{
-							rawData = reader.ReadToEnd();
+							using (StreamReader reader = new StreamReader(responseStream))
+							{
+								rawData = reader.ReadToEnd();
+							}
 						}
+
 					}
-
 				}
+			
 			}
-
-			returnValue = GetModelFromJson<T>(rawData);
-
+		catch(Exception ex){
+			var x = ex;
+		}
+			if (!String.IsNullOrEmpty(rawData) && rawData[0] == '<' && typeof(T) == typeof(String))
+			{
+				// resultJson is not JSON
+				returnValue = JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(rawData));
+			}
+			else {
+				returnValue = GetModelFromJson<T>(rawData);
+			}
 
 			return returnValue;
 
@@ -76,7 +87,6 @@ namespace KoorweekendApp2017.Helpers
 
 
 			returnValue = GetModelFromJson<T>(resultJson);
-
 
 			return returnValue;
 
@@ -113,6 +123,7 @@ namespace KoorweekendApp2017.Helpers
         public static T GetModelFromJson<T>(String RawData)
         {
 			if (RawData == "null") return default(T);
+
             JToken rawDataDynamic = JToken.Parse(RawData);
             JToken data = getJTokenData(rawDataDynamic);
 
