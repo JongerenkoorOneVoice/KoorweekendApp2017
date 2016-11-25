@@ -22,21 +22,6 @@ namespace KoorweekendApp2017.Pages
 		{
 
 			InitializeComponent();
-			/*
-            Contact contact = new Contact();
-
-            DateTime birthDate = contact.BirthDate == null ? DateTime.MinValue : (DateTime)contact.BirthDate;
-            if(birthDate != DateTime.MinValue)
-            {
-                DateTime nextBirthday = birthDate;
-                nextBirthday = nextBirthday.AddYears(DateTime.Now.Year - birthDate.Year);
-                if(nextBirthday < DateTime.Now)
-                {
-                    nextBirthday = nextBirthday.AddYears(1);
-                }
-                
-            }
-            */
 
 			_mediaPicker = DependencyService.Get<IMediaPicker>();
 	

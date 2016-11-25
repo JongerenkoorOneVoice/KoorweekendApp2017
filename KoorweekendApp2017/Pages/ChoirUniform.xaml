@@ -9,14 +9,14 @@
       <Grid x:Name="controlGrid" RowSpacing="5" ColumnSpacing="5" Padding="0,5,0,5">
         <Grid.RowDefinitions>
           <RowDefinition Height="30"/>
-          <RowDefinition Height="225"/>
-          <RowDefinition Height="225"/>
-          <RowDefinition Height="225"/>          
+          <RowDefinition Height="250"/>
+          <RowDefinition Height="250"/>
+          <RowDefinition Height="250"/>          
           <RowDefinition Height="30"/>
-          <RowDefinition Height="200"/>
-          <RowDefinition Height="150"/>
-          <RowDefinition Height="225"/>          
-          <RowDefinition Height="350"/>
+          <RowDefinition Height="225"/>
+          <RowDefinition Height="175"/>
+          <RowDefinition Height="250"/>          
+          <RowDefinition Height="375"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*"/>

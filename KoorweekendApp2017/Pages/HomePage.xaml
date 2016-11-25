@@ -23,14 +23,19 @@
       <Image x:Name="label" Source="onevoice_logo_app_less.png" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
       </StackLayout>
       
-      <StackLayout Grid.Row="1" Grid.Column="1" BackgroundColor="Red">
-      <Label Text="Verjaardagen:" Font="Bold,18" HorizontalOptions="Center"  TextColor="White"/>
-      <Label Text="... is ... jarig" HorizontalOptions="Center" TextColor="White"/>
+      <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Red" x:Name="birthGrid">
+      <Label Font="Bold,18" HorizontalOptions="Center"  TextColor="White" x:Name="birthName"/>
+      <Label HorizontalOptions="Center" TextColor="White" x:Name="birthDate"/>
+      <Label HorizontalOptions="Center" TextColor="White" Font="Bold,20" x:Name="birthAge"/>
+      <Label HorizontalOptions="Center"  TextColor="White" x:Name="birthToday"/>
+      <Label HorizontalOptions="Center" VerticalOptions="End" Font="10" TextColor="White" x:Name="birthClick"/>
       </StackLayout>
 
-      <StackLayout Grid.Row="1" Grid.Column="0" BackgroundColor="Red">
-      <Label Text="Uitvoeringen:" Font="Bold,18" HorizontalOptions="Center" TextColor="White"/>
-      <Label Text="... hebben we uitvoering in..." HorizontalOptions="Center" TextColor="White"/>
+      <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="Red" x:Name="eventGrid">
+      <Label Font="Bold,18" HorizontalOptions="Center" TextColor="White" x:Name="eventTitle"/>
+      <Label HorizontalOptions="Center" TextColor="White" x:Name="eventDatum"/>
+      <Label HorizontalOptions="Center" TextColor="White" x:Name="eventTime"/>
+      <Label HorizontalOptions="Center" VerticalOptions="End" Font="10" TextColor="White" x:Name="eventClick"/>
       </StackLayout>
 
       <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="Red">

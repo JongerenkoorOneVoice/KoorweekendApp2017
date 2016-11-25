@@ -7,46 +7,87 @@ namespace KoorweekendApp2017.Pages
 {
 	public partial class HomePage : ContentPage
 	{
-		public HomePage()
-		{
+        public HomePage()
+        {
 
             InitializeComponent();
+            Birthdays();
+            Events();
+
             var linkOpen = new TapGestureRecognizer();
             linkOpen.Tapped += (s, e) => {
                 Device.OpenUri(new Uri("http://www.jongerenkooronevoice.nl/"));
             };
-            label.GestureRecognizers.Add(linkOpen);
-
-			/**
-			 * Hoi Daniel,
-			 * 
-			 * Ik heb een paar functies gemaakt die wat data voro de homepage op kunnen halen.
-			 * Ik hoop dat je er wat aan hebt.
-			 * Als je er niet uit komt, of vragen hebt, dan geef je maar een seintje.
-			 * 
-			 * De code staat in \Helpers\HomepageHelper.cs
-			 * 
-			 * Heel veel succes!
-			 * 
-			*/
-
-			// Contact met de eerste verjaardag.
-			// Als er meerdere jarig zijn op dezelfde datum dan wordt diegene wiens voornaam het laatst in het alfabet komt teruggegeven.
-			Contact firstBirthdayContact = HomePageHelper.GetFirstBirthdayContact(App.Database);
-
-			// Alle jarigen in een bepalde periode.
-			// In dit voorbeeld iedereen die jarig is in de komende 7 dagen.
-			List<Contact> birthdayInNextSevenDays = HomePageHelper.GetBirthdaysInTimeSpan(App.Database, new TimeSpan(7, 0, 0, 0));
-
-			// Het eerstvolgende event.
-			Event nextEvent = HomePageHelper.GetNextEvent(App.Database);
-
-			// Alle eventementen in een bepalde periode.
-			// In dit voorbeeld iedereen die jarig is in de komende 7 dagen.
-			List<Event> eventsInNextSevenDays = HomePageHelper.GetEventsInTimeSpan(App.Database, new TimeSpan(7, 0, 0, 0));
-
-
+            label.GestureRecognizers.Add(linkOpen);          
         }
 
+
+        void Birthdays()
+        {
+            Contact firstBirthdayContact = HomePageHelper.GetFirstBirthdayContact(App.Database); // Contact met de eerste verjaardag.
+            List<Contact> birthdayInNextSevenDays = HomePageHelper.GetBirthdaysInTimeSpan(App.Database, new TimeSpan(7, 0, 0, 0)); // Alle jarigen in een bepalde periode.
+
+            DateTime contactsBirthday = firstBirthdayContact.BirthDate.Value;
+            var birtDayThisYear = contactsBirthday.AddYears(DateTime.Now.Year - contactsBirthday.Year);
+            var days = (birtDayThisYear.Day - DateTime.Now.Day);
+            var age = (DateTime.Now.Year - contactsBirthday.Year);
+
+            birthName.Text = (firstBirthdayContact.FullName);
+            if (days > 1)
+            {
+                birthDate.Text = (string.Format("Wordt over {0} dagen", (Convert.ToString(days))));
+                birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
+            }
+            else if (days == 1)
+            {
+                birthDate.Text = (string.Format("Wordt morgen", (Convert.ToString(days))));
+                birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
+            }
+            else if (days == 0)
+            {
+                birthDate.Text = ("Is vandaag");
+                birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
+                birthToday.Text = ("Geworden");
+                birthClick.Text = ("Klik om contactpagina te openen");
+                var jarigOpen = new TapGestureRecognizer();
+                jarigOpen.Tapped += (s, e) => {
+                    Device.OpenUri(new Uri("http://www.jongerenkooronevoice.nl/"));
+                };
+                birthGrid.GestureRecognizers.Add(jarigOpen);
+            }
+        }
+        void Events()
+        {
+            Event nextEvent = HomePageHelper.GetNextEvent(App.Database); // Het eerstvolgende event.
+            List<Event> eventsInNextSevenDays = HomePageHelper.GetEventsInTimeSpan(App.Database, new TimeSpan(7, 0, 0, 0)); // Alle eventementen in een bepalde periode.
+            var days = (nextEvent.StartDate.Day - DateTime.Now.Day);
+
+            if (days > 1)
+            {
+                eventTitle.Text = (string.Format("{0}", (Convert.ToString(nextEvent.Title))));
+                eventDatum.Text = (string.Format("{0}", (nextEvent.StartDate.ToString("dd MMMM yyyy"))));
+                eventTime.Text = (string.Format("{0} uur", (nextEvent.StartTime.ToString("HH:mm"))));
+            }
+            else if (days == 1)
+            {
+                eventTitle.Text = (string.Format("{0}", (Convert.ToString(nextEvent.Title))));
+                eventDatum.Text = (string.Format("Morgen"));
+                eventTime.Text = (string.Format("{0} uur", (nextEvent.StartTime.ToString("HH:mm"))));
+            }
+            else if (days == 0)
+            {
+                eventTitle.Text = (string.Format("{0}", (Convert.ToString(nextEvent.Title))));
+                eventDatum.Text = (string.Format("Vandaag"));
+                eventTime.Text = (string.Format("{0} uur", (nextEvent.StartTime.ToString("HH:mm"))));
+                eventClick.Text = ("Klik om evenementpagina te openen");
+                var eventOpen = new TapGestureRecognizer();
+                eventOpen.Tapped += (s, e) => {
+                    Device.OpenUri(new Uri("http://www.jongerenkooronevoice.nl/"));
+                };
+                eventGrid.GestureRecognizers.Add(eventOpen);
+                //eventGrid.BackgroundColor = Color.FromRgba(255,0,0,255);
+            }
+
+        }
     }
 }
