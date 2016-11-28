@@ -18,7 +18,37 @@ using XLabs.Platform.Services;
 
 namespace KoorweekendApp2017.Droid
 {
-	[Activity(Label = "One Voice", Icon = "@drawable/onevoice_logo_app_less", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "One Voice", Icon = "@drawable/onevoice_logo_app_less", Theme = "@style/Theme.Splash", MainLauncher = true, NoHistory = true)]
+    public class SplashActivity : Android.Support.V7.App.AppCompatActivity
+    {
+        //static readonly string TAG = "X:" + typeof(SplashActivity).Name;
+
+        public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
+        {
+            base.OnCreate(savedInstanceState, persistentState);
+           // StartActivity(typeof(MainActivity));
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            Task startupWork = new Task(() => {
+             
+                Task.Delay(5000);  // Simulate a bit of startup work.
+            });
+
+            startupWork.ContinueWith(t => {
+          
+                StartActivity(typeof(MainActivity));
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+
+            startupWork.Start();
+        }
+
+    }
+
+    [Activity(Label = "One Voice", Icon = "@drawable/onevoice_logo_app_less", Theme = "@style/MyTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 		protected override void OnCreate(Bundle bundle)
@@ -29,9 +59,10 @@ namespace KoorweekendApp2017.Droid
 			base.OnCreate(bundle);
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
+            //SetPage(App.GetMainPage());
             //ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
-			MessagingCenter.Subscribe<StartApiContactSyncMessage>(this, "StartApiContactSyncMessage", message =>
+            MessagingCenter.Subscribe<StartApiContactSyncMessage>(this, "StartApiContactSyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiContactSyncTask));
 				StartService(intent);

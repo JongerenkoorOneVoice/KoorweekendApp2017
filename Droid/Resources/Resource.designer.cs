@@ -5103,8 +5103,8 @@ namespace KoorweekendApp2017.Droid
 			// aapt resource value: 0x7f0a015a
 			public const int Animation_Design_BottomSheetDialog = 2131362138;
 			
-			// aapt resource value: 0x7f0a0178
-			public const int AppCompatDialogStyle = 2131362168;
+			// aapt resource value: 0x7f0a0179
+			public const int AppCompatDialogStyle = 2131362169;
 			
 			// aapt resource value: 0x7f0a00a5
 			public const int Base_AlertDialog_AppCompat = 2131361957;
@@ -5559,11 +5559,11 @@ namespace KoorweekendApp2017.Droid
 			// aapt resource value: 0x7f0a001a
 			public const int CardView_Light = 2131361818;
 			
-			// aapt resource value: 0x7f0a0176
-			public const int MyTheme = 2131362166;
-			
 			// aapt resource value: 0x7f0a0177
-			public const int MyTheme_Base = 2131362167;
+			public const int MyTheme = 2131362167;
+			
+			// aapt resource value: 0x7f0a0178
+			public const int MyTheme_Base = 2131362168;
 			
 			// aapt resource value: 0x7f0a0032
 			public const int Platform_AppCompat = 2131361842;
@@ -5906,6 +5906,9 @@ namespace KoorweekendApp2017.Droid
 			
 			// aapt resource value: 0x7f0a0003
 			public const int Theme_MediaRouter_LightControlPanel = 2131361795;
+			
+			// aapt resource value: 0x7f0a0176
+			public const int Theme_Splash = 2131362166;
 			
 			// aapt resource value: 0x7f0a010e
 			public const int ThemeOverlay_AppCompat = 2131362062;

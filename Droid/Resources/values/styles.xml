@@ -1,9 +1,23 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <resources>
+  
+  <style name="Theme.Splash"
+    parent="Theme.AppCompat.Light">
+    <item name="android:windowBackground">
+      @drawable/SplashScreenBackground
+    </item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowIsTranslucent">false</item>
+    <item name="android:windowIsFloating">false</item>
+    <item name="android:backgroundDimEnabled">true</item>
+  </style>
+  
 	<style name="MyTheme" parent="MyTheme.Base">
 	</style>
+  
+  
 	<!-- Base theme applied no matter what API -->
-	<style name="MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+	<style name="MyTheme.Base" parent="Theme.AppCompat.Light">
 		<!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
 		<item name="windowNoTitle">true</item>
 		<!--We will be using the toolbar so no need to show ActionBar-->
@@ -21,6 +35,7 @@
 		<item name="windowActionModeOverlay">true</item>
 		<item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
 	</style>
+  
 	<style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
 		<item name="colorAccent">#FF0000</item>
 	</style>
