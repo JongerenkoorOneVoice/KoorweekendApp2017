@@ -99,14 +99,15 @@ namespace KoorweekendApp2017
 
 		public async Task RunLoginScript()
 		{
-			if (!pageMailInput.Text.IsValidEmailAddres())
+			String emailaddress = pageMailInput.Text;
+			if (!emailaddress.IsValidEmailAddres())
 			{
 				await LoadPage(LoginPageIds.InvalidEmail);
 				//await DisplayAlert("Emailadres ongeldig", "Waarschijnlijk heb je je mailadres verkeerd geschreven", "Probeer opnieuw");
 				return;
 			}
 
-			var authResult = await AuthenticationHelper.GetAuthenticationResult(pageMailInput.Text);
+			var authResult = await AuthenticationHelper.GetAuthenticationResult(emailaddress);
 			if (authResult.Code != AuthorizationCode.Authorized)
 			{
 				if ((authResult.Code != AuthorizationCode.EmailAddressNotFound
@@ -115,7 +116,7 @@ namespace KoorweekendApp2017
 				{
 
 					await page.TranslateTo(-Math.Abs(page.Width), 0, 500, Easing.CubicIn);
-					var mailSend = await AuthenticationHelper.RegisterDevice(pageMailInput.Text);
+					var mailSend = await AuthenticationHelper.RegisterDevice(pemailaddress);
 					if (mailSend)
 					{
 						page.TranslationX = Math.Abs(page.Width);
@@ -143,7 +144,14 @@ namespace KoorweekendApp2017
 			else if (authResult.Code == AuthorizationCode.Authorized)
 			{
 				Application.Current.MainPage = new KoorweekendApp2017Page();
-				// write data to db
+				App.Database.Settings.Set("lastSuccessfullAuthentication", DateTime.Now);
+				App.Database.Settings.Set("lastAuthenticationResult", authResult);
+				App.Database.Settings.Set("lastAuthenticationEmailAddressTried", emailaddress);
+				Contact authenticatedContact = App.Database.Contacts.GetAll().Find(x => x.Email1 == emailaddress);
+				if (authenticatedContact != null)
+				{
+					App.Database.Settings.Set("authenticatedContactId", authenticatedContact.Id);
+				}
 			}
 		}
 
