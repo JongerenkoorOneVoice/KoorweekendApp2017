@@ -65,6 +65,7 @@ namespace KoorweekendApp2017.iOS
 				{
 					apiSongOccasionSync.Stop();
 				});
+
 			}
 			catch (Exception ex)
 			{

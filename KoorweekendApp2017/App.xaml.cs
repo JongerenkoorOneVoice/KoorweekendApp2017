@@ -43,6 +43,7 @@ namespace KoorweekendApp2017
 				App.Database.Settings.RemoveByKey("lastSuccessfullAuthentication");
 				App.Database.Settings.RemoveByKey("lastAuthenticationResult");
 				App.Database.Settings.RemoveByKey("lastAuthenticationEmailAddressTried");
+				App.Database.Settings.Set("loginOnNextStart", false);
 			}
 
 			var isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;

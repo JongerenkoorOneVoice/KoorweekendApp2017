@@ -176,6 +176,7 @@
     <Compile Include="Helpers\HomePageHelper.cs" />
     <Compile Include="Interfaces\IOneVoiceDatabase.cs" />
     <Compile Include="Models\BibleVerse.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">
