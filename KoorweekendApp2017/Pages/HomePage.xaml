@@ -8,15 +8,14 @@
   <ContentPage.Content>
     <Grid x:Name="controlGrid" RowSpacing="5" ColumnSpacing="5" Padding="0,5,0,5">
       <Grid.RowDefinitions>
-        <RowDefinition Height="125"/>
-        <RowDefinition Height="*"/>
+        <RowDefinition Height="{Binding ScreenWidth}"/>
         <RowDefinition Height="*"/>
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="125"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="{Binding ScreenWidth}"/>
+        <ColumnDefinition Width="{Binding ScreenWidth}"/>
+        <ColumnDefinition Width="{Binding ScreenWidth}"/>
       </Grid.ColumnDefinitions>
 
       <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="Red">
@@ -40,7 +39,7 @@
 
       <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="Red">
         <Label Text="Nieuws:" Font="Bold,18" HorizontalOptions="Center" TextColor="White"/>
-        <Label HorizontalOptions="Center" TextColor="White" x:Name="newsT" Text="{Binding ScreenWidth}"/>
+        <Label HorizontalOptions="Center" TextColor="White" x:Name="TNews"/>
       </StackLayout>
     </Grid>
   </ContentPage.Content>

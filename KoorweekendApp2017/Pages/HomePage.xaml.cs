@@ -9,15 +9,32 @@ namespace KoorweekendApp2017.Pages
 {
     public partial class HomePage : ContentPage
     {
-        //public Int32 ScreenWidth { get; set; }
+        public Int32 ScreenWidth
+        {
+            get
+            {
+                var device = Resolver.Resolve<IDevice>();
+                Int32 screen = Convert.ToInt32(device.Display.Width / (3*(device.Display.Scale)));
+                return screen;
+            }
+        }
+        public Int32 ScreenHeight
+        {
+            get
+            {
+                var device = Resolver.Resolve<IDevice>();
+                Int32 screenW = Convert.ToInt32(device.Display.Width / (3*(device.Display.Scale))); ;
+                Int32 screenH = Convert.ToInt32(device.Display.Height / (device.Display.Scale));
+                Int32 screen = Convert.ToInt32((screenH - screenW)/2);
+                return screen;
+            }
+        }
 
         public HomePage()
         {
-
             InitializeComponent();
             Birthdays();
             Events();
-
 
             this.BindingContext = this;
 
@@ -29,8 +46,9 @@ namespace KoorweekendApp2017.Pages
             label.GestureRecognizers.Add(linkOpen);
 
             var device = Resolver.Resolve<IDevice>();
-            var screenWidth = device.Display.Width;
-            newsT.Text = (Convert.ToString(screenWidth));
+            var screenXdpi = (device.Display.Xdpi);
+            var screenScale = (device.Display.Scale);
+            TNews.Text = (Convert.ToString(screenScale));
         }
 
 

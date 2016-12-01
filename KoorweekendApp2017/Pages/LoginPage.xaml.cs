@@ -116,7 +116,7 @@ namespace KoorweekendApp2017
 				{
 
 					await page.TranslateTo(-Math.Abs(page.Width), 0, 500, Easing.CubicIn);
-					var mailSend = await AuthenticationHelper.RegisterDevice(pemailaddress);
+					var mailSend = await AuthenticationHelper.RegisterDevice(emailaddress);
 					if (mailSend)
 					{
 						page.TranslationX = Math.Abs(page.Width);
