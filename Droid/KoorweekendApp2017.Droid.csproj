@@ -552,55 +552,15 @@
     <AndroidResource Include="Resources\drawable\onevoice_logo_app_less.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Kleding_Z2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Kleding_Z1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Kleding_W1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Kleding_W2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\Kleding_Z2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\Kleding_Z1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\Kleding_W2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\Kleding_W1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\Kleding_Z2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\Kleding_Z1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\Kleding_W2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\Kleding_W1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Kleding_Z2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Kleding_Z1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Kleding_W2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Kleding_W1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="PluginsHelp\ConnectivityReadme.txt" />
+    <AndroidResource Include="Resources\drawable\Kleding_W.png" />
+    <AndroidResource Include="Resources\drawable\Kleding_Z.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Kleding_Z.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Kleding_W.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Kleding_Z.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Kleding_W.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Kleding_Z.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Kleding_W.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

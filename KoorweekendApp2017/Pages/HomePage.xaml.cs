@@ -35,6 +35,7 @@ namespace KoorweekendApp2017.Pages
             InitializeComponent();
             Birthdays();
             Events();
+            News();
 
             this.BindingContext = this;
 
@@ -45,10 +46,28 @@ namespace KoorweekendApp2017.Pages
             };
             label.GestureRecognizers.Add(linkOpen);
 
-            var device = Resolver.Resolve<IDevice>();
-            var screenXdpi = (device.Display.Xdpi);
-            var screenScale = (device.Display.Scale);
-            TNews.Text = (Convert.ToString(screenScale));
+
+        }
+
+        void News()
+        {
+            bool news = true;
+                if (news == false) {
+                newsGrid.BackgroundColor = Color.FromRgba(255, 0, 0, 0);
+            }
+            else if(news == true)
+            {
+                newsTitle.Text = "Nieuwsupdate:";
+                newsText.Text = "Er is een nieuwsupdate beschikbaar";
+                newsClick.Text = "Klik om de nieuwspagina te openen";
+                newsGrid.BackgroundColor = Color.FromRgba(255, 0, 0, 255);
+                var newsOpen = new TapGestureRecognizer();
+                newsOpen.Tapped += (s, e) =>
+                {
+                    Device.OpenUri(new Uri("http://www.jongerenkooronevoice.nl/"));
+                };
+                newsGrid.GestureRecognizers.Add(newsOpen);
+            }
         }
 
 

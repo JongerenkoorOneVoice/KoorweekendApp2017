@@ -369,19 +369,9 @@
     <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Kleding_W1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Kleding_Z1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Kleding_Z2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Kleding_W2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="PluginsHelp\ConnectivityReadme.txt" />
+    <BundleResource Include="Resources\Kleding_W.png" />
+    <BundleResource Include="Resources\Kleding_Z.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

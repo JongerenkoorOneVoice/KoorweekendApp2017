@@ -37,9 +37,10 @@
         <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" VerticalOptions="End" Font="10" TextColor="White" x:Name="eventClick"/>
       </StackLayout>
 
-      <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="Red">
-        <Label Text="Nieuws:" Font="Bold,18" HorizontalOptions="Center" TextColor="White"/>
-        <Label HorizontalOptions="Center" TextColor="White" x:Name="TNews"/>
+      <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="Red" x:Name="newsGrid">
+        <Label Font="Bold,18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" x:Name="newsTitle" />
+        <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" x:Name="newsText"/>
+        <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" VerticalOptions="End" Font="10" TextColor="White" x:Name="newsClick"/>
       </StackLayout>
     </Grid>
   </ContentPage.Content>
