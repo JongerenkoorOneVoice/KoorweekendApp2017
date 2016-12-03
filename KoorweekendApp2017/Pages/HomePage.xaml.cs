@@ -14,7 +14,7 @@ namespace KoorweekendApp2017.Pages
             get
             {
                 var device = Resolver.Resolve<IDevice>();
-                Int32 screen = Convert.ToInt32(device.Display.Width / (3*(device.Display.Scale)));
+                Int32 screen = Convert.ToInt32(device.Display.Width / (6*(device.Display.Scale)));
                 return screen;
             }
         }
@@ -23,7 +23,7 @@ namespace KoorweekendApp2017.Pages
             get
             {
                 var device = Resolver.Resolve<IDevice>();
-                Int32 screenW = Convert.ToInt32(device.Display.Width / (3*(device.Display.Scale))); ;
+                Int32 screenW = Convert.ToInt32(device.Display.Width / (6*(device.Display.Scale))); 
                 Int32 screenH = Convert.ToInt32(device.Display.Height / (device.Display.Scale));
                 Int32 screen = Convert.ToInt32((screenH - screenW)/2);
                 return screen;
@@ -36,6 +36,8 @@ namespace KoorweekendApp2017.Pages
             Birthdays();
             Events();
             News();
+            var device = Resolver.Resolve<IDevice>();
+            test.Text = (Convert.ToString(device.Display.Scale));
 
             this.BindingContext = this;
 
@@ -78,7 +80,7 @@ namespace KoorweekendApp2017.Pages
 
             DateTime contactsBirthday = firstBirthdayContact.BirthDate.Value;
             var birtDayThisYear = contactsBirthday.AddYears(DateTime.Now.Year - contactsBirthday.Year);
-            var timeDifference = (birtDayThisYear - DateTime.Now);
+            var timeDifference = (birtDayThisYear - DateTime.Today);
             var age = (DateTime.Now.Year - contactsBirthday.Year);
 
             birthName.Text = (firstBirthdayContact.FullName);
