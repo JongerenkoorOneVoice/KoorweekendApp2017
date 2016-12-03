@@ -71,7 +71,17 @@ namespace KoorweekendApp2017.iOS
 			{
 				var y = ex;
 			}
-			App oneVoiceApp = new App();        
+
+            #region Resolver Init
+            SimpleContainer container = new SimpleContainer();
+            container.Register<IDevice>(t => AppleDevice.CurrentDevice);
+            container.Register<IDisplay>(t => t.Resolve<IDevice>().Display);
+            container.Register<INetwork>(t => t.Resolve<IDevice>().Network);
+
+            Resolver.SetResolver(container.GetResolver());
+            #endregion
+
+            App oneVoiceApp = new App();        
 			LoadApplication(oneVoiceApp);
 
 			#region Resolver Init
