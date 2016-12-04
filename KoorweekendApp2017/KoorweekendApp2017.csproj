@@ -196,6 +196,8 @@
     <Compile Include="Pages\PrayerRequestEditPage.xaml.cs">
       <DependentUpon>PrayerRequestEditPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Messages\StartApiPrayerRequestSyncMessage.cs" />
+    <Compile Include="Messages\StopApiPrayerRequestSyncMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">

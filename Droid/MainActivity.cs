@@ -111,6 +111,18 @@ namespace KoorweekendApp2017.Droid
 				StopService(intent);
 			});
 
+			MessagingCenter.Subscribe<StartApiPrayerRequestSyncMessage>(this, "StartApiPrayerRequestSyncMessage", message =>
+			{
+				var intent = new Intent(this, typeof(ApiPrayerRequestSyncTask));
+				StartService(intent);
+			});
+
+			MessagingCenter.Subscribe<StopApiPrayerRequestSyncMessage>(this, "StopApiPrayerRequestSyncMessage", message =>
+			{
+				var intent = new Intent(this, typeof(ApiPrayerRequestSyncTask));
+				StopService(intent);
+			});
+
 			#region Resolver Init
 			SimpleContainer container = new SimpleContainer();
 			container.Register<IDevice>(t => AndroidDevice.CurrentDevice);

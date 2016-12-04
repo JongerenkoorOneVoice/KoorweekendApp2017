@@ -9,9 +9,9 @@ using Android.Content;
 
 
 namespace KoorweekendApp2017.Droid.Tasks{
-                            
+
 	[Service]
-	public class ApiPrayerRequestSyncTask : Service
+	public class ApiSongSyncTask : Service
 	{
 		CancellationTokenSource _cts;
 
@@ -29,7 +29,7 @@ namespace KoorweekendApp2017.Droid.Tasks{
 				try
 				{
 					//INVOKE THE SHARED CODE
-					KoorweekendApp2017.Tasks.DataSync.SyncPrayerRequests();
+					KoorweekendApp2017.Tasks.DataSync.UpdateSongsInDbFromApi();
 				}
 				catch (System.OperationCanceledException)
 				{
@@ -38,7 +38,7 @@ namespace KoorweekendApp2017.Droid.Tasks{
 				{
 					if (_cts.IsCancellationRequested)
 					{
-						var message = new StopApiPrayerRequestSyncMessage();
+						var message = new StopApiSongSyncMessage();
 						Device.BeginInvokeOnMainThread(
 							() => MessagingCenter.Send(message, "CancelledMessage")
 						);
@@ -61,4 +61,7 @@ namespace KoorweekendApp2017.Droid.Tasks{
 			base.OnDestroy();
 		}
 	}
+
+                            
+
 }

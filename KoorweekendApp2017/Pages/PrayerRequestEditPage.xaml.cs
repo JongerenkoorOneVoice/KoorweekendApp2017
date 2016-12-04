@@ -24,6 +24,11 @@ namespace KoorweekendApp2017.Pages
 				CurrentItem.IsVisible = false;
 				Navigation.PopAsync();
 			};
+
+			saveCtrl.Clicked += (sender, e) =>
+			{
+				Navigation.PopAsync();
+			};
 		}
 
 		protected override void OnBindingContextChanged()

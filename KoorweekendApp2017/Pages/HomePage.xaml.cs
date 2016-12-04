@@ -36,7 +36,7 @@ namespace KoorweekendApp2017.Pages
             Birthdays();
             Events();
             News();
-            
+           
 
             this.BindingContext = this;
 

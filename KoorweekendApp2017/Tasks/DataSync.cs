@@ -151,7 +151,7 @@ namespace KoorweekendApp2017.Tasks
 				else {
 					String url = "http://www.jongerenkooronevoice.nl/prayerrequests/updatebyid/" + Convert.ToString(pr.Id);
 
-					if (Convert.ToDateTime(pr.EndDate).AddDays(1).Date > DateTime.Now)
+					if (Convert.ToDateTime(pr.EndDate).AddDays(1).Date < DateTime.Now)
 					{
 						pr.IsVisible = false;
 					}
@@ -188,6 +188,7 @@ namespace KoorweekendApp2017.Tasks
 					}
 				}
 			}
+			App.Database.Settings.Set("lastPrayerRequestSync", DateTime.Now.ToString());
 		}
 	}
 }

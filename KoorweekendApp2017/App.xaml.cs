@@ -34,6 +34,7 @@ namespace KoorweekendApp2017
 			MessagingCenter.Send(new StartApiSongSyncMessage(), "StartApiSongSyncMessage");
 			MessagingCenter.Send(new StartApiEventSyncMessage(), "StartApiEventSyncMessage");
 			MessagingCenter.Send(new StartApiSongOccasionSyncMessage(), "StartApiSongOccasionSyncMessage");
+			MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
 
 			//MessagingCenter.Send(new StopApiContactSyncMessage(), "StopApiContactSyncMessage");
 

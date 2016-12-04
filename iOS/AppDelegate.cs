@@ -66,6 +66,17 @@ namespace KoorweekendApp2017.iOS
 					apiSongOccasionSync.Stop();
 				});
 
+				ApiPrayerRequestSyncTask apiPrayerRequestSync = new ApiPrayerRequestSyncTask();
+				MessagingCenter.Subscribe<StartApiPrayerRequestSyncMessage>(this, "StartApiPrayerRequestSyncMessage", async message =>
+				{
+					apiPrayerRequestSync.Start(); // don't use await
+				});
+
+				MessagingCenter.Subscribe<StopApiPrayerRequestSyncMessage>(this, "StopApiPrayerRequestSyncMessage", message =>
+				{
+					apiPrayerRequestSync.Stop();
+				});
+
 			}
 			catch (Exception ex)
 			{

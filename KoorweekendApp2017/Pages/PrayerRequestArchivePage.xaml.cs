@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using KoorweekendApp2017.Messages;
 using KoorweekendApp2017.Models;
 using KoorweekendApp2017.Pages;
 using KoorweekendApp2017.Tasks;
@@ -50,7 +51,7 @@ namespace KoorweekendApp2017.Pages
 		{
 			PrayerRequests = App.Database.PrayerRequests.GetAll();
 			PrayerRequests = PrayerRequests.FindAll(x => x.IsVisible != false).ToList();
-			PrayerRequests = PrayerRequests.FindAll(x => x.EndDate <= DateTime.Now.AddDays(1).Date).ToList();
+			PrayerRequests = PrayerRequests.FindAll(x => x.EndDate >= DateTime.Now.AddDays(1).Date).ToList();
 			PrayerRequests = PrayerRequests.OrderByDescending(x => x.LastModifiedInApp).ThenByDescending(x => x.LastModifiedInApi).ToList();
 			prayerRequestListView.ItemsSource = PrayerRequests;
 		}
@@ -103,7 +104,7 @@ namespace KoorweekendApp2017.Pages
 					{
 						App.Database.PrayerRequests.UpdateOrInsert(EditingRequest);
 						SetupDataForPrayerRequests();
-						DataSync.SyncPrayerRequests(true);
+						MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
 					}
 					IsEditing = false;
 					EditingRequest = null;
@@ -137,7 +138,7 @@ namespace KoorweekendApp2017.Pages
 
 		void SyncPrayerRequestsWithWebservice(object sender, EventArgs args)
 		{
-			DataSync.SyncPrayerRequests(true);
+			MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
 			SetupDataForPrayerRequests();
 			ListView listView = sender as ListView;
 			listView.EndRefresh();

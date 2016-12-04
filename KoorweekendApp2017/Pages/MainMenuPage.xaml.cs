@@ -70,13 +70,14 @@ namespace KoorweekendApp2017.Pages
 				IconSource = "Koorweekend.png",
 				TargetType = typeof(Koorweekend2017Page)
 			});
+
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Test Login",
 				IconSource = "Login.png",
 				TargetType = typeof(LoginPage)
 			});
-			*/
+*/
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Instellingen",
@@ -100,7 +101,7 @@ namespace KoorweekendApp2017.Pages
 				}
 			}
 
-*/
+			*/
 
 			listView.ItemsSource = masterPageItems;
 		}
