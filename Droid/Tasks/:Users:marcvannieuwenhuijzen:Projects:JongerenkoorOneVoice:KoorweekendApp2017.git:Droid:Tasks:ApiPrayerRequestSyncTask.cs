@@ -8,8 +8,9 @@ using Android.OS;
 using Android.Content;
 
 
-namespace KoorweekendApp2017.Droid.Tasks{
-                            
+namespace KoorweekendApp2017.Droid.Tasks
+{
+
 	[Service]
 	public class ApiPrayerRequestSyncTask : Service
 	{
@@ -61,4 +62,7 @@ namespace KoorweekendApp2017.Droid.Tasks{
 			base.OnDestroy();
 		}
 	}
+
+
+
 }
