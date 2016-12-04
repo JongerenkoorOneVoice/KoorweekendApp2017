@@ -255,6 +255,7 @@ namespace KoorweekendApp2017.BusinessObjects
 
 			public void UpdateOrInsert(PrayerRequest prayerRequest)
 			{
+				if (prayerRequest.ContactId == 0) throw new Exception("ContactId not set for PrayerRequest");
 				var tmpRequest = GetById(Convert.ToInt32(prayerRequest.AppSpecificId));
 				if (tmpRequest == null)
 				{

@@ -1,6 +1,136 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KoorweekendApp2017.Pages.PrayerRequestEditPage">
-	<ContentPage.Content>
-		<Label Text="Edit"></Label>
+<ContentPage
+		xmlns="http://xamarin.com/schemas/2014/forms"
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		x:Class="KoorweekendApp2017.Pages.PrayerRequestEditPage"
+		Title="Nieuw"
+
+	>
+  <ContentPage.Content>
+    <RelativeLayout
+		VerticalOptions="FillAndExpand"
+		HorizontalOptions="FillAndExpand"
+	>
+      <Image
+				Source="PageBackground.jpg"
+				VerticalOptions="StartAndExpand"
+				HorizontalOptions="StartAndExpand"
+				Aspect="Fill"
+			/>
+			<ScrollView
+					Orientation = "Vertical"
+					VerticalOptions="StartAndExpand"
+					HorizontalOptions="FillAndExpand"
+					x:Name="scrollView"
+					RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+             		RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+					RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+             		RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
+					
+			>
+				<StackLayout Padding="15,15,15,15">
+
+					<StackLayout Margin="0, 0, 0, 0">
+						<Label 
+							Text="Titel"
+							Font="Bold"
+						></Label>
+						<Entry x:Name="titleCtrl" Text="{Binding Title}"></Entry>
+					</StackLayout>
+					
+					<StackLayout Margin="0, 15, 0, 0">
+						<Label
+							Text="Omschrijving" 
+							Font="Bold"
+						></Label>
+						<Editor x:Name="textCtrl" Text="{Binding Text}" HeightRequest="100" BackgroundColor="#aaefefef"></Editor>
+					</StackLayout>
+
+					<StackLayout Margin="0, 15, 0, 0">
+						<Label
+							Text="Einddatum"
+							Font="Bold"
+						></Label>
+						<Label
+							Text="Het gebedspunt blijft tot en met deze datum zichtbaar in de app"
+							Font="11"
+						></Label>
+						<DatePicker x:Name="endDateCtrl" Date="{Binding EndDate}"></DatePicker>
+					</StackLayout>
+
+					<RelativeLayout
+						Margin="0, 15, 0, 0"
+						HorizontalOptions="FillAndExpand"
+						>
+						<RelativeLayout
+							RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+							RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.75}"
+							>
+							<StackLayout
+								HorizontalOptions="Start"
+								>
+								<Label
+									Text="Is anoniem"
+									Font="Bold"	
+								></Label>
+								<Label
+									Text="Bij anonieme gebedspunten wordt je naam niet getoond."
+									Font="11"
+								></Label>
+							</StackLayout>
+						</RelativeLayout>
+						<RelativeLayout
+								HorizontalOptions="End"
+								RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+								RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+							>
+							<Switch
+								x:Name="isAnonymousCtrl"
+								IsToggled="{Binding IsAnonymous}"
+
+							></Switch>
+						</RelativeLayout>
+					</RelativeLayout>
+
+					<RelativeLayout
+						Margin="0, 15, 0, 0"
+						HorizontalOptions="FillAndExpand"
+						>
+						<RelativeLayout
+							RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+							RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.75}"
+							>
+							<StackLayout
+								HorizontalOptions="Start"
+								>
+								<Label
+									Text="Is privé"
+									Font="Bold"	
+								></Label>
+								<Label
+									Text="Een privé gebedspunt is alleen in je eigen app zichtbaar."
+									Font="11"
+								></Label>
+							</StackLayout>
+						</RelativeLayout>
+						<RelativeLayout
+								HorizontalOptions="End"
+								RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+								RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+							>
+							<Switch
+								x:Name="isPrivateCtrl"
+								IsToggled="{Binding IsPrivate}"
+
+							></Switch>
+						</RelativeLayout>
+					</RelativeLayout>
+					
+					<Button x:Name="isVisibleCtrl" Text="Verwijderen" Margin="0, 15, 0, 0"></Button>
+
+				</StackLayout>
+			</ScrollView>
+		</RelativeLayout>
+		
 	</ContentPage.Content>
 </ContentPage>

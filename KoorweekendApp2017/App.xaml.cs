@@ -18,6 +18,8 @@ namespace KoorweekendApp2017
 
 		public static LocalDatabase Database { get; set; }
 
+		public static Contact CurrentUser { get; set; }
+
 		public App()
 		{
 			InitializeComponent();
@@ -52,6 +54,8 @@ namespace KoorweekendApp2017
 				MainPage = new LoginPage();
 			}
 			else {
+				Int32 currentUserId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
+				CurrentUser = App.Database.Contacts.GetById(currentUserId);
 				MainPage = new KoorweekendApp2017Page();
 			}
 

@@ -5,6 +5,31 @@
 		x:Class="KoorweekendApp2017.Pages.PrayerRequestSinglePage"
 		Title="{Binding Title}">
 	<ContentPage.Content>
-		<Label Text="Single"></Label>
+		<RelativeLayout
+			VerticalOptions="FillAndExpand"
+			HorizontalOptions="FillAndExpand"
+			>
+      		<Image
+				Source="PageBackground.jpg"
+				VerticalOptions="StartAndExpand"
+				HorizontalOptions="StartAndExpand"
+				Aspect="Fill"
+			/>
+			<ScrollView
+				Orientation = "Vertical"
+				VerticalOptions="StartAndExpand"
+				HorizontalOptions="FillAndExpand"
+				x:Name="scrollView"
+				>
+				<StackLayout Padding="15,15,15,15">
+					<Label Text="Voor" Font="Bold"></Label>
+					<Label Text="{Binding Detail}"></Label>
+					<Label Text="Titel" Font="Bold" Margin="0, 15, 0, 0"></Label>
+					<Label Text="{Binding Title}"></Label>
+					<Label Text="Omschrijving" Font="Bold" Margin="0, 15, 0, 0"></Label>
+					<Label Text="{Binding Text}"></Label>
+				</StackLayout>
+			</ScrollView>
+		</RelativeLayout>
 	</ContentPage.Content>
 </ContentPage>

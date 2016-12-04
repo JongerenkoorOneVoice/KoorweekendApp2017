@@ -138,7 +138,7 @@ namespace KoorweekendApp2017.Tasks
 			List<PrayerRequest> appPrayerRequests = App.Database.PrayerRequests.GetAll();
 			List<PrayerRequest> currentContactPrayerRequests = appPrayerRequests.FindAll(x => x.ContactId == currentContactId);
 			foreach (var pr in currentContactPrayerRequests){
-				if (pr.Id == 0)
+				if (pr.Id == 0 && pr.IsPrivate != true)
 				{
 					String url = "http://www.jongerenkooronevoice.nl/prayerrequests/createnew";
 					RestHelper.PostDataToUrl<PrayerRequest>(url, pr).ContinueWith((arg) =>
@@ -150,6 +150,14 @@ namespace KoorweekendApp2017.Tasks
 				}
 				else {
 					String url = "http://www.jongerenkooronevoice.nl/prayerrequests/updatebyid/" + Convert.ToString(pr.Id);
+
+					if (Convert.ToDateTime(pr.EndDate).AddDays(1).Date > DateTime.Now)
+					{
+						pr.IsVisible = false;
+					}
+
+					if (pr.IsPrivate) pr.IsVisible = false;
+
 					RestHelper.PutDataToUrl<PrayerRequest>(url, pr).ContinueWith((arg) =>
 					{
 						PrayerRequest result = arg.Result;
@@ -167,8 +175,18 @@ namespace KoorweekendApp2017.Tasks
 				if (pr.Id != 0)
 				{
 					App.Database.PrayerRequests.UpdateOrInsertByApiId(pr);
-				}
 
+				}
+				else {
+					if (pr.ContactId != currentContactId)
+					{
+						if (!pr.IsVisible || pr.IsPrivate)
+						{
+							var tmp = App.Database.PrayerRequests.GetByApiId(pr.Id);
+							App.Database.PrayerRequests.RemoveById(Convert.ToInt32(tmp.AppSpecificId));
+						}
+					}
+				}
 			}
 		}
 	}

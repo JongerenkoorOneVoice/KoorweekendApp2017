@@ -36,8 +36,7 @@ namespace KoorweekendApp2017.Pages
             Birthdays();
             Events();
             News();
-            var device = Resolver.Resolve<IDevice>();
-            test.Text = (Convert.ToString(device.Display.Scale));
+            
 
             this.BindingContext = this;
 

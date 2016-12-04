@@ -28,7 +28,6 @@
         <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" TextColor="White" Font="Bold,20" x:Name="birthAge"/>
         <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center"  TextColor="White" x:Name="birthToday"/>
         <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" Font="10" TextColor="White" x:Name="birthClick"/>
-        <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Start"  TextColor="White" x:Name="test"/>
       </StackLayout>
 
       <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="Red" x:Name="eventGrid">

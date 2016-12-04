@@ -17,13 +17,44 @@ namespace KoorweekendApp2017.Models
         public String Text { get; set; }
         public DateTime? DateCreatedInApi { get; set; }
         public DateTime? EndDate { get; set; }
-        public Int32 ContactId { get; set; }
+		public Int32 ContactId { get; set; }
         public Boolean IsAnonymous { get; set; }
         public DateTime? DateCreatedInApp { get; set; }
-        public Boolean IsVisible { get; set; }
+		public Boolean IsVisible { get; set; } = true;
         public Boolean IsPrivate { get; set; }
         public DateTime? LastModifiedInApi { get; set; }
         public DateTime? LastModifiedInApp { get; set; }
+
+		[Ignore]
+		public String Detail
+		{
+			get
+			{
+				Int32 currentUserId = App.CurrentUser.Id;
+				Contact creator = App.Database.Contacts.GetById(this.ContactId);
+				String result = String.Empty;
+
+				if (creator == null) return result;
+
+
+				if (!this.IsAnonymous)
+				{
+					result += creator.FullName;
+				}
+				else {
+					if (creator.Id == currentUserId)
+					{
+						result += String.Format("{0} (anoniem)", creator.FullName);
+					}
+				}
+
+				if (this.IsPrivate)
+				{
+					result += " (privé)";
+				}
+				return result;
+			}
+		}
 
 	}
 }

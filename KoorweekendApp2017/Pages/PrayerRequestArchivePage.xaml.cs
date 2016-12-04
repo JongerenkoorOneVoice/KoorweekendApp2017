@@ -13,14 +13,21 @@ namespace KoorweekendApp2017.Pages
 
 		public List<PrayerRequest> PrayerRequests = new List<PrayerRequest>();
 
+		public Contact CurrentUser { get; set; }
+
+		public Boolean IsEditing { get; set; }
+
+		public PrayerRequest EditingRequest { get; set; }
 
 		public PrayerRequestArchivePage()
 		{
 			InitializeComponent();
 
-			PrayerRequests = App.Database.PrayerRequests.GetAll();
-			PrayerRequests = PrayerRequests.OrderBy(x => x.LastModifiedInApp).ThenBy(x=> x.LastModifiedInApi).ToList();
-			prayerRequestListView.ItemsSource = PrayerRequests;
+
+			SetupDataForPrayerRequests();
+
+			Int32 currentUserId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
+			CurrentUser = App.Database.Contacts.GetById(currentUserId);
 
 			prayerRequestListView.ItemSelected += OnPrayerRequestSelected;
 			prayerRequestListView.IsPullToRefreshEnabled = true;
@@ -28,15 +35,81 @@ namespace KoorweekendApp2017.Pages
 
 			ToolbarItems.Add(new ToolbarItem("Add", "filter_25.png", () =>
 			{
-				Navigation.PushAsync(new PrayerRequestEditPage());
+				EditingRequest = new PrayerRequest();
+				EditingRequest.ContactId = CurrentUser.Id;
+				IsEditing = true;
+				Navigation.PushAsync(new PrayerRequestEditPage() { BindingContext = EditingRequest });
+
 			}));
 
-			// Remove after testing
-			foreach (var item in PrayerRequests)
-			{
-				App.Database.PrayerRequests.RemoveById(Convert.ToInt32(item.AppSpecificId));
-			}
 
+
+		}
+
+		private void SetupDataForPrayerRequests()
+		{
+			PrayerRequests = App.Database.PrayerRequests.GetAll();
+			PrayerRequests = PrayerRequests.FindAll(x => x.IsVisible != false).ToList();
+			PrayerRequests = PrayerRequests.FindAll(x => x.EndDate <= DateTime.Now.AddDays(1).Date).ToList();
+			PrayerRequests = PrayerRequests.OrderByDescending(x => x.LastModifiedInApp).ThenByDescending(x => x.LastModifiedInApi).ToList();
+			prayerRequestListView.ItemsSource = PrayerRequests;
+		}
+
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+			if (IsEditing)
+			{
+				bool shouldUpdate = true;
+				var isValid = true;
+				if (String.IsNullOrEmpty(EditingRequest.Title)) isValid = false;
+				if (String.IsNullOrEmpty(EditingRequest.Text)) isValid = false;
+
+				if (EditingRequest.AppSpecificId == null && EditingRequest.IsVisible == false)
+				{
+					shouldUpdate = false;
+					isValid = true;
+				}
+
+				if (EditingRequest.AppSpecificId != null && EditingRequest.IsVisible == false)
+				{
+					shouldUpdate = true;
+					isValid = true;
+				}
+
+				if (!isValid)
+				{
+					var page = new PrayerRequestEditPage() { BindingContext = EditingRequest };
+					page.PageIsValid = false;
+					Navigation.PushAsync(page);
+				}
+				else
+				{
+					
+					if (EditingRequest.AppSpecificId != null)
+					{
+						var tmp = App.Database.PrayerRequests.GetById(Convert.ToInt32(EditingRequest.AppSpecificId));
+						if (tmp.Title == EditingRequest.Title
+					   	&& tmp.Text == EditingRequest.Text
+						&& tmp.IsVisible == EditingRequest.IsVisible
+						&& tmp.IsPrivate == EditingRequest.IsPrivate
+					    && tmp.IsAnonymous == EditingRequest.IsAnonymous
+					   	&& tmp.IsVisible == EditingRequest.IsVisible) {
+							shouldUpdate = false;
+						}
+					}
+
+					if (shouldUpdate)
+					{
+						App.Database.PrayerRequests.UpdateOrInsert(EditingRequest);
+						SetupDataForPrayerRequests();
+						DataSync.SyncPrayerRequests(true);
+					}
+					IsEditing = false;
+					EditingRequest = null;
+				}
+
+			}
 		}
 
 		void OnPrayerRequestSelected(object sender, SelectedItemChangedEventArgs e)
@@ -44,7 +117,17 @@ namespace KoorweekendApp2017.Pages
 			var item = e.SelectedItem as PrayerRequest;
 			if (item != null)
 			{
-				Navigation.PushAsync(new PrayerRequestSinglePage() { BindingContext = item });
+				if (item.ContactId == CurrentUser.Id)
+				{
+					EditingRequest = item;
+					IsEditing = true;
+					Navigation.PushAsync(new PrayerRequestEditPage(){ BindingContext = item });
+				}
+				else {
+
+					Navigation.PushAsync(new PrayerRequestSinglePage() { BindingContext = item });
+				}
+
 				//Detail = new MainNavigationPage((Page)Activator.CreateInstance(typeof(ContactSinglePage)));
 				prayerRequestListView.SelectedItem = null;
 
@@ -55,8 +138,8 @@ namespace KoorweekendApp2017.Pages
 		void SyncPrayerRequestsWithWebservice(object sender, EventArgs args)
 		{
 			DataSync.SyncPrayerRequests(true);
+			SetupDataForPrayerRequests();
 			ListView listView = sender as ListView;
-			listView.ItemsSource = App.Database.PrayerRequests.GetAll();
 			listView.EndRefresh();
 		}
 
