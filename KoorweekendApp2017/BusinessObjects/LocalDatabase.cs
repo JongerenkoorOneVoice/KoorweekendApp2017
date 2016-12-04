@@ -25,6 +25,8 @@ namespace KoorweekendApp2017.BusinessObjects
 
 		public SongOccasionTable SongOccasions { get; set; }
 
+		public PrayerRequestTable PrayerRequests { get; set; }
+
 		public LocalDatabase(SQLiteConnection database)
 		{
 			Database = database;
@@ -34,12 +36,14 @@ namespace KoorweekendApp2017.BusinessObjects
 			Database.CreateTable<Event>();
 			Database.CreateTable<LogItem>();
 			Database.CreateTable<SongOccasion>();
+			Database.CreateTable<PrayerRequest>();
 			Settings = new SettingTable();
 			Contacts = new ContactTable();
 			Songs = new SongTable();
 			Events = new EventTable();
 			LogItems = new LogItemTable();
 			SongOccasions = new SongOccasionTable();
+			PrayerRequests = new PrayerRequestTable();
 		}
 
 		public class SettingTable
@@ -223,6 +227,56 @@ namespace KoorweekendApp2017.BusinessObjects
 			public void UpdateOrInsert(LogItem logItem)
 			{
 				Database.InsertOrReplace(logItem);
+			}
+		}
+
+		public class PrayerRequestTable
+		{
+			public PrayerRequest GetById(int id)
+			{
+				return (from i in Database.Table<PrayerRequest>() where i.AppSpecificId == id select i).ToList().FirstOrDefault();
+			}
+
+			public PrayerRequest GetByApiId(int id)
+			{
+				return (from i in Database.Table<PrayerRequest>() where i.Id == id select i).ToList().FirstOrDefault();
+			}
+
+			public List<PrayerRequest> GetAll()
+			{
+				return (from i in Database.Table<PrayerRequest>() select i).ToList();
+			}
+
+			public void RemoveById(int id)
+			{
+				var prayerRequest = GetById(id);
+				Database.Delete(prayerRequest);
+			}
+
+			public void UpdateOrInsert(PrayerRequest prayerRequest)
+			{
+				var tmpRequest = GetById(Convert.ToInt32(prayerRequest.AppSpecificId));
+				if (tmpRequest == null)
+				{
+					prayerRequest.DateCreatedInApp = DateTime.Now;
+				}
+				prayerRequest.LastModifiedInApp = DateTime.Now;
+				Database.InsertOrReplace(prayerRequest);
+			}
+
+			public void UpdateOrInsertByApiId(PrayerRequest prayerRequest)
+			{
+				var tmpRequest = GetByApiId(prayerRequest.Id);
+				if (tmpRequest == null)
+				{
+					prayerRequest.DateCreatedInApp = DateTime.Now;
+				}
+				else {
+					  prayerRequest.AppSpecificId = tmpRequest.AppSpecificId;
+				}
+
+				prayerRequest.LastModifiedInApp = DateTime.Now;
+				Database.InsertOrReplace(prayerRequest);
 			}
 		}
 

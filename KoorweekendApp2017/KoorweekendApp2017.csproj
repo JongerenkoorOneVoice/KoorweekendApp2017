@@ -75,6 +75,15 @@
     <EmbeddedResource Include="Pages\NewsSingle.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\PrayerRequestArchivePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\PrayerRequestSinglePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\PrayerRequestEditPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -177,6 +186,16 @@
     <Compile Include="Interfaces\IOneVoiceDatabase.cs" />
     <Compile Include="Models\BibleVerse.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Models\PrayerRequest.cs" />
+    <Compile Include="Pages\PrayerRequestArchivePage.xaml.cs">
+      <DependentUpon>PrayerRequestArchivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PrayerRequestSinglePage.xaml.cs">
+      <DependentUpon>PrayerRequestSinglePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PrayerRequestEditPage.xaml.cs">
+      <DependentUpon>PrayerRequestEditPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">

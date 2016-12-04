@@ -120,6 +120,30 @@ namespace KoorweekendApp2017.Helpers
 
 		}
 
+		public async static Task<T> PutDataToUrl<T>(string requestUrl, object data)
+		{
+
+			T returnValue = default(T);
+
+			String json = JsonConvert.SerializeObject(data);
+			byte[] jsonBytes = Encoding.UTF8.GetBytes(json.ToCharArray());
+
+			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
+			request.ContentType = "application/json; charset=utf-8"; //set the content type to JSON
+			request.Method = "PUT"; //make an HTTP PUT
+
+
+			var client = new HttpClient();
+			var postData = new ByteArrayContent(jsonBytes);
+			var resultStream = await client.PostAsync(requestUrl, postData);
+			var resultBytes = await resultStream.Content.ReadAsByteArrayAsync();
+			var resultJson = Encoding.UTF8.GetString(resultBytes, 0, resultBytes.Length);
+
+
+			returnValue = GetModelFromJson<T>(resultJson);
+
+			return returnValue;
+		}
         public static T GetModelFromJson<T>(String RawData)
         {
 			if (RawData == "null") return default(T);
