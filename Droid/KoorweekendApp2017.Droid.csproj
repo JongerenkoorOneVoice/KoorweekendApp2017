@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>KoorweekendApp2017.Droid</RootNamespace>
     <AssemblyName>KoorweekendApp2017.Droid</AssemblyName>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -60,11 +60,14 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
-    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
-    <AndroidCreatePackagePerAbi>True</AndroidCreatePackagePerAbi>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <Debugger>Xamarin</Debugger>
-    <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
-    <EnableProguard>True</EnableProguard>
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <EnableProguard>False</EnableProguard>
+    <BundleAssemblies>False</BundleAssemblies>
+    <AotAssemblies>False</AotAssemblies>
+    <EnableLLVM>False</EnableLLVM>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <DebugSymbols>True</DebugSymbols>
@@ -571,7 +574,6 @@
     <AndroidResource Include="Resources\drawable\onevoice_logo_app_less.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PluginsHelp\ConnectivityReadme.txt" />
     <AndroidResource Include="Resources\drawable\Kleding_W.png" />
     <AndroidResource Include="Resources\drawable\Kleding_Z.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Kleding_Z.png" />
@@ -580,6 +582,21 @@
     <AndroidResource Include="Resources\drawable-xhdpi\Kleding_W.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Kleding_Z.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Kleding_W.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PluginsHelp\ConnectivityReadme.txt" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Plus.png" />
+    <AndroidResource Include="Resources\drawable\Plus.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Plus.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Plus.png" />
+    <AndroidResource Include="Resources\drawable\Prayer.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Prayer.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Prayer.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Prayer.png" />
+    <AndroidResource Include="Resources\drawable\Filter.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Filter.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Filter.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Filter.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

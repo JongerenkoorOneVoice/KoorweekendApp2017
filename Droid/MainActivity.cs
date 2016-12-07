@@ -123,15 +123,18 @@ namespace KoorweekendApp2017.Droid
 				StopService(intent);
 			});
 
-			#region Resolver Init
-			SimpleContainer container = new SimpleContainer();
-			container.Register<IDevice>(t => AndroidDevice.CurrentDevice);
-			container.Register<IDisplay>(t => t.Resolve<IDevice>().Display);
-			container.Register<INetwork>(t => t.Resolve<IDevice>().Network);
+            #region Resolver Init
+            if (!Resolver.IsSet)
+            {
+                SimpleContainer container = new SimpleContainer();
+                container.Register<IDevice>(t => AndroidDevice.CurrentDevice);
+                container.Register<IDisplay>(t => t.Resolve<IDevice>().Display);
+                container.Register<INetwork>(t => t.Resolve<IDevice>().Network);
 
-			Resolver.SetResolver(container.GetResolver());
+                Resolver.SetResolver(container.GetResolver());
+            }
 			#endregion
-
+            
 			App oneVoiceApp = new App();
             LoadApplication(oneVoiceApp);
 

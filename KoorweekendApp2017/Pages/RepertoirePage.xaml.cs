@@ -57,7 +57,7 @@ namespace KoorweekendApp2017.Pages
 				};
 
 
-				ToolbarItems.Add(new ToolbarItem("Filter", "filter_25.png", () =>
+				ToolbarItems.Add(new ToolbarItem("Filter", "Filter.png", () =>
 				{
 						songOccasionsFilter.IsVisible = true;
 						songOccasionsFilter.Focus();

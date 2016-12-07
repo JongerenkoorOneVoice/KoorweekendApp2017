@@ -54,7 +54,7 @@ namespace KoorweekendApp2017.Pages
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Gebedspunten",
-				IconSource = "Kleding.png",
+				IconSource = "Prayer.png",
 				TargetType = typeof(PrayerRequestArchivePage)
 			});
 			masterPageItems.Add(new MasterPageItem

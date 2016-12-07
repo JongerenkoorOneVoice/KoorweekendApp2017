@@ -373,6 +373,8 @@
     <Content Include="PluginsHelp\ConnectivityReadme.txt" />
     <BundleResource Include="Resources\Kleding_W.png" />
     <BundleResource Include="Resources\Kleding_Z.png" />
+    <BundleResource Include="Resources\Plus.png" />
+    <BundleResource Include="Resources\Prayer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

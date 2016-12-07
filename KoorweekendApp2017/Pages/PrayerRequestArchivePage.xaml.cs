@@ -34,7 +34,7 @@ namespace KoorweekendApp2017.Pages
 			prayerRequestListView.IsPullToRefreshEnabled = true;
 			prayerRequestListView.Refreshing += SyncPrayerRequestsWithWebservice;
 
-			ToolbarItems.Add(new ToolbarItem("Add", "filter_25.png", () =>
+			ToolbarItems.Add(new ToolbarItem("Add", "Plus.png", () =>
 			{
 				EditingRequest = new PrayerRequest();
 				EditingRequest.ContactId = CurrentUser.Id;
