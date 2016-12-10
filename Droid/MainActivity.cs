@@ -18,7 +18,7 @@ using XLabs.Platform.Services;
 
 namespace KoorweekendApp2017.Droid
 {
-    [Activity(Label = "One Voice", Icon = "@drawable/onevoice_logo_app_less", Theme = "@style/Theme.Splash", MainLauncher = true, NoHistory = true)]
+    [Activity(Icon = "@drawable/onevoice_logo_app_less", Theme = "@style/Theme.Splash", MainLauncher = true, NoHistory = true)]
     public class SplashActivity : Android.Support.V7.App.AppCompatActivity
     {
         //static readonly string TAG = "X:" + typeof(SplashActivity).Name;
