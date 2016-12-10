@@ -14,8 +14,7 @@
           
       <Label Text="Adres:" HorizontalTextAlignment="Center" Font="Bold"></Label>  
 		<Label Text="{Binding Address}" HorizontalTextAlignment="Center" x:Name="Adres"></Label>
-      <Label Text="Let op, Wanneer google maps niet geinstalleerd is" HorizontalTextAlignment="Center" Font="11"></Label>
-          <Label Text="maakt de app gebruik van een webbrowser" HorizontalTextAlignment="Center" Font="11" Margin="0,0,0,10"></Label>
+      <Label HorizontalTextAlignment="Center" Font="11" x:Name="adresClick"></Label>
 
       <Label Text="Postcode:" HorizontalTextAlignment="Center" Font="Bold" ></Label>
 		<Label Text="{Binding AreaCode}" HorizontalTextAlignment="Center" Margin="0,0,0,10"></Label>

@@ -3,5 +3,7 @@
   <PropertyGroup>
     <SelectedDevice>Nexus 5 %28Lollipop%29</SelectedDevice>
     <ProjectView>ShowAllFiles</ProjectView>
+    <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
+    <AndroidDesignerPreferredTheme>Theme.DeviceDefault</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

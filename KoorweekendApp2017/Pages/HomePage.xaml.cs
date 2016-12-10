@@ -65,7 +65,7 @@ namespace KoorweekendApp2017.Pages
                 var newsOpen = new TapGestureRecognizer();
                 newsOpen.Tapped += (s, e) =>
                 {
-                    Device.OpenUri(new Uri("http://www.jongerenkooronevoice.nl/"));
+                    Navigation.PushAsync(new NewsArchive());
                 };
                 newsGrid.GestureRecognizers.Add(newsOpen);
             }
@@ -117,7 +117,7 @@ namespace KoorweekendApp2017.Pages
         {
             Event nextEvent = HomePageHelper.GetNextEvent(App.Database); // Het eerstvolgende event.
             List<Event> eventsInNextSevenDays = HomePageHelper.GetEventsInTimeSpan(App.Database, new TimeSpan(7, 0, 0, 0)); // Alle eventementen in een bepalde periode.
-            var timeDifference = (nextEvent.StartDate - DateTime.Now);
+            var timeDifference = (nextEvent.StartDate - DateTime.Today);
             eventTitle.Text = (string.Format("{0}", (Convert.ToString(timeDifference))));
 
             if (timeDifference.Days > 1)

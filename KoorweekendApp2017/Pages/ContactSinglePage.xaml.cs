@@ -116,6 +116,8 @@ namespace KoorweekendApp2017.Pages
 
             if (Convert.ToString(Adres.Text).ToLower() != "geen" && Convert.ToString(Adres.Text).ToLower() != "x" && Convert.ToString(Adres.Text).ToLower() != "onbekend")
             {
+                adresClick.Text = "Let op, Wanneer google maps niet geinstalleerd is maakt de app gebruik van een webbrowser";
+                adresClick.Margin = new Thickness(0,0,0,10);
                 Adres.TextColor = Color.FromHex("#FF0000");//#0645AD voor blauw
                 var adresOpen = new TapGestureRecognizer();
                 adresOpen.Tapped += (s, e) => {

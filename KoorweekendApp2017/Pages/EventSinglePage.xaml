@@ -36,8 +36,7 @@
           <Label Margin="15,10,15,0" Text="{Binding Address}" HorizontalTextAlignment="Center" x:Name="Adres"></Label>
           <Label Margin="15,0,15,0" Text="{Binding AreaCode}" HorizontalTextAlignment="Center"></Label>
           <Label Margin="15,0,15,8" Text="{Binding City}" HorizontalTextAlignment="Center" x:Name="Plaats"></Label>
-          <Label Text="Let op, Wanneer google maps niet geinstalleerd is" HorizontalTextAlignment="Center" Font="11"></Label>
-          <Label Text="maakt de app gebruik van een webbrowser" HorizontalTextAlignment="Center" Font="11" Margin="0,0,0,15"></Label>
+          <Label HorizontalTextAlignment="Center" Font="11" x:Name="adresClick"></Label>
 
           <Label x:Name="songsHeaderTitle" Margin="15,10,15,5" Text="We zingen de volgende nummers" HorizontalTextAlignment="Center" Font="Bold"></Label>
           <!--TableView Intent="Data" x:Name="songForEventListView">
