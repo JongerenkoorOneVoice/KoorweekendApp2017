@@ -4,6 +4,7 @@ using KoorweekendApp2017.Models;
 using Xamarin.Forms;
 using XLabs.Ioc;
 using XLabs.Platform.Device;
+using XLabs.Platform.Services;
 
 namespace KoorweekendApp2017.Pages
 {
@@ -46,7 +47,11 @@ namespace KoorweekendApp2017.Pages
                 Device.OpenUri(new Uri("http://www.jongerenkooronevoice.nl/"));
             };
             label.GestureRecognizers.Add(linkOpen);
-
+			var network = Resolver.Resolve<INetwork>();
+			var x = network;
+			var y = x.InternetConnectionStatus();
+			var c = y;
+			birthName.Text = c.ToString();
 
         }
 
