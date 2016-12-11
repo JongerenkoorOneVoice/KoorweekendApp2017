@@ -20,7 +20,8 @@ namespace KoorweekendApp2017.Helpers
 		{
 			requestUrl = AuthenticationHelper.CreateSecureAuthenticatedUrl(requestUrl);
 			string rawData = String.Empty;
-			T returnValue = default(T);
+			T returnValue = Default<T>.Value;
+
 
 			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
 			request.Method = "GET";
@@ -33,8 +34,9 @@ namespace KoorweekendApp2017.Helpers
 
 			try
 			{
-				using (HttpWebResponse response = (HttpWebResponse)(await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, null).ConfigureAwait(false)))
-				{
+				var response = (HttpWebResponse) Task.Run(request.GetResponseAsync).Result;
+
+
 					using (Stream responseStream = response.GetResponseStream())
 					{
 						if (responseStream != null)
@@ -46,16 +48,27 @@ namespace KoorweekendApp2017.Helpers
 						}
 
 					}
-				}
+				response.Dispose();
+		
 			
 			}
-		catch(Exception ex){
-			var x = ex;
-		}
+			catch(Exception ex){
+				if (ex.Message == "The remote server returned an error: (403) Forbidden.")
+				{
+					// Should probably log somthing here
+				}
+				else {
+					// And here
+				}
+			}
+
 			if (!String.IsNullOrEmpty(rawData) && rawData[0] == '<' && typeof(T) == typeof(String))
 			{
 				// resultJson is not JSON
 				returnValue = JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(rawData));
+			}
+			else if(String.IsNullOrEmpty(rawData)){
+				return returnValue;
 			}
 			else {
 				returnValue = GetModelFromJson<T>(rawData);

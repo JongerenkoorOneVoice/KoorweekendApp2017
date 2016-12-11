@@ -76,40 +76,44 @@ namespace KoorweekendApp2017.Pages
         {
             Contact firstBirthdayContact = HomePageHelper.GetFirstBirthdayContact(App.Database); // Contact met de eerste verjaardag.
             List<Contact> birthdayInNextSevenDays = HomePageHelper.GetBirthdaysInTimeSpan(App.Database, new TimeSpan(7, 0, 0, 0)); // Alle jarigen in een bepalde periode.
+			if (firstBirthdayContact != null)
+			{
 
-            DateTime contactsBirthday = firstBirthdayContact.BirthDate.Value;
-            var birtDayThisYear = contactsBirthday.AddYears(DateTime.Now.Year - contactsBirthday.Year);
-            var timeDifference = (birtDayThisYear - DateTime.Today);
-            var age = (DateTime.Now.Year - contactsBirthday.Year);
+				DateTime contactsBirthday = firstBirthdayContact.BirthDate.Value;
+				var birtDayThisYear = contactsBirthday.AddYears(DateTime.Now.Year - contactsBirthday.Year);
+				var timeDifference = (birtDayThisYear - DateTime.Today);
+				var age = (DateTime.Now.Year - contactsBirthday.Year);
 
-            birthName.Text = (firstBirthdayContact.FullName);
-            if (timeDifference.Days > 1)
-            {
-                birthDate.Text = (string.Format("Wordt over {0} dagen", (Convert.ToString(timeDifference.Days))));
-                birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
-            }
-            else if (timeDifference.Days == 1)
-            {
-                birthDate.Text = (string.Format("Wordt morgen", (Convert.ToString(timeDifference.Days))));
-                birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
-            }
-            else if (timeDifference.Days == 0)
-            {
-                birthDate.Text = ("Is vandaag");
-                birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
-                birthToday.Text = ("Geworden");
-                birthClick.Text = ("Klik om contactpagina te openen");
-            }
-            var jarigOpen = new TapGestureRecognizer();
-            jarigOpen.Tapped += (s, e) =>
-            {
-                var item = firstBirthdayContact;
-                if (item != null)
-                {
-                    Navigation.PushAsync(new ContactSinglePage() { BindingContext = item });
-                }
-            };
-            birthGrid.GestureRecognizers.Add(jarigOpen);
+				birthName.Text = (firstBirthdayContact.FullName);
+				if (timeDifference.Days > 1)
+				{
+					birthDate.Text = (string.Format("Wordt over {0} dagen", (Convert.ToString(timeDifference.Days))));
+					birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
+				}
+				else if (timeDifference.Days == 1)
+				{
+					birthDate.Text = (string.Format("Wordt morgen", (Convert.ToString(timeDifference.Days))));
+					birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
+				}
+				else if (timeDifference.Days == 0)
+				{
+					birthDate.Text = ("Is vandaag");
+					birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
+					birthToday.Text = ("Geworden");
+					birthClick.Text = ("Klik om contactpagina te openen");
+				}
+				var jarigOpen = new TapGestureRecognizer();
+				jarigOpen.Tapped += (s, e) =>
+				{
+					var item = firstBirthdayContact;
+					if (item != null)
+					{
+						Navigation.PushAsync(new ContactSinglePage() { BindingContext = item });
+					}
+				};
+				birthGrid.GestureRecognizers.Add(jarigOpen);
+			}
+
         }
 
 

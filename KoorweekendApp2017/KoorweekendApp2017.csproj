@@ -198,6 +198,7 @@
     </Compile>
     <Compile Include="Messages\StartApiPrayerRequestSyncMessage.cs" />
     <Compile Include="Messages\StopApiPrayerRequestSyncMessage.cs" />
+    <Compile Include="Helpers\Default.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">

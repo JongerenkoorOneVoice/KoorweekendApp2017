@@ -8,6 +8,7 @@ using KoorweekendApp2017.Enums;
 using KoorweekendApp2017.Models;
 using System.Linq;
 using System.Threading.Tasks;
+using KoorweekendApp2017.Tasks;
 
 namespace KoorweekendApp2017
 {
@@ -46,7 +47,12 @@ namespace KoorweekendApp2017
 			else if (CurrentPage == LoginPageIds.MailSend)
 			{
 				var isAuthenticated = await AuthenticationHelper.IsAuthenticated(pageMailInput.Text);
-				if(isAuthenticated) Application.Current.MainPage = new KoorweekendApp2017Page();
+				if (isAuthenticated)
+				{
+					DataSync.RunAllTasksAndWaitForReady(true);
+					AuthenticationHelper.WriteCurrentAuthenticatedUserIdToDb();
+					Application.Current.MainPage = new KoorweekendApp2017Page();
+				}
 			}
 			//await LoadPage(CurrentPage + 1);
 

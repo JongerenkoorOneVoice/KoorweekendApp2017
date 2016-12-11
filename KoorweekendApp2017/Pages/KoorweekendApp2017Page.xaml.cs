@@ -7,6 +7,7 @@ namespace KoorweekendApp2017.Pages
 	{
 		public KoorweekendApp2017Page()
 		{
+
 			InitializeComponent();
 			menuPage.ListView.ItemSelected += OnItemSelected;
 

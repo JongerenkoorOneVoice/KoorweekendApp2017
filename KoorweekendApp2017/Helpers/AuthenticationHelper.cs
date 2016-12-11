@@ -13,6 +13,22 @@ namespace KoorweekendApp2017
 	public class AuthenticationHelper
 	{
 
+		public static void WriteCurrentAuthenticatedUserIdToDb()
+		{
+			String emailAddress = App.Database.Settings.GetValue<String>("lastAuthenticationEmailAddressTried");
+			AuthenticationResult authenticationResult = App.Database.Settings.GetValue<AuthenticationResult>("lastAuthenticationResult");
+			if (authenticationResult != null && authenticationResult.Code == AuthorizationCode.Authorized)
+			{
+				Contact authenticatedContact = App.Database.Contacts.GetAll().Find(x => x.Email1 == emailAddress);
+				if (authenticatedContact != null)
+				{
+					App.Database.Settings.Set("authenticatedContactId", authenticatedContact.Id);
+				}
+			}
+
+
+		}
+
 		public static String CreateSecureAuthenticatedUrl(String url)
 		{
 
@@ -139,7 +155,7 @@ namespace KoorweekendApp2017
 
 			if (shouldUpdateAuthentication)
 			{
-				var authResult = await GetAuthenticationResult(emailaddress);
+				AuthenticationResult authResult = await GetAuthenticationResult(emailaddress);
 				if (authResult != null)
 				{
 					App.Database.Settings.Set("lastAuthenticationResult", authResult);
@@ -147,6 +163,7 @@ namespace KoorweekendApp2017
 					if (authResult.Code == AuthorizationCode.Authorized)
 					{
 						App.Database.Settings.Set("lastSuccessfullAuthentication", DateTime.Now);
+
 						Contact authenticatedContact = App.Database.Contacts.GetAll().Find(x => x.Email1 == emailaddress);
 						if (authenticatedContact != null)
 						{

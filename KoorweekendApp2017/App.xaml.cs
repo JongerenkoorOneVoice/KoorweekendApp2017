@@ -25,16 +25,12 @@ namespace KoorweekendApp2017
 			InitializeComponent();
 			var db = DependencyService.Get<ISQLite>().GetConnection();
 			Database = new LocalDatabase(db);
-            //DataSync.UpdateContactsInDbFromApi();
-            //DataSync.UpdateSongsInDbFromApi();
-            //DataSync.UpdateEventsInDbFromApi();
+			//DataSync.UpdateContactsInDbFromApi();
+			//DataSync.UpdateSongsInDbFromApi();
+			//DataSync.UpdateEventsInDbFromApi();
 
-            
-            MessagingCenter.Send(new StartApiContactSyncMessage(), "StartApiContactSyncMessage");
-			MessagingCenter.Send(new StartApiSongSyncMessage(), "StartApiSongSyncMessage");
-			MessagingCenter.Send(new StartApiEventSyncMessage(), "StartApiEventSyncMessage");
-			MessagingCenter.Send(new StartApiSongOccasionSyncMessage(), "StartApiSongOccasionSyncMessage");
-			MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
+
+			DataSync.RunAllTasksInBackground();
 
 			//MessagingCenter.Send(new StopApiContactSyncMessage(), "StopApiContactSyncMessage");
 
@@ -57,6 +53,7 @@ namespace KoorweekendApp2017
 			else {
 				Int32 currentUserId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
 				CurrentUser = App.Database.Contacts.GetById(currentUserId);
+
 				MainPage = new KoorweekendApp2017Page();
 			}
 

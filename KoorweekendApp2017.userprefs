@@ -1,26 +1,26 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Helpers/RestHelper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/PrayerRequestEditPage.xaml.cs">
     <Files>
-      <File FileName="KoorweekendApp2017/Pages/PrayerRequestArchivePage.xaml.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/PrayerRequestEditPage.xaml" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/PrayerRequestEditPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/App.xaml.cs" Line="1" Column="1" />
-      <File FileName="iOS/AppDelegate.cs" Line="83" Column="16" />
-      <File FileName="iOS/Tasks/ApiSongSyncTask.cs" Line="30" Column="64" />
-      <File FileName="Droid/MainActivity.cs" Line="122" Column="66" />
-      <File FileName="iOS/Tasks/ApiSongOccasionSyncTask.cs" Line="35" Column="11" />
-      <File FileName="KoorweekendApp2017/Pages/MainMenuPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="Droid/Tasks/ApiSongSyncTask.cs" Line="5" Column="35" />
-      <File FileName="Droid/Tasks/ApiEventSyncTask.cs" Line="1" Column="1" />
-      <File FileName="Droid/Tasks/ApiPrayerRequestSyncTask.cs" Line="42" Column="56" />
-      <File FileName="Droid/Tasks/ApiSongOccasionSyncTask.cs" Line="42" Column="55" />
-      <File FileName="KoorweekendApp2017/Pages/HomePage.xaml.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Helpers/AuthenticationHelper.cs" Line="74" Column="3" />
-      <File FileName="KoorweekendApp2017/Helpers/RestHelper.cs" Line="138" Column="40" />
+      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="179" Column="1" />
+      <File FileName="KoorweekendApp2017/App.xaml.cs" Line="51" Column="23" />
+      <File FileName="KoorweekendApp2017/Helpers/AuthenticationHelper.cs" Line="25" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/KoorweekendApp2017Page.xaml.cs" Line="10" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/LoginPage.xaml.cs" Line="53" Column="1" />
+      <File FileName="iOS/Main.cs" Line="9" Column="2" />
+      <File FileName="KoorweekendApp2017/Pages/PrayerRequestArchivePage.xaml.cs" Line="114" Column="1" />
+      <File FileName="KoorweekendApp2017/Models/AuthenitcationResult.cs" Line="8" Column="21" />
+      <File FileName="KoorweekendApp2017/Enums/AuthorizationCode.cs" Line="11" Column="13" />
+      <File FileName="KoorweekendApp2017/Models/CustomDevice.cs" Line="21" Column="1" />
+      <File FileName="KoorweekendApp2017/Helpers/RestHelper.cs" Line="77" Column="1" />
+      <File FileName="iOS/Tasks/ApiPrayerRequestSyncTask.cs" Line="38" Column="1" />
+      <File FileName="KoorweekendApp2017/obj/Debug/KoorweekendApp2017.Pages.KoorweekendApp2017Page.xaml.g.cs" Line="24" Column="1" />
+      <File FileName="iOS/AppDelegate.cs" Line="97" Column="1" />
+      <File FileName="KoorweekendApp2017/Helpers/Default.cs" Line="14" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/HomePage.xaml.cs" Line="73" Column="3" />
+      <File FileName="KoorweekendApp2017/Pages/PrayerRequestEditPage.xaml.cs" Line="38" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.Droid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
@@ -30,13 +30,21 @@
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Helpers/ImageHelper.cs" line="78" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/ContactSinglePage.xaml.cs" line="71" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/ContactSinglePage.xaml.cs" line="137" column="26" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Helpers/RestHelper.cs" line="53" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/BusinessObjects/LocalDatabase.cs" line="258" column="98" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/PrayerRequestEditPage.xaml.cs" line="36" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/PrayerRequestEditPage.xaml.cs" line="24" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/PrayerRequestArchivePage.xaml.cs" line="52" column="58" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/PrayerRequestArchivePage.xaml.cs" line="61" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/PrayerRequestArchivePage.xaml.cs" line="30" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Helpers/AuthenticationHelper.cs" line="18" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/LoginPage.xaml.cs" line="49" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/LoginPage.xaml.cs" line="34" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Pages/LoginPage.xaml.cs" line="53" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Helpers/RestHelper.cs" line="56" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Helpers/AuthenticationHelper.cs" line="168" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.560BF23C-1449-4B36-9CB2-8F5B8CFF4F30" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
 </Properties>
