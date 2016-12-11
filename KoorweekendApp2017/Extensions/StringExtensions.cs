@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
-namespace KoorweekendApp2017
+namespace KoorweekendApp2017.Extensions
 {
 	public static class StringExtensions
 	{
@@ -21,6 +22,11 @@ namespace KoorweekendApp2017
 			}
 		}
 
-
+		public static string ToBase64(this String strIn)
+		{
+			var bytes = Encoding.UTF8.GetBytes(strIn);
+			var base64 = Convert.ToBase64String(bytes);
+			return base64;
+		}
 	}
 }

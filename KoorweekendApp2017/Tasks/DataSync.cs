@@ -173,7 +173,25 @@ namespace KoorweekendApp2017.Tasks
 			Int32 currentContactId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
 
 			// should change to requests that are changed.
-			string query = "http://www.jongerenkooronevoice.nl/prayerrequests/all";
+			string query = String.Empty;
+			if (shouldUpdateAll)
+			{
+				query = "http://www.jongerenkooronevoice.nl/prayerrequests/all";
+			}
+			else
+			{
+				DateTime lastUpdate = DateTime.Parse("1010-01-01");
+				String lastUpdatedString = App.Database.Settings.GetValue<String>("lastPrayerRequestSync");
+				if (!String.IsNullOrEmpty(lastUpdatedString) && !shouldUpdateAll)
+				{
+					lastUpdate = DateTime.Parse(lastUpdatedString);
+					lastUpdate = lastUpdate.AddDays(-1);
+				}
+
+				query = String.Format("http://www.jongerenkooronevoice.nl/contacts/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
+
+			}
+
 			List<PrayerRequest> apiPrayerRequests = RestHelper.GetRestDataFromUrl<List<PrayerRequest>>(query).Result;
 
 			foreach (var pr in apiPrayerRequests)

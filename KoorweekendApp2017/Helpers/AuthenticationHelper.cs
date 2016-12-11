@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KoorweekendApp2017.Enums;
+using KoorweekendApp2017.Extensions;
 using KoorweekendApp2017.Helpers;
 using KoorweekendApp2017.Models;
 using Plugin.DeviceInfo;

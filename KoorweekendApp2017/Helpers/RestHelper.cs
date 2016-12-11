@@ -16,7 +16,7 @@ namespace KoorweekendApp2017.Helpers
 	public static class RestHelper
 	{
 
-		public async static Task<T> GetRestDataFromUrl<T>(string requestUrl)
+		public async static Task<T> GetRestDataFromUrl<T>(string requestUrl, BasicAuthentication authObj = null)
 		{
 			requestUrl = AuthenticationHelper.CreateSecureAuthenticatedUrl(requestUrl);
 			string rawData = String.Empty;

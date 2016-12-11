@@ -199,6 +199,10 @@
     <Compile Include="Messages\StartApiPrayerRequestSyncMessage.cs" />
     <Compile Include="Messages\StopApiPrayerRequestSyncMessage.cs" />
     <Compile Include="Helpers\Default.cs" />
+    <Compile Include="Models\DailyBread.cs" />
+    <Compile Include="Models\DailyBreadVerse.cs" />
+    <Compile Include="Models\DailyBreadStringsPerTranslation.cs" />
+    <Compile Include="Models\BasicAuthentication.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">
@@ -315,10 +319,6 @@
       <HintPath>..\packages\Xamarin.Forms.2.3.2.127\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.2.3.2.127\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="XLabs.Core, Version=1.0.5974.18420, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\XLabs.Core.2.2.0-pre02\lib\portable-net45+win+wpa81+MonoAndroid+xamarinios+MonoTouch\XLabs.Core.dll</HintPath>
       <Private>True</Private>
@@ -337,6 +337,10 @@
     </Reference>
     <Reference Include="XLabs.Serialization, Version=2.0.5974.18420, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\XLabs.Serialization.2.2.0-pre02\lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.Serialization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.2.3.2.127\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

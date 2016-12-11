@@ -9,6 +9,7 @@ using KoorweekendApp2017.Models;
 using System.Linq;
 using System.Threading.Tasks;
 using KoorweekendApp2017.Tasks;
+using KoorweekendApp2017.Extensions;
 
 namespace KoorweekendApp2017
 {
