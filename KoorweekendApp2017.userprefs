@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/AppDelegate.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Helpers/RestHelper.cs">
     <Files>
       <File FileName="KoorweekendApp2017/Pages/PrayerRequestArchivePage.xaml.cs" Line="1" Column="1" />
       <File FileName="KoorweekendApp2017/Pages/PrayerRequestEditPage.xaml" Line="1" Column="1" />
@@ -11,12 +11,13 @@
       <File FileName="Droid/MainActivity.cs" Line="122" Column="66" />
       <File FileName="iOS/Tasks/ApiSongOccasionSyncTask.cs" Line="35" Column="11" />
       <File FileName="KoorweekendApp2017/Pages/MainMenuPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="Droid/Tasks/:Users:marcvannieuwenhuijzen:Projects:JongerenkoorOneVoice:KoorweekendApp2017.git:Droid:Tasks:ApiPrayerRequestSyncTask.cs" Line="36" Column="6" />
       <File FileName="Droid/Tasks/ApiSongSyncTask.cs" Line="5" Column="35" />
       <File FileName="Droid/Tasks/ApiEventSyncTask.cs" Line="1" Column="1" />
       <File FileName="Droid/Tasks/ApiPrayerRequestSyncTask.cs" Line="42" Column="56" />
       <File FileName="Droid/Tasks/ApiSongOccasionSyncTask.cs" Line="42" Column="55" />
       <File FileName="KoorweekendApp2017/Pages/HomePage.xaml.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Helpers/AuthenticationHelper.cs" Line="74" Column="3" />
+      <File FileName="KoorweekendApp2017/Helpers/RestHelper.cs" Line="138" Column="40" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />

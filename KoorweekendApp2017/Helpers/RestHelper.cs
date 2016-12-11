@@ -18,7 +18,7 @@ namespace KoorweekendApp2017.Helpers
 
 		public async static Task<T> GetRestDataFromUrl<T>(string requestUrl)
 		{
-
+			requestUrl = AuthenticationHelper.CreateSecureAuthenticatedUrl(requestUrl);
 			string rawData = String.Empty;
 			T returnValue = default(T);
 
@@ -68,7 +68,7 @@ namespace KoorweekendApp2017.Helpers
 
 		public async static Task<T> PostDataToUrl<T>(string requestUrl, object  data)
 		{
-			
+			requestUrl = AuthenticationHelper.CreateSecureAuthenticatedUrl(requestUrl);
 			T returnValue = default(T);
 
 			String json = JsonConvert.SerializeObject(data);
@@ -122,7 +122,7 @@ namespace KoorweekendApp2017.Helpers
 
 		public async static Task<T> PutDataToUrl<T>(string requestUrl, object data)
 		{
-
+			requestUrl = AuthenticationHelper.CreateSecureAuthenticatedUrl(requestUrl);
 			T returnValue = default(T);
 
 			String json = JsonConvert.SerializeObject(data);
@@ -135,7 +135,7 @@ namespace KoorweekendApp2017.Helpers
 
 			var client = new HttpClient();
 			var postData = new ByteArrayContent(jsonBytes);
-			var resultStream = await client.PostAsync(requestUrl, postData);
+			var resultStream = await client.PutAsync(requestUrl, postData);
 			var resultBytes = await resultStream.Content.ReadAsByteArrayAsync();
 			var resultJson = Encoding.UTF8.GetString(resultBytes, 0, resultBytes.Length);
 
@@ -144,6 +144,7 @@ namespace KoorweekendApp2017.Helpers
 
 			return returnValue;
 		}
+
         public static T GetModelFromJson<T>(String RawData)
         {
 			if (RawData == "null") return default(T);
