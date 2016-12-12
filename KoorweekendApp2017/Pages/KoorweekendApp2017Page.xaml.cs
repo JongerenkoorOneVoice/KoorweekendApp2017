@@ -19,8 +19,6 @@ namespace KoorweekendApp2017.Pages
 			var item = e.SelectedItem as MasterPageItem;
 			if (item != null)
 			{
-				
-
 
 				if (item.TargetType == typeof(LoginPage))
 				{

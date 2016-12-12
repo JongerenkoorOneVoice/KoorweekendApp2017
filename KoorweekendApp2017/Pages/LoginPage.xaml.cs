@@ -10,6 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using KoorweekendApp2017.Tasks;
 using KoorweekendApp2017.Extensions;
+using XLabs.Ioc;
+using XLabs.Platform.Services;
 
 namespace KoorweekendApp2017
 {
@@ -24,9 +26,10 @@ namespace KoorweekendApp2017
 		{
 			InitializeComponent();
 			page.IsVisible = false;
-			SetupPages();
-			LoadPage(LoginPageIds.EnterEmail).ConfigureAwait(false);
-			pageButton.Clicked += Authenticate;
+            SetupPages();
+            LoadPage(LoginPageIds.EnterEmail).ConfigureAwait(false);
+            pageButton.Clicked += Authenticate;
+            
 
 		}
 
@@ -34,7 +37,15 @@ namespace KoorweekendApp2017
 		{
 			if (CurrentPage == LoginPageIds.EnterEmail)
 			{
-				await RunLoginScript();
+               /* var network = Resolver.Resolve<INetwork>();
+                if (network.InternetConnectionStatus() != NetworkStatus.NotReachable)
+                {*/
+                    await RunLoginScript();
+               /*  }
+               else
+                {
+                    await DisplayAlert("Geen internet", "Je kan alleen inloggen als je internet aan hebt staan.", "Terug");
+                }*/
 
 			}
 			else if (CurrentPage == LoginPageIds.EmailNotInList)
@@ -47,11 +58,10 @@ namespace KoorweekendApp2017
 			}
 			else if (CurrentPage == LoginPageIds.MailSend)
 			{
-				var isAuthenticated = await AuthenticationHelper.IsAuthenticated(pageMailInput.Text);
+
+                var isAuthenticated = await AuthenticationHelper.IsAuthenticated(pageMailInput.Text);
 				if (isAuthenticated)
 				{
-					DataSync.RunAllTasksAndWaitForReady(true);
-					AuthenticationHelper.WriteCurrentAuthenticatedUserIdToDb();
 					Application.Current.MainPage = new KoorweekendApp2017Page();
 				}
 			}
@@ -150,16 +160,16 @@ namespace KoorweekendApp2017
 			}
 			else if (authResult.Code == AuthorizationCode.Authorized)
 			{
-				Application.Current.MainPage = new KoorweekendApp2017Page();
+				
 				App.Database.Settings.Set("lastSuccessfullAuthentication", DateTime.Now);
 				App.Database.Settings.Set("lastAuthenticationResult", authResult);
 				App.Database.Settings.Set("lastAuthenticationEmailAddressTried", emailaddress);
-				Contact authenticatedContact = App.Database.Contacts.GetAll().Find(x => x.Email1 == emailaddress);
-				if (authenticatedContact != null)
-				{
-					App.Database.Settings.Set("authenticatedContactId", authenticatedContact.Id);
-				}
-			}
+
+                AuthenticationHelper.WriteCurrentAuthenticatedUserIdToDb();
+                DataSync.RunAllTasksAndWaitForReady(true);
+                
+                Application.Current.MainPage = new KoorweekendApp2017Page();
+            }
 		}
 
 		public void SetupPages()

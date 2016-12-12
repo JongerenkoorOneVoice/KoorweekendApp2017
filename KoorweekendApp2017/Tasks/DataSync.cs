@@ -20,7 +20,7 @@ namespace KoorweekendApp2017.Tasks
 			MessagingCenter.Send(new StartApiSongSyncMessage(), "StartApiSongSyncMessage");
 			MessagingCenter.Send(new StartApiEventSyncMessage(), "StartApiEventSyncMessage");
 			MessagingCenter.Send(new StartApiSongOccasionSyncMessage(), "StartApiSongOccasionSyncMessage");
-			MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
+			//MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
 		
 		}
 
@@ -31,7 +31,7 @@ namespace KoorweekendApp2017.Tasks
 			UpdateSongsInDbFromApi(downloadAll);
 			UpdateEventsInDbFromApi(downloadAll);
 			UpdateSongOccasionsInDbFromApi(downloadAll);
-			SyncPrayerRequests(downloadAll);
+			//SyncPrayerRequests(downloadAll);
 
 		}
 
@@ -218,9 +218,9 @@ namespace KoorweekendApp2017.Tasks
 
 		public static void SyncPrayerRequests(bool shouldUpdateAll = false)
 		{
-			//string query = String.Format("http://www.jongerenkooronevoice.nl/apievents/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
-			// Get all prayerrequests from the web api
-			bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
+            //string query = String.Format("http://www.jongerenkooronevoice.nl/prayerrequests/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
+            // Get all prayerrequests from the web api
+            bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
 			if (isAuthenticated)
 			{
 				Int32 statusCount = 0;
@@ -229,51 +229,56 @@ namespace KoorweekendApp2017.Tasks
 
 				List<PrayerRequest> appPrayerRequests = App.Database.PrayerRequests.GetAll();
 				List<PrayerRequest> currentContactPrayerRequests = appPrayerRequests.FindAll(x => x.ContactId == currentContactId);
-				foreach (var pr in currentContactPrayerRequests)
-				{
-					if (pr.Id == 0 && pr.IsPrivate != true)
-					{
-						String url = "http://www.jongerenkooronevoice.nl/prayerrequests/createnew";
-						RestHelper.PostDataToUrl<PrayerRequest>(url, pr).ContinueWith((arg) =>
-						{
-							PrayerRequest result = arg.Result;
-							result.AppSpecificId = pr.AppSpecificId;
-							App.Database.PrayerRequests.UpdateOrInsert(result);
-							statusCount = statusCount++;
-							if (statusCount == currentContactPrayerRequests.Count)
-							{
-								UpdatePrayerRequestsInDbFromApi();
-							}
-						});
-					}
-					else {
-						String url = "http://www.jongerenkooronevoice.nl/prayerrequests/updatebyid/" + Convert.ToString(pr.Id);
+                if (currentContactPrayerRequests.Count != 0)
+                {
+                    foreach (var pr in currentContactPrayerRequests)
+                    {
+                        if (pr.Id == 0 && pr.IsPrivate != true)
+                        {
+                            String url = "http://www.jongerenkooronevoice.nl/prayerrequests/createnew";
+                            RestHelper.PostDataToUrl<PrayerRequest>(url, pr).ContinueWith((arg) =>
+                            {
+                                PrayerRequest result = arg.Result;
+                                result.AppSpecificId = pr.AppSpecificId;
+                                App.Database.PrayerRequests.UpdateOrInsert(result);
+                                statusCount = statusCount++;
+                                if (statusCount == currentContactPrayerRequests.Count)
+                                {
+                                    UpdatePrayerRequestsInDbFromApi();
+                                }
+                            });
+                        }
+                        else
+                        {
+                            String url = "http://www.jongerenkooronevoice.nl/prayerrequests/updatebyid/" + Convert.ToString(pr.Id);
 
-						if (Convert.ToDateTime(pr.EndDate).AddDays(1).Date < DateTime.Now)
-						{
-							pr.IsVisible = false;
-						}
+                            if (Convert.ToDateTime(pr.EndDate).AddDays(1).Date < DateTime.Now)
+                            {
+                                pr.IsVisible = false;
+                            }
 
-						if (pr.IsPrivate) pr.IsVisible = false;
+                            if (pr.IsPrivate) pr.IsVisible = false;
 
-						RestHelper.PutDataToUrl<PrayerRequest>(url, pr).ContinueWith((arg) =>
-						{
-							PrayerRequest result = arg.Result;
-							result.AppSpecificId = pr.AppSpecificId;
-							App.Database.PrayerRequests.UpdateOrInsert(arg.Result);
-							statusCount = statusCount++;
-							statusCount = statusCount++;
-							if (statusCount == currentContactPrayerRequests.Count)
-							{
-								UpdatePrayerRequestsInDbFromApi();
-							}
-						});
-					}
+                            RestHelper.PutDataToUrl<PrayerRequest>(url, pr).ContinueWith((arg) =>
+                            {
+                                PrayerRequest result = arg.Result;
+                                result.AppSpecificId = pr.AppSpecificId;
+                                App.Database.PrayerRequests.UpdateOrInsert(arg.Result);
+                                statusCount = statusCount++;
+                                statusCount = statusCount++;
+                                if (statusCount == currentContactPrayerRequests.Count)
+                                {
+                                    UpdatePrayerRequestsInDbFromApi();
+                                }
+                            });
+                        }
+                    }
+                }
+                else
+                {
+                    UpdatePrayerRequestsInDbFromApi();
+                }
 
-				}
-
-
-				
 			}
 		}
 	}

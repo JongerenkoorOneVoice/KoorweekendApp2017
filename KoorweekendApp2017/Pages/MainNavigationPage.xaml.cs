@@ -10,8 +10,9 @@ namespace KoorweekendApp2017.Pages
 
 		public MainNavigationPage() : base()
 		{
-			PushAsync(new HomePage());
-			InitializeComponent();
+            InitializeComponent();
+            PushAsync(new HomePage());
+
 		}
 
 		public MainNavigationPage(Page root) : base(root)

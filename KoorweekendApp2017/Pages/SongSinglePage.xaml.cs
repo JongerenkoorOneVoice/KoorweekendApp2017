@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using KoorweekendApp2017.Models;
 using Xamarin.Forms;
+using XLabs.Ioc;
+using XLabs.Platform.Services;
 
 namespace KoorweekendApp2017.Pages
 {
@@ -26,8 +28,15 @@ namespace KoorweekendApp2017.Pages
 			if (!String.IsNullOrEmpty(currentSong.YoutubeId))
 			{
 				HtmlWebViewSource htmlWebViewSource = new HtmlWebViewSource();
-				htmlWebViewSource.Html = BuildFinalHtml(BuildEmbedUrl(currentSong.YoutubeId));
-
+                var network = Resolver.Resolve<INetwork>();
+                if (network.InternetConnectionStatus() != NetworkStatus.NotReachable)
+                {
+                    htmlWebViewSource.Html = BuildFinalHtml(BuildEmbedUrl(currentSong.YoutubeId));
+                }
+                else
+                {
+                    htmlWebViewSource.Html = BuildFinalHtml("<style>body{background-color: #e3e3e3; color: white;position:relative} h1{position: relative; text-align: center; top: 50%; font-size: 1rem;transform: translateY(-50%);font-family: arial;text-transform: uppercase;}</style><h1>Geen internet beschikbaar</h1>");
+                }
 				youtubeVideoView.Source = htmlWebViewSource;
 
 				youtubeVideoView.HorizontalOptions = LayoutOptions.Fill;

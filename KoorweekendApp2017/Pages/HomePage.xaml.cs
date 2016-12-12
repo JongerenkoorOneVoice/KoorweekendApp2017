@@ -47,11 +47,6 @@ namespace KoorweekendApp2017.Pages
                 Device.OpenUri(new Uri("http://www.jongerenkooronevoice.nl/"));
             };
             label.GestureRecognizers.Add(linkOpen);
-			var network = Resolver.Resolve<INetwork>();
-			var x = network;
-			var y = x.InternetConnectionStatus();
-			var c = y;
-			birthName.Text = c.ToString();
 
         }
 
@@ -125,40 +120,44 @@ namespace KoorweekendApp2017.Pages
         void Events()
         {
             Event nextEvent = HomePageHelper.GetNextEvent(App.Database); // Het eerstvolgende event.
-            List<Event> eventsInNextSevenDays = HomePageHelper.GetEventsInTimeSpan(App.Database, new TimeSpan(7, 0, 0, 0)); // Alle eventementen in een bepalde periode.
-            var timeDifference = (nextEvent.StartDate - DateTime.Today);
-            eventTitle.Text = (string.Format("{0}", (Convert.ToString(timeDifference))));
+            //List<Event> eventsInNextSevenDays = HomePageHelper.GetEventsInTimeSpan(App.Database, new TimeSpan(7, 0, 0, 0)); // Alle eventementen in een bepalde periode.
+            if(nextEvent != null)
+            {
+                var timeDifference = (nextEvent.StartDate - DateTime.Today);
+                eventTitle.Text = (string.Format("{0}", (Convert.ToString(timeDifference))));
 
-            if (timeDifference.Days > 1)
-            {
-                eventTitle.Text = (string.Format("{0}", (Convert.ToString(nextEvent.Title))));
-                eventDatum.Text = (string.Format("{0}", (nextEvent.StartDate.ToString("dd MMMM yyyy"))));
-                eventTime.Text = (string.Format("{0} uur", (nextEvent.StartTime.ToString("HH:mm"))));
-            }
-            else if (timeDifference.Days == 1)
-            {
-                eventTitle.Text = (string.Format("{0}", (Convert.ToString(nextEvent.Title))));
-                eventDatum.Text = (string.Format("Morgen"));
-                eventTime.Text = (string.Format("{0} uur", (nextEvent.StartTime.ToString("HH:mm"))));
-            }
-            else if (timeDifference.Days == 0)
-            {
-                eventTitle.Text = (string.Format("{0}", (Convert.ToString(nextEvent.Title))));
-                eventDatum.Text = (string.Format("Vandaag"));
-                eventTime.Text = (string.Format("{0} uur", (nextEvent.StartTime.ToString("HH:mm"))));
-                eventClick.Text = ("Klik om evenementpagina te openen");
-                //eventGrid.BackgroundColor = Color.FromRgba(255,0,0,255);
-            }
-            var eventOpen = new TapGestureRecognizer();
-            eventOpen.Tapped += (s, e) =>
-            {
-                var item = nextEvent;
-                if (item != null)
+                if (timeDifference.Days > 1)
                 {
-                    Navigation.PushAsync(new EventSinglePage() { BindingContext = item });
+                    eventTitle.Text = (string.Format("{0}", (Convert.ToString(nextEvent.Title))));
+                    eventDatum.Text = (string.Format("{0}", (nextEvent.StartDate.ToString("dd MMMM yyyy"))));
+                    eventTime.Text = (string.Format("{0} uur", (nextEvent.StartTime.ToString("HH:mm"))));
                 }
-            };
-            eventGrid.GestureRecognizers.Add(eventOpen);
+                else if (timeDifference.Days == 1)
+                {
+                    eventTitle.Text = (string.Format("{0}", (Convert.ToString(nextEvent.Title))));
+                    eventDatum.Text = (string.Format("Morgen"));
+                    eventTime.Text = (string.Format("{0} uur", (nextEvent.StartTime.ToString("HH:mm"))));
+                }
+                else if (timeDifference.Days == 0)
+                {
+                    eventTitle.Text = (string.Format("{0}", (Convert.ToString(nextEvent.Title))));
+                    eventDatum.Text = (string.Format("Vandaag"));
+                    eventTime.Text = (string.Format("{0} uur", (nextEvent.StartTime.ToString("HH:mm"))));
+                    eventClick.Text = ("Klik om evenementpagina te openen");
+                    //eventGrid.BackgroundColor = Color.FromRgba(255,0,0,255);
+                }
+                var eventOpen = new TapGestureRecognizer();
+                eventOpen.Tapped += (s, e) =>
+                {
+                    var item = nextEvent;
+                    if (item != null)
+                    {
+                        Navigation.PushAsync(new EventSinglePage() { BindingContext = item });
+                    }
+                };
+                eventGrid.GestureRecognizers.Add(eventOpen);
+            }
+            
 
         }
     }

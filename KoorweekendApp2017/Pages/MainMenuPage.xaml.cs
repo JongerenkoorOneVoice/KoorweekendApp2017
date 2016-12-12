@@ -51,12 +51,14 @@ namespace KoorweekendApp2017.Pages
 				IconSource = "Agenda.png",
 				TargetType = typeof(EventArchivePage)
 			});
-			masterPageItems.Add(new MasterPageItem
-			{
-				Title = "Gebedspunten",
-				IconSource = "Prayer.png",
-				TargetType = typeof(PrayerRequestArchivePage)
-			});
+
+			//masterPageItems.Add(new MasterPageItem
+			//{
+			//	Title = "Gebedspunten",
+			//	IconSource = "Prayer.png",
+			//	TargetType = typeof(PrayerRequestArchivePage)
+			//});
+
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Koorkleding",

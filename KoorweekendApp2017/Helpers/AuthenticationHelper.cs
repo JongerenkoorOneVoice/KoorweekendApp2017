@@ -160,7 +160,10 @@ namespace KoorweekendApp2017
 				if (authResult != null)
 				{
 					App.Database.Settings.Set("lastAuthenticationResult", authResult);
-					App.Database.Settings.Set("lastAuthenticationEmailAddressTried", emailaddress);
+                    if (!String.IsNullOrEmpty(emailaddress) && emailaddress.IsValidEmailAddres())
+                    {
+                        App.Database.Settings.Set("lastAuthenticationEmailAddressTried", emailaddress);
+                    }
 					if (authResult.Code == AuthorizationCode.Authorized)
 					{
 						App.Database.Settings.Set("lastSuccessfullAuthentication", DateTime.Now);

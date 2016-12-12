@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using KoorweekendApp2017.Extensions;
 using System.Text;
+using XLabs.Platform.Services;
+using XLabs.Ioc;
 
 namespace KoorweekendApp2017.Helpers
 {
@@ -18,62 +20,72 @@ namespace KoorweekendApp2017.Helpers
 
 		public async static Task<T> GetRestDataFromUrl<T>(string requestUrl, BasicAuthentication authObj = null)
 		{
-			requestUrl = AuthenticationHelper.CreateSecureAuthenticatedUrl(requestUrl);
-			string rawData = String.Empty;
-			T returnValue = Default<T>.Value;
+            T returnValue = Default<T>.Value;
+            var network = Resolver.Resolve<INetwork>();
+            if (network.InternetConnectionStatus() != NetworkStatus.NotReachable)
+            {
 
 
-			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
-			request.Method = "GET";
-
-			// Not yet implemented in the webservice
-			// Authorizes the request using Basic authentication
-			//string username = "";
-			//string password = "";
-			// request.Headers.Add("Authorization", "Basic " + String.Format("{0}:{1}", username, password));
-
-			try
-			{
-				var response = (HttpWebResponse) Task.Run(request.GetResponseAsync).Result;
+                requestUrl = AuthenticationHelper.CreateSecureAuthenticatedUrl(requestUrl);
+                string rawData = String.Empty;
 
 
-					using (Stream responseStream = response.GetResponseStream())
-					{
-						if (responseStream != null)
-						{
-							using (StreamReader reader = new StreamReader(responseStream))
-							{
-								rawData = reader.ReadToEnd();
-							}
-						}
 
-					}
-				response.Dispose();
-		
-			
-			}
-			catch(Exception ex){
-				if (ex.Message == "The remote server returned an error: (403) Forbidden.")
-				{
-					// Should probably log somthing here
-				}
-				else {
-					// And here
-				}
-			}
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
+                request.Method = "GET";
 
-			if (!String.IsNullOrEmpty(rawData) && rawData[0] == '<' && typeof(T) == typeof(String))
-			{
-				// resultJson is not JSON
-				returnValue = JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(rawData));
-			}
-			else if(String.IsNullOrEmpty(rawData)){
-				return returnValue;
-			}
-			else {
-				returnValue = GetModelFromJson<T>(rawData);
-			}
+                // Not yet implemented in the webservice
+                // Authorizes the request using Basic authentication
+                //string username = "";
+                //string password = "";
+                // request.Headers.Add("Authorization", "Basic " + String.Format("{0}:{1}", username, password));
 
+                try
+                {
+                    var response = (HttpWebResponse)Task.Run(request.GetResponseAsync).Result;
+
+
+                    using (Stream responseStream = response.GetResponseStream())
+                    {
+                        if (responseStream != null)
+                        {
+                            using (StreamReader reader = new StreamReader(responseStream))
+                            {
+                                rawData = reader.ReadToEnd();
+                            }
+                        }
+
+                    }
+                    response.Dispose();
+
+
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message == "The remote server returned an error: (403) Forbidden.")
+                    {
+                        // Should probably log somthing here
+                    }
+                    else
+                    {
+                        // And here
+                    }
+                }
+
+                if (!String.IsNullOrEmpty(rawData) && rawData[0] == '<' && typeof(T) == typeof(String))
+                {
+                    // resultJson is not JSON
+                    returnValue = JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(rawData));
+                }
+                else if (String.IsNullOrEmpty(rawData))
+                {
+                    return returnValue;
+                }
+                else
+                {
+                    returnValue = GetModelFromJson<T>(rawData);
+                }
+            }
 			return returnValue;
 
 		}
@@ -81,26 +93,30 @@ namespace KoorweekendApp2017.Helpers
 
 		public async static Task<T> PostDataToUrl<T>(string requestUrl, object  data)
 		{
-			requestUrl = AuthenticationHelper.CreateSecureAuthenticatedUrl(requestUrl);
-			T returnValue = default(T);
-
-			String json = JsonConvert.SerializeObject(data);
-			byte[] jsonBytes = Encoding.UTF8.GetBytes(json.ToCharArray());
-
-			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
-			request.ContentType = "application/json; charset=utf-8"; //set the content type to JSON
-			request.Method = "POST"; //make an HTTP POST
+            T returnValue = default(T);
+            var network = Resolver.Resolve<INetwork>();
+            if (network.InternetConnectionStatus() != NetworkStatus.NotReachable)
+            {
+                requestUrl = AuthenticationHelper.CreateSecureAuthenticatedUrl(requestUrl);
 
 
-			var client = new HttpClient();
-			var postData = new ByteArrayContent(jsonBytes);
-			var resultStream = await client.PostAsync(requestUrl, postData);
-			var resultBytes = await resultStream.Content.ReadAsByteArrayAsync();
-			var resultJson = Encoding.UTF8.GetString(resultBytes, 0, resultBytes.Length);
+                String json = JsonConvert.SerializeObject(data);
+                byte[] jsonBytes = Encoding.UTF8.GetBytes(json.ToCharArray());
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
+                request.ContentType = "application/json; charset=utf-8"; //set the content type to JSON
+                request.Method = "POST"; //make an HTTP POST
 
 
-			returnValue = GetModelFromJson<T>(resultJson);
+                var client = new HttpClient();
+                var postData = new ByteArrayContent(jsonBytes);
+                var resultStream = await client.PostAsync(requestUrl, postData);
+                var resultBytes = await resultStream.Content.ReadAsByteArrayAsync();
+                var resultJson = Encoding.UTF8.GetString(resultBytes, 0, resultBytes.Length);
 
+
+                returnValue = GetModelFromJson<T>(resultJson);
+            }
 			return returnValue;
 
 
@@ -135,26 +151,30 @@ namespace KoorweekendApp2017.Helpers
 
 		public async static Task<T> PutDataToUrl<T>(string requestUrl, object data)
 		{
-			requestUrl = AuthenticationHelper.CreateSecureAuthenticatedUrl(requestUrl);
-			T returnValue = default(T);
-
-			String json = JsonConvert.SerializeObject(data);
-			byte[] jsonBytes = Encoding.UTF8.GetBytes(json.ToCharArray());
-
-			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
-			request.ContentType = "application/json; charset=utf-8"; //set the content type to JSON
-			request.Method = "PUT"; //make an HTTP PUT
+            T returnValue = default(T);
+            var network = Resolver.Resolve<INetwork>();
+            if (network.InternetConnectionStatus() != NetworkStatus.NotReachable)
+            {
+                requestUrl = AuthenticationHelper.CreateSecureAuthenticatedUrl(requestUrl);
 
 
-			var client = new HttpClient();
-			var postData = new ByteArrayContent(jsonBytes);
-			var resultStream = await client.PutAsync(requestUrl, postData);
-			var resultBytes = await resultStream.Content.ReadAsByteArrayAsync();
-			var resultJson = Encoding.UTF8.GetString(resultBytes, 0, resultBytes.Length);
+                String json = JsonConvert.SerializeObject(data);
+                byte[] jsonBytes = Encoding.UTF8.GetBytes(json.ToCharArray());
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
+                request.ContentType = "application/json; charset=utf-8"; //set the content type to JSON
+                request.Method = "PUT"; //make an HTTP PUT
 
 
-			returnValue = GetModelFromJson<T>(resultJson);
+                var client = new HttpClient();
+                var postData = new ByteArrayContent(jsonBytes);
+                var resultStream = await client.PutAsync(requestUrl, postData);
+                var resultBytes = await resultStream.Content.ReadAsByteArrayAsync();
+                var resultJson = Encoding.UTF8.GetString(resultBytes, 0, resultBytes.Length);
 
+
+                returnValue = GetModelFromJson<T>(resultJson);
+            }
 			return returnValue;
 		}
 
