@@ -59,8 +59,8 @@ namespace KoorweekendApp2017.Pages
             else if(news == true)
             {
                 newsTitle.Text = "Nieuwsupdate:";
-                newsText.Text = "Er is een nieuwsupdate beschikbaar";
-                newsClick.Text = "Klik om de nieuwspagina te openen";
+                newsText.Text = "U heeft 7 ongelezen updates";
+                //newsClick.Text = "Klik om de nieuwspagina te openen";
                 newsGrid.BackgroundColor = Color.FromRgba(255, 0, 0, 255);
                 var newsOpen = new TapGestureRecognizer();
                 newsOpen.Tapped += (s, e) =>
@@ -81,37 +81,49 @@ namespace KoorweekendApp2017.Pages
 
 				DateTime contactsBirthday = firstBirthdayContact.BirthDate.Value;
 				var birtDayThisYear = contactsBirthday.AddYears(DateTime.Now.Year - contactsBirthday.Year);
-				var timeDifference = (birtDayThisYear - DateTime.Today);
-				var age = (DateTime.Now.Year - contactsBirthday.Year);
+                if (birtDayThisYear < DateTime.Now.Date)
+                {
+                    birtDayThisYear = birtDayThisYear.AddYears(1);
+                }
+                var timeDifference = (birtDayThisYear - DateTime.Today);
 
-				birthName.Text = (firstBirthdayContact.FullName);
-				if (timeDifference.Days > 1)
-				{
-					birthDate.Text = (string.Format("Wordt over {0} dagen", (Convert.ToString(timeDifference.Days))));
-					birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
-				}
-				else if (timeDifference.Days == 1)
-				{
-					birthDate.Text = (string.Format("Wordt morgen", (Convert.ToString(timeDifference.Days))));
-					birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
-				}
-				else if (timeDifference.Days == 0)
-				{
-					birthDate.Text = ("Is vandaag");
-					birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
-					birthToday.Text = ("Geworden");
-					birthClick.Text = ("Klik om contactpagina te openen");
-				}
-				var jarigOpen = new TapGestureRecognizer();
-				jarigOpen.Tapped += (s, e) =>
-				{
-					var item = firstBirthdayContact;
-					if (item != null)
-					{
-						Navigation.PushAsync(new ContactSinglePage() { BindingContext = item });
-					}
-				};
-				birthGrid.GestureRecognizers.Add(jarigOpen);
+                if (timeDifference.Days <= 30)
+                {
+                    var age = (birtDayThisYear.Year - contactsBirthday.Year);
+
+                    birthName.Text = (firstBirthdayContact.FullName);
+                    if (timeDifference.Days > 1)
+                    {
+                        birthDate.Text = (string.Format("Wordt over {0} dagen", (Convert.ToString(timeDifference.Days))));
+                        birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
+                    }
+                    else if (timeDifference.Days == 1)
+                    {
+                        birthDate.Text = (string.Format("Wordt morgen", (Convert.ToString(timeDifference.Days))));
+                        birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
+                    }
+                    else if (timeDifference.Days == 0)
+                    {
+                        birthDate.Text = ("Is vandaag");
+                        birthAge.Text = (string.Format("{0} jaar", (Convert.ToString(age))));
+                        birthToday.Text = ("Geworden");
+                        //birthClick.Text = ("Klik om contactpagina te openen");
+                    }
+                    var jarigOpen = new TapGestureRecognizer();
+                    jarigOpen.Tapped += (s, e) =>
+                    {
+                        var item = firstBirthdayContact;
+                        if (item != null)
+                        {
+                            Navigation.PushAsync(new ContactSinglePage() { BindingContext = item });
+                        }
+                    };
+                    birthGrid.GestureRecognizers.Add(jarigOpen);
+                }
+                else
+                {
+                    birthGrid.BackgroundColor = Color.FromRgba(0, 0, 0, 0);
+                }
 			}
 
         }
@@ -130,7 +142,10 @@ namespace KoorweekendApp2017.Pages
                 {
                     eventTitle.Text = (string.Format("{0}", (Convert.ToString(nextEvent.Title))));
                     eventDatum.Text = (string.Format("{0}", (nextEvent.StartDate.ToString("dd MMMM yyyy"))));
-                    eventTime.Text = (string.Format("{0} uur", (nextEvent.StartTime.ToString("HH:mm"))));
+                    if ((nextEvent.StartTime.ToString("HH:mm")) != "00:00")
+                    {
+                        eventTime.Text = (string.Format("{0} uur", (nextEvent.StartTime.ToString("HH:mm"))));
+                    }
                 }
                 else if (timeDifference.Days == 1)
                 {
@@ -143,7 +158,7 @@ namespace KoorweekendApp2017.Pages
                     eventTitle.Text = (string.Format("{0}", (Convert.ToString(nextEvent.Title))));
                     eventDatum.Text = (string.Format("Vandaag"));
                     eventTime.Text = (string.Format("{0} uur", (nextEvent.StartTime.ToString("HH:mm"))));
-                    eventClick.Text = ("Klik om evenementpagina te openen");
+                    //eventClick.Text = ("Klik om evenementpagina te openen");
                     //eventGrid.BackgroundColor = Color.FromRgba(255,0,0,255);
                 }
                 var eventOpen = new TapGestureRecognizer();

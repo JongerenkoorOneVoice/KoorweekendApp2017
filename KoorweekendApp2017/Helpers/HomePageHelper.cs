@@ -110,7 +110,7 @@ namespace KoorweekendApp2017
 				}
 
 
-				if (eventDateTime >= DateTime.Now && eventDateTime <= firstEventDateTime)
+				if (eventDateTime >= DateTime.Today && eventDateTime <= firstEventDateTime)
 				{
 					firstEventDateTime = eventDateTime;
 					returnValue = eventItem;

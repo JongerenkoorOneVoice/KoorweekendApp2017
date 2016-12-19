@@ -23,24 +23,30 @@
       </StackLayout>
 
       <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Red" x:Name="birthGrid">
-        <Label Font="Bold,18" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center"  TextColor="White" x:Name="birthName"/>
-        <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" TextColor="White" x:Name="birthDate"/>
-        <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" TextColor="White" Font="Bold,20" x:Name="birthAge"/>
-        <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center"  TextColor="White" x:Name="birthToday"/>
-        <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" Font="10" TextColor="White" x:Name="birthClick"/>
+        <StackLayout Padding="20,0,20,0" VerticalOptions="CenterAndExpand">
+          <Label Font="Bold,18" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center"  TextColor="White" x:Name="birthName"/>
+          <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" TextColor="White" x:Name="birthDate"/>
+          <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" TextColor="White" Font="Bold,20" x:Name="birthAge"/>
+          <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center"  TextColor="White" x:Name="birthToday"/>
+          <!--Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" Font="10" TextColor="White" x:Name="birthClick"/-->
+        </StackLayout>
       </StackLayout>
 
       <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="Red" x:Name="eventGrid">
-        <Label Font="Bold,18" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" TextColor="White" x:Name="eventTitle"/>
-        <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" TextColor="White" x:Name="eventDatum"/>
-        <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" TextColor="White" x:Name="eventTime"/>
-        <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" VerticalOptions="End" Font="10" TextColor="White" x:Name="eventClick"/>
+        <StackLayout Padding="20,0,20,0" VerticalOptions="CenterAndExpand" >
+          <Label Font="Bold,18" HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" TextColor="White" x:Name="eventTitle"/>
+          <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" TextColor="White" x:Name="eventDatum"/>
+          <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" TextColor="White" x:Name="eventTime"/>
+          <!--Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" VerticalOptions="End" Font="10" TextColor="White" x:Name="eventClick"/-->
+        </StackLayout>
       </StackLayout>
 
       <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="Red" x:Name="newsGrid">
-        <Label Font="Bold,18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" x:Name="newsTitle" />
-        <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" x:Name="newsText"/>
-        <Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" VerticalOptions="End" Font="10" TextColor="White" x:Name="newsClick"/>
+        <StackLayout Padding="20,0,20,0" VerticalOptions="CenterAndExpand">
+          <Label Font="Bold,18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" x:Name="newsTitle" />
+          <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" x:Name="newsText" />
+          <!--Label HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" VerticalOptions="End" Font="10" TextColor="White" x:Name="newsClick"/-->
+        </StackLayout>
       </StackLayout>
     </Grid>
   </ContentPage.Content>
