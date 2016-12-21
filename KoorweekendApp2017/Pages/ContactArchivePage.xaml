@@ -15,7 +15,7 @@
 					SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell  Text="{Binding FullName}" Detail="{Binding StartDateFormatted, StringFormat='Lid sinds {0:F0}'}"/>
+                        <ImageCell  Text="{Binding FullName}" TextColor="Red" Detail="{Binding StartDateFormatted, StringFormat='Lid sinds {0:F0}'}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

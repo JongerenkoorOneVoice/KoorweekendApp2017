@@ -12,7 +12,7 @@
 					SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell Text="{Binding Title}" Detail="{Binding Time}"/>
+                        <ImageCell Text="{Binding Title}" TextColor="Red" Detail="{Binding Time}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

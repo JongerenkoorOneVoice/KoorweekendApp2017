@@ -12,7 +12,7 @@
     BackgroundColor="Transparent">
         <ListView.ItemTemplate>
           <DataTemplate>
-            <ImageCell Text="{Binding Title}" Detail="{Binding StartDateFormatted}"/>
+            <ImageCell Text="{Binding Title}" TextColor="Red" Detail="{Binding StartDateFormatted}"/>
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>
