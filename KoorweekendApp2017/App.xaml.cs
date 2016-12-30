@@ -18,6 +18,8 @@ namespace KoorweekendApp2017
 
 		public static LocalDatabase Database { get; set; }
 
+		public static AppWebService AppWebService { get; set; }
+
 		public static Contact CurrentUser { get; set; }
 
 		public App()

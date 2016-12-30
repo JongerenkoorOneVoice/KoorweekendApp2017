@@ -61,9 +61,8 @@ namespace KoorweekendApp2017.Tasks
 					lastUpdate = lastUpdate.AddDays(-1);
 				}
 
-				string query = String.Format("http://www.jongerenkooronevoice.nl/contacts/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
-
-				List<Contact> contacts = RestHelper.GetRestDataFromUrl<List<Contact>>(query).Result;
+				List<Contact> contacts = App.AppWebService.Contacts.GetContactsChangedAfterDateAsync(lastUpdate).Result;
+					
 				if (contacts != null)
 				{
 					foreach (Contact contact in contacts)
@@ -103,8 +102,7 @@ namespace KoorweekendApp2017.Tasks
 					lastUpdate = lastUpdate.AddDays(-1);
 				}
 
-				string query = String.Format("http://www.jongerenkooronevoice.nl/songs/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
-				List<Song> songs = RestHelper.GetRestDataFromUrl<List<Song>>(query).Result;
+				List<Song> songs = App.AppWebService.Songs.GetSongsChangedAfterDateAsync(lastUpdate).Result;
 				if (songs != null)
 				{
 					foreach (Song song in songs)
@@ -133,8 +131,7 @@ namespace KoorweekendApp2017.Tasks
 					lastUpdate = lastUpdate.AddDays(-1);
 				}
 
-				string query = String.Format("http://www.jongerenkooronevoice.nl/apievents/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
-				List<Event> events = RestHelper.GetRestDataFromUrl<List<Event>>(query).Result;
+				List<Event> events = App.AppWebService.Events.GetEventsChangedAfterDateAsync(lastUpdate).Result;
 				if (events != null)
 				{
 					foreach (Event eventItem in events)
@@ -152,9 +149,7 @@ namespace KoorweekendApp2017.Tasks
 			bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
 			if (isAuthenticated)
 			{
-				//string query = String.Format("http://www.jongerenkooronevoice.nl/apievents/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
-				string query = "http://www.jongerenkooronevoice.nl/songoccasions/all";
-				List<SongOccasion> occasions = RestHelper.GetRestDataFromUrl<List<SongOccasion>>(query).Result;
+				List<SongOccasion> occasions = App.AppWebService.SongOccasions.GetAllSongOccasionsAsync().Result;
 				if (occasions != null)
 				{
 					foreach (SongOccasion occasion in occasions)
@@ -188,7 +183,8 @@ namespace KoorweekendApp2017.Tasks
 					lastUpdate = lastUpdate.AddDays(-1);
 				}
 
-				query = String.Format("http://www.jongerenkooronevoice.nl/contacts/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
+
+				query = String.Format("http://www.jongerenkooronevoice.nl/prayerrequests/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
 
 			}
 
