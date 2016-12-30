@@ -1,9 +1,18 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/BusinessObjects/AppWebService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/NewsArchive.xaml.cs">
     <Files>
-      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="187" Column="77" />
-      <File FileName="KoorweekendApp2017/Pages/HomePage.xaml.cs" Line="37" Column="25" />
+      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="249" Column="54" />
+      <File FileName="KoorweekendApp2017/Pages/HomePage.xaml.cs" Line="47" Column="52" />
       <File FileName="KoorweekendApp2017/BusinessObjects/AppWebService.cs" Line="40" Column="32" />
+      <File FileName="KoorweekendApp2017/Pages/HomePage.xaml" Line="39" Column="7" />
+      <File FileName="KoorweekendApp2017/Pages/NewsSingle.xaml.cs" Line="33" Column="15" />
+      <File FileName="KoorweekendApp2017/Pages/SongSinglePage.xaml" Line="11" Column="50" />
+      <File FileName="KoorweekendApp2017/Pages/NewsSingle.xaml" Line="4" Column="28" />
+      <File FileName="KoorweekendApp2017/Pages/SongSinglePage.xaml.cs" Line="26" Column="45" />
+      <File FileName="KoorweekendApp2017/Pages/RepertoirePage.xaml.cs" Line="146" Column="5" />
+      <File FileName="KoorweekendApp2017/Pages/NewsArchive.xaml.cs" Line="35" Column="90" />
+      <File FileName="KoorweekendApp2017/Models/News.cs" Line="18" Column="3" />
+      <File FileName="iOS/Main.cs" Line="17" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
