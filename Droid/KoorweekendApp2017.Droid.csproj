@@ -584,7 +584,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\Kleding_W.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PluginsHelp\ConnectivityReadme.txt" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Plus.png" />
     <AndroidResource Include="Resources\drawable\Plus.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Plus.png" />
@@ -597,6 +596,9 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\Filter.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Filter.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PluginsHelp\ConnectivityReadme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
