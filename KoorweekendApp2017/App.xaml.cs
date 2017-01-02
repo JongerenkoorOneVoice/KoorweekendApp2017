@@ -27,6 +27,8 @@ namespace KoorweekendApp2017
 			InitializeComponent();
 			var db = DependencyService.Get<ISQLite>().GetConnection();
 			Database = new LocalDatabase(db);
+			AppWebService = new AppWebService();
+
 			//DataSync.UpdateContactsInDbFromApi();
 			//DataSync.UpdateSongsInDbFromApi();
 			//DataSync.UpdateEventsInDbFromApi();
