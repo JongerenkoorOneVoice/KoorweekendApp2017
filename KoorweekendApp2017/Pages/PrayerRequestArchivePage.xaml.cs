@@ -27,7 +27,11 @@ namespace KoorweekendApp2017.Pages
 
 			SetupDataForPrayerRequests();
 
-			Int32 currentUserId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
+            String emailAddress = App.Database.Settings.GetValue<String>("lastAuthenticationEmailAddressTried");// KoorweekendApp2017\Helpers\AuthenticationHelper.cs - (174, 30) : App.Database.Settings.Set("authenticatedContactId", authenticatedContact.Id);
+            Contact authenticatedContact = App.Database.Contacts.GetAll().Find(x => x.Email1 == emailAddress);  // KoorweekendApp2017\Helpers\AuthenticationHelper.cs - (26, 28) : App.Database.Settings.Set("authenticatedContactId", authenticatedContact.Id);
+            App.Database.Settings.Set("authenticatedContactId", authenticatedContact.Id);                       // Hier zet hij hem ook, maar niet bij elke keer opstarten
+            
+            Int32 currentUserId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
 			CurrentUser = App.Database.Contacts.GetById(currentUserId);
 
 			prayerRequestListView.ItemSelected += OnPrayerRequestSelected;

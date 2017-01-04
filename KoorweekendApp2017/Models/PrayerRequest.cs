@@ -30,8 +30,8 @@ namespace KoorweekendApp2017.Models
 		{
 			get
 			{
-				Int32 currentUserId = App.CurrentUser.Id;
-				Contact creator = App.Database.Contacts.GetById(this.ContactId);
+				Int32 currentUserId = App.Database.Settings.GetValue<Int32>("authenticatedContactId"); //App.CurrentUser.Id;
+                Contact creator = App.Database.Contacts.GetById(this.ContactId);
 				String result = String.Empty;
 
 				if (creator == null) return result;

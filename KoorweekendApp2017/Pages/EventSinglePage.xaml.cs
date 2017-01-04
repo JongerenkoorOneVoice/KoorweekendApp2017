@@ -18,7 +18,7 @@ namespace KoorweekendApp2017.Pages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (Convert.ToString(Adres.Text).ToLower() != "geen" && Convert.ToString(Adres.Text).ToLower() != "x" && Convert.ToString(Adres.Text).ToLower() != "onbekend")
+            if (Convert.ToString(Adres.Text).ToLower() != "-" && Convert.ToString(Adres.Text).ToLower() != "x")
             {
                 adresClick.Text = "Let op, Wanneer google maps niet geinstalleerd is maakt de app gebruik van een webbrowser";
                 adresClick.Margin = new Thickness(0, 0, 0, 15);
