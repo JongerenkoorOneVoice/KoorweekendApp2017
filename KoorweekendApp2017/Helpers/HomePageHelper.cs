@@ -152,6 +152,15 @@ namespace KoorweekendApp2017
 			return returnValue.OrderBy(x => x.StartDate).ThenBy(x => x.StartTime).ToList();
 		}
 
+		/// <summary>  
+		/// Returns the last changed newsItem.
+		/// </summary>  
+		public static News GetLastChangedNewsItem(IOneVoiceDatabase db)
+		{
+			return db.News.GetAll().FindAll(x => x.IsVisible != false).OrderBy(x => x.LastModified).FirstOrDefault();
+
+		}
+
 		// <summary>  
 		// Returns Bibleverse for today from https://www.dagelijkswoord.nl/
 		// </summary>  

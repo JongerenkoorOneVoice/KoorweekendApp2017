@@ -316,6 +316,7 @@
     <Compile Include="Tasks\ApiEventSyncTask.cs" />
     <Compile Include="Tasks\ApiSongOccasionSyncTask.cs" />
     <Compile Include="Tasks\ApiPrayerRequestSyncTask.cs" />
+    <Compile Include="Tasks\ApiNewsSyncTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="zxing.net.mobile.forms">

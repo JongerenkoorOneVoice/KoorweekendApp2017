@@ -205,6 +205,8 @@
     <Compile Include="Models\BasicAuthentication.cs" />
     <Compile Include="BusinessObjects\AppWebService.cs" />
     <Compile Include="Models\News.cs" />
+    <Compile Include="Messages\StopApiNewsSyncMessage.cs" />
+    <Compile Include="Messages\StartApiNewsSyncMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">

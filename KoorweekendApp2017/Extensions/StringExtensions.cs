@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -28,5 +29,13 @@ namespace KoorweekendApp2017.Extensions
 			var base64 = Convert.ToBase64String(bytes);
 			return base64;
 		}
+
+		public static string StripHTML(this String strIn)
+		{
+			var removedHtml = Regex.Replace(strIn, "<[^>]*(>|$)", string.Empty);
+			var decodedText = WebUtility.HtmlDecode(removedHtml);
+			return decodedText;
+		}
+
 	}
 }

@@ -11,5 +11,7 @@ namespace KoorweekendApp2017.Interfaces
 		LocalDatabase.SongTable Songs { get; set; }
 
 		LocalDatabase.EventTable Events { get; set; }
+
+		LocalDatabase.NewsTable News { get; set; }
 	}
 }

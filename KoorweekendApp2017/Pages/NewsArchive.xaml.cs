@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using KoorweekendApp2017.Models;
+using KoorweekendApp2017.Tasks;
 using Xamarin.Forms;
 
 namespace KoorweekendApp2017
@@ -29,13 +31,8 @@ namespace KoorweekendApp2017
 
         private void SetupNewsDataForList()
         {
-			News.Add(new News()
-			{
-				LastModified = DateTime.Now,
-				Title = "Zomaar een titel die lang genoeg is om op minimaal twee regels uit te komen.",
-				Text = "Test"
-			});
-            NewsListView.ItemsSource = News;
+
+			NewsListView.ItemsSource = App.Database.News.GetAll().FindAll(x => x.IsVisible != false).OrderByDescending(x => x.LastModified).ThenBy(x => x.Title).ToList();
         }
         void OnNewsSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -52,6 +49,8 @@ namespace KoorweekendApp2017
 
         void ReloadnewsFromWebservice(object sender, EventArgs args)
         {
+			DataSync.UpdateNewsInDbFromApi(true);
+			SetupNewsDataForList();
             ListView listView = sender as ListView;
             listView.EndRefresh();
 

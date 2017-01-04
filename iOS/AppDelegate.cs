@@ -55,6 +55,17 @@ namespace KoorweekendApp2017.iOS
 					apiEventSync.Stop();
 				});
 
+				ApiNewsSyncTask apiNewsSync = new ApiNewsSyncTask();
+				MessagingCenter.Subscribe<StartApiEventSyncMessage>(this, "StartApiNewsSyncMessage", async message =>
+				{
+					apiNewsSync.Start(); // don't use await
+				});
+
+				MessagingCenter.Subscribe<StopApiEventSyncMessage>(this, "StopApiEventSyncMessage", message =>
+				{
+					apiNewsSync.Stop();
+				});
+
 				ApiSongOccasionSyncTask apiSongOccasionSync = new ApiSongOccasionSyncTask();
 				MessagingCenter.Subscribe<StartApiSongOccasionSyncMessage>(this, "StartApiSongOccasionSyncMessage", async message =>
 				{

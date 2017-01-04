@@ -27,6 +27,8 @@ namespace KoorweekendApp2017.BusinessObjects
 
 		public PrayerRequestTable PrayerRequests { get; set; }
 
+		public NewsTable News { get; set; }
+
 		public LocalDatabase(SQLiteConnection database)
 		{
 			Database = database;
@@ -34,6 +36,7 @@ namespace KoorweekendApp2017.BusinessObjects
 			Database.CreateTable<Setting>();
 			Database.CreateTable<Song>();
 			Database.CreateTable<Event>();
+			Database.CreateTable<News>();
 			Database.CreateTable<LogItem>();
 			Database.CreateTable<SongOccasion>();
 			Database.CreateTable<PrayerRequest>();
@@ -44,6 +47,7 @@ namespace KoorweekendApp2017.BusinessObjects
 			LogItems = new LogItemTable();
 			SongOccasions = new SongOccasionTable();
 			PrayerRequests = new PrayerRequestTable();
+			News = new NewsTable();
 		}
 
 		public class SettingTable
@@ -227,6 +231,24 @@ namespace KoorweekendApp2017.BusinessObjects
 			public void UpdateOrInsert(LogItem logItem)
 			{
 				Database.InsertOrReplace(logItem);
+			}
+		}
+
+		public class NewsTable
+		{
+			public News GetById(int id)
+			{
+				return (from i in Database.Table<News>() where i.Id == id select i).ToList().FirstOrDefault();
+			}
+
+			public List<News> GetAll()
+			{
+				return (from i in Database.Table<News>() select i).OrderBy(i => i.LastModified).ToList();
+			}
+
+			public void UpdateOrInsert(News newsItem)
+			{
+				Database.InsertOrReplace(newsItem);
 			}
 		}
 

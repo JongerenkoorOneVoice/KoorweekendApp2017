@@ -19,6 +19,8 @@ namespace KoorweekendApp2017.BusinessObjects
 
 		public EventsEndpoint Events { get; set; }
 
+		public NewsEndpoint News { get; set; }
+
 		public SongOccasionsEndpoint SongOccasions { get; set; }
 
 
@@ -27,6 +29,7 @@ namespace KoorweekendApp2017.BusinessObjects
 			Contacts = new ContactsEndpoint();
 			Songs = new SongsEndpoint();
 			Events = new EventsEndpoint();
+			News = new NewsEndpoint();
 			SongOccasions = new SongOccasionsEndpoint();
 		}
 
@@ -94,6 +97,27 @@ namespace KoorweekendApp2017.BusinessObjects
 			{
 				string query = String.Format("http://www.jongerenkooronevoice.nl/apievents/changedafter/{0}", date.ToString("yyyy-MM-dd"));
 				return await RestHelper.GetRestDataFromUrl<List<Event>>(query);
+			}
+		}
+
+		public class NewsEndpoint
+		{
+			public async Task<List<News>> GetAllEventsAsync()
+			{
+				string query = "http://www.jongerenkooronevoice.nl/apinews/all";
+				return await RestHelper.GetRestDataFromUrl<List<News>>(query);
+			}
+
+			public async Task<News> GetEventByIdAsync(Int32 id)
+			{
+				string query = String.Format("http://www.jongerenkooronevoice.nl/apinews/byid/{0}", id);
+				return await RestHelper.GetRestDataFromUrl<News>(query);
+			}
+
+			public async Task<List<News>> GetEventsChangedAfterDateAsync(DateTime date)
+			{
+				string query = String.Format("http://www.jongerenkooronevoice.nl/apinews/changedafter/{0}", date.ToString("yyyy-MM-dd"));
+				return await RestHelper.GetRestDataFromUrl<List<News>>(query);
 			}
 		}
 

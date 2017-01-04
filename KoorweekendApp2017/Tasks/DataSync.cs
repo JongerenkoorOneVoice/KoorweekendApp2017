@@ -20,6 +20,7 @@ namespace KoorweekendApp2017.Tasks
 			MessagingCenter.Send(new StartApiSongSyncMessage(), "StartApiSongSyncMessage");
 			MessagingCenter.Send(new StartApiEventSyncMessage(), "StartApiEventSyncMessage");
 			MessagingCenter.Send(new StartApiSongOccasionSyncMessage(), "StartApiSongOccasionSyncMessage");
+			MessagingCenter.Send(new StartApiNewsSyncMessage(), "StartApiNewsSyncMessage");
 			//MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
 		
 		}
@@ -31,6 +32,7 @@ namespace KoorweekendApp2017.Tasks
 			UpdateSongsInDbFromApi(downloadAll);
 			UpdateEventsInDbFromApi(downloadAll);
 			UpdateSongOccasionsInDbFromApi(downloadAll);
+			UpdateNewsInDbFromApi(downloadAll);
 			//SyncPrayerRequests(downloadAll);
 
 		}
@@ -141,6 +143,32 @@ namespace KoorweekendApp2017.Tasks
 					}
 				}
 				App.Database.Settings.Set("lastEventsUpdate", DateTime.Now.ToString());
+			}
+		}
+
+		public static void UpdateNewsInDbFromApi(bool shouldUpdateAll = false)
+		{
+			bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
+			if (isAuthenticated)
+			{
+				DateTime lastUpdate = DateTime.Parse("1010-01-01");
+				String lastUpdatedString = App.Database.Settings.GetValue<String>("lastNewsUpdate");
+				if (!String.IsNullOrEmpty(lastUpdatedString) && !shouldUpdateAll)
+				{
+					lastUpdate = DateTime.Parse(lastUpdatedString);
+					lastUpdate = lastUpdate.AddDays(-1);
+				}
+
+				List<News> newsItems = App.AppWebService.News.GetEventsChangedAfterDateAsync(lastUpdate).Result;
+				if (newsItems != null)
+				{
+					foreach (News newsItem in newsItems)
+					{
+						App.Database.News.UpdateOrInsert(newsItem);
+
+					}
+				}
+				App.Database.Settings.Set("lastNewsUpdate", DateTime.Now.ToString());
 			}
 		}
 
