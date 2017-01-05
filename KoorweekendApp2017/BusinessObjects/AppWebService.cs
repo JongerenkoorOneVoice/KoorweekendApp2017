@@ -102,19 +102,19 @@ namespace KoorweekendApp2017.BusinessObjects
 
 		public class NewsEndpoint
 		{
-			public async Task<List<News>> GetAllEventsAsync()
+			public async Task<List<News>> GetAllNewsAsync()
 			{
 				string query = "http://www.jongerenkooronevoice.nl/apinews/all";
 				return await RestHelper.GetRestDataFromUrl<List<News>>(query);
 			}
 
-			public async Task<News> GetEventByIdAsync(Int32 id)
+			public async Task<News> GetNewsByIdAsync(Int32 id)
 			{
 				string query = String.Format("http://www.jongerenkooronevoice.nl/apinews/byid/{0}", id);
 				return await RestHelper.GetRestDataFromUrl<News>(query);
 			}
 
-			public async Task<List<News>> GetEventsChangedAfterDateAsync(DateTime date)
+			public async Task<List<News>> GetNewsChangedAfterDateAsync(DateTime date)
 			{
 				string query = String.Format("http://www.jongerenkooronevoice.nl/apinews/changedafter/{0}", date.ToString("yyyy-MM-dd"));
 				return await RestHelper.GetRestDataFromUrl<List<News>>(query);

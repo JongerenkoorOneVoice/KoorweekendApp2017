@@ -159,7 +159,7 @@ namespace KoorweekendApp2017.Tasks
 					lastUpdate = lastUpdate.AddDays(-1);
 				}
 
-				List<News> newsItems = App.AppWebService.News.GetEventsChangedAfterDateAsync(lastUpdate).Result;
+				List<News> newsItems = App.AppWebService.News.GetNewsChangedAfterDateAsync(lastUpdate).Result;
 				if (newsItems != null)
 				{
 					foreach (News newsItem in newsItems)
