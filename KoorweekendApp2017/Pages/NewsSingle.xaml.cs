@@ -27,10 +27,11 @@ namespace KoorweekendApp2017
 		private HtmlWebViewSource GetHTML(News currentNews)
 		{
 			StringBuilder css = new StringBuilder();
-			css.Append("* { font-size: 1rem; font-family: helvetica, arial ; }  h1 { font-size: 1.5rem; color: red;} img { display: block; width: 100%; } a { color: red; }");
+			css.Append("* { font-size: 1rem; font-family: helvetica, arial ; }  h1 { font-size: 1.5rem; color: red;} img { display: block; width: 100%; } a { color: red; } .timestamp { font-size: .75rem; display: block; color: grey; margin-top: -10px; margin-bottom: 10px;}");
 
 			StringBuilder html = new StringBuilder();
 			html.AppendFormat("<h1>{0}</h1>", currentNews.Title);
+			html.AppendFormat("<span class=\"timestamp\">{0}</span>", currentNews.LastModifiedDateAndTimeFormatted);
 			html.Append(currentNews.HTML);
 
 			HtmlWebViewSource document = new HtmlWebViewSource()

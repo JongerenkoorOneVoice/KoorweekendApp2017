@@ -6,6 +6,8 @@ using KoorweekendApp2017.BusinessObjects;
 using KoorweekendApp2017.Helpers;
 using KoorweekendApp2017.Interfaces;
 using KoorweekendApp2017.Models;
+using XLabs.Ioc;
+using XLabs.Platform.Services;
 
 namespace KoorweekendApp2017
 {
@@ -103,7 +105,8 @@ namespace KoorweekendApp2017
 
 				DateTime eventDateTime = eventItem.StartDate;
 
-				if (eventItem.StartTime != DateTime.MinValue){
+				if (eventItem.StartTime != DateTime.MinValue)
+				{
 					if (eventDateTime.Hour == 0) eventDateTime.AddHours(eventItem.StartTime.Hour);
 					if (eventDateTime.Minute == 0) eventDateTime.AddHours(eventItem.StartTime.Minute);
 					if (eventDateTime.Second == 0) eventDateTime.AddHours(eventItem.StartTime.Second);
@@ -115,7 +118,7 @@ namespace KoorweekendApp2017
 					firstEventDateTime = eventDateTime;
 					returnValue = eventItem;
 				}
-		
+
 			}
 			return returnValue == default(Event) ? null : returnValue;
 		}
@@ -136,7 +139,8 @@ namespace KoorweekendApp2017
 
 				DateTime eventDateTime = eventItem.StartDate;
 
-				if (eventItem.StartTime != DateTime.MinValue){
+				if (eventItem.StartTime != DateTime.MinValue)
+				{
 					if (eventDateTime.Hour == 0) eventDateTime.AddHours(eventItem.StartTime.Hour);
 					if (eventDateTime.Minute == 0) eventDateTime.AddHours(eventItem.StartTime.Minute);
 					if (eventDateTime.Second == 0) eventDateTime.AddHours(eventItem.StartTime.Second);
@@ -147,7 +151,7 @@ namespace KoorweekendApp2017
 				{
 					returnValue.Add(eventItem);
 				}
-	
+
 			}
 			return returnValue.OrderBy(x => x.StartDate).ThenBy(x => x.StartTime).ToList();
 		}
@@ -157,31 +161,43 @@ namespace KoorweekendApp2017
 		/// </summary>  
 		public static List<News> GetLastChangedNewsItem(IOneVoiceDatabase db)
 		{
-            List<News> returnValue = new List<News>();
-            List<News> allNews = db.News.GetAll().FindAll(x => x.IsVisible != false);
-            allNews.OrderBy(x => x.LastModified);
-            return allNews;
-             //db.News.GetAll().FindAll(x => x.IsVisible != false).OrderBy(x => x.LastModified).FirstOrDefault();
+			return db.News.GetAll().FindAll(x => x.IsVisible != false).OrderBy(x => x.LastModified).ToList();
 
-        }
+		}
 
-		// <summary>  
-		// Returns Bibleverse for today from https://www.dagelijkswoord.nl/
-		// </summary>  
-		// 
+		/// <summary>  
+		/// Returns Bibleverse for today from https://www.dagelijkswoord.nl/
+		//// </summary>  
+		public async static Task<DailyBread> GetBibleVerseForToday()
+		{
 
-		//public static String GetBibleVerseForToday()
-		//{
-			// TODO: Add a check if device is connected to the internet.
-			//var websiteHtml =  RestHelper.GetRestDataFromUrl<String>("https://www.dagelijkswoord.nl").Result;
-	
+			var dailyBread = default(DailyBread);
+
+			DateTime lastSync = App.Database.Settings.GetValue<DateTime>("lastDailyBreadSync");
+
+			if (lastSync.Date < DateTime.Now.Date)
+			{
+
+				var network = Resolver.Resolve<INetwork>();
+				if (network.InternetConnectionStatus() != NetworkStatus.NotReachable)
+				{
+					var auth = new BasicAuthentication();
+					auth.UserName = "apponevoice@gmail.com";
+					auth.PassWord = "b33c948926b31c23715536e8adac94b8fcd940a3";
+
+					dailyBread = await RestHelper.GetRestDataFromUrl<DailyBread>("http://feed.dagelijkswoord.nl/api/json/1.0", auth);
+					App.Database.Settings.Set("lastDailyBreadSync", DateTime.Now);
+					App.Database.Settings.Set("lastDailyBreadSyncData", dailyBread);
+				}
+			}
+			else
+			{
+				dailyBread = App.Database.Settings.GetValue<DailyBread>("lastDailyBreadSyncData");
+			
+			}
+			return dailyBread;
+		}
 
 
-
-			//var x = 1;
-			//return String.Empty;
-		//}
-
-		
 	}
 }

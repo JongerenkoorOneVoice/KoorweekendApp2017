@@ -15,7 +15,7 @@ namespace KoorweekendApp2017
 			{
 				
 				String base64String = String.Format("{0}:{1}", UserName, PassWord).ToBase64();;
-				String fullString = String.Format("basic {0}", base64String);
+				String fullString = String.Format("Basic {0}", base64String);
 				return fullString;
 			}
 		}

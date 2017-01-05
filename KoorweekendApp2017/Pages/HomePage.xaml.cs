@@ -10,39 +10,62 @@ using System.Threading.Tasks;
 namespace KoorweekendApp2017.Pages
 {
 
-    public partial class HomePage : ContentPage
-    {
-        public Int32 ScreenWidth
-        {
-            get
-            {
-                var device = Resolver.Resolve<IDevice>();
-                Int32 screen = Convert.ToInt32(device.Display.Width / (3 * (device.Display.Scale)));
-                return screen;
-            }
-        }
-        public Int32 ScreenHeight
-        {
-            get
-            {
-                var device = Resolver.Resolve<IDevice>();
-                Int32 screenW = Convert.ToInt32(device.Display.Width / (3 * (device.Display.Scale)));
-                Int32 screenH = Convert.ToInt32(device.Display.Height / (device.Display.Scale));
-                Int32 screen = Convert.ToInt32((screenH - screenW) / 2);
-                return screen;
-            }
-        }
-        public Contact firstBirthdayContact = HomePageHelper.GetFirstBirthdayContact(App.Database);
-        public Event nextEvent = HomePageHelper.GetNextEvent(App.Database);
-        public List<News> allNews = HomePageHelper.GetLastChangedNewsItem(App.Database);
-        public DateTime datumBirth;
-        public DateTime datumEvent;
-        public int index = -1;
+	public partial class HomePage : ContentPage
+	{
+		public Int32 ScreenWidth
+		{
+			get
+			{
+				var device = Resolver.Resolve<IDevice>();
+				Int32 screen = Convert.ToInt32(device.Display.Width / (3 * (device.Display.Scale)));
+				return screen;
+			}
+		}
+		public Int32 ScreenHeight
+		{
+			get
+			{
+				var device = Resolver.Resolve<IDevice>();
+				Int32 screenW = Convert.ToInt32(device.Display.Width / (3 * (device.Display.Scale)));
+				Int32 screenH = Convert.ToInt32(device.Display.Height / (device.Display.Scale));
+				Int32 screen = Convert.ToInt32((screenH - screenW) / 2);
+				return screen;
+			}
+		}
+		public Contact firstBirthdayContact = HomePageHelper.GetFirstBirthdayContact(App.Database);
+		public Event nextEvent = HomePageHelper.GetNextEvent(App.Database);
+		public List<News> allNews = HomePageHelper.GetLastChangedNewsItem(App.Database);
 
-        public HomePage()
-        {
-            InitializeComponent();
-            this.BindingContext = this;
+		public DateTime datumBirth;
+		public DateTime datumEvent;
+		public int index = -1;
+
+		public HomePage()
+		{
+			InitializeComponent();
+			this.BindingContext = this;
+
+			HomePageHelper.GetBibleVerseForToday().ContinueWith((request) =>
+			{
+
+				/* Hoi Daniel,
+				 * -----------
+				 * Hieronder vind je de Bijbeltekst van de dag in de variabele dayTexts.
+				 * Hij haalt de teksten van de afgelopen drie dagen op.
+				 * Het duurt even voor hij de data heeft ogpgehaald. Daarom gebruik ik de ContinueWidth functie.
+				 * Het is de bedoeling dat je je code binnen de accolades van deze functie schrijft.
+				 * De homepage laadt dan gewoon door en start alvast. Zodra de data geladen is komt hij in deze functie.
+				 * Dit kan heel snel gaan, want als het vers van vandaag al is opgehaald, dan doet hij dat niet opnieuw.
+				 * Als je dit te lastig vindt, laat het dan even weten. Het kan ook nog op een andere manier (maar dat is meer werk).
+				 * Als je vragen hebt, dan hoor ik het wel.
+				 */
+
+				DailyBread dayTexts = request.Result;
+
+				// Jouw code hier.
+				// (Je kan bijvoorbeeld een publieke property maken met dit object en die in News() inladen?)
+
+			});
 
             if (firstBirthdayContact != null)
             {
@@ -80,7 +103,7 @@ namespace KoorweekendApp2017.Pages
             stack1.BackgroundColor = Color.Red;
             if (allNews != null)
             {
-                stackNews.Children.Add(new Label { Text = "Nieuws:", FontAttributes = FontAttributes.Bold, FontSize = 22, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+                stackNews.Children.Add(new Label { Text = "Nieuws", FontAttributes = FontAttributes.Bold, FontSize = 22, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
             
 
             var newsOpen = new TapGestureRecognizer();
@@ -275,3 +298,4 @@ namespace KoorweekendApp2017.Pages
         }
     }
 }
+ 

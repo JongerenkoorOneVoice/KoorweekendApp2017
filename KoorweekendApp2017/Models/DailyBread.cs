@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace KoorweekendApp2017
 {
-	public class DailyBreadResult
+	public class DailyBread
 	{
 
 
@@ -12,7 +12,7 @@ namespace KoorweekendApp2017
 
 		public DailyBreadStringsPerTranslation copyrights { get; set; }
 
-		public DailyBreadVerse data {get; set;}
+		public List<DailyBreadVerse> data {get; set;}
 
 	}
 }
