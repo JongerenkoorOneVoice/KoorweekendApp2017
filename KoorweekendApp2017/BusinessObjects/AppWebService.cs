@@ -23,6 +23,7 @@ namespace KoorweekendApp2017.BusinessObjects
 
 		public SongOccasionsEndpoint SongOccasions { get; set; }
 
+		public PrayerRequestsEndpoint PrayerRequests { get; set;}
 
 		public AppWebService()
 		{
@@ -31,6 +32,7 @@ namespace KoorweekendApp2017.BusinessObjects
 			Events = new EventsEndpoint();
 			News = new NewsEndpoint();
 			SongOccasions = new SongOccasionsEndpoint();
+			PrayerRequests = new PrayerRequestsEndpoint();
 		}
 
 
@@ -130,5 +132,37 @@ namespace KoorweekendApp2017.BusinessObjects
 			}
 		}
 
+		public class PrayerRequestsEndpoint
+		{
+			public async Task<List<News>> GetAllPrayerRequestsAsync()
+			{
+				string query = "http://www.jongerenkooronevoice.nl/prayerrequests/all";
+				return await RestHelper.GetRestDataFromUrl<List<News>>(query);
+			}
+
+			public async Task<News> GetPrayerRequestsByIdAsync(Int32 id)
+			{
+				string query = String.Format("http://www.jongerenkooronevoice.nl/prayerrequests/byid/{0}", id);
+				return await RestHelper.GetRestDataFromUrl<News>(query);
+			}
+
+			public async Task<List<News>> GetPrayerRequestsChangedAfterDateAsync(DateTime date)
+			{
+				string query = String.Format("http://www.jongerenkooronevoice.nl/prayerrequests/changedafter/{0}", date.ToString("yyyy-MM-dd"));
+				return await RestHelper.GetRestDataFromUrl<List<News>>(query);
+			}
+
+			public async Task<PrayerRequest> PostPrayerRequestsAsync(PrayerRequest prayerRequest)
+			{
+				string query = "http://www.jongerenkooronevoice.nl/prayerrequests/createnew";
+				return await RestHelper.PostDataToUrl<PrayerRequest>(query, prayerRequest);
+			}
+
+			public async Task<PrayerRequest> PutPrayerRequestsAsync(PrayerRequest prayerRequest)
+			{
+				string query = "http://www.jongerenkooronevoice.nl/prayerrequests/updatebyid/" + Convert.ToString(prayerRequest.Id);
+				return await RestHelper.PutDataToUrl<PrayerRequest>(query, prayerRequest);
+			}
+		}
 	}
 }

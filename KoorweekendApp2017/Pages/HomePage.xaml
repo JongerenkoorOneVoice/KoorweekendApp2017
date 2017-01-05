@@ -6,6 +6,7 @@
   Title="Home"
   BackgroundColor="#404040">
   <ContentPage.Content>
+		
     <Grid x:Name="controlGrid" RowSpacing="5" ColumnSpacing="5" Padding="0,5,0,5">
       <Grid.RowDefinitions>
         <RowDefinition Height="{Binding ScreenWidth}"/>
@@ -21,5 +22,6 @@
         <Image x:Name="label" Source="onevoice_logo_app_less.png" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
       </StackLayout>
     </Grid>
+		
   </ContentPage.Content>
 </ContentPage>

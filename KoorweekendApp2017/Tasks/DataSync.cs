@@ -195,7 +195,6 @@ namespace KoorweekendApp2017.Tasks
 
 			Int32 currentContactId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
 
-			// should change to requests that are changed.
 			string query = String.Empty;
 			if (shouldUpdateAll)
 			{
@@ -220,21 +219,16 @@ namespace KoorweekendApp2017.Tasks
 
 			foreach (var pr in apiPrayerRequests)
 			{
-				if (pr.Id != 0)
+				if (pr.ContactId != currentContactId)
 				{
-					App.Database.PrayerRequests.UpdateOrInsertByApiId(pr);
-
-				}
-				else {
-					if (pr.ContactId != currentContactId)
+					if (!pr.IsVisible || pr.IsPrivate)
 					{
-						if (!pr.IsVisible || pr.IsPrivate)
-						{
-							var tmp = App.Database.PrayerRequests.GetByApiId(pr.Id);
-							App.Database.PrayerRequests.RemoveById(Convert.ToInt32(tmp.AppSpecificId));
-						}
+						var tmp = App.Database.PrayerRequests.GetByApiId(pr.Id);
+						if(tmp != null) App.Database.PrayerRequests.RemoveById(Convert.ToInt32(tmp.AppSpecificId));
 					}
 				}
+				App.Database.PrayerRequests.UpdateOrInsertByApiId(pr);
+
 			}
 			App.Database.Settings.Set("lastPrayerRequestSync", DateTime.Now.ToString());
 		}
@@ -253,14 +247,22 @@ namespace KoorweekendApp2017.Tasks
 
 				List<PrayerRequest> appPrayerRequests = App.Database.PrayerRequests.GetAll();
 				List<PrayerRequest> currentContactPrayerRequests = appPrayerRequests.FindAll(x => x.ContactId == currentContactId);
+
+				// First write all users own data to the api, then redownload all data from the api.
                 if (currentContactPrayerRequests.Count != 0)
                 {
                     foreach (var pr in currentContactPrayerRequests)
                     {
-                        if (pr.Id == 0 && pr.IsPrivate != true)
+						
+						bool endDateIsInPast = Convert.ToDateTime(pr.EndDate).Date < DateTime.Now;
+
+						if (endDateIsInPast) pr.IsVisible = false;
+						if (pr.IsPrivate) pr.IsVisible = false;
+
+
+                        if (pr.Id == 0)
                         {
-                            String url = "http://www.jongerenkooronevoice.nl/prayerrequests/createnew";
-                            RestHelper.PostDataToUrl<PrayerRequest>(url, pr).ContinueWith((arg) =>
+							App.AppWebService.PrayerRequests.PostPrayerRequestsAsync(pr).ContinueWith((arg) =>
                             {
                                 PrayerRequest result = arg.Result;
                                 result.AppSpecificId = pr.AppSpecificId;
@@ -274,16 +276,7 @@ namespace KoorweekendApp2017.Tasks
                         }
                         else
                         {
-                            String url = "http://www.jongerenkooronevoice.nl/prayerrequests/updatebyid/" + Convert.ToString(pr.Id);
-
-                            if (Convert.ToDateTime(pr.EndDate).AddDays(1).Date < DateTime.Now)
-                            {
-                                pr.IsVisible = false;
-                            }
-
-                            if (pr.IsPrivate) pr.IsVisible = false;
-
-                            RestHelper.PutDataToUrl<PrayerRequest>(url, pr).ContinueWith((arg) =>
+							App.AppWebService.PrayerRequests.PutPrayerRequestsAsync(pr).ContinueWith((arg) =>
                             {
                                 PrayerRequest result = arg.Result;
                                 result.AppSpecificId = pr.AppSpecificId;
