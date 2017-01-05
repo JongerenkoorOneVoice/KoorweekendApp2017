@@ -44,10 +44,7 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <Debugger>Xamarin</Debugger>
-    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
-    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
-    <EnableProguard>False</EnableProguard>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>True</DebugSymbols>
@@ -60,11 +57,8 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
-    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
-    <AndroidCreatePackagePerAbi>True</AndroidCreatePackagePerAbi>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <Debugger>Xamarin</Debugger>
-    <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
-    <EnableProguard>True</EnableProguard>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <DebugSymbols>True</DebugSymbols>
@@ -78,10 +72,7 @@
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <Debugger>Xamarin</Debugger>
-    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
-    <EnableProguard>False</EnableProguard>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="box2d, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -320,6 +311,7 @@
     <Compile Include="Tasks\ApiSongSyncTask.cs" />
     <Compile Include="Tasks\ApiPrayerRequestSyncTask.cs" />
     <Compile Include="Tasks\ApiSongOccasionSyncTask.cs" />
+    <Compile Include="Tasks\ApiNewsSyncTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -571,7 +563,6 @@
     <AndroidResource Include="Resources\drawable\onevoice_logo_app_less.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PluginsHelp\ConnectivityReadme.txt" />
     <AndroidResource Include="Resources\drawable\Kleding_W.png" />
     <AndroidResource Include="Resources\drawable\Kleding_Z.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Kleding_Z.png" />
@@ -580,6 +571,23 @@
     <AndroidResource Include="Resources\drawable-xhdpi\Kleding_W.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Kleding_Z.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Kleding_W.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\Plus.png" />
+    <AndroidResource Include="Resources\drawable\Plus.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Plus.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Plus.png" />
+    <AndroidResource Include="Resources\drawable\Prayer.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Prayer.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Prayer.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Prayer.png" />
+    <AndroidResource Include="Resources\drawable\Filter.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Filter.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Filter.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PluginsHelp\ConnectivityReadme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

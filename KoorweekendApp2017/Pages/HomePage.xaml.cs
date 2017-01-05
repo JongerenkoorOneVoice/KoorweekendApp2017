@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using XLabs.Ioc;
 using XLabs.Platform.Device;
 using XLabs.Platform.Services;
+using System.Threading.Tasks;
 
 namespace KoorweekendApp2017.Pages
 {
@@ -33,8 +34,10 @@ namespace KoorweekendApp2017.Pages
         }
         public Contact firstBirthdayContact = HomePageHelper.GetFirstBirthdayContact(App.Database);
         public Event nextEvent = HomePageHelper.GetNextEvent(App.Database);
+        public List<News> allNews = HomePageHelper.GetLastChangedNewsItem(App.Database);
         public DateTime datumBirth;
         public DateTime datumEvent;
+        public int index = -1;
 
         public HomePage()
         {
@@ -74,22 +77,56 @@ namespace KoorweekendApp2017.Pages
             stackNews.VerticalOptions = LayoutOptions.CenterAndExpand;
             stackNews.Padding = new Thickness(20, 0, 20, 0);
 
-            bool news = true;
-            if (news == false)
+            stack1.BackgroundColor = Color.Red;
+            if (allNews != null)
             {
-                stack1.BackgroundColor = Color.FromRgba(0, 0, 0, 0);
-            }
-            else if (news == true)
+                stackNews.Children.Add(new Label { Text = "Nieuws:", FontAttributes = FontAttributes.Bold, FontSize = 22, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+            
+
+            var newsOpen = new TapGestureRecognizer();
+            newsOpen.Tapped += (s, e) =>
             {
-                stack1.BackgroundColor = Color.Red;
-                stackNews.Children.Add(new Label { Text = "Nieuwsupdate:", FontAttributes = FontAttributes.Bold, FontSize = 18, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
-                stackNews.Children.Add(new Label { Text = "U heeft 7 ongelezen updates", HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
-                var newsOpen = new TapGestureRecognizer();
-                newsOpen.Tapped += (s, e) =>
+                if (index == -1)
                 {
                     Navigation.PushAsync(new NewsArchive());
-                };
-                stack1.GestureRecognizers.Add(newsOpen);
+                }
+                else
+                {
+                    Navigation.PushAsync(new NewsSingle() { BindingContext = allNews[index] });
+                }
+            };
+            stack1.GestureRecognizers.Add(newsOpen);
+
+            
+                Device.StartTimer(TimeSpan.FromSeconds(8), () => {
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        Task labelFadeO = stackNews.FadeTo(0, 1000);
+                        Task gridFadeO = stack1.FadeTo(0.3, 1000);
+                        await Task.WhenAll(new List<Task> { labelFadeO, gridFadeO });
+                        if (index < allNews.Count - 1)
+                        {
+                            index++;
+                        }
+                        else if (index >= allNews.Count - 1)
+                        {
+                            index = 0;
+                        }
+                        stackNews.Children.Clear();
+                        stackNews.Children.Add(new Label { Text = (string.Format("{0}", (Convert.ToString(allNews[index].Title)))), FontAttributes = FontAttributes.Bold, FontSize = 18, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+                        stackNews.Children.Add(new Label { Text = (string.Format("{0}", (Convert.ToString(allNews[index].LastModifiedDateFormatted)))), HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+
+                        Task labelFadeI = stackNews.FadeTo(1, 1000);
+                        Task gridFadeI = stack1.FadeTo(1, 1000);
+                        await Task.WhenAll(new List<Task> { labelFadeI, gridFadeI });
+                    });
+                    ; return true;
+                });
+            }
+            else
+            {
+                stackNews.Children.Add(new Label { Text = "Er is geen nieuws beschikbaar", FontSize = 16, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
             }
             stack1.Children.Add(stackNews);
             controlGrid.Children.Add(stack1, 1, 3, 0, 1);
