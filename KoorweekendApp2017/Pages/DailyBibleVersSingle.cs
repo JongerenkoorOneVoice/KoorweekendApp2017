@@ -23,6 +23,8 @@ namespace KoorweekendApp2017
 			var todaysVerse = BindingContext as DailyBreadVerse;
 
 			Today = todaysVerse.ts.ToString("d MMM yyyy");
+			Source.Text = todaysVerse.source;
+			Text.Text = todaysVerse.text.hsv;
 			                         
 		}
 

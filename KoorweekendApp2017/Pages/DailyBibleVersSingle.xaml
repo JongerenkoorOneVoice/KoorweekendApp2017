@@ -3,9 +3,11 @@
 		xmlns="http://xamarin.com/schemas/2014/forms"
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 		x:Class="KoorweekendApp2017.DailyBibleVersSingle"
-		Title="{Binding local:Today}">>
+		Title="{Binding local:Today}">
 	<ContentPage.Content>
-		<Label Text="{Binding source}" FontAttributes="Bold" HorizontalTextAlignment="Start"></Label>
-		<Label Text="{Binding text}" HorizontalTextAlignment="Start"></Label>
+		<StackLayout>
+			<Label x:Name="Source" Text="" FontAttributes="Bold" HorizontalTextAlignment="Start"></Label>
+			<Label x:Name="Text" Text="" HorizontalTextAlignment="Start"></Label>
+		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

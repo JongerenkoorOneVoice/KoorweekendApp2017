@@ -21,7 +21,7 @@ namespace KoorweekendApp2017.Tasks
 			MessagingCenter.Send(new StartApiEventSyncMessage(), "StartApiEventSyncMessage");
 			MessagingCenter.Send(new StartApiSongOccasionSyncMessage(), "StartApiSongOccasionSyncMessage");
 			MessagingCenter.Send(new StartApiNewsSyncMessage(), "StartApiNewsSyncMessage");
-			//MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
+			MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
 		
 		}
 
@@ -33,7 +33,7 @@ namespace KoorweekendApp2017.Tasks
 			UpdateEventsInDbFromApi(downloadAll);
 			UpdateSongOccasionsInDbFromApi(downloadAll);
 			UpdateNewsInDbFromApi(downloadAll);
-			//SyncPrayerRequests(downloadAll);
+			SyncPrayerRequests(downloadAll);
 
 		}
 
@@ -219,14 +219,18 @@ namespace KoorweekendApp2017.Tasks
 
 			foreach (var pr in apiPrayerRequests)
 			{
+
+				bool endDateIsInPast = Convert.ToDateTime(pr.EndDate).Date < DateTime.Now;
+
 				if (pr.ContactId != currentContactId)
 				{
-					if (!pr.IsVisible || pr.IsPrivate)
+					if (!pr.IsVisible || pr.IsPrivate || endDateIsInPast)
 					{
 						var tmp = App.Database.PrayerRequests.GetByApiId(pr.Id);
-						if(tmp != null) App.Database.PrayerRequests.RemoveById(Convert.ToInt32(tmp.AppSpecificId));
+						if (tmp != null) App.Database.PrayerRequests.RemoveById(Convert.ToInt32(tmp.AppSpecificId));
 					}
 				}
+
 				App.Database.PrayerRequests.UpdateOrInsertByApiId(pr);
 
 			}
@@ -241,6 +245,9 @@ namespace KoorweekendApp2017.Tasks
             bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
 			if (isAuthenticated)
 			{
+				DateTime lastUpdate = App.Database.Settings.GetValue<DateTime>("lastPrayerRequestSync");
+
+
 				Int32 statusCount = 0;
 
 				Int32 currentContactId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
@@ -253,11 +260,16 @@ namespace KoorweekendApp2017.Tasks
                 {
                     foreach (var pr in currentContactPrayerRequests)
                     {
-						
-						bool endDateIsInPast = Convert.ToDateTime(pr.EndDate).Date < DateTime.Now;
-
-						if (endDateIsInPast) pr.IsVisible = false;
-						if (pr.IsPrivate) pr.IsVisible = false;
+						// Check if this prayerRequest was already updated in previous sync.
+						if (pr.LastModifiedInApi < lastUpdate)
+						{
+							statusCount = statusCount + 1;
+							if (statusCount == currentContactPrayerRequests.Count)
+							{
+								UpdatePrayerRequestsInDbFromApi();
+							}
+							continue;
+						}
 
 
                         if (pr.Id == 0)
@@ -267,7 +279,7 @@ namespace KoorweekendApp2017.Tasks
                                 PrayerRequest result = arg.Result;
                                 result.AppSpecificId = pr.AppSpecificId;
                                 App.Database.PrayerRequests.UpdateOrInsert(result);
-                                statusCount = statusCount++;
+                                statusCount = statusCount+1;
                                 if (statusCount == currentContactPrayerRequests.Count)
                                 {
                                     UpdatePrayerRequestsInDbFromApi();
@@ -281,8 +293,7 @@ namespace KoorweekendApp2017.Tasks
                                 PrayerRequest result = arg.Result;
                                 result.AppSpecificId = pr.AppSpecificId;
                                 App.Database.PrayerRequests.UpdateOrInsert(arg.Result);
-                                statusCount = statusCount++;
-                                statusCount = statusCount++;
+                                statusCount = statusCount+1;
                                 if (statusCount == currentContactPrayerRequests.Count)
                                 {
                                     UpdatePrayerRequestsInDbFromApi();

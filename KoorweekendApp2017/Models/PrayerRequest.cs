@@ -37,7 +37,7 @@ namespace KoorweekendApp2017.Models
 				if (creator == null) return result;
 
 
-				if (!this.IsAnonymous)
+ 				if (!this.IsAnonymous)
 				{
 					result += creator.FullName;
 				}
@@ -45,6 +45,10 @@ namespace KoorweekendApp2017.Models
 					if (creator.Id == currentUserId)
 					{
 						result += String.Format("{0} (anoniem)", creator.FullName);
+					}
+					else
+					{
+						result += "Anoniem";
 					}
 				}
 

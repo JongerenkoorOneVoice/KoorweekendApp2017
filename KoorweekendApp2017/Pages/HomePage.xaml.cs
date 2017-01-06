@@ -12,6 +12,9 @@ namespace KoorweekendApp2017.Pages
 
 	public partial class HomePage : ContentPage
 	{
+
+		public bool VerseLoaded { get; set;}
+
 		public Int32 ScreenWidth
 		{
 			get
@@ -64,6 +67,9 @@ namespace KoorweekendApp2017.Pages
 
 				DailyBread dayTexts = request.Result;
                 Verse = dayTexts;
+				VerseLoaded = true;
+
+
                 // Jouw code hier.
                 // (Je kan bijvoorbeeld een publieke property maken met dit object en die in News() inladen?)
 
@@ -126,76 +132,88 @@ namespace KoorweekendApp2017.Pages
             stack1.GestureRecognizers.Add(newsOpen);
             stackNews.Children.Add(new Label { Text = "Vers van de dag", FontAttributes = FontAttributes.Bold, FontSize = 18, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
 
-            Device.StartTimer(TimeSpan.FromSeconds(8), () => {
-
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    Task labelFadeO = stackNews.FadeTo(0, 1000);
-                    Task gridFadeO = stack1.FadeTo(0.3, 1000);
-                    await Task.WhenAll(new List<Task> { labelFadeO, gridFadeO });
-                    stackNews.Children.Clear();
-                    if (counter == 0)
-                    {
-                        stackNews.Children.Add(new Label { Text = "Vers van de dag", FontAttributes = FontAttributes.Bold, FontSize = 18, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
-                        counter++;
-                    }
-                    else if (counter == 1)
-                    {
-
-                        var versje = (Convert.ToString(Verse.data[0].text.hsv));
-                        if (versje.Length > 120)
-                        {
-                            var temp = versje.Substring(0, 120).Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-                            versje = String.Join(" ", temp, 0, temp.Length - 1).Trim();
-                            versje += "...";
-                        }
-                        stackNews.Children.Add(new Label { Text = (Convert.ToString(versje)), FontSize = 12, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
-                        stackNews.Children.Add(new Label { Text = (Convert.ToString(Verse.data[0].source)), FontSize = 10, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
-                        if (allNews != null)
-                        {
-                            counter++;
-                        }
-                        else
-                        {
-                            counter = 0;
-                        }
-                    }
-                    else if (counter == 2)
-                    {
-                        stackNews.Children.Add(new Label { Text = "Nieuws", FontAttributes = FontAttributes.Bold, FontSize = 22, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
-                        counter++;
-                    }
-                    else if (counter >= 3)
-                    {
-                        if (index < allNews.Count - 1)
-                        {
-                            index++;
-                        }
-                        else if (index >= allNews.Count - 1)
-                        {
-                            index = 0;
-                        }
-
-                        stackNews.Children.Add(new Label { Text = (string.Format("{0}", (Convert.ToString(allNews[index].Title)))), FontAttributes = FontAttributes.Bold, FontSize = 18, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
-                        stackNews.Children.Add(new Label { Text = (string.Format("{0}", (Convert.ToString(allNews[index].LastModifiedDateFormatted)))), HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
-                        if (index >= allNews.Count - 1)
-                        {
-                            counter = 0;
-                        }
-                    }
-                    Task labelFadeI = stackNews.FadeTo(1, 1000);
-                    Task gridFadeI = stack1.FadeTo(1, 1000);
-                    await Task.WhenAll(new List<Task> { labelFadeI, gridFadeI });
-
-                });
-                ; return true;
-            });
-
             stack1.Children.Add(stackNews);
             controlGrid.Children.Add(stack1, 1, 3, 0, 1);
             this.Content = controlGrid;
+
+			Task.Run(() => { 
+				while (!VerseLoaded){}
+				Task.Delay(2000).Wait();
+				StartNewsAnimation(stack1, stackNews);
+				Device.StartTimer(TimeSpan.FromSeconds(8), () =>
+				{
+					StartNewsAnimation(stack1, stackNews);
+				
+					return true;
+				});
+			});
+
         }
 
+		void StartNewsAnimation(StackLayout stack1, StackLayout stackNews)
+		{
+			Device.BeginInvokeOnMainThread(async () =>
+			   {
+				   Task labelFadeO = stackNews.FadeTo(0, 1000);
+				   Task gridFadeO = stack1.FadeTo(0.3, 1000);
+				   await Task.WhenAll(new List<Task> { labelFadeO, gridFadeO });
+				   stackNews.Children.Clear();
+				   if (counter == 0)
+				   {
+					   stackNews.Children.Add(new Label { Text = "Vers van de dag", FontAttributes = FontAttributes.Bold, FontSize = 18, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+					   counter++;
+				   }
+				   else if (counter == 1)
+				   {
+
+					   var versje = (Convert.ToString(Verse.data[0].text.hsv));
+					   if (versje.Length > 120)
+					   {
+						   var temp = versje.Substring(0, 120).Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+						   versje = String.Join(" ", temp, 0, temp.Length - 1).Trim();
+						   versje += "...";
+					   }
+					   stackNews.Children.Add(new Label { Text = (Convert.ToString(versje)), FontSize = 12, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+					   stackNews.Children.Add(new Label { Text = (Convert.ToString(Verse.data[0].source)), FontSize = 10, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+					   if (allNews != null)
+					   {
+						   counter++;
+					   }
+					   else
+					   {
+						   counter = 0;
+					   }
+				   }
+				   else if (counter == 2)
+				   {
+					   stackNews.Children.Add(new Label { Text = "Nieuws", FontAttributes = FontAttributes.Bold, FontSize = 22, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+					   counter++;
+				   }
+				   else if (counter >= 3)
+				   {
+					   if (index < allNews.Count - 1)
+					   {
+						   index++;
+					   }
+					   else if (index >= allNews.Count - 1)
+					   {
+						   index = 0;
+					   }
+
+					   stackNews.Children.Add(new Label { Text = (string.Format("{0}", (Convert.ToString(allNews[index].Title)))), FontAttributes = FontAttributes.Bold, FontSize = 18, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+					   stackNews.Children.Add(new Label { Text = (string.Format("{0}", (Convert.ToString(allNews[index].LastModifiedDateFormatted)))), HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+					   if (index >= allNews.Count - 1)
+					   {
+						   counter = 0;
+					   }
+				   }
+				   Task labelFadeI = stackNews.FadeTo(1, 1000);
+				   Task gridFadeI = stack1.FadeTo(1, 1000);
+				   await Task.WhenAll(new List<Task> { labelFadeI, gridFadeI });
+
+			   });
+	
+		}
 
         void Birthdays()
         {
