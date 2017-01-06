@@ -96,11 +96,11 @@
 						Margin="0, 15, 0, 0"
 						HorizontalOptions="FillAndExpand"
 						>
-						<RelativeLayout
+            <!--RelativeLayout
 							RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
 							RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.75}"
 							>
-							<StackLayout
+              <StackLayout
 								HorizontalOptions="Start"
 								>
 								<Label
@@ -118,12 +118,12 @@
 								RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
 								RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
 							>
-							<Switch
+              <Switch
 								x:Name="isPrivateCtrl"
 								IsToggled="{Binding IsPrivate}"
 
 							></Switch>
-						</RelativeLayout>
+						</RelativeLayout-->
 					</RelativeLayout>
 					<Button x:Name="saveCtrl" Text="Opslaan" Margin="0, 15, 0, 0" BackgroundColor="#aae3e3e3" TextColor="Black"></Button>
 					<Button x:Name="isVisibleCtrl" Text="Verwijderen" Margin="0, 15, 0, 0" BackgroundColor="Red" TextColor="White"></Button>

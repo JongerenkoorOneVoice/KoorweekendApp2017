@@ -189,7 +189,8 @@ namespace KoorweekendApp2017.Pages
 				   {
 					   stackNews.Children.Add(new Label { Text = "Nieuws", FontAttributes = FontAttributes.Bold, FontSize = 22, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
 					   counter++;
-				   }
+                       index = -1;
+                }
 				   else if (counter >= 3)
 				   {
 					   if (index < allNews.Count - 1)

@@ -57,11 +57,11 @@ namespace KoorweekendApp2017.Pages
 				};
 
 
-				ToolbarItems.Add(new ToolbarItem("Filter", "Filter.png", () =>
+				/*ToolbarItems.Add(new ToolbarItem("Filter", "Filter.png", () =>
 				{
 						songOccasionsFilter.IsVisible = true;
 						songOccasionsFilter.Focus();
-				}));
+				}));*/
 
 
 
