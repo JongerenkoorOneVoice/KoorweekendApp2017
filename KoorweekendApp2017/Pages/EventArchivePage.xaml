@@ -16,7 +16,9 @@
 					x:Name="eventListView"
 					VerticalOptions="FillAndExpand"
 					SeparatorVisibility="None"
-					BackgroundColor="Transparent">
+					BackgroundColor="Transparent"
+          RelativeLayout.HeightConstraint="{ConstraintExpression
+      Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ImageCell Text="{Binding Title}" TextColor="Red" Detail="{Binding StartDateFormatted}"/>

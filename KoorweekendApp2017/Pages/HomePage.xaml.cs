@@ -113,19 +113,23 @@ namespace KoorweekendApp2017.Pages
             var newsOpen = new TapGestureRecognizer();
             newsOpen.Tapped += (s, e) =>
             {
-                if (counter == 2)
+                if (counter == 2 || counter == 1)
                 {
-                    Navigation.PushAsync(new DailyBibleVersSingle() { BindingContext = Verse.data[0]});
+                    if (Verse != null)
+                    {
+                        Navigation.PushAsync(new DailyBibleVersSingle() { BindingContext = Verse.data[0] });
+                    }
                 }
-                if (counter >= 3)
+                if (counter != 2)
                 {
-                    if (index == -1)
+                    if (index == 0)
                     {
                         Navigation.PushAsync(new NewsArchive());
                     }
-                    else
+                    else if(index >= 1)
                     {
-                        Navigation.PushAsync(new NewsSingle() { BindingContext = allNews[index] });
+
+                        Navigation.PushAsync(new NewsSingle() { BindingContext = allNews[index - 1] });
                     }
                 }
             };
@@ -163,20 +167,31 @@ namespace KoorweekendApp2017.Pages
 				   {
 					   stackNews.Children.Add(new Label { Text = "Vers van de dag", FontAttributes = FontAttributes.Bold, FontSize = 18, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
 					   counter++;
-				   }
+                       index = -1;
+                }
 				   else if (counter == 1)
 				   {
 
-					   var versje = (Convert.ToString(Verse.data[0].text.hsv));
-					   if (versje.Length > 120)
-					   {
-						   var temp = versje.Substring(0, 120).Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-						   versje = String.Join(" ", temp, 0, temp.Length - 1).Trim();
-						   versje += "...";
-					   }
-					   stackNews.Children.Add(new Label { Text = (Convert.ToString(versje)), FontSize = 12, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
-					   stackNews.Children.Add(new Label { Text = (Convert.ToString(Verse.data[0].source)), FontSize = 10, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
-					   if (allNews != null)
+                    if (Verse != null)
+                    {
+
+                        var versje = (Convert.ToString(Verse.data[0].text.hsv));
+                        if (versje.Length > 120)
+                        {
+                            var temp = versje.Substring(0, 120).Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                            versje = String.Join(" ", temp, 0, temp.Length - 1).Trim();
+                            versje += "...";
+                        }
+                        stackNews.Children.Add(new Label { Text = (Convert.ToString(versje)), FontSize = 12, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+                        stackNews.Children.Add(new Label { Text = (Convert.ToString(Verse.data[0].source)), FontSize = 10, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+                    }
+                    else
+                    {
+                        stackNews.Children.Add(new Label { Text = "Loof de Here, mijn ziel, en al wat in mij is, Zijn heilige naam.", FontSize = 12, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+                        stackNews.Children.Add(new Label { Text = "Psalm 103:1", FontSize = 10, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+                    }
+
+                        if (allNews != null)
 					   {
 						   counter++;
 					   }
@@ -184,31 +199,29 @@ namespace KoorweekendApp2017.Pages
 					   {
 						   counter = 0;
 					   }
+
 				   }
 				   else if (counter == 2)
 				   {
 					   stackNews.Children.Add(new Label { Text = "Nieuws", FontAttributes = FontAttributes.Bold, FontSize = 22, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
 					   counter++;
-                       index = -1;
+                       index = 0;
                 }
 				   else if (counter >= 3)
 				   {
-					   if (index < allNews.Count - 1)
-					   {
-						   index++;
-					   }
-					   else if (index >= allNews.Count - 1)
-					   {
-						   index = 0;
-					   }
+					stackNews.Children.Add(new Label { Text = (string.Format("{0}", (Convert.ToString(allNews[index].Title)))), FontAttributes = FontAttributes.Bold, FontSize = 18, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+					stackNews.Children.Add(new Label { Text = (string.Format("{0}", (Convert.ToString(allNews[index].LastModifiedDateFormatted)))), HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
 
-					   stackNews.Children.Add(new Label { Text = (string.Format("{0}", (Convert.ToString(allNews[index].Title)))), FontAttributes = FontAttributes.Bold, FontSize = 18, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
-					   stackNews.Children.Add(new Label { Text = (string.Format("{0}", (Convert.ToString(allNews[index].LastModifiedDateFormatted)))), HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
-					   if (index >= allNews.Count - 1)
-					   {
-						   counter = 0;
-					   }
-				   }
+                    if (index < allNews.Count - 1)
+                    {
+                        index++;
+                    }
+                    else if (index >= allNews.Count - 1)
+                    {
+                        counter = 0;
+                        index++;
+                    }
+                }
 				   Task labelFadeI = stackNews.FadeTo(1, 1000);
 				   Task gridFadeI = stack1.FadeTo(1, 1000);
 				   await Task.WhenAll(new List<Task> { labelFadeI, gridFadeI });

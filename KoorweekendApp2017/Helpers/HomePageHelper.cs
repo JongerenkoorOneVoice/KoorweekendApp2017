@@ -161,7 +161,7 @@ namespace KoorweekendApp2017
 		/// </summary>  
 		public static List<News> GetLastChangedNewsItem(IOneVoiceDatabase db)
 		{
-			return db.News.GetAll().FindAll(x => x.IsVisible != false).OrderBy(x => x.LastModified).ToList();
+            return db.News.GetAll().FindAll(x => x.IsVisible != false).OrderBy(x => x.LastModified).ToList();
 
 		}
 

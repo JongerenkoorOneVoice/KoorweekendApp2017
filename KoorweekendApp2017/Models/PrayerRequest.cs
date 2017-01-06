@@ -35,9 +35,9 @@ namespace KoorweekendApp2017.Models
 				String result = String.Empty;
 
 				if (creator == null) return result;
+                IsPrivate = false;
 
-
- 				if (!this.IsAnonymous)
+                 if (!this.IsAnonymous)
 				{
 					result += creator.FullName;
 				}
