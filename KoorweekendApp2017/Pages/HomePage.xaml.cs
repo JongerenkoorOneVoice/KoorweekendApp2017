@@ -153,7 +153,8 @@ namespace KoorweekendApp2017.Pages
 		void StartNewsAnimation(StackLayout stack1, StackLayout stackNews)
 		{
 			Device.BeginInvokeOnMainThread(async () =>
-			   {
+			{
+					//await stackNews.RotateXTo(90, 2000);
 				   Task labelFadeO = stackNews.FadeTo(0, 1000);
 				   Task gridFadeO = stack1.FadeTo(0.3, 1000);
 				   await Task.WhenAll(new List<Task> { labelFadeO, gridFadeO });
@@ -284,6 +285,7 @@ namespace KoorweekendApp2017.Pages
 
         void Events()
         {
+			
             //List<Event> eventsInNextSevenDays = HomePageHelper.GetEventsInTimeSpan(App.Database, new TimeSpan(7, 0, 0, 0)); // Alle eventementen in een bepalde periode.
             if (nextEvent != null)
             {

@@ -5,7 +5,7 @@
 		x:Class="KoorweekendApp2017.DailyBibleVersSingle"
 		Title="{Binding local:Today}">
 	<ContentPage.Content>
-		<StackLayout>
+		<StackLayout Padding="15,15,15,0">
 			<Label x:Name="Source" Text="" FontAttributes="Bold" HorizontalTextAlignment="Start"></Label>
 			<Label x:Name="Text" Text="" HorizontalTextAlignment="Start"></Label>
 		</StackLayout>
