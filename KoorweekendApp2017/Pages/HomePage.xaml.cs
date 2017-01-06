@@ -38,9 +38,11 @@ namespace KoorweekendApp2017.Pages
 
 		public DateTime datumBirth;
 		public DateTime datumEvent;
-		public int index = -1;
+        public Int32 index = -1;
+        public Int32 counter = 1;
+        public DailyBread Verse;
 
-		public HomePage()
+        public HomePage()
 		{
 			InitializeComponent();
 			this.BindingContext = this;
@@ -61,11 +63,11 @@ namespace KoorweekendApp2017.Pages
 				 */
 
 				DailyBread dayTexts = request.Result;
+                Verse = dayTexts;
+                // Jouw code hier.
+                // (Je kan bijvoorbeeld een publieke property maken met dit object en die in News() inladen?)
 
-				// Jouw code hier.
-				// (Je kan bijvoorbeeld een publieke property maken met dit object en die in News() inladen?)
-
-			});
+            });
 
             if (firstBirthdayContact != null)
             {
@@ -99,35 +101,72 @@ namespace KoorweekendApp2017.Pages
             var stackNews = new StackLayout();
             stackNews.VerticalOptions = LayoutOptions.CenterAndExpand;
             stackNews.Padding = new Thickness(20, 0, 20, 0);
-
             stack1.BackgroundColor = Color.Red;
-            if (allNews != null)
-            {
-                stackNews.Children.Add(new Label { Text = "Nieuws", FontAttributes = FontAttributes.Bold, FontSize = 22, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
-            
+
 
             var newsOpen = new TapGestureRecognizer();
             newsOpen.Tapped += (s, e) =>
             {
-                if (index == -1)
+                if (counter == 2)
                 {
-                    Navigation.PushAsync(new NewsArchive());
+                    Navigation.PushAsync(new DailyBibleVersSingle() { BindingContext = Verse.data[0]});
                 }
-                else
+                if (counter >= 3)
                 {
-                    Navigation.PushAsync(new NewsSingle() { BindingContext = allNews[index] });
+                    if (index == -1)
+                    {
+                        Navigation.PushAsync(new NewsArchive());
+                    }
+                    else
+                    {
+                        Navigation.PushAsync(new NewsSingle() { BindingContext = allNews[index] });
+                    }
                 }
             };
             stack1.GestureRecognizers.Add(newsOpen);
+            stackNews.Children.Add(new Label { Text = "Vers van de dag", FontAttributes = FontAttributes.Bold, FontSize = 18, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
 
-            
-                Device.StartTimer(TimeSpan.FromSeconds(8), () => {
+            Device.StartTimer(TimeSpan.FromSeconds(8), () => {
 
-                    Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    Task labelFadeO = stackNews.FadeTo(0, 1000);
+                    Task gridFadeO = stack1.FadeTo(0.3, 1000);
+                    await Task.WhenAll(new List<Task> { labelFadeO, gridFadeO });
+                    stackNews.Children.Clear();
+                    if (counter == 0)
                     {
-                        Task labelFadeO = stackNews.FadeTo(0, 1000);
-                        Task gridFadeO = stack1.FadeTo(0.3, 1000);
-                        await Task.WhenAll(new List<Task> { labelFadeO, gridFadeO });
+                        stackNews.Children.Add(new Label { Text = "Vers van de dag", FontAttributes = FontAttributes.Bold, FontSize = 18, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+                        counter++;
+                    }
+                    else if (counter == 1)
+                    {
+
+                        var versje = (Convert.ToString(Verse.data[0].text.hsv));
+                        if (versje.Length > 120)
+                        {
+                            var temp = versje.Substring(0, 120).Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                            versje = String.Join(" ", temp, 0, temp.Length - 1).Trim();
+                            versje += "...";
+                        }
+                        stackNews.Children.Add(new Label { Text = (Convert.ToString(versje)), FontSize = 12, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+                        stackNews.Children.Add(new Label { Text = (Convert.ToString(Verse.data[0].source)), FontSize = 10, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+                        if (allNews != null)
+                        {
+                            counter++;
+                        }
+                        else
+                        {
+                            counter = 0;
+                        }
+                    }
+                    else if (counter == 2)
+                    {
+                        stackNews.Children.Add(new Label { Text = "Nieuws", FontAttributes = FontAttributes.Bold, FontSize = 22, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+                        counter++;
+                    }
+                    else if (counter >= 3)
+                    {
                         if (index < allNews.Count - 1)
                         {
                             index++;
@@ -136,21 +175,22 @@ namespace KoorweekendApp2017.Pages
                         {
                             index = 0;
                         }
-                        stackNews.Children.Clear();
+
                         stackNews.Children.Add(new Label { Text = (string.Format("{0}", (Convert.ToString(allNews[index].Title)))), FontAttributes = FontAttributes.Bold, FontSize = 18, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
                         stackNews.Children.Add(new Label { Text = (string.Format("{0}", (Convert.ToString(allNews[index].LastModifiedDateFormatted)))), HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
+                        if (index >= allNews.Count - 1)
+                        {
+                            counter = 0;
+                        }
+                    }
+                    Task labelFadeI = stackNews.FadeTo(1, 1000);
+                    Task gridFadeI = stack1.FadeTo(1, 1000);
+                    await Task.WhenAll(new List<Task> { labelFadeI, gridFadeI });
 
-                        Task labelFadeI = stackNews.FadeTo(1, 1000);
-                        Task gridFadeI = stack1.FadeTo(1, 1000);
-                        await Task.WhenAll(new List<Task> { labelFadeI, gridFadeI });
-                    });
-                    ; return true;
                 });
-            }
-            else
-            {
-                stackNews.Children.Add(new Label { Text = "Er is geen nieuws beschikbaar", FontSize = 16, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
-            }
+                ; return true;
+            });
+
             stack1.Children.Add(stackNews);
             controlGrid.Children.Add(stack1, 1, 3, 0, 1);
             this.Content = controlGrid;
