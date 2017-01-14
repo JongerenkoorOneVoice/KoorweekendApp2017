@@ -588,6 +588,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PluginsHelp\ConnectivityReadme.txt" />
+    <AndroidResource Include="Resources\drawable\Scanner.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Scanner.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Scanner.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Scanner.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

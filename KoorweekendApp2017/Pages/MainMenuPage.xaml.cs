@@ -65,21 +65,26 @@ namespace KoorweekendApp2017.Pages
 				IconSource = "Kleding.png",
 				TargetType = typeof(ChoirUniform)
 			});
-			/*
-			masterPageItems.Add(new MasterPageItem
-			{
-				Title = "Koorweekend 2017",
-				IconSource = "Koorweekend.png",
-				TargetType = typeof(Koorweekend2017Page)
-			});
 
+            Int32 currentUserId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
+
+            if (currentUserId == 668 || currentUserId == 667 || currentUserId == 696)
+            {
+                masterPageItems.Add(new MasterPageItem
+                {
+                    Title = "Koorweekend 2017",
+                    IconSource = "Koorweekend.png",
+                    TargetType = typeof(Koorweekend2017Page)
+                });
+            }
+            /*
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Test Login",
 				IconSource = "Login.png",
 				TargetType = typeof(LoginPage)
-			});
-*/
+			});*/
+
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Instellingen",

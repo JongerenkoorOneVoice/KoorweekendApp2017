@@ -26,7 +26,7 @@ namespace KoorweekendApp2017.Droid
         public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
         {
             base.OnCreate(savedInstanceState, persistentState);
-           // StartActivity(typeof(MainActivity));
+            // StartActivity(typeof(MainActivity));
         }
 
         protected override void OnResume()
@@ -57,8 +57,9 @@ namespace KoorweekendApp2017.Droid
 			ToolbarResource = Resource.Layout.Toolbar;
 
 			base.OnCreate(bundle);
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
-			global::Xamarin.Forms.Forms.Init(this, bundle);
+            global::Xamarin.Forms.Forms.Init(this, bundle);
             //SetPage(App.GetMainPage());
             //ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
