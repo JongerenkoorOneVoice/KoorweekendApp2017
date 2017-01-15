@@ -6,10 +6,14 @@
 	<ContentPage.Content>
     <RelativeLayout VerticalOptions="FillAndExpand">
       <ListView
-    x:Name="newsListView"
-    VerticalOptions="FillAndExpand"
-    SeparatorVisibility="None"
-    BackgroundColor="Transparent">
+      x:Name="newsListView"
+      VerticalOptions="FillAndExpand"
+      HorizontalOptions="FillAndExpand"
+      Margin="0,25,0,0"
+      RelativeLayout.HeightConstraint="{ConstraintExpression
+      Type=RelativeToParent,Property=Height,Factor=1,Constant=0}"
+      SeparatorVisibility="None"
+      BackgroundColor="Transparent">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ImageCell Text="{Binding Title}" TextColor="Red" Detail="{Binding LastModifiedDateFormatted}"/>
