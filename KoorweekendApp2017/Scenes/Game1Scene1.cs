@@ -2,7 +2,7 @@
 using CocosSharp;
 using Plugin.Geolocator.Abstractions;
 using Plugin.Compass;
-using GeoCoordinatePortable;
+//using GeoCoordinatePortable;
 
 namespace KoorweekendApp2017.Scenes
 {
@@ -53,9 +53,10 @@ namespace KoorweekendApp2017.Scenes
 
 			};
 
-			var a = new GeoCoordinate(52.224555, 4.953526);
-			var b = new GeoCoordinate(52.223713, 4.951803);
-			var test = a.GetDistanceTo(b);
+
+            var a = 0;//new GeoCoordinate(52.224555, 4.953526);
+            var b = 0;//new GeoCoordinate(52.223713, 4.951803);
+            var test = 0;//a.GetDistanceTo(b);
 
 
 			line = new CCDrawNode();

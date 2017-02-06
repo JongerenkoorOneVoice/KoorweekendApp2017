@@ -4146,8 +4146,8 @@ namespace KoorweekendApp2017.Droid
 			// aapt resource value: 0x7f0200b3
 			public const int News = 2130837683;
 			
-			// aapt resource value: 0x7f0200bb
-			public const int notification_template_icon_bg = 2130837691;
+			// aapt resource value: 0x7f0200bc
+			public const int notification_template_icon_bg = 2130837692;
 			
 			// aapt resource value: 0x7f0200b4
 			public const int onevoice_logo_app_less = 2130837684;
@@ -4168,7 +4168,10 @@ namespace KoorweekendApp2017.Droid
 			public const int Scanner = 2130837689;
 			
 			// aapt resource value: 0x7f0200ba
-			public const int SplashScreenBackground = 2130837690;
+			public const int Score = 2130837690;
+			
+			// aapt resource value: 0x7f0200bb
+			public const int SplashScreenBackground = 2130837691;
 			
 			static Drawable()
 			{

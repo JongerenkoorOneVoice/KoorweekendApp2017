@@ -216,24 +216,26 @@ namespace KoorweekendApp2017.Tasks
 			}
 
 			List<PrayerRequest> apiPrayerRequests = RestHelper.GetRestDataFromUrl<List<PrayerRequest>>(query).Result;
+            if (apiPrayerRequests != null)
+            {
+                foreach (var pr in apiPrayerRequests)
+                {
 
-			foreach (var pr in apiPrayerRequests)
-			{
+                    bool endDateIsInPast = Convert.ToDateTime(pr.EndDate).Date < DateTime.Now;
 
-				bool endDateIsInPast = Convert.ToDateTime(pr.EndDate).Date < DateTime.Now;
+                    if (pr.ContactId != currentContactId)
+                    {
+                        if (!pr.IsVisible || pr.IsPrivate || endDateIsInPast)
+                        {
+                            var tmp = App.Database.PrayerRequests.GetByApiId(pr.Id);
+                            if (tmp != null) App.Database.PrayerRequests.RemoveById(Convert.ToInt32(tmp.AppSpecificId));
+                        }
+                    }
 
-				if (pr.ContactId != currentContactId)
-				{
-					if (!pr.IsVisible || pr.IsPrivate || endDateIsInPast)
-					{
-						var tmp = App.Database.PrayerRequests.GetByApiId(pr.Id);
-						if (tmp != null) App.Database.PrayerRequests.RemoveById(Convert.ToInt32(tmp.AppSpecificId));
-					}
-				}
+                    App.Database.PrayerRequests.UpdateOrInsertByApiId(pr);
 
-				App.Database.PrayerRequests.UpdateOrInsertByApiId(pr);
-
-			}
+                }
+            }
 			App.Database.Settings.Set("lastPrayerRequestSync", DateTime.Now.ToString());
 		}
 

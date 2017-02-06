@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2.TypeBarcodePage">
+  <ContentPage.Content>
+    <StackLayout x:Name="stack3" HorizontalOptions = "FillAndExpand" VerticalOptions = "Start">
+      <StackLayout x:Name="stack1" HorizontalOptions = "FillAndExpand" VerticalOptions = "Start" Padding="0,60,0,0">
+        <Label Text = "Vul hier de barcode in:" HorizontalOptions = "LayoutOptions.Center" HorizontalTextAlignment = "Center" />
+        <Entry x:Name="ent" VerticalOptions = "Center" Keyboard="Numeric"/>
+      </StackLayout>
+
+      <StackLayout x:Name="stack2" Padding = "10,0,10,0" Orientation = "Horizontal" HorizontalOptions = "Center" VerticalOptions = "Start">
+        <Button x:Name="Annul" Text="Annuleren"/>
+        <Button x:Name="oke" Text="Oke"/>
+      </StackLayout>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

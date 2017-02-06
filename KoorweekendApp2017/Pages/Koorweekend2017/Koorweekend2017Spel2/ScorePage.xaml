@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2.ScorePage">
+  <ContentPage.Content>
+    <StackLayout>
+      <Label Text="Scorebord" Font="Bold,24" HorizontalTextAlignment="Center"/>
+      <Label Text="Beantwoorde vragen" Font="Bold,16" HorizontalTextAlignment="Center" Margin="0,40,0,0"/>
+      <Label Text="7/24" Font="16" HorizontalTextAlignment="Center"/>
+      <Label Text="Behaalde score" Font="Bold,16" HorizontalTextAlignment="Center" Margin="0,40,0,0"/>
+      <Label Text="30/150" Font="16" HorizontalTextAlignment="Center"/>
+      <Label Text="Bezochte locaties" Font="Bold,16" HorizontalTextAlignment="Center" Margin="0,40,0,0"/>
+      <Label Text="10/32" Font="16" HorizontalTextAlignment="Center"/>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

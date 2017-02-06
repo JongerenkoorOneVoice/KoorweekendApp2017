@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2.Bonusvragen"
+             Title="Bonusvragen">
+  <StackLayout>
+    <Label Text="Tijdens dit spel zijn er een aantal bonusopdrachten die uitgevoerd kunnen worden voor extra punten"/>
+    <Label Text="Foto opdracht:" HorizontalTextAlignment="Center" Font="Bold"/>
+    <Label Text="Jullie rijden voor een deel langs de weilanden van ..., De bedoeling is dat jullie met z'n allen op de foto gaan met een koe. Deze foto kan in het huisje doorgestuurd worden naar de leiding" HorizontalTextAlignment="Center" />
+  </StackLayout>
+</ContentPage>
