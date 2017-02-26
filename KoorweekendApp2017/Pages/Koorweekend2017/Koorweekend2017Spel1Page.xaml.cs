@@ -17,6 +17,8 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017
 
 		private IGeolocator Locator = CrossGeolocator.Current;
 
+		private ListenerSettings LocatorSettings = new ListenerSettings();
+
 		private ICompass Compass = CrossCompass.Current;
 
 		private Label Latitude = new Label() { Text = "Nog geen data"};
@@ -39,8 +41,9 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017
 
 			var position1 = Locator.GetPositionAsync(100).ConfigureAwait(false);
 
+		
+			LocatorSettings.AllowBackgroundUpdates = true;
 
-			Locator.AllowsBackgroundUpdates = true;
 			Locator.DesiredAccuracy = 0.25;
 			Locator.PositionChanged += (sender, e) =>
 			{
@@ -60,8 +63,7 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017
 		protected override void OnAppearing()
 		{
 			
-
-			Locator.StartListeningAsync(1, 0.25);
+			Locator.StartListeningAsync(1, 0.25, false, LocatorSettings);
 			Compass.Start();
 		}
 

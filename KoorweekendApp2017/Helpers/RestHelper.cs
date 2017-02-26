@@ -66,7 +66,7 @@ namespace KoorweekendApp2017.Helpers
 				{
 					if (ex.Message == "The remote server returned an error: (403) Forbidden.")
 					{
-						// Should probably log somthing here
+						// Should probably log something here
 					}
 					else
 					{

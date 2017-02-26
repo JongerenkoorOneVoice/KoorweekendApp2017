@@ -29,6 +29,8 @@ namespace KoorweekendApp2017.BusinessObjects
 
 		public NewsTable News { get; set; }
 
+		public ChoirWeekend2017Table ChoirWeekend2017 { get; set;}
+
 		public LocalDatabase(SQLiteConnection database)
 		{
 			Database = database;
@@ -48,6 +50,7 @@ namespace KoorweekendApp2017.BusinessObjects
 			SongOccasions = new SongOccasionTable();
 			PrayerRequests = new PrayerRequestTable();
 			News = new NewsTable();
+			ChoirWeekend2017 = new ChoirWeekend2017Table();
 		}
 
 		public class SettingTable
@@ -303,6 +306,8 @@ namespace KoorweekendApp2017.BusinessObjects
 			}
 		}
 
+
+
 		/*
 		public IEnumerable<TodoItem> GetItemsNotDone()
 		{
@@ -319,4 +324,46 @@ namespace KoorweekendApp2017.BusinessObjects
 		*/
 
 	}
+
+	public class ChoirWeekend2017Table
+	{
+
+		public class PackingList
+		{
+			public ChoirWeekendPackingListItem GetById(int id)
+			{
+				var packingList = GetAll();
+				return packingList.Find(x => x.Id == id);
+
+			}
+
+			public List<ChoirWeekendPackingListItem> GetAll()
+			{
+				// Ugly programming. Maybe create new database object instead.
+				return App.Database.Settings.GetValue<List<ChoirWeekendPackingListItem>>("choirWeekendPackingList");
+			}
+
+			public void UpdateById(int id, ChoirWeekendPackingListItem item)
+			{
+				var packingList = GetAll();
+				packingList.FindAll(x => x.Id == id).Select(x => x = item);
+				throw new Exception("Dit moet ik nog testen");
+				//App.Database.Settings.Set("choirWeekendPackingList", packingList);
+
+			}
+
+		}
+
+		public class Game1
+		{
+
+		}
+
+		public class Game2
+		{
+
+		}
+
+	}
+
 }
