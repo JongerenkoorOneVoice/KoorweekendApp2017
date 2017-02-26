@@ -25,6 +25,8 @@ namespace KoorweekendApp2017.BusinessObjects
 
 		public PrayerRequestsEndpoint PrayerRequests { get; set;}
 
+		public ChoirWeekendEndpoint ChoirWeekend { get; set; }
+
 		public AppWebService()
 		{
 			Contacts = new ContactsEndpoint();
@@ -33,6 +35,7 @@ namespace KoorweekendApp2017.BusinessObjects
 			News = new NewsEndpoint();
 			SongOccasions = new SongOccasionsEndpoint();
 			PrayerRequests = new PrayerRequestsEndpoint();
+			ChoirWeekend = new ChoirWeekendEndpoint();
 		}
 
 
@@ -167,31 +170,37 @@ namespace KoorweekendApp2017.BusinessObjects
 
 		public class ChoirWeekendEndpoint
 		{
-			public class PackingList
-			{
-				public async Task<List<ChoirWeekendPackingListItem>> GetAll()
-				{
-					string query = "http://www.jongerenkooronevoice.nl/choirweekends/packinglist";
-					return await RestHelper.GetRestDataFromUrl<List<ChoirWeekendPackingListItem>>(query);
-				}
-			}
 
-			public class Game1
-			{
-				public async Task<List<ChoirWeekendGame1Assignment>> GetAll()
-				{
-					string query = "http://www.jongerenkooronevoice.nl/choirweekends/game1assignments";
-					return await RestHelper.GetRestDataFromUrl<List<ChoirWeekendGame1Assignment>>(query);
-				}
-			}
+			public PackingList PackingList = new PackingList();
+			public Game1 Game1 = new Game1();
+			public Game2 Game2= new Game2();
 
-			public class Game2
+		}
+
+		public class PackingList
+		{
+			public async Task<List<ChoirWeekendPackingListItem>> GetAll()
 			{
-				public async Task<List<ChoirWeekendGame2Assignment>> GetAll()
-				{
-					string query = "http://www.jongerenkooronevoice.nl/choirweekends/game2assignments";
-					return await RestHelper.GetRestDataFromUrl<List<ChoirWeekendGame2Assignment>>(query);
-				}
+				string query = "http://www.jongerenkooronevoice.nl/choirweekends/packinglist";
+				return await RestHelper.GetRestDataFromUrl<List<ChoirWeekendPackingListItem>>(query);
+			}
+		}
+
+		public class Game1
+		{
+			public async Task<List<ChoirWeekendGame1Assignment>> GetAll()
+			{
+				string query = "http://www.jongerenkooronevoice.nl/choirweekends/game1assignments";
+				return await RestHelper.GetRestDataFromUrl<List<ChoirWeekendGame1Assignment>>(query);
+			}
+		}
+
+		public class Game2
+		{
+			public async Task<List<ChoirWeekendGame2Assignment>> GetAll()
+			{
+				string query = "http://www.jongerenkooronevoice.nl/choirweekends/game2assignments";
+				return await RestHelper.GetRestDataFromUrl<List<ChoirWeekendGame2Assignment>>(query);
 			}
 		}
 	}
