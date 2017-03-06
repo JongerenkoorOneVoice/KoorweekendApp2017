@@ -1,27 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2Page" Title="Barcode Spel">
-	<ContentPage.Content>
-    <Grid x:Name="controlGrid" RowSpacing="5" ColumnSpacing="5">
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="3*"/>
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*"/>
-      </Grid.ColumnDefinitions>
-      <StackLayout Grid.Row="0" Grid.Column="0">
-      </StackLayout>
-      <ScrollView Grid.Row="1" Grid.Column="0">
-        <StackLayout>
-        <Label Text="Het Barcode Spel:" Font="Bold" HorizontalTextAlignment="Center"/>
-        <Label Text="Jullie starten in groepjes van 4 op de fiets. 1 persoon van het groepje heeft de 'hoofdtelefoon' waarop de volgende locatie, de vraag bij de locatie en de behaalde score zichtbaar is.
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2.Koorweekend2017Spel2Page"
+             Title="Barcode Spel">
+    <ContentPage.Content>
+        <Grid x:Name="controlGrid" RowSpacing="5" ColumnSpacing="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Row="0" Grid.Column="0">
+                <Button Text="Volgende Locatie" x:Name="Locatie" HorizontalOptions="Center" BorderColor="Red" BorderWidth="1" BorderRadius="5"/>
+                <Button Text="Gesloten Vraag" x:Name="GVraag" HorizontalOptions="Center" BorderColor="Red" BorderWidth="1" BorderRadius="5"/>
+            </StackLayout>
+            <ScrollView Grid.Row="1" Grid.Column="0">
+                <StackLayout>
+                    <Label Text="Het Barcode Spel:" Font="Bold" HorizontalTextAlignment="Center"/>
+                    <Label Text="Jullie starten in groepjes van 4 op de fiets. 1 persoon van het groepje heeft de 'hoofdtelefoon' waarop de volgende locatie, de vraag bij de locatie en de behaalde score zichtbaar is.
 Jullie beginnen nu met fietsen, de plaatst waar naar gezocht moet worden staat aangegeven bij 'Volgende Locatie' en daar zullen  jullie een barcode vinden. Deze kan gescand worden via de scanner,
 te openen via het barcode logo rechtsbovenin het scherm. Wanneer de code niet goed te scannen is, kan ook de code handmatig ingevuld worden via het plusje rechtsbovenin het scherm. " HorizontalTextAlignment="Center"/>
-        <Label Text="Wanneer de locatie gevonden is en de barcode gescand is, kan de vraag gespeeld worden. Deze vraag is te bereiken vanaf dit scherm. Wanneer de vraag beantwoord is, zal de volgende locatie zichtbaar zijn"/>
-        <Label Text="Er zijn een aantal bonusvragen, deze zijn te vinden via het knopje hieronder" HorizontalTextAlignment="Center"/>
-          <Button Text="Bonusvragen" x:Name="Bonusvraag" HorizontalOptions="Center" BorderColor="Red" BorderWidth="1" BorderRadius="5"/>
-        </StackLayout>
-      </ScrollView>
-    </Grid>
-	</ContentPage.Content>
+                    <Label Text="Wanneer de locatie gevonden is en de barcode gescand is, kan de vraag gespeeld worden. Deze vraag is te bereiken vanaf dit scherm. Wanneer de vraag beantwoord is, zal de volgende locatie zichtbaar zijn" HorizontalTextAlignment="Center"/>
+                    <Label Text="Er zijn een aantal bonusvragen, deze zijn te vinden via het knopje hieronder" HorizontalTextAlignment="Center"/>
+                    <Button Text="Bonusvragen" x:Name="Bonusvraag" HorizontalOptions="Center" BorderColor="Red" BorderWidth="1" BorderRadius="5"/>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>

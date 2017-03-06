@@ -31,7 +31,7 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017
 
 		void game2Button_Clicked(object sender, EventArgs e)
 		{
-			this.Navigation.PushAsync(new Koorweekend2017Spel2Page());
+			this.Navigation.PushAsync(new Koorweekend2017Spel2.Koorweekend2017Spel2Page());
 		}
 	}
 }

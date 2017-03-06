@@ -13,6 +13,10 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
         public ScorePage()
         {
             InitializeComponent();
+            App.AppWebService.ChoirWeekend.Game2.GetAll().ContinueWith((args) =>
+            {
+                var x = args;
+            });
         }
     }
 }

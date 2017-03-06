@@ -3,52 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZXing.Mobile;
-using ZXing.Net.Mobile.Forms;
 
 using Xamarin.Forms;
+using ZXing.Net.Mobile.Forms;
 
 namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
 {
-    public partial class Koorweekend2017Spel2Page : ContentPage
+    public partial class LocatiePage : ContentPage
     {
-        public Koorweekend2017Spel2Page()
+        public LocatiePage()
         {
             InitializeComponent();
-            this.BindingContext = this;
-
             ToolbarItems.Add(new ToolbarItem("Add", "Score.png", () => { score(); }));
             ToolbarItems.Add(new ToolbarItem("Add", "Scanner.png", () => { scanning(); }));
             ToolbarItems.Add(new ToolbarItem("Add", "Plus.png", () => { typing(); }));
-            Bonusvraag.Clicked += BonusvraagClicked;
-            GVraag.Clicked += GVraagClicked;
-            Locatie.Clicked += LocatieClicked;
-        }
+            Lost.Clicked += navigeren;
 
-        void BonusvraagClicked(object sender, EventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                await Navigation.PushAsync(new Koorweekend2017Spel2.Bonusvragen());
-            });
         }
-
-        void GVraagClicked(object sender, EventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                await Navigation.PushAsync(new Koorweekend2017Spel2.GvraagPage());
-            });
-        }
-
-        void LocatieClicked(object sender, EventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                await Navigation.PushAsync(new Koorweekend2017Spel2.LocatiePage());
-            });
-        }
-
         void scanning()
         {
             var scanner = new ZXingScannerPage();
@@ -89,6 +60,19 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
             Device.BeginInvokeOnMainThread(async () =>
             {
                 await Navigation.PushAsync(new Koorweekend2017Spel2.TypeBarcodePage());
+            });
+        }
+
+        void navigeren(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var answer = await DisplayAlert("Navigeren?", "Weet je zeker dat je wilt navigeren en daarbij punten verliezen", "Ja", "Nee");
+                if (answer == true)
+                {
+                    string Location = "51.4080517,4.4332083";
+                    Device.OpenUri(new Uri(string.Format("https://www.google.nl/maps/dir//{0}/data=!3m1!4b1!4m2!4m1!3e1", Location)));// vb: https://www.google.nl/maps/dir//longitude,lattitude/data=Auto;fiets;lopen => !3m1!4b1!4m2!4m1!3e1 = Fiets  !3m1!4b1!4m2!4m1!3e0 = Auto  !3m1!4b1!4m2!4m1!3e2 = Lopen
+                }
             });
         }
     }
