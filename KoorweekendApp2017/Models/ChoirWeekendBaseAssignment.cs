@@ -10,8 +10,11 @@ using System.Globalization;
 
 namespace KoorweekendApp2017.Models
 {
-    public class ChoirWeekendBaseObject : DatabaseItemBase
+    public class ChoirWeekendBaseObject
     {
+		[PrimaryKey]
+		public String Id { get; set; }
+
 		public Boolean IsVisible { get; set;}
 
     }

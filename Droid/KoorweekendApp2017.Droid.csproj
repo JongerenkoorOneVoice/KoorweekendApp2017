@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>KoorweekendApp2017.Droid</RootNamespace>
     <AssemblyName>KoorweekendApp2017.Droid</AssemblyName>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -19,6 +19,7 @@
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <AndroidTlsProvider></AndroidTlsProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -354,6 +355,9 @@
     <Compile Include="Tasks\ApiPrayerRequestSyncTask.cs" />
     <Compile Include="Tasks\ApiSongOccasionSyncTask.cs" />
     <Compile Include="Tasks\ApiNewsSyncTask.cs" />
+    <Compile Include="Tasks\ApiChoirweekendGame1SyncTask.cs" />
+    <Compile Include="Tasks\ApiChoirweekendGame2SyncTask.cs" />
+    <Compile Include="Tasks\ApiChoirweekendPackinglistSyncTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

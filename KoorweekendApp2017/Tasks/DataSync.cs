@@ -22,6 +22,10 @@ namespace KoorweekendApp2017.Tasks
 			MessagingCenter.Send(new StartApiSongOccasionSyncMessage(), "StartApiSongOccasionSyncMessage");
 			MessagingCenter.Send(new StartApiNewsSyncMessage(), "StartApiNewsSyncMessage");
 			MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
+
+			MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiChoirweekendGame1SyncMessage");
+			MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiChoirweekendGame2SyncMessage");
+			MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiChoirweekendPackinglistSyncMessage");
 		
 		}
 
@@ -34,6 +38,11 @@ namespace KoorweekendApp2017.Tasks
 			UpdateSongOccasionsInDbFromApi(downloadAll);
 			UpdateNewsInDbFromApi(downloadAll);
 			SyncPrayerRequests(downloadAll);
+
+			// For choirweekend 2017
+			UpdateGame1AssignmentsInDbFromApi();
+			UpdateGame2AssignmentsInDbFromApi();
+			UpdatePackinglistInDbFromApi();
 
 		}
 
@@ -311,5 +320,191 @@ namespace KoorweekendApp2017.Tasks
 
 			}
 		}
+
+		public static void UpdateGame1AssignmentsInDbFromApi(bool overruleLastUpdated = false)
+		{
+
+			//if(CrossConnectivity.Current.IsConnected){
+
+			//	var task = Task.Run(async () =>
+			//	{
+			//		return await CrossConnectivity.Current.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
+			//	});
+
+			//	bool hasInternet =  task.Result;
+
+			//	if (hasInternet)
+			//	{
+			bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
+			if (isAuthenticated)
+			{
+
+				DateTime lastUpdate = DateTime.Parse("1010-01-01");
+				String lastUpdatedString = App.Database.Settings.GetValue<String>("lastGame1Update");
+				if (!String.IsNullOrEmpty(lastUpdatedString) && !overruleLastUpdated)
+				{
+					lastUpdate = DateTime.Parse(lastUpdatedString);
+				}
+
+				// Update more often from two days before the weekend.
+				DateTime firstDayOfChoirWeekend = new DateTime(2017, 4, 21);
+				DateTime twoDaysBeforeChoirWeekend = firstDayOfChoirWeekend.AddDays(-2);
+				DateTime schouldUpdateDate = lastUpdate.AddDays(1);
+
+				if (DateTime.Now > twoDaysBeforeChoirWeekend)
+				{
+					schouldUpdateDate = lastUpdate.AddHours(1);
+				}
+
+				if (schouldUpdateDate < DateTime.Now || overruleLastUpdated)
+				{
+					List<ChoirWeekendGame1Assignment> assignments = App.AppWebService.ChoirWeekend.Game1.GetAll().Result;
+
+					if (assignments != null)
+					{
+						foreach (ChoirWeekendGame1Assignment assignment in assignments)
+						{
+							var existingAssignment = App.Database.ChoirWeekend2017.Game1.GetById(assignment.Id);
+							if (existingAssignment != null)
+							{
+								assignment.Result = existingAssignment.Result;
+							}
+							App.Database.ChoirWeekend2017.Game1.UpdateOrInsert(assignment);
+						}
+					}
+					App.Database.Settings.Set("lastGame1Update", DateTime.Now.ToString());
+				}
+
+
+
+			}
+			//	}
+			//}
+
+		}
+
+
+		public static void UpdateGame2AssignmentsInDbFromApi(bool overruleLastUpdated = false)
+		{
+
+			if(App.Network.IsConnected){
+
+				var task = Task.Run(async () =>
+			 	{
+			 		return await App.Network.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
+			 	});
+
+			 	bool hasInternet =  task.Result;
+
+			 	if (hasInternet)
+			 	{
+					bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
+					if (isAuthenticated)
+					{
+
+						DateTime lastUpdate = DateTime.Parse("1010-01-01");
+						String lastUpdatedString = App.Database.Settings.GetValue<String>("lastGame2Update");
+						if (!String.IsNullOrEmpty(lastUpdatedString) && !overruleLastUpdated)
+						{
+							lastUpdate = DateTime.Parse(lastUpdatedString);
+						}
+
+						// Update more often from two days before the weekend.
+						DateTime firstDayOfChoirWeekend = new DateTime(2017, 4, 21);
+						DateTime twoDaysBeforeChoirWeekend = firstDayOfChoirWeekend.AddDays(-2);
+						DateTime schouldUpdateDate = lastUpdate.AddDays(1);
+
+						if (DateTime.Now > twoDaysBeforeChoirWeekend)
+						{
+							schouldUpdateDate = lastUpdate.AddHours(1);
+						}
+
+						if (schouldUpdateDate < DateTime.Now | overruleLastUpdated)
+						{
+							List<ChoirWeekendGame2Assignment> assignments = App.AppWebService.ChoirWeekend.Game2.GetAll().Result;
+
+							if (assignments != null)
+							{
+								
+								foreach (ChoirWeekendGame2Assignment assignment in assignments)
+								{
+									var existingAssignment = App.Database.ChoirWeekend2017.Game2.GetById(assignment.Id);
+									if (existingAssignment != null)
+									{
+										assignment.Result = existingAssignment.Result;
+									}
+									App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(assignment);
+
+								}
+							}
+							App.Database.Settings.Set("lastGame2Update", DateTime.Now.ToString());
+						}
+
+
+					}
+				}
+			}
+
+		}
+
+		public static void UpdatePackinglistInDbFromApi(bool overruleLastUpdated = false)
+		{
+
+			//if(CrossConnectivity.Current.IsConnected){
+
+			//	var task = Task.Run(async () =>
+			//	{
+			//		return await CrossConnectivity.Current.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
+			//	});
+
+			//	bool hasInternet =  task.Result;
+
+			//	if (hasInternet)
+			//	{
+			bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
+			if (isAuthenticated)
+			{
+
+				DateTime lastUpdate = DateTime.Parse("1010-01-01");
+				String lastUpdatedString = App.Database.Settings.GetValue<String>("lastPackinglistUpdate");
+				if (!String.IsNullOrEmpty(lastUpdatedString) && !overruleLastUpdated)
+				{
+					lastUpdate = DateTime.Parse(lastUpdatedString);
+				}
+
+				// Update more often from two days before the weekend.
+				DateTime firstDayOfChoirWeekend = new DateTime(2017, 4, 21);
+				DateTime twoDaysBeforeChoirWeekend = firstDayOfChoirWeekend.AddDays(-2);
+				DateTime schouldUpdateDate = lastUpdate.AddDays(1);
+
+				if (DateTime.Now > twoDaysBeforeChoirWeekend)
+				{
+					schouldUpdateDate = lastUpdate.AddHours(1);
+				}
+
+				if (schouldUpdateDate < DateTime.Now | overruleLastUpdated)
+				{
+					List<ChoirWeekendPackingListItem> packingListItems = App.AppWebService.ChoirWeekend.PackingList.GetAll().Result;
+
+					if (packingListItems != null)
+					{
+						foreach (ChoirWeekendPackingListItem item in packingListItems)
+						{
+							var existingItem = App.Database.ChoirWeekend2017.PackingList.GetById(item.Id);
+							if (existingItem != null)
+							{
+								item.IsPacked = existingItem.IsPacked;
+							}
+							App.Database.ChoirWeekend2017.PackingList.UpdateOrInsert(item);
+						}
+					}
+					App.Database.Settings.Set("lastPackinglistUpdate", DateTime.Now.ToString());
+				}
+			}
+			//	}
+			//}
+
+		}
+
 	}
 }

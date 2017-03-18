@@ -6,6 +6,8 @@ using KoorweekendApp2017.Messages;
 using KoorweekendApp2017.Models;
 using KoorweekendApp2017.Pages;
 using KoorweekendApp2017.Tasks;
+using Plugin.Connectivity;
+using Plugin.Connectivity.Abstractions;
 using SQLite;
 using Xamarin.Forms;
 
@@ -20,6 +22,8 @@ namespace KoorweekendApp2017
 
 		public static AppWebService AppWebService { get; set; }
 
+		public static IConnectivity Network { get; set; }
+
 		public static Contact CurrentUser { get; set; }
 
 		public App()
@@ -28,23 +32,17 @@ namespace KoorweekendApp2017
 			var db = DependencyService.Get<ISQLite>().GetConnection();
 			Database = new LocalDatabase(db);
 			AppWebService = new AppWebService();
-			AppWebService.ChoirWeekend.PackingList.GetAll().ContinueWith((arg) => {
-				var x = arg;
-			} );
-			AppWebService.ChoirWeekend.PackingList.GetAll().ContinueWith((arg) => {
-				var y = arg;
-			});
-			AppWebService.ChoirWeekend.PackingList.GetAll().ContinueWith((arg) => {
-				var z = arg;
-			});
-
+			Network = CrossConnectivity.Current;
 			//DataSync.UpdateContactsInDbFromApi();
 			//DataSync.UpdateSongsInDbFromApi();
 			//DataSync.UpdateEventsInDbFromApi();
 
+			//DataSync.UpdateGame1AssignmentsInDbFromApi(true);
+			//DataSync.UpdateGame2AssignmentsInDbFromApi(true);
+			//DataSync.UpdatePackinglistInDbFromApi(true);
 
 			DataSync.RunAllTasksInBackground();
-
+			//DataSync.RunAllTasksAndWaitForReady();
 			//MessagingCenter.Send(new StopApiContactSyncMessage(), "StopApiContactSyncMessage");
 
 			//var authTask = AuthenticationHelper.IsAuthenticated();

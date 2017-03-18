@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using KoorweekendApp2017.Helpers;
 using KoorweekendApp2017.Interfaces;
+using KoorweekendApp2017.Mappers;
 using KoorweekendApp2017.Models;
 using Newtonsoft.Json;
 using SQLite;
 
 namespace KoorweekendApp2017.BusinessObjects
 {
-	public class LocalDatabase: IOneVoiceDatabase
+	public class LocalDatabase : IOneVoiceDatabase
 	{
-		private static SQLiteConnection Database { get; set;}
+		private static SQLiteConnection Database { get; set; }
 
 		public SettingTable Settings { get; set; }
 
@@ -29,7 +30,7 @@ namespace KoorweekendApp2017.BusinessObjects
 
 		public NewsTable News { get; set; }
 
-		public ChoirWeekend2017Table ChoirWeekend2017 { get; set;}
+		public ChoirWeekend2017Table ChoirWeekend2017 { get; set; }
 
 		public LocalDatabase(SQLiteConnection database)
 		{
@@ -42,6 +43,10 @@ namespace KoorweekendApp2017.BusinessObjects
 			Database.CreateTable<LogItem>();
 			Database.CreateTable<SongOccasion>();
 			Database.CreateTable<PrayerRequest>();
+			// Choirweekend 2017
+			Database.CreateTable<ChoirWeekendObject>();
+
+
 			Settings = new SettingTable();
 			Contacts = new ContactTable();
 			Songs = new SongTable();
@@ -297,8 +302,9 @@ namespace KoorweekendApp2017.BusinessObjects
 				{
 					prayerRequest.DateCreatedInApp = DateTime.Now;
 				}
-				else {
-					  prayerRequest.AppSpecificId = tmpRequest.AppSpecificId;
+				else
+				{
+					prayerRequest.AppSpecificId = tmpRequest.AppSpecificId;
 				}
 
 				prayerRequest.LastModifiedInApp = DateTime.Now;
@@ -323,47 +329,101 @@ namespace KoorweekendApp2017.BusinessObjects
 		}
 		*/
 
+
+
+		public class ChoirWeekend2017Table
+		{
+
+			public Game1AssignmentTable Game1 = new Game1AssignmentTable();
+
+			public Game2AssignmentTable Game2 = new Game2AssignmentTable();
+
+			public PackinglistTable PackingList = new PackinglistTable();
+
+			public class PackinglistTable
+			{
+				public ChoirWeekendPackingListItem GetById(String id)
+				{
+					var type = typeof(ChoirWeekendPackingListItem).Name;
+					var tempId = String.Format("{0}_{1}", type, id);
+					var item =  (from i in Database.Table<ChoirWeekendObject>() where i.Id == tempId select i).ToList().FirstOrDefault();
+					if (item == null) return null;
+					return JsonConvert.DeserializeObject<ChoirWeekendPackingListItem>(item.Json);
+				}
+
+				public List<ChoirWeekendPackingListItem> GetAll()
+				{
+					var type = typeof(ChoirWeekendPackingListItem).Name;
+					var items = (from i in Database.Table<ChoirWeekendObject>() where i.ObjectType == type select i).ToList();
+					if (items == null) return null;
+					return items.Select((ChoirWeekendObject item) => {
+						return JsonConvert.DeserializeObject<ChoirWeekendPackingListItem>(item.Json);
+					}).OrderBy(i => i.Name).ToList();
+
+				}
+
+				public void UpdateOrInsert(ChoirWeekendPackingListItem packinglistItem)
+				{
+					Database.InsertOrReplace(ObjectToChoirweekendObjectMapper.Map(packinglistItem));
+				}
+			}
+
+			public class Game1AssignmentTable
+			{
+				public ChoirWeekendGame1Assignment GetById(String id)
+				{
+					var type = typeof(ChoirWeekendGame1Assignment).Name;
+					var tempId = String.Format("{0}_{1}", type, id);
+					var item = (from i in Database.Table<ChoirWeekendObject>() where i.Id == tempId select i).ToList().FirstOrDefault();
+					if (item == null) return null;
+					return JsonConvert.DeserializeObject<ChoirWeekendGame1Assignment>(item.Json);
+				}
+
+				public List<ChoirWeekendGame1Assignment> GetAll()
+				{
+					var type = typeof(ChoirWeekendGame1Assignment).Name;
+					var items = (from i in Database.Table<ChoirWeekendObject>() where i.ObjectType == type select i).ToList();
+					if (items == null) return null;
+					return items.Select((ChoirWeekendObject item) =>
+					{
+						return JsonConvert.DeserializeObject<ChoirWeekendGame1Assignment>(item.Json);
+					}).OrderBy(i => i.Settings.ConsecutionIndex).ToList();
+
+				}
+
+				public void UpdateOrInsert(ChoirWeekendGame1Assignment assignment)
+				{
+					Database.InsertOrReplace(ObjectToChoirweekendObjectMapper.Map(assignment));
+				}
+			}
+
+			public class Game2AssignmentTable
+			{
+				public ChoirWeekendGame2Assignment GetById(String id)
+				{
+					var type = typeof(ChoirWeekendGame2Assignment).Name;
+					var tempId = String.Format("{0}_{1}", type, id);
+					var item = (from i in Database.Table<ChoirWeekendObject>() where i.Id == tempId select i).ToList().FirstOrDefault();
+					if (item == null) return null;
+					return JsonConvert.DeserializeObject<ChoirWeekendGame2Assignment>(item.Json);
+				}
+
+				public List<ChoirWeekendGame2Assignment> GetAll()
+				{
+					var type = typeof(ChoirWeekendGame2Assignment).Name;
+					var items = (from i in Database.Table<ChoirWeekendObject>() where i.ObjectType == type select i).ToList();
+					if (items == null) return null;
+					return items.Select((ChoirWeekendObject item) =>
+					{
+						return JsonConvert.DeserializeObject<ChoirWeekendGame2Assignment>(item.Json);
+					}).OrderBy(i => i.Settings.ConsecutionIndex).ToList();
+				}
+
+				public void UpdateOrInsert(ChoirWeekendGame2Assignment assignment)
+				{
+					Database.InsertOrReplace(ObjectToChoirweekendObjectMapper.Map(assignment));
+				}
+			}
+		}
 	}
-
-	public class ChoirWeekend2017Table
-	{
-
-		public class PackingList
-		{
-			public ChoirWeekendPackingListItem GetById(int id)
-			{
-				var packingList = GetAll();
-				return packingList.Find(x => x.Id == id);
-
-			}
-
-			public List<ChoirWeekendPackingListItem> GetAll()
-			{
-				// Ugly programming. Maybe create new database object instead.
-				return App.Database.Settings.GetValue<List<ChoirWeekendPackingListItem>>("choirWeekendPackingList");
-			}
-
-			public void UpdateById(int id, ChoirWeekendPackingListItem item)
-			{
-				var packingList = GetAll();
-				packingList.FindAll(x => x.Id == id).Select(x => x = item);
-				throw new Exception("Dit moet ik nog testen");
-				//App.Database.Settings.Set("choirWeekendPackingList", packingList);
-
-			}
-
-		}
-
-		public class Game1
-		{
-
-		}
-
-		public class Game2
-		{
-
-		}
-
-	}
-
 }
