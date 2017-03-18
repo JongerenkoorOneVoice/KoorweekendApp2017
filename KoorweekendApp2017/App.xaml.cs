@@ -28,6 +28,15 @@ namespace KoorweekendApp2017
 			var db = DependencyService.Get<ISQLite>().GetConnection();
 			Database = new LocalDatabase(db);
 			AppWebService = new AppWebService();
+			AppWebService.ChoirWeekend.PackingList.GetAll().ContinueWith((arg) => {
+				var x = arg;
+			} );
+			AppWebService.ChoirWeekend.PackingList.GetAll().ContinueWith((arg) => {
+				var y = arg;
+			});
+			AppWebService.ChoirWeekend.PackingList.GetAll().ContinueWith((arg) => {
+				var z = arg;
+			});
 
 			//DataSync.UpdateContactsInDbFromApi();
 			//DataSync.UpdateSongsInDbFromApi();
