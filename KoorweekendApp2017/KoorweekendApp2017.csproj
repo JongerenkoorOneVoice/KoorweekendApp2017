@@ -261,6 +261,7 @@
     <Compile Include="Messages\StopApiChoirweekendGame2SyncMessage.cs" />
     <Compile Include="Messages\StopApiChoirweekendGame1SyncMessage.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
+    <Compile Include="Helpers\UserHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">

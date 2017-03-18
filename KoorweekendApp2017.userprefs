@@ -21,6 +21,7 @@
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/iOS/Tasks/ApiContactSyncTask.cs" line="34" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Helpers/RestHelper.cs" line="65" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Helpers/RestHelper.cs" relfile="KoorweekendApp2017/Helpers/RestHelper.cs" line="67" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" relfile="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" line="32" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.6b3f1a7103aa0dd08d1300dd11832d83fc34d816" />

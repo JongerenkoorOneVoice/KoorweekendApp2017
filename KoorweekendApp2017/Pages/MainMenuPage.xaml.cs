@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using KoorweekendApp2017.Helpers;
 using KoorweekendApp2017.Models;
 using KoorweekendApp2017.Pages.Koorweekend2017;
 using Newtonsoft.Json;
@@ -66,11 +67,9 @@ namespace KoorweekendApp2017.Pages
 				TargetType = typeof(ChoirUniform)
 			});
 
-            Int32 currentUserId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
-
-            if (currentUserId == 668 || currentUserId == 667 || currentUserId == 696)
-            {
-                masterPageItems.Add(new MasterPageItem
+			if(UserHelper.CurrentUserIsDeveloper())
+			{
+				masterPageItems.Add(new MasterPageItem
                 {
                     Title = "Koorweekend 2017",
                     IconSource = "Koorweekend.png",
