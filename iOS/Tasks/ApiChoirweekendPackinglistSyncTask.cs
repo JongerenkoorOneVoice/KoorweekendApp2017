@@ -13,7 +13,7 @@ namespace KoorweekendApp2017.iOS.Tasks{
 		nint _taskId;
 		CancellationTokenSource _cts;
 
-		public ApiSongSyncTask()
+		public ApiChoirweekendPackinglistSyncTask()
 		{
 
 		}

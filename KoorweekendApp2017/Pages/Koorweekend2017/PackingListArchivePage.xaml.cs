@@ -19,7 +19,7 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017
 		void PackingListView_ItemTapped(object sender,  ItemTappedEventArgs e)
 		{
 			var item = e.Item as ChoirWeekendPackingListItem;
-			var list = sender as ListView;
+			//var list = sender as ListView;
 
 			item.IsPacked = !item.IsPacked;
 

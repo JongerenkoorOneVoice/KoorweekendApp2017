@@ -191,7 +191,7 @@ namespace KoorweekendApp2017.Pages
                         stackNews.Children.Add(new Label { Text = "Psalm 103:1", FontSize = 10, HorizontalOptions = LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.White });
                     }
 
-                        if (allNews != null)
+                        if (allNews != null && allNews.Count != 0)
 					   {
 						   counter++;
 					   }

@@ -31,7 +31,6 @@ namespace KoorweekendApp2017.Droid
 			global::CocosSharp.Forms.Android.Resource.String.library_name = global::KoorweekendApp2017.Droid.Resource.String.library_name;
 			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::KoorweekendApp2017.Droid.Resource.String.ApplicationName;
 			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::KoorweekendApp2017.Droid.Resource.String.Hello;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::KoorweekendApp2017.Droid.Resource.Attribute.actionBarSize;
 			global::XLabs.Forms.Droid.Resource.Animation.abc_fade_in = global::KoorweekendApp2017.Droid.Resource.Animation.abc_fade_in;
 			global::XLabs.Forms.Droid.Resource.Animation.abc_fade_out = global::KoorweekendApp2017.Droid.Resource.Animation.abc_fade_out;
 			global::XLabs.Forms.Droid.Resource.Animation.abc_grow_fade_in_from_bottom = global::KoorweekendApp2017.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -1717,6 +1716,7 @@ namespace KoorweekendApp2017.Droid
 			global::ZXing.Mobile.Resource.Id.contentFrame = global::KoorweekendApp2017.Droid.Resource.Id.contentFrame;
 			global::ZXing.Mobile.Resource.Layout.zxingscanneractivitylayout = global::KoorweekendApp2017.Droid.Resource.Layout.zxingscanneractivitylayout;
 			global::ZXing.Mobile.Resource.Layout.zxingscannerfragmentlayout = global::KoorweekendApp2017.Droid.Resource.Layout.zxingscannerfragmentlayout;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::KoorweekendApp2017.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation
