@@ -35,18 +35,28 @@ namespace KoorweekendApp2017.Scenes
 			BasicLayer = new CCLayer();
 			AddLayer(BasicLayer);
 	
+
 			DataLayer = new CCLayer();
 			//DataLayer.Position = new CCPoint(500f, 750f);
 			//DataLayer.AnchorPoint = CCPoint.AnchorMiddle;
 			AddLayer(DataLayer);
 
+			var RotatingDataLayer = new CCNode();
+			RotatingDataLayer.AnchorPoint = CCPoint.AnchorMiddle;
+
+			RotatingDataLayer.Position = new CCPoint(500f, 750f);
+			RotatingDataLayer.ContentSize = new CCSize(1000f, 1000f);
+			RotatingDataLayer.Color = CCColor3B.Blue;
+			DataLayer.AddChild(RotatingDataLayer);
+
 			CCDrawNode targetPosition = new CCDrawNode();
 			targetPosition.DrawSolidCircle(
-				new CCPoint(900f, 900f),
+				new CCPoint(650f, 650f),
 				10,
 				CCColor4B.Green
 			);
-			DataLayer.AddChild(targetPosition);
+
+			RotatingDataLayer.AddChild(targetPosition);
 			//layer.Position = new CCPoint(layer.ContentSize.Center.X, layer.ContentSize.Center.Y);
 
 
@@ -81,10 +91,12 @@ namespace KoorweekendApp2017.Scenes
 			BasicLayer.AddChild(Text(new CCPoint(975f, 250f)));
 
 
+
+
 			CrossCompass.Current.CompassChanged += (s, e) =>
 			{
-				DataLayer.Rotation = -(float)e.Heading;
-				//var h = DataLayer.AnchorPointInPoints;
+				RotatingDataLayer.Rotation = -(float)e.Heading;
+				var h = DataLayer.AnchorPointInPoints;
 			};
 
 

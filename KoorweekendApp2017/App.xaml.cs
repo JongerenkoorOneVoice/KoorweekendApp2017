@@ -56,17 +56,25 @@ namespace KoorweekendApp2017
 				App.Database.Settings.Set("loginOnNextStart", false);
 			}
 
-			var isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
+
+			var authTask = AuthenticationHelper.IsAuthenticated();
+			authTask.ConfigureAwait(false);
+
+			var isAuthenticated = authTask.Result;
 			if (!isAuthenticated)
 			{
 				MainPage = new LoginPage();
 			}
-			else {
+			else
+			{
 				Int32 currentUserId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
 				CurrentUser = App.Database.Contacts.GetById(currentUserId);
 
 				MainPage = new KoorweekendApp2017Page();
 			}
+
+	
+
 
 
 

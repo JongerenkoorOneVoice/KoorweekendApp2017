@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CocosSharp;
 using KoorweekendApp2017.Scenes;
+using Plugin.Compass;
 using Xamarin.Forms;
 
 namespace KoorweekendApp2017
@@ -16,6 +17,8 @@ namespace KoorweekendApp2017
 			// This is the top-level grid, which will split our page in half
 			var stackLayout = new StackLayout();
 			Content = stackLayout;
+
+
 
 			var gameView = new CocosSharpView()
 			{
@@ -45,5 +48,16 @@ namespace KoorweekendApp2017
 
 		}
 
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+			CrossCompass.Current.Start();
+		}
+
+		protected override void OnDisappearing()
+		{
+			base.OnDisappearing();
+			CrossCompass.Current.Stop();
+		}
 	}
 }
