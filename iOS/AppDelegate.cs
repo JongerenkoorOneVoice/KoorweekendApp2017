@@ -113,8 +113,7 @@ namespace KoorweekendApp2017.iOS
 					apiChoirweekendGame1Sync.Stop();
 				});
 
-				ApiChoirweekendPackinglistSyncTask apiChoirweekendPackinglistSync = new ApiChoirweekendPackinglistSyncTask();
-				MessagingCenter.Subscribe<StartApiChoirweekendPackinglistSyncMessage>(this, "StartApiChoirweekendPackinglistSyncMessage", async message =>
+				ApiChoirweekendPackinglistSyncTask apiChoirweekendPackinglistSync = new ApiChoirweekendPackinglistSyncTask()r				MessagingCenter.Subscribe<StartApiChoirweekendPackinglistSyncMessage>(this, "StartApiChoirweekendPackinglistSyncMessage", async message =>
 				{
 					apiChoirweekendPackinglistSync.Start(); // don't use await
 				});
