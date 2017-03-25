@@ -28,7 +28,7 @@ namespace KoorweekendApp2017.Droid.Tasks{
 				try
 				{
 					//INVOKE THE SHARED CODE
-					KoorweekendApp2017.Tasks.DataSync.UpdatePackinglistInDbFromApi();
+					KoorweekendApp2017.Tasks.DataSync.UpdatePackinglistInDbFromApi(true);
 				}
 				catch (System.OperationCanceledException)
 				{

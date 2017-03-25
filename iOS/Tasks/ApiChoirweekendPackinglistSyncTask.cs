@@ -27,7 +27,7 @@ namespace KoorweekendApp2017.iOS.Tasks{
 			try
 			{
 
-				KoorweekendApp2017.Tasks.DataSync.UpdatePackinglistInDbFromApi();
+				KoorweekendApp2017.Tasks.DataSync.UpdatePackinglistInDbFromApi(true);
 
 			}
 			catch (OperationCanceledException)

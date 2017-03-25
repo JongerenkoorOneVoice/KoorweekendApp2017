@@ -28,7 +28,7 @@ namespace KoorweekendApp2017.Droid.Tasks{
 				try
 				{
 					//INVOKE THE SHARED CODE
-					KoorweekendApp2017.Tasks.DataSync.UpdateGame1AssignmentsInDbFromApi();
+					KoorweekendApp2017.Tasks.DataSync.UpdateGame1AssignmentsInDbFromApi(true);
 				}
 				catch (System.OperationCanceledException)
 				{

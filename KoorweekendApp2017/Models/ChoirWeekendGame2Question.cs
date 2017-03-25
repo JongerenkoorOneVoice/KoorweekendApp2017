@@ -12,6 +12,7 @@ namespace KoorweekendApp2017.Models
 {
 	public class ChoirWeekendGame2Question
     {
+		public String Image { get; set; }
 		public String Question { get; set; }
 	    public String Answer { get; set; }
 		public List<String> MultipleChoiceAnswers { get; set; }

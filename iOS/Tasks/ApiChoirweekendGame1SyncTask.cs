@@ -27,7 +27,7 @@ namespace KoorweekendApp2017.iOS.Tasks{
 			try
 			{
 
-				KoorweekendApp2017.Tasks.DataSync.UpdateGame1AssignmentsInDbFromApi();
+				KoorweekendApp2017.Tasks.DataSync.UpdateGame1AssignmentsInDbFromApi(true);
 
 			}
 			catch (OperationCanceledException)

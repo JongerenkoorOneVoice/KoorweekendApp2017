@@ -23,9 +23,9 @@ namespace KoorweekendApp2017.Tasks
 			MessagingCenter.Send(new StartApiNewsSyncMessage(), "StartApiNewsSyncMessage");
 			MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
 
-			MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiChoirweekendGame1SyncMessage");
-			MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiChoirweekendGame2SyncMessage");
-			MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiChoirweekendPackinglistSyncMessage");
+			MessagingCenter.Send(new StartApiChoirweekendGame1SyncMessage(), "StartApiChoirweekendGame1SyncMessage");
+			MessagingCenter.Send(new StartApiChoirweekendGame2SyncMessage(), "StartApiChoirweekendGame2SyncMessage");
+			MessagingCenter.Send(new StartApiChoirweekendPackinglistSyncMessage(), "StartApiChoirweekendPackinglistSyncMessage");
 
 		}
 
