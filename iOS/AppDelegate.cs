@@ -22,6 +22,9 @@ namespace KoorweekendApp2017.iOS
 
 			try
 			{
+				
+				ZXing.Net.Mobile.Forms.iOS.Platform.Init();
+
 				ApiContactSyncTask apiContactSync = new ApiContactSyncTask();
 				MessagingCenter.Subscribe<StartApiContactSyncMessage>(this, "StartApiContactSyncMessage", async message =>
 				{
