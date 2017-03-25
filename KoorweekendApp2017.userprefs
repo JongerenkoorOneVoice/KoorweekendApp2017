@@ -1,5 +1,13 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Tasks/DataSync.cs">
+    <Files>
+      <File FileName="KoorweekendApp2017/Models/ChoirWeekendBaseAssignment.cs" Line="13" Column="40" />
+      <File FileName="KoorweekendApp2017/Models/ChoirWeekendGame2Assignment.cs" Line="17" Column="3" />
+      <File FileName="KoorweekendApp2017/Models/ChoirWeekendGame1Assignment.cs" Line="17" Column="3" />
+      <File FileName="KoorweekendApp2017/Models/ChoirWeekendGame2Question.cs" Line="15" Column="36" />
+      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.Droid PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

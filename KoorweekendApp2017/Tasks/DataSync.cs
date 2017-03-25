@@ -40,9 +40,9 @@ namespace KoorweekendApp2017.Tasks
 			SyncPrayerRequests(downloadAll);
 
 			// For choirweekend 2017
-			UpdateGame1AssignmentsInDbFromApi();
-			UpdateGame2AssignmentsInDbFromApi();
-			UpdatePackinglistInDbFromApi();
+			UpdateGame1AssignmentsInDbFromApi(true);
+			UpdateGame2AssignmentsInDbFromApi(true);
+			UpdatePackinglistInDbFromApi(true);
 
 		}
 
