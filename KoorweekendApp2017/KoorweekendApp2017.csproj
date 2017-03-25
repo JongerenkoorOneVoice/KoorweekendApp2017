@@ -264,6 +264,8 @@
     </Compile>
     <Compile Include="Helpers\GpsHelper.cs" />
     <Compile Include="Models\Point3d.cs" />
+    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Objects\DataLayer.cs" />
+    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Objects\DataPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">
@@ -437,6 +439,7 @@
     <Folder Include="Models\" />
     <Folder Include="Pages\Koorweekend2017\Koorweekend2017Spel1\" />
     <Folder Include="Mappers\" />
+    <Folder Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Objects\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
