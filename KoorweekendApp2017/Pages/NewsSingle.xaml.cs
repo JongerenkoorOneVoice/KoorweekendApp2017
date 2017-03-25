@@ -21,6 +21,7 @@ namespace KoorweekendApp2017
 
 			var currentNews = BindingContext as News;
 			newsView.Source = GetHTML(currentNews);
+			newsView.Navigating += OnNavigating;
 		}
 
 
@@ -40,6 +41,17 @@ namespace KoorweekendApp2017
 			};
 
 			return document;
+		}
+
+		void OnNavigating(object sender, WebNavigatingEventArgs e)
+		{
+			if (e.Url.StartsWith("mailto", StringComparison.OrdinalIgnoreCase))
+			{
+				var uri = new Uri(e.Url);
+				Device.OpenUri(uri);
+				e.Cancel = true;
+
+			}
 		}
 	}
 }

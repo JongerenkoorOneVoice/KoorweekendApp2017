@@ -2,15 +2,18 @@
 using CocosSharp;
 using Plugin.Geolocator.Abstractions;
 using Plugin.Compass;
+using KoorweekendApp2017.Koorweekend2017Spel1.Objects;
 //using GeoCoordinatePortable;
+using Plugin.Geolocator;
 
 namespace KoorweekendApp2017.Scenes
 {
 	public class Game1Scene1 : CCScene
 	{
-		CCLayer BasicLayer;
+		public CCLayer RadarLayer { get; set; }
 
-		CCLayer DataLayer;
+		public DataLayer DataLayer { get; set; }
+
 		/*
 		CCDrawNode innerCircle;
 		CCDrawNode outerCircle;
@@ -31,75 +34,17 @@ namespace KoorweekendApp2017.Scenes
 		*/
 		public Game1Scene1(CCGameView gameView) : base(gameView)
 		{
+			// Setup scene
+			RadarLayer = SetupRadarLayer();
+			AddLayer(RadarLayer);
 
-			BasicLayer = new CCLayer();
-			AddLayer(BasicLayer);
-	
-
-			DataLayer = new CCLayer();
-			//DataLayer.Position = new CCPoint(500f, 750f);
-			//DataLayer.AnchorPoint = CCPoint.AnchorMiddle;
+			DataLayer = new DataLayer();
 			AddLayer(DataLayer);
 
-			var RotatingDataLayer = new CCNode();
-			RotatingDataLayer.AnchorPoint = CCPoint.AnchorMiddle;
+			// Setup events
+			CrossCompass.Current.CompassChanged += DataLayer.OnCompassChange;
 
-			RotatingDataLayer.Position = new CCPoint(500f, 750f);
-			RotatingDataLayer.ContentSize = new CCSize(1000f, 1000f);
-			RotatingDataLayer.Color = CCColor3B.Blue;
-			DataLayer.AddChild(RotatingDataLayer);
-
-			CCDrawNode targetPosition = new CCDrawNode();
-			targetPosition.DrawSolidCircle(
-				new CCPoint(650f, 650f),
-				10,
-				CCColor4B.Green
-			);
-
-			RotatingDataLayer.AddChild(targetPosition);
-			//layer.Position = new CCPoint(layer.ContentSize.Center.X, layer.ContentSize.Center.Y);
-
-
-			//layer.IgnoreAnchorPointForPosition = false;
-			//layer.AnchorPoint = new CCPoint(0.5f, -0.5f);
-
-
-			/*
-			CCNode main = new CCNode();
-			main.AnchorPoint = new CCPoint(0.5f, 0.5f);
-			main.Position = new CCPoint(50f, 50f);
-			main.ContentSize = new CCSize(100f, 100f);
-
-			layer.AddChild(main);
-*/
-
-			// circles
-			BasicLayer.AddChild(CenterCircle(50));
-			BasicLayer.AddChild(CenterCircle(150));
-			BasicLayer.AddChild(CenterCircle(250));
-			BasicLayer.AddChild(CenterCircle(350));
-			BasicLayer.AddChild(CenterCircle(450));
-
-			// diagonal lines
-			BasicLayer.AddChild(Line(new CCPoint(150f, 400f), new CCPoint(850f, 1100f)));
-			BasicLayer.AddChild(Line(new CCPoint(150f, 1100f), new CCPoint(850f, 400f)));
-
-			// horizontal and vertical lines
-			BasicLayer.AddChild(Line(new CCPoint(0f, 750f), new CCPoint(1000f, 750f)));
-			BasicLayer.AddChild(Line(new CCPoint(500f, 250f), new CCPoint(500f, 1250f)));
-
-			BasicLayer.AddChild(Text(new CCPoint(975f, 250f)));
-
-
-
-
-			CrossCompass.Current.CompassChanged += (s, e) =>
-			{
-				RotatingDataLayer.Rotation = -(float)e.Heading;
-				var h = DataLayer.AnchorPointInPoints;
-			};
-
-
+			//CrossGeolocator.Current.
             //var a = 0;//new GeoCoordinate(52.224555, 4.953526);
             //var b = 0;//new GeoCoordinate(52.223713, 4.951803);
             //var test = 0;//a.GetDistanceTo(b);
@@ -371,5 +316,33 @@ namespace KoorweekendApp2017.Scenes
 
 			return text;
 		}
+
+		public CCLayer SetupRadarLayer()
+		{
+
+			// create layer
+			var RadarLayer = new CCLayer();
+			AddLayer(RadarLayer);
+
+			// add radar circles
+			RadarLayer.AddChild(CenterCircle(50));
+			RadarLayer.AddChild(CenterCircle(150));
+			RadarLayer.AddChild(CenterCircle(250));
+			RadarLayer.AddChild(CenterCircle(350));
+			RadarLayer.AddChild(CenterCircle(450));
+
+			// add radar diagonal lines
+			RadarLayer.AddChild(Line(new CCPoint(150f, 400f), new CCPoint(850f, 1100f)));
+			RadarLayer.AddChild(Line(new CCPoint(150f, 1100f), new CCPoint(850f, 400f)));
+
+			// add radar horizontal and vertical lines
+			RadarLayer.AddChild(Line(new CCPoint(0f, 750f), new CCPoint(1000f, 750f)));
+			RadarLayer.AddChild(Line(new CCPoint(500f, 250f), new CCPoint(500f, 1250f)));
+
+			RadarLayer.AddChild(Text(new CCPoint(975f, 250f)));
+
+			return RadarLayer;
+		}
+
 	}
 }

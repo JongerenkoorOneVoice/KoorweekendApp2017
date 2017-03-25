@@ -1,27 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using CocosSharp;
+using KoorweekendApp2017.Models;
 
 namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 {
-	public class DataLayer : CCLayer
+	public class DataPoint 
 	{
-		public CCNode RotatingDataLayer { get; set; } = new CCNode();
+		private CCDrawNode _node { get; set; } = new CCDrawNode();
 
-		public List<CCNode> DataPoints { get; set; } = new List<CCNode>();
+		private Point3d _nodePosition { get; set; } = new Point3d();
 
-		public DataLayer()
+		private CCLayer _currentLayer { get; set; }
+
+		public DataPoint(CCLayer currentLayer, Point3d point)
 		{
-			
+			_currentLayer = currentLayer;
 
-			RotatingDataLayer.AnchorPoint = CCPoint.AnchorMiddle;
-			RotatingDataLayer.Position = new CCPoint(500f, 750f);
-			RotatingDataLayer.ContentSize = new CCSize(1000f, 1000f);
-			RotatingDataLayer.Color = CCColor3B.Blue;
-			AddChild(RotatingDataLayer);
+			_currentLayer.AddChild(_node);
 
-
+			_node.DrawSolidCircle(
+				new CCPoint(point.X, point.Y),
+				10,
+				CCColor4B.Green
+			);
 		}
+
+
 
 
 	}

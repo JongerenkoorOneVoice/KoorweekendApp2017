@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using CocosSharp;
+using Plugin.Compass.Abstractions;
+
 
 namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 {
@@ -9,6 +11,7 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 		public CCNode RotatingDataLayer { get; set; } = new CCNode();
 
 		public List<CCNode> DataPoints { get; set; } = new List<CCNode>();
+
 
 		public DataLayer()
 		{
@@ -23,6 +26,11 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 
 		}
 
+		public void OnCompassChange(object sender, CompassChangedEventArgs e)
+		{
+			RotatingDataLayer.Rotation = -(float)e.Heading;
+			//var h = DataLayer.AnchorPointInPoints;
+		}
 
 	}
 }

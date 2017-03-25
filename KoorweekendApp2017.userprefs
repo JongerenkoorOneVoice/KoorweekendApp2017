@@ -1,11 +1,13 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/HomePage.xaml.cs">
     <Files>
       <File FileName="KoorweekendApp2017/Helpers/GpsHelper.cs" Line="46" Column="3" />
-      <File FileName="KoorweekendApp2017/Scenes/Game1Scene1.cs" Line="15" Column="3" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Objects/DataLayer.cs" Line="31" Column="6" />
+      <File FileName="KoorweekendApp2017/Scenes/Game1Scene1.cs" Line="47" Column="6" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Objects/DataLayer.cs" Line="24" Column="32" />
       <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Objects/DataPoint.cs" Line="29" Column="3" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" Line="49" Column="4" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" Line="54" Column="33" />
+      <File FileName="KoorweekendApp2017/Pages/NewsSingle.xaml.cs" Line="53" Column="5" />
+      <File FileName="KoorweekendApp2017/Pages/HomePage.xaml.cs" Line="212" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
@@ -30,10 +32,9 @@
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Projects/JongerenkoorOneVoice/KoorweekendApp2017.git/KoorweekendApp2017/Helpers/RestHelper.cs" line="65" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" relfile="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" line="64" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" relfile="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" line="78" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Pages/HomePage.xaml.cs" relfile="KoorweekendApp2017/Pages/HomePage.xaml.cs" line="212" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.6b3f1a7103aa0dd08d1300dd11832d83fc34d816" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
 </Properties>
