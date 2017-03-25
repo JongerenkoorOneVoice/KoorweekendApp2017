@@ -15,18 +15,18 @@ namespace KoorweekendApp2017.Tasks
 	{
 		public static void RunAllTasksInBackground()
 		{
-
-			MessagingCenter.Send(new StartApiContactSyncMessage(), "StartApiContactSyncMessage");
-			MessagingCenter.Send(new StartApiSongSyncMessage(), "StartApiSongSyncMessage");
-			MessagingCenter.Send(new StartApiEventSyncMessage(), "StartApiEventSyncMessage");
-			MessagingCenter.Send(new StartApiSongOccasionSyncMessage(), "StartApiSongOccasionSyncMessage");
-			MessagingCenter.Send(new StartApiNewsSyncMessage(), "StartApiNewsSyncMessage");
-			MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
-
-			MessagingCenter.Send(new StartApiChoirweekendGame1SyncMessage(), "StartApiChoirweekendGame1SyncMessage");
-			MessagingCenter.Send(new StartApiChoirweekendGame2SyncMessage(), "StartApiChoirweekendGame2SyncMessage");
-			MessagingCenter.Send(new StartApiChoirweekendPackinglistSyncMessage(), "StartApiChoirweekendPackinglistSyncMessage");
-
+			Task.Run(() =>
+			{
+				MessagingCenter.Send(new StartApiContactSyncMessage(), "StartApiContactSyncMessage");
+				MessagingCenter.Send(new StartApiSongSyncMessage(), "StartApiSongSyncMessage");
+				MessagingCenter.Send(new StartApiEventSyncMessage(), "StartApiEventSyncMessage");
+				MessagingCenter.Send(new StartApiSongOccasionSyncMessage(), "StartApiSongOccasionSyncMessage");
+				MessagingCenter.Send(new StartApiNewsSyncMessage(), "StartApiNewsSyncMessage");
+				MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
+				MessagingCenter.Send(new StartApiChoirweekendGame1SyncMessage(), "StartApiChoirweekendGame1SyncMessage");
+				MessagingCenter.Send(new StartApiChoirweekendGame2SyncMessage(), "StartApiChoirweekendGame2SyncMessage");
+				MessagingCenter.Send(new StartApiChoirweekendPackinglistSyncMessage(), "StartApiChoirweekendPackinglistSyncMessage");
+			});
 		}
 
 		public static void RunAllTasksAndWaitForReady(bool downloadAll = false)

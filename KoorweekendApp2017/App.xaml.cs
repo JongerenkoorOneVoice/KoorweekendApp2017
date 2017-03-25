@@ -41,7 +41,7 @@ namespace KoorweekendApp2017
 			//DataSync.UpdateGame2AssignmentsInDbFromApi(true);
 			//DataSync.UpdatePackinglistInDbFromApi(true);
 
-			DataSync.RunAllTasksInBackground();
+
 			//DataSync.RunAllTasksAndWaitForReady();
 			//MessagingCenter.Send(new StopApiContactSyncMessage(), "StopApiContactSyncMessage");
 
@@ -72,7 +72,7 @@ namespace KoorweekendApp2017
 
 				MainPage = new KoorweekendApp2017Page();
 			}
-
+			DataSync.RunAllTasksInBackground();
 	
 
 
