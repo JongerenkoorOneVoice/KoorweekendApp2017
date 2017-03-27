@@ -39,7 +39,7 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 		{
 			
 
-			var moveAction = new CCMoveTo(2, new CCPoint(
+			var moveAction = new CCMoveTo(0, new CCPoint(
 				x: point.X,
 				y: point.Y
 			));

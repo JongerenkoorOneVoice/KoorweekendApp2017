@@ -58,10 +58,39 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 		{
 			//foreach (var dataPoint in DataPoints)
 			//{
-			if(DataPoints.Count != 0){
-				var dataPoint = DataPoints.First();
+			foreach (var dataPoint in DataPoints)
+			{
+
 				var point3d = GetRelativePositionXY(dataPoint.OrignalGpsLocation);
 				dataPoint.UpdatePosition(point3d);
+
+				var baseCurrent = new ChoirWeekendBasePosition()
+				{
+					Longitude = _currentPosition.Longitude,
+					Lattitude = _currentPosition.Latitude
+				};
+
+				var baseDataPoint = new ChoirWeekendBasePosition()
+				{
+					Longitude = dataPoint.OrignalGpsLocation.Longitude,
+					Lattitude = dataPoint.OrignalGpsLocation.Latitude
+				};
+
+				if (GpsHelper.GetDistance(baseCurrent, baseDataPoint) <= 5)
+				{
+					dataPoint.Node.Color = CCColor3B.Orange;
+					dataPoint.Node.UpdateColor();
+					//dataPoint.Node.UpdateDisplayedColor(CCColor3B.Magenta);
+
+				}
+
+				if (GpsHelper.GetDistance(baseCurrent, baseDataPoint) <= 2)
+				{
+					dataPoint.Node.Color = CCColor3B.Red;
+					dataPoint.Node.UpdateColor();
+					//dataPoint.Node.UpdateDisplayedColor(CCColor3B.White);
+				}
+			
 			}
 			//}
 		}

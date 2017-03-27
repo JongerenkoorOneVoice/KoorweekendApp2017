@@ -450,6 +450,20 @@ namespace KoorweekendApp2017.BusinessObjects
 								Description = "Einde van de straat"
 
 							}
+						},
+						new ChoirWeekendGame1Assignment()
+						{
+							Location = new ChoirWeekendGame1Location()
+							{
+								Position = new ChoirWeekendBasePosition()
+								{
+									Longitude = 4.567674,
+									Lattitude = 51.900058
+								},
+								Name = "Locatie 5",
+								Description = "Richard"
+
+							}
 						}
 					};
 				}

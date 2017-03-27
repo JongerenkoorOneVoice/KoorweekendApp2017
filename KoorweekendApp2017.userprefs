@@ -1,13 +1,17 @@
-﻿<Properties StartupConfiguration="{F109F4DB-41F1-41E5-9502-61EAFE494B15}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Helpers/NetworkHelper.cs">
+﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Scenes/Game1Scene1.cs">
     <Files>
-      <File FileName="iOS/AppDelegate.cs" Line="28" Column="3" />
-      <File FileName="Droid/MainActivity.cs" Line="153" Column="1" />
-      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="55" Column="13" />
-      <File FileName="KoorweekendApp2017/Helpers/NetworkHelper.cs" Line="32" Column="25" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Objects/DataLayer.cs" Line="63" Column="5" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Objects/DataPoint.cs" Line="42" Column="13" />
+      <File FileName="KoorweekendApp2017/Helpers/GpsHelper.cs" Line="96" Column="5" />
+      <File FileName="iOS/AppDelegate.cs" Line="108" Column="1" />
+      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="442" Column="1" />
+      <File FileName="KoorweekendApp2017/BusinessObjects/LocalDatabase.cs" Line="461" Column="31" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" Line="18" Column="26" />
+      <File FileName="KoorweekendApp2017/Scenes/Game1Scene1.cs" Line="75" Column="71" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.Droid PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
@@ -30,44 +34,7 @@
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" relfile="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" line="86" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/Tasks/ApiChoirweekendPackinglistSyncTask.cs" relfile="Droid/Tasks/ApiChoirweekendPackinglistSyncTask.cs" line="31" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/Tasks/ApiChoirweekendPackinglistSyncTask.cs" relfile="Droid/Tasks/ApiChoirweekendPackinglistSyncTask.cs" line="24" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Tasks/DataSync.cs" relfile="KoorweekendApp2017/Tasks/DataSync.cs" line="462" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Tasks/DataSync.cs" relfile="KoorweekendApp2017/Tasks/DataSync.cs" line="406" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Tasks/DataSync.cs" relfile="KoorweekendApp2017/Tasks/DataSync.cs" line="350" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Tasks/DataSync.cs" relfile="KoorweekendApp2017/Tasks/DataSync.cs" line="460" column="39" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="108" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="119" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="97" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="86" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="80" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="75" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="69" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="64" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="58" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="53" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="47" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="42" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="36" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="31" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="141" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="153" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="147" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="159" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="165" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="171" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="68" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="66" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="74" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="80" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="86" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="93" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="99" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="105" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="111" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="117" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="123" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="129" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/Droid/MainActivity.cs" relfile="Droid/MainActivity.cs" line="135" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Tasks/DataSync.cs" relfile="KoorweekendApp2017/Tasks/DataSync.cs" line="60" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />

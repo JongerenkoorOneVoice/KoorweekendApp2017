@@ -53,7 +53,7 @@ namespace KoorweekendApp2017
 			var lonDif = targetPosition.Longitude - currentPosition.Longitude;
 
 			float halfRastersize = squareRasterSize / 2;
-			float multiplier = squareRasterSize * scale;
+			//float multiplier = squareRasterSize * scale;
 
 
 
@@ -83,12 +83,27 @@ namespace KoorweekendApp2017
 				}
 			);
 
-			var x = (float)(distX * scale) + halfRastersize;
-			var y = (float)(distY * scale) + halfRastersize;
+			var x = (float)(distX * scale);
+			var y = (float)(distY * scale);
 
 			var c = GetDistance(targetPosition, currentPosition);
 
-			return new Point3d(x, y);
+
+			var point3d = new Point3d(x, y);
+
+			point3d.X = halfRastersize - x;
+			if (currentPosition.Lattitude - targetPosition.Lattitude < 0)
+			{
+				point3d.X = x + halfRastersize;
+			}
+
+			point3d.Y =  y + halfRastersize;
+			if (currentPosition.Longitude - targetPosition.Longitude < 0)
+			{
+				point3d.Y = halfRastersize - y;
+			}
+
+			return point3d;
 		}
 
 		public static Position GetAvaragePosition(List<Position> measuredPositions)
