@@ -13,9 +13,9 @@ namespace KoorweekendApp2017.Models
     public class ChoirWeekendBasePosition
     {
 		
-		public float Longitude { get; set; }
+		public double Longitude { get; set; }
 
-		public float Lattitude { get; set; }
+		public double Lattitude { get; set; }
 
     }
 }

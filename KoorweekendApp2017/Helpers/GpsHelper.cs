@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using KoorweekendApp2017.Models;
+using Plugin.Geolocator.Abstractions;
 
 namespace KoorweekendApp2017
 {
@@ -25,8 +27,8 @@ namespace KoorweekendApp2017
 		{
 			var numberOfItems = positionList.Count;
 
-			var cumulativeLatittude = 0f;
-			var cumulativeLongitude = 0f;
+			var cumulativeLatittude = 0.0;
+			var cumulativeLongitude = 0.0;
 
 			foreach (var pos in positionList)
 			{
@@ -53,10 +55,9 @@ namespace KoorweekendApp2017
 			float halfRastersize = squareRasterSize / 2;
 			float multiplier = squareRasterSize * scale;
 
-			var x = (float)(lonDif * multiplier) + halfRastersize;
-			var y = (float)(latDif * multiplier) + halfRastersize;
 
-			var a = GetDistance(
+
+			var distX = GetDistance(
 				pos1: new ChoirWeekendBasePosition()
 				{
 					Lattitude = currentPosition.Lattitude,
@@ -69,7 +70,7 @@ namespace KoorweekendApp2017
 				}
 			);
 
-			var b = GetDistance(
+			var distY = GetDistance(
 				pos1: new ChoirWeekendBasePosition()
 				{
 					Lattitude = 0f,
@@ -82,9 +83,53 @@ namespace KoorweekendApp2017
 				}
 			);
 
-			var c = GetDistance(currentPosition, currentPosition);
+			var x = (float)(distX * scale) + halfRastersize;
+			var y = (float)(distY * scale) + halfRastersize;
+
+			var c = GetDistance(targetPosition, currentPosition);
 
 			return new Point3d(x, y);
+		}
+
+		public static Position GetAvaragePosition(List<Position> measuredPositions)
+		{
+			if (measuredPositions.Count == 0) return null;
+
+			var lastMeassuredTimeStamp = measuredPositions.First().Timestamp - measuredPositions.First().Timestamp;
+
+			double cumulativeAccuracy = 0.0;
+			double cumulativeAltitude = 0.0;
+			double cumulativeAAltitudeAccuracy = 0.0;
+			double cumulativeHeading = 0.0;
+			double cumulativeLatitude = 0.0;
+			double cumulativeLongitude = 0.0;
+			double cumulativeSpeed = 0.0;
+
+
+			foreach (var position in measuredPositions)
+			{
+				cumulativeAccuracy += position.Accuracy;
+				cumulativeAltitude += position.Altitude;
+				cumulativeAAltitudeAccuracy += position.AltitudeAccuracy;
+				cumulativeHeading += position.Heading;
+				cumulativeLatitude += position.Latitude;
+				cumulativeLongitude += position.Longitude;
+				cumulativeSpeed += position.Speed;
+			}
+
+			var numberOfMeasurements = measuredPositions.Count;
+			var avaragePosition = new Position()
+			{
+				Accuracy = cumulativeAccuracy / numberOfMeasurements,
+				Altitude = cumulativeAltitude / numberOfMeasurements,
+				AltitudeAccuracy = cumulativeAAltitudeAccuracy / numberOfMeasurements,
+				Heading = cumulativeHeading / numberOfMeasurements,
+				Latitude = cumulativeLatitude / numberOfMeasurements,
+				Longitude = cumulativeLongitude / numberOfMeasurements,
+				Speed = cumulativeSpeed / numberOfMeasurements,
+				Timestamp = measuredPositions.Last().Timestamp
+			};
+			return avaragePosition;
 		}
 	}
 

@@ -5,6 +5,8 @@ using Plugin.Compass;
 using KoorweekendApp2017.Koorweekend2017Spel1.Objects;
 //using GeoCoordinatePortable;
 using Plugin.Geolocator;
+using KoorweekendApp2017.Models;
+using System.Collections.Generic;
 
 namespace KoorweekendApp2017.Scenes
 {
@@ -44,242 +46,68 @@ namespace KoorweekendApp2017.Scenes
 			// Setup events
 			CrossCompass.Current.CompassChanged += DataLayer.OnCompassChange;
 
-			//CrossGeolocator.Current.
-            //var a = 0;//new GeoCoordinate(52.224555, 4.953526);
-            //var b = 0;//new GeoCoordinate(52.223713, 4.951803);
-            //var test = 0;//a.GetDistanceTo(b);
 
-			//
-			//line = new CCDrawNode();
-			//line.Position = new CCPoint(0, 0);
-			//line.DrawRect(
-				//new CCRect(45, 15, 10, 70),
-				//CCColor4B.White
-			//);
-			//main.AddChild(line);
+			DateTime timeLastMeasurementSend = DateTime.Now;
+			List<Position> routeLog = new List<Position>();
+			List<Position> lastMeasuredPositions = new List<Position>();
 
+			// Set some position so the value isn't null
 			/*
-			CCDrawNode roundLineEndBottom = new CCDrawNode();
-			roundLineEndBottom.DrawSolidCircle(
-				new CCPoint(0, 0),d
-				radius: 5,
-				color: CCColor4B.White);
-			roundLineEndBottom.PositionX = 50;
-			roundLineEndBottom.PositionY = 15;
-			layer.AddChild(roundLineEndBottom);
-
-			CCDrawNode roundLineEndTop = new CCDrawNode();
-			roundLineEndTop.DrawSolidCircle(
-				new CCPoint(0, 0),
-				radius: 5,
-				color: CCColor4B.White);
-			roundLineEndTop.PositionX = 50;
-			roundLineEndTop.PositionY = 85;
-			layer.AddChild(roundLineEndTop);
-
-			innerCircle = new CCDrawNode();
-			innerCircle.DrawSolidCircle(
-				new CCPoint(0, 0),
-				radius: 2.5f,
-				color: CCColor4B.Red);
-			innerCircle.PositionX = 50;
-			innerCircle.PositionY = 15;
-			layer.AddChild(innerCircle);
-
-			outerCircle = new CCDrawNode();
-			outerCircle.DrawCircle(
-				new CCPoint(0, 0),
-				radius: 10,
-				color: CCColor4B.Red);
-			outerCircle.PositionX = 50;
-			outerCircle.PositionY = 15;
-			layer.AddChild(outerCircle);
-			*/
-			/*
-			outerCircle = new CCDrawNode();
-			outerCircle.DrawSolidCircle(
-				new CCPoint(50, 50),
-				radius: 2.5f,
-				color: CCColor4B.Green);
-			main.AddChild(outerCircle);
-
-			innerCircle = new CCDrawNode();
-			innerCircle.DrawSolidCircle(
-				new CCPoint(50, 50),
-				radius: 2.5f,
-				color: CCColor4B.Red);
-			main.AddChild(innerCircle);
-
-			label = new CCLabel("Init", "test", 8);
-			label.AnchorPoint = new CCPoint(0, 0);
-			label.Text ="init";
-			label.Color = CCColor3B.White;
-			main.AddChild(label);
-			label.Text = String.Format("{0}||{1}", main.Position.X, main.Position.Y);
-			*/
-		}
-		/*
-		public void MoveCircleLeft()
-		{
-			var x = innerCircle.Position.X - 1;
-			var y = innerCircle.Position.Y;
-
-			CCPoint dot = new CCPoint(x, y);
-			innerCircle.RunAction(new CCMoveTo(0.5f, dot));
-			outerCircle.RunAction(new CCMoveTo(0.5f, dot));
-
-			CCPoint innerCircleRightX = new CCPoint((innerCircle.Position.X + 1.5f), innerCircle.Position.Y);
-			bool hit = line.BoundingRect.ContainsPoint(innerCircleRightX);
-			if (!hit)
+			var currentAssignment = gameAssignments.Find(x => x.Location.Description == "Thuis");
+			DataLayer.SetCurrentPosition(new Position()
 			{
-				innerCircle.DrawSolidCircle(
-				new CCPoint(0, 0),
-				radius: 2.5f,
-				color: CCColor4B.Green);
-				
-
-			}
-			else
-			{
-				innerCircle.DrawSolidCircle(
-				new CCPoint(0, 0),
-				radius: 2.5f,
-				color: CCColor4B.Red);
-			}
-
-		}
-
-		public void MoveCircleRight()
-		{
-			
-			var x = innerCircle.Position.X + 1;
-			var y = innerCircle.Position.Y;
-			/*var a = new CCCallFunc(() => { 
-			
+				Longitude = currentAssignment.Location.Position.Longitude,
+				Latitude = currentAssignment.Location.Position.Lattitude
 			});*/
-		/*
-			CCPoint dot = new CCPoint(x, y);
-			innerCircle.RunAction(new CCMoveTo(0.5f, dot));
-			outerCircle.RunAction(new CCMoveTo(0.5f, dot));
 
-			CCPoint innerCircleLeftX = new CCPoint((innerCircle.Position.X - 1.5f), innerCircle.Position.Y);
-			bool hit = line.BoundingRect.ContainsPoint(innerCircleLeftX);
-			if (!hit)
+			// Get the real position
+			CrossGeolocator.Current.PositionChanged += (object sender, PositionEventArgs e) =>
 			{
-				innerCircle.DrawSolidCircle(
-				new CCPoint(0, 0),
-				radius: 2.5f,
-				color: CCColor4B.Green);
+				var position = e.Position as Position;
+				if (routeLog.Count == 0)
+				{
+					DataLayer.SetCurrentPosition(position);
+					SetupDataLayer();
+				}
 
-			}
-			else {
-				innerCircle.DrawSolidCircle(
-				new CCPoint(0, 0),
-				radius: 2.5f,
-				color: CCColor4B.Red);
-			}
-
+				routeLog.Add(position);
+				lastMeasuredPositions.Add(position);
+				if (DateTime.Now - timeLastMeasurementSend >= new TimeSpan(0, 0, 2))
+				{
+					timeLastMeasurementSend = DateTime.Now;
+					var numberOfMeasurements = lastMeasuredPositions.Count;
+					var avaragePosition = GpsHelper.GetAvaragePosition(lastMeasuredPositions);
+					lastMeasuredPositions.RemoveRange(0, numberOfMeasurements);
+					DataLayer.SetCurrentPosition(avaragePosition);
+				}
+			};
 		}
 
-		public void UpdatePosition(Position position)
+		public void SetupDataLayer()
 		{
-			double basicLattiude = 51.806454f;
-			double basicLongitude = 4.628316f;
-
-			double pixelLattitude = (position.Latitude - basicLattiude) * 111000;
-			double pixelLongitude = (position.Longitude - basicLongitude) * 111000;
-
-
-			innerCircle.PositionX = (float)pixelLattitude;
-			innerCircle.PositionY = (float)pixelLongitude;
-
-			//label.Text = position.Heading.ToDegrees().ToString();
-
-
-
-			/*
-			numberOfMeasurements = numberOfMeasurements + 1;
-			SigmaLattitude = SigmaLattitude + position.Latitude;
-			SigmaLongitude = SigmaLongitude + position.Longitude;
-			if (lastUpdate == DateTime.MinValue) lastUpdate = DateTime.Now;
-
-			if (DateTime.Now - lastUpdate > new TimeSpan(0, 0, 1))
+			var gameAssignments = App.Database.ChoirWeekend2017.Game1.GetAll();
+			foreach (var assignment in gameAssignments)
 			{
-				double avarageLattitude = SigmaLattitude / numberOfMeasurements;
-				double avarageLongitude = SigmaLongitude / numberOfMeasurements;
-
-
-
-				lastUpdate = DateTime.Now;
-				numberOfMeasurements = 1;
-				SigmaLattitude = position.Latitude;
-				SigmaLongitude = position.Longitude;
-
-				label.Text = String.Format("lat:{0} | lon:{1} | head:{2}", pixelLattidude, pixelLongitude, position.Heading.ToDegrees());
-
-
-			}
-			    
+				/*
+				DataLayer.PlotNewNode(new Position()
+				{
+					Longitude = currentAssignment.Location.Position.Longitude,
+					Latitude = currentAssignment.Location.Position.Lattitude
+				});
 */
+				//if (assignment.Location.Name == "Locatie 1")
+				//{
+					DataLayer.PlotNewNode(
+						new Position()
+						{
+							Longitude = assignment.Location.Position.Longitude,
+							Latitude = assignment.Location.Position.Lattitude
+						}
+					);
 
-
-
-
-
-
-
-		/*
-		if (!_initialPositionSet)
-		{
-			_initialPositionSet = true;
-			_initialPosition = position;
+				//}
+			}
 		}
-
-		double targetPositionLatitude = _initialPosition.Latitude + 1;
-		double targetPositionLongitude = _initialPosition.Longitude + 1;
-
-		double distanceInMeters = GeoCalculator.GetDistance(
-			_initialPosition.Latitude,
-			_initialPosition.Longitude,
-			targetPositionLatitude,
-			targetPositionLongitude,
-			0
-		);
-
-		//double differenceInLattitude = Math.Abs(_initialPosition.Latitude - targetPositionLatitude);
-		//double differenceInLongitude = Math.Abs(_initialPosition.Longitude - targetPositionLongitude);
-
-		int pixelsInLine = 60;
-		double meterPerPixel = Math.Round(((double)distanceInMeters / pixelsInLine));
-
-
-		var x = innerCircle.Position.X + 1;
-		var y = innerCircle.Position.Y;
-		/*var a = new CCCallFunc(() => { 
-
-		});*//*
-		CCPoint dot = new CCPoint(x, y);
-		innerCircle.RunAction(new CCMoveTo(0.5f, dot));
-		outerCircle.RunAction(new CCMoveTo(0.5f, dot));
-
-		CCPoint innerCircleLeftX = new CCPoint((innerCircle.Position.X - 1.5f), innerCircle.Position.Y);
-		bool hit = line.BoundingRect.ContainsPoint(innerCircleLeftX);
-		if (!hit)
-		{
-			innerCircle.DrawSolidCircle(
-			new CCPoint(0, 0),
-			radius: 2.5f,
-			color: CCColor4B.Green);
-
-		}
-		else {
-			innerCircle.DrawSolidCircle(
-			new CCPoint(0, 0),
-			radius: 2.5f,
-			color: CCColor4B.Red);
-		}
-		*/
-			 //}
 
 		public CCDrawNode CenterCircle(Int32 radius)
 		{
@@ -321,7 +149,7 @@ namespace KoorweekendApp2017.Scenes
 		{
 
 			// create layer
-			var RadarLayer = new CCLayer();
+			RadarLayer = new CCLayer();
 			AddLayer(RadarLayer);
 
 			// add radar circles

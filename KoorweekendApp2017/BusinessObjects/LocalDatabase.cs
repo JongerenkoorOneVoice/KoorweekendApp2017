@@ -384,11 +384,74 @@ namespace KoorweekendApp2017.BusinessObjects
 					var type = typeof(ChoirWeekendGame1Assignment).Name;
 					var items = (from i in Database.Table<ChoirWeekendObject>() where i.ObjectType == type select i).ToList();
 					if (items == null) return null;
+
+					/*
 					return items.Select((ChoirWeekendObject item) =>
 					{
 						return JsonConvert.DeserializeObject<ChoirWeekendGame1Assignment>(item.Json);
 					}).OrderBy(i => i.Settings.ConsecutionIndex).ToList();
+					*/
 
+					// hardcoded test values
+					return new List<ChoirWeekendGame1Assignment>()
+					{
+						new ChoirWeekendGame1Assignment()
+						{
+							Location = new ChoirWeekendGame1Location()
+							{
+								Position = new ChoirWeekendBasePosition()
+								{
+									Longitude = 4.578520,
+									Lattitude = 51.897761
+								},
+								Name = "Locatie 1",
+								Description = "Prins Claus straat"
+
+							}
+						},
+						new ChoirWeekendGame1Assignment()
+						{
+							Location = new ChoirWeekendGame1Location()
+							{
+								Position = new ChoirWeekendBasePosition()
+								{
+									Longitude = 4.604537299999947,
+									Lattitude = 51.8827908
+								},
+								Name = "Locatie 2",
+								Description = "De Kern"
+
+							}
+						},
+						new ChoirWeekendGame1Assignment()
+						{
+							Location = new ChoirWeekendGame1Location()
+							{
+								Position = new ChoirWeekendBasePosition()
+								{
+									Longitude = 4.577484899999945,
+									Lattitude = 51.8981004
+								},
+								Name = "Locatie 3",
+								Description = "Thuis"
+
+							}
+						},
+						new ChoirWeekendGame1Assignment()
+						{
+							Location = new ChoirWeekendGame1Location()
+							{
+								Position = new ChoirWeekendBasePosition()
+								{
+									Longitude = 4.577734,
+									Lattitude = 51.899459
+								},
+								Name = "Locatie 4",
+								Description = "Einde van de straat"
+
+							}
+						}
+					};
 				}
 
 				public void UpdateOrInsert(ChoirWeekendGame1Assignment assignment)

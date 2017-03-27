@@ -14,8 +14,6 @@ namespace KoorweekendApp2017.Models
     {
 		public String Image { get; set; }
 
-		public String Description { get; set; }
-
 		public String Code { get; set; }
 
 

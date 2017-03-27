@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using CocosSharp;
 using KoorweekendApp2017.Scenes;
 using Plugin.Compass;
+using Plugin.Geolocator;
+using Plugin.Geolocator.Abstractions;
 using Xamarin.Forms;
 
 namespace KoorweekendApp2017
@@ -52,12 +54,18 @@ namespace KoorweekendApp2017
 		{
 			base.OnAppearing();
 			CrossCompass.Current.Start();
+			var settings = new ListenerSettings();
+			settings.ActivityType = ActivityType.Fitness;
+
+			CrossGeolocator.Current.StartListeningAsync(200, 2, true, settings);
+
 		}
 
 		protected override void OnDisappearing()
 		{
 			base.OnDisappearing();
 			CrossCompass.Current.Stop();
+			CrossGeolocator.Current.StopListeningAsync();
 		}
 	}
 }
