@@ -19,19 +19,22 @@ namespace KoorweekendApp2017.Helpers
 	public static class NetworkHelper
 	{
 
-		public static Boolean InternetConnected()
+		public static Boolean IsReachable(String domain)
 		{
-			bool hasInternet = false;
+			
+			bool isReachable = false;
 			if (App.Network.IsConnected)
 			{
 
 				var task = Task.Run(async () =>
 				{
-					return await App.Network.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
+					return await App.Network.IsReachable(domain).ConfigureAwait(false);
 				});
-
-				hasInternet = task.Result;
+				task.ConfigureAwait(false);
+				isReachable = task.Result;
 			}
+
+			bool hasInternet = CrossConnectivity.Current.IsConnected && isReachable;
 			return hasInternet;
 
 		}

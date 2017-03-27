@@ -136,37 +136,37 @@ namespace KoorweekendApp2017.Droid
 				StopService(intent);
 			});
 
-			MessagingCenter.Subscribe<StartApiPrayerRequestSyncMessage>(this, "StartApiChoirweekendGame1SyncMessage", message =>
+			MessagingCenter.Subscribe<StartApiChoirweekendGame1SyncMessage>(this, "StartApiChoirweekendGame1SyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiChoirweekendGame1SyncTask));
 				StartService(intent);
 			});
 
-			MessagingCenter.Subscribe<StopApiPrayerRequestSyncMessage>(this, "StopApiChoirweekendGame1SyncMessage", message =>
+			MessagingCenter.Subscribe<StartApiChoirweekendGame1SyncMessage>(this, "StopApiChoirweekendGame1SyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiChoirweekendGame1SyncTask));
 				StopService(intent);
 			});
 
-			MessagingCenter.Subscribe<StartApiPrayerRequestSyncMessage>(this, "StartApiChoirweekendGame2SyncMessage", message =>
+			MessagingCenter.Subscribe<StartApiChoirweekendGame2SyncMessage>(this, "StartApiChoirweekendGame2SyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiChoirweekendGame2SyncTask));
 				StartService(intent);
 			});
 
-			MessagingCenter.Subscribe<StopApiPrayerRequestSyncMessage>(this, "StopApiChoirweekendGame2SyncMessage", message =>
+			MessagingCenter.Subscribe<StartApiChoirweekendGame2SyncMessage>(this, "StopApiChoirweekendGame2SyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiChoirweekendGame2SyncTask));
 				StopService(intent);
 			});
 
-			MessagingCenter.Subscribe<StartApiPrayerRequestSyncMessage>(this, "StartApiChoirweekendPackinglistSyncMessage", message =>
+			MessagingCenter.Subscribe<StopApiChoirweekendPackinglistSyncMessage>(this, "StartApiChoirweekendPackinglistSyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiChoirweekendPackinglistSyncTask));
 				StartService(intent);
 			});
 
-			MessagingCenter.Subscribe<StopApiPrayerRequestSyncMessage>(this, "StopApiChoirweekendPackinglistSyncMessage", message =>
+			MessagingCenter.Subscribe<StopApiChoirweekendPackinglistSyncMessage>(this, "StopApiChoirweekendPackinglistSyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiChoirweekendPackinglistSyncTask));
 				StopService(intent);

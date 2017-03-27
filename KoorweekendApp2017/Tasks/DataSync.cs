@@ -49,61 +49,41 @@ namespace KoorweekendApp2017.Tasks
 		public static void UpdateContactsInDbFromApi(bool shouldUpdateAll = false)
 		{
 
-			if (CrossConnectivity.Current.IsConnected)
+			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
 			{
-
-				var task = Task.Run(async () =>
+				bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
+				if (isAuthenticated)
 				{
-					return await CrossConnectivity.Current.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
-				});
 
-				bool hasInternet = task.Result;
-
-				if (hasInternet)
-				{
-					bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
-					if (isAuthenticated)
+					DateTime lastUpdate = DateTime.Parse("1010-01-01");
+					String lastUpdatedString = App.Database.Settings.GetValue<String>("lastContactsUpdate");
+					if (!String.IsNullOrEmpty(lastUpdatedString) && !shouldUpdateAll)
 					{
-
-						DateTime lastUpdate = DateTime.Parse("1010-01-01");
-						String lastUpdatedString = App.Database.Settings.GetValue<String>("lastContactsUpdate");
-						if (!String.IsNullOrEmpty(lastUpdatedString) && !shouldUpdateAll)
-						{
-							lastUpdate = DateTime.Parse(lastUpdatedString);
-							lastUpdate = lastUpdate.AddDays(-1);
-						}
-
-						List<Contact> contacts = App.AppWebService.Contacts.GetContactsChangedAfterDateAsync(lastUpdate).Result;
-
-						if (contacts != null)
-						{
-							foreach (Contact contact in contacts)
-							{
-								App.Database.Contacts.UpdateOrInsert(contact);
-							}
-						}
-						App.Database.Settings.Set("lastContactsUpdate", DateTime.Now.ToString());
-
+						lastUpdate = DateTime.Parse(lastUpdatedString);
+						lastUpdate = lastUpdate.AddDays(-1);
 					}
-				}
 
+					List<Contact> contacts = App.AppWebService.Contacts.GetContactsChangedAfterDateAsync(lastUpdate).Result;
+
+					if (contacts != null)
+					{
+						foreach (Contact contact in contacts)
+						{
+							App.Database.Contacts.UpdateOrInsert(contact);
+						}
+					}
+					App.Database.Settings.Set("lastContactsUpdate", DateTime.Now.ToString());
+
+				}
 			}
+
+
 		}
 
 		public static void UpdateSongsInDbFromApi(bool shouldUpdateAll = false)
 		{
-			if (CrossConnectivity.Current.IsConnected)
+			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
 			{
-
-				var task = Task.Run(async () =>
-				{
-					return await CrossConnectivity.Current.IsReachable("jongerenkooronevoice.nl").ConfigureAwait(false);
-				});
-
-				bool hasInternet = task.Result;
-
-				if (hasInternet)
-				{
 					bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
 					if (isAuthenticated)
 					{
@@ -126,7 +106,7 @@ namespace KoorweekendApp2017.Tasks
 						}
 						App.Database.Settings.Set("lastSongUpdate", DateTime.Now.ToString());
 					}
-				}
+
 			}
 		}
 
@@ -134,7 +114,7 @@ namespace KoorweekendApp2017.Tasks
 		{
 
 
-			if (NetworkHelper.InternetConnected())
+			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
 			{
 				bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
 				if (isAuthenticated)
@@ -164,7 +144,7 @@ namespace KoorweekendApp2017.Tasks
 
 		public static void UpdateNewsInDbFromApi(bool shouldUpdateAll = false)
 		{
-			if (NetworkHelper.InternetConnected())
+			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
 			{
 				bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
 				if (isAuthenticated)
@@ -194,7 +174,7 @@ namespace KoorweekendApp2017.Tasks
 
 		public static void UpdateSongOccasionsInDbFromApi(bool shouldUpdateAll = false)
 		{
-			if (NetworkHelper.InternetConnected())
+			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
 			{
 				bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
 				if (isAuthenticated)
@@ -216,7 +196,7 @@ namespace KoorweekendApp2017.Tasks
 
 		public static void UpdatePrayerRequestsInDbFromApi(bool shouldUpdateAll = false)
 		{
-			if (NetworkHelper.InternetConnected())
+			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
 			{
 				Int32 currentContactId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
 
@@ -268,7 +248,7 @@ namespace KoorweekendApp2017.Tasks
 
 		public static void SyncPrayerRequests(bool shouldUpdateAll = false)
 		{
-			if (NetworkHelper.InternetConnected())
+			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
 			{
 				//string query = String.Format("http://www.jongerenkooronevoice.nl/prayerrequests/changedafter/{0}-{1}-{2}", lastUpdate.ToString("yyyy"), lastUpdate.ToString("MM"), lastUpdate.ToString("dd"));
 				// Get all prayerrequests from the web api
@@ -345,7 +325,7 @@ namespace KoorweekendApp2017.Tasks
 		public static void UpdateGame1AssignmentsInDbFromApi(bool overruleLastUpdated = false)
 		{
 
-			if (NetworkHelper.InternetConnected())
+			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
 			{
 				bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
 				if (isAuthenticated)
@@ -391,6 +371,10 @@ namespace KoorweekendApp2017.Tasks
 
 				}
 			}
+			else
+			{
+
+			}
 
 
 		}
@@ -399,7 +383,7 @@ namespace KoorweekendApp2017.Tasks
 		public static void UpdateGame2AssignmentsInDbFromApi(bool overruleLastUpdated = false)
 		{
 
-			if (NetworkHelper.InternetConnected())
+			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
 			{
 				bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
 				if (isAuthenticated)
@@ -453,7 +437,7 @@ namespace KoorweekendApp2017.Tasks
 		public static void UpdatePackinglistInDbFromApi(bool overruleLastUpdated = false)
 		{
 
-			if (NetworkHelper.InternetConnected())
+			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
 			{
 				bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
 				if (isAuthenticated)
