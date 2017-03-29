@@ -143,7 +143,7 @@ namespace KoorweekendApp2017.iOS
             }
 			#endregion
 
- 			App oneVoiceApp = new App();
+ 			App oneVoiceApp = new App(UIApplication.OpenSettingsUrlString);
 			LoadApplication(oneVoiceApp);
 
 			return base.FinishedLaunching(app, options);

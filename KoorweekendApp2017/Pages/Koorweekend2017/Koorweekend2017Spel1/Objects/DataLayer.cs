@@ -23,7 +23,7 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 
 		public DataLayer()
 		{
-			
+			CurrentScale = 3.0f;
 
 			RotatingDataLayer.AnchorPoint = CCPoint.AnchorMiddle;
 			RotatingDataLayer.Position = new CCPoint(500f, 750f);
@@ -64,6 +64,7 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 				var point3d = GetRelativePositionXY(dataPoint.OrignalGpsLocation);
 				dataPoint.UpdatePosition(point3d);
 
+				/*
 				var baseCurrent = new ChoirWeekendBasePosition()
 				{
 					Longitude = _currentPosition.Longitude,
@@ -75,6 +76,7 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 					Longitude = dataPoint.OrignalGpsLocation.Longitude,
 					Lattitude = dataPoint.OrignalGpsLocation.Latitude
 				};
+
 
 				if (GpsHelper.GetDistance(baseCurrent, baseDataPoint) <= 5)
 				{
@@ -90,7 +92,7 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 					dataPoint.Node.UpdateColor();
 					//dataPoint.Node.UpdateDisplayedColor(CCColor3B.White);
 				}
-			
+				*/
 			}
 			//}
 		}
@@ -108,7 +110,7 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 					Lattitude = (float)position.Latitude,
 					Longitude = (float)position.Longitude
 				},
-				scale: 1.0f,
+				scale: CurrentScale,
 				squareRasterSize: 1000f
 
 

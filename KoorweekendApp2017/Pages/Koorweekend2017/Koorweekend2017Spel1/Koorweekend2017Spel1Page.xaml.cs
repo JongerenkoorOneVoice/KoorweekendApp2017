@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using CocosSharp;
 using KoorweekendApp2017.Scenes;
 using Plugin.Compass;
 using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using Xamarin.Forms;
+using System.Linq;
+using XLabs.Platform.Device;
 
 namespace KoorweekendApp2017
 {
@@ -50,21 +53,108 @@ namespace KoorweekendApp2017
 
 		}
 
+		public async Task<Game1Settings> RunChecks(Game1Settings gameSettings)
+		{
+
+				if (!gameSettings.CompassIsSupported && !gameSettings.ShouldRunCheckAgain)
+				{
+					CrossCompass.Current.Start();
+					await DisplayAlert("Geen Kompas", "Omdat je geen kompas op je telefoon hebt zal het scherm niet met je bewegingen meedraaien.", "Oké");
+				}
+
+			var returnToPreviousPage = false;
+			if (gameSettings.GpsAvailable)
+			{
+				if (gameSettings.GpsEnabled && !gameSettings.ShouldRunCheckAgain)
+				{
+
+					if (Device.RuntimePlatform == Device.iOS)
+					{
+						var loadSettings = await DisplayAlert("Geen GPS", "Omdat je geen GPS op je telefoon hebt zal dit spel op jouw telefoon niet werken.", "Instellingen", "Terug");
+						if (loadSettings)
+						{
+							Device.OpenUri(new Uri(App.SettingsScreenUri));
+							gameSettings.ShouldRunCheckAgain = true;
+						}
+						else
+						{
+							returnToPreviousPage = true;
+						}
+					}
+					else
+					{
+						await DisplayAlert("Geen GPS", "Zet eerst je GPS aan om dit spel te kunnen spelen.", "Oké");
+						returnToPreviousPage = true;
+					}
+				}
+			}
+			else
+			{
+				await DisplayAlert("Geen GPS", "Omdat je geen GPS op je telefoon hebt zal dit spel op jouw telefoon niet werken.", "Oké");
+				returnToPreviousPage = true;
+			}
+
+			if (returnToPreviousPage)
+			{
+				Navigation.PopAsync();
+			}
+			return gameSettings;
+		}
+
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-			CrossCompass.Current.Start();
+
+			/*
+			var gameSettings = new Game1Settings();
+			gameSettings.CompassIsSupported = CrossCompass.Current.IsSupported;
+			gameSettings.GpsAvailable = CrossGeolocator.Current.IsGeolocationAvailable;
+			gameSettings.GpsEnabled = CrossGeolocator.Current.IsGeolocationEnabled;
+
+
+
+			RunChecks(gameSettings).ContinueWith((arg) => {
+				var settings = arg.Result as Game1Settings;
+				if (gameSettings.ShouldRunCheckAgain)
+				{
+					RunChecks(gameSettings);
+				}
+
+				var x = 1;
+			});
+
+*/
+
+			/*
+
+
+
+			
+*/
+			if (CrossCompass.Current.IsSupported)
+			{
+				CrossCompass.Current.Start();
+			}
+
 			var settings = new ListenerSettings();
 			settings.ActivityType = ActivityType.Fitness;
+			settings.AllowBackgroundUpdates = true;
 
-			CrossGeolocator.Current.StartListeningAsync(new TimeSpan(0, 0, 0, 0 , 200), 2.0, true, settings);
+
+			CrossGeolocator.Current.DesiredAccuracy = 0.25;
+			CrossGeolocator.Current.StartListeningAsync(new TimeSpan(0, 0, 0, 0 , 200), 0.25, true, settings);
 
 		}
 
 		protected override void OnDisappearing()
 		{
 			base.OnDisappearing();
-			CrossCompass.Current.Stop();
+
+			if (CrossCompass.Current.IsSupported)
+			{
+				CrossCompass.Current.Stop();
+			}
+
 			CrossGeolocator.Current.StopListeningAsync();
 		}
 	}

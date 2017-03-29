@@ -184,7 +184,9 @@ namespace KoorweekendApp2017.Droid
             }
 			#endregion
             
-			App oneVoiceApp = new App();
+			//Application.service
+
+			App oneVoiceApp = new App("");
             LoadApplication(oneVoiceApp);
 
         }

@@ -18,6 +18,8 @@ namespace KoorweekendApp2017
 
 		//public DeviceData CurrentDevice = new DeviceData();
 
+		public static String SettingsScreenUri { get; set; }
+
 		public static LocalDatabase Database { get; set; }
 
 		public static AppWebService AppWebService { get; set; }
@@ -26,7 +28,7 @@ namespace KoorweekendApp2017
 
 		public static Contact CurrentUser { get; set; }
 
-		public App()
+		public App(string uri)
 		{
 			InitializeComponent();
 			var db = DependencyService.Get<ISQLite>().GetConnection();
@@ -36,7 +38,7 @@ namespace KoorweekendApp2017
 			//DataSync.UpdateContactsInDbFromApi();
 			//DataSync.UpdateSongsInDbFromApi();
 			//DataSync.UpdateEventsInDbFromApi();
-
+			SettingsScreenUri = uri;
 			//DataSync.UpdateGame1AssignmentsInDbFromApi(true);
 			//DataSync.UpdateGame2AssignmentsInDbFromApi(true);
 			//DataSync.UpdatePackinglistInDbFromApi(true);

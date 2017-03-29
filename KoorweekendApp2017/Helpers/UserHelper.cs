@@ -23,7 +23,9 @@ namespace KoorweekendApp2017.Helpers
 		{
 
 			Int32 currentUserId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
-
+			if (currentUserId == 0)
+				currentUserId = AuthenticationHelper.GetAndWriteCurrentAuthenticatedUserIdToDb();
+			
 			if (currentUserId == 668 || currentUserId == 667 || currentUserId == 696)
 				return true;
 

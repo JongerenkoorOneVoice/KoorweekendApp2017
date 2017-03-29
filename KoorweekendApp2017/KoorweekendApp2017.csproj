@@ -265,6 +265,7 @@
     <Compile Include="Models\Point3d.cs" />
     <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Objects\DataLayer.cs" />
     <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Objects\DataPoint.cs" />
+    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Objects\Game1Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">

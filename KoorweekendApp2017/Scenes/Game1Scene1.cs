@@ -7,6 +7,8 @@ using KoorweekendApp2017.Koorweekend2017Spel1.Objects;
 using Plugin.Geolocator;
 using KoorweekendApp2017.Models;
 using System.Collections.Generic;
+using Xamarin.Forms;
+
 
 namespace KoorweekendApp2017.Scenes
 {
@@ -15,6 +17,8 @@ namespace KoorweekendApp2017.Scenes
 		public CCLayer RadarLayer { get; set; }
 
 		public DataLayer DataLayer { get; set; }
+
+		public CCLayer ControlsLayer { get; set; }
 
 		/*
 		CCDrawNode innerCircle;
@@ -43,9 +47,14 @@ namespace KoorweekendApp2017.Scenes
 			DataLayer = new DataLayer();
 			AddLayer(DataLayer);
 
-			// Setup events
-			CrossCompass.Current.CompassChanged += DataLayer.OnCompassChange;
+			ControlsLayer = SetupControlLayer();
+			RadarLayer.AddChild(ControlsLayer);
 
+			// Setup events
+			if (CrossCompass.Current.IsSupported)
+			{
+				CrossCompass.Current.CompassChanged += DataLayer.OnCompassChange;
+			}
 
 			DateTime timeLastMeasurementSend = DateTime.Now;
 			List<Position> routeLog = new List<Position>();
@@ -79,6 +88,7 @@ namespace KoorweekendApp2017.Scenes
 					var avaragePosition = GpsHelper.GetAvaragePosition(lastMeasuredPositions);
 					lastMeasuredPositions.RemoveRange(0, numberOfMeasurements);
 					DataLayer.SetCurrentPosition(avaragePosition);
+					//Application.Current.MainPage.DisplayAlert("test", numberOfMeasurements.ToString(), "test");
 				}
 			};
 		}
@@ -97,13 +107,13 @@ namespace KoorweekendApp2017.Scenes
 */
 				//if (assignment.Location.Name == "Locatie 1")
 				//{
-					DataLayer.PlotNewNode(
-						new Position()
-						{
-							Longitude = assignment.Location.Position.Longitude,
-							Latitude = assignment.Location.Position.Lattitude
-						}
-					);
+				DataLayer.PlotNewNode(
+					new Position()
+					{
+						Longitude = assignment.Location.Position.Longitude,
+						Latitude = assignment.Location.Position.Lattitude
+					}
+				);
 
 				//}
 			}
@@ -132,7 +142,7 @@ namespace KoorweekendApp2017.Scenes
 				CCLineCap.Butt
 			);
 
-			return node;		
+			return node;
 		}
 
 		public CCLabel Text(CCPoint position)
@@ -172,5 +182,74 @@ namespace KoorweekendApp2017.Scenes
 			return RadarLayer;
 		}
 
+		public CCLayer SetupControlLayer()
+		{
+
+			// create layer
+			ControlsLayer = new CCLayer();
+
+
+			CCDrawNode scaleUpButton = new CCDrawNode();
+			scaleUpButton.DrawCircle(
+				new CCPoint(0, 0),
+				radius: 100,
+				color: CCColor4B.White);
+			scaleUpButton.PositionX = 100;
+			scaleUpButton.PositionY = 100;
+
+			ControlsLayer.AddChild(scaleUpButton);
+
+			CCDrawNode scaleDownButton = new CCDrawNode();
+			scaleDownButton.DrawCircle(
+				new CCPoint(0, 0),
+				radius: 100,
+				color: CCColor4B.White);
+			scaleDownButton.PositionX = 400;
+			scaleDownButton.PositionY = 100;
+
+			ControlsLayer.AddChild(scaleDownButton);
+
+			//scaleUpButton
+
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.OnTouchBegan = TouchBegan;
+			AddEventListener(touchListener, ControlsLayer);
+
+
+			B1 = scaleUpButton;
+			B2 = scaleDownButton;
+
+
+
+			return ControlsLayer;
+		}
+
+		public CCNode B1 { get; set; }
+
+		public CCNode B2 { get; set; }
+
+
+		public bool TouchBegan(CCTouch touch, CCEvent e){
+
+
+			var point = new CCPoint(touch.Location.X, touch.Location.Y + 100);
+
+			if (B1.BoundingBoxTransformedToWorld.ContainsPoint(point))
+			{
+				var x = 1;
+				DataLayer.CurrentScale = DataLayer.CurrentScale / 2;
+				DataLayer.UpdateAllLocations();
+			}
+
+			if (B2.BoundingBoxTransformedToWorld.ContainsPoint(point))
+			{
+				var x = 1;
+				DataLayer.CurrentScale = DataLayer.CurrentScale * 2;
+				DataLayer.UpdateAllLocations();
+			}
+
+			return true;
+
+		}
 	}
 }

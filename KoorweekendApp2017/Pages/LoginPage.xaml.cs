@@ -165,7 +165,7 @@ namespace KoorweekendApp2017
 				App.Database.Settings.Set("lastAuthenticationResult", authResult);
 				App.Database.Settings.Set("lastAuthenticationEmailAddressTried", emailaddress);
 
-                AuthenticationHelper.WriteCurrentAuthenticatedUserIdToDb();
+                AuthenticationHelper.GetAndWriteCurrentAuthenticatedUserIdToDb();
                 DataSync.RunAllTasksAndWaitForReady(true);
                 
                 Application.Current.MainPage = new KoorweekendApp2017Page();

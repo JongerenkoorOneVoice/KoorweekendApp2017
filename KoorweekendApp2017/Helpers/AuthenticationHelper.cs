@@ -14,7 +14,7 @@ namespace KoorweekendApp2017
 	public class AuthenticationHelper
 	{
 
-		public static void WriteCurrentAuthenticatedUserIdToDb()
+		public static Int32 GetAndWriteCurrentAuthenticatedUserIdToDb()
 		{
 			String emailAddress = App.Database.Settings.GetValue<String>("lastAuthenticationEmailAddressTried");
 			AuthenticationResult authenticationResult = App.Database.Settings.GetValue<AuthenticationResult>("lastAuthenticationResult");
@@ -25,8 +25,9 @@ namespace KoorweekendApp2017
 				{
 					App.Database.Settings.Set("authenticatedContactId", authenticatedContact.Id);
 				}
+				return authenticatedContact.Id;
 			}
-
+			return 0;
 
 		}
 
