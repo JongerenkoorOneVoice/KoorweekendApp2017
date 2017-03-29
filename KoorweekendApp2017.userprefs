@@ -1,17 +1,14 @@
 ﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Scenes/Game1Scene1.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Objects/DataLayer.cs" Line="63" Column="5" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Objects/DataPoint.cs" Line="42" Column="13" />
-      <File FileName="KoorweekendApp2017/Helpers/GpsHelper.cs" Line="96" Column="5" />
-      <File FileName="iOS/AppDelegate.cs" Line="108" Column="1" />
-      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="442" Column="1" />
-      <File FileName="KoorweekendApp2017/BusinessObjects/LocalDatabase.cs" Line="461" Column="31" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" Line="18" Column="26" />
-      <File FileName="KoorweekendApp2017/Scenes/Game1Scene1.cs" Line="75" Column="71" />
+      <File FileName="packages/Xam.Plugin.Connectivity.2.4.0.66-beta/readme.txt" Line="1" Column="1" />
+      <File FileName="packages/Xam.Plugin.Geolocator.4.0.0.55-beta/readme.txt" Line="33" Column="119" />
+      <File FileName="Droid/MainActivity.cs" Line="192" Column="10" />
+      <File FileName="iOS/AppDelegate.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" Line="60" Column="40" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.Droid PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
@@ -37,7 +34,7 @@
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="64" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.159FD443-A571-4EE6-ABDA-1F9A715491A6" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
 </Properties>

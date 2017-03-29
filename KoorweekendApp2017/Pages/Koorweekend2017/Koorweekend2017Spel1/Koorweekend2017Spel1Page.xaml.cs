@@ -57,7 +57,7 @@ namespace KoorweekendApp2017
 			var settings = new ListenerSettings();
 			settings.ActivityType = ActivityType.Fitness;
 
-			CrossGeolocator.Current.StartListeningAsync(200, 2, true, settings);
+			CrossGeolocator.Current.StartListeningAsync(new TimeSpan(0, 0, 0, 0 , 200), 2.0, true, settings);
 
 		}
 
