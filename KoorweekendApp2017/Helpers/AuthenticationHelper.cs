@@ -24,8 +24,8 @@ namespace KoorweekendApp2017
 				if (authenticatedContact != null)
 				{
 					App.Database.Settings.Set("authenticatedContactId", authenticatedContact.Id);
+					return authenticatedContact.Id;
 				}
-				return authenticatedContact.Id;
 			}
 			return 0;
 

@@ -22,6 +22,8 @@ namespace KoorweekendApp2017.Pages
 		public void LoadItems()
 		{
 			var masterPageItems = new List<MasterPageItem>();
+			listView.ItemsSource = masterPageItems;
+
 			masterPageItems.Add(new MasterPageItem
 			{
 				Title = "Home",
@@ -109,7 +111,7 @@ namespace KoorweekendApp2017.Pages
 
 			*/
 
-			listView.ItemsSource = masterPageItems;
+
 		}
 
     }

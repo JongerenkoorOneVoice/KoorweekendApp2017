@@ -21,6 +21,11 @@ namespace KoorweekendApp2017.Pages
 			{
 				var device = Resolver.Resolve<IDevice>();
 				Int32 screen = Convert.ToInt32(device.Display.Width / (3 * (device.Display.Scale)));
+				if (Device.RuntimePlatform == Device.iOS)
+				{
+					screen = Convert.ToInt32(device.Display.Xdpi / 3);
+				}
+
 				return screen;
 			}
 		}
