@@ -62,7 +62,7 @@ namespace KoorweekendApp2017
 			var authTask = AuthenticationHelper.IsAuthenticated();
 			authTask.ConfigureAwait(false);
 
-			var isAuthenticated = authTask.Result;
+            var isAuthenticated = authTask.Result;
 			if (!isAuthenticated)
 			{
 				MainPage = new LoginPage();
