@@ -59,7 +59,7 @@ namespace KoorweekendApp2017
 			else if (CurrentPage == LoginPageIds.MailSend)
 			{
 
-                var isAuthenticated = await AuthenticationHelper.IsAuthenticated(pageMailInput.Text);
+				var isAuthenticated = await RunLoginScript(shouldSendMail: false);
 				if (isAuthenticated)
 				{
 					Application.Current.MainPage = new KoorweekendApp2017Page();
@@ -114,14 +114,15 @@ namespace KoorweekendApp2017
 		}
 			
 
-		public async Task RunLoginScript()
+		public async Task<bool> RunLoginScript(bool shouldSendMail = true)
 		{
+			Boolean result = false;
 			String emailaddress = pageMailInput.Text;
 			if (!emailaddress.IsValidEmailAddres())
 			{
 				await LoadPage(LoginPageIds.InvalidEmail);
 				//await DisplayAlert("Emailadres ongeldig", "Waarschijnlijk heb je je mailadres verkeerd geschreven", "Probeer opnieuw");
-				return;
+				return result;
 			}
 
 			var authResult = await AuthenticationHelper.GetAuthenticationResult(emailaddress);
@@ -134,14 +135,14 @@ namespace KoorweekendApp2017
 
 					await page.TranslateTo(-Math.Abs(page.Width), 0, 500, Easing.CubicIn);
 					var mailSend = await AuthenticationHelper.RegisterDevice(emailaddress);
-					if (mailSend)
+					if (mailSend && shouldSendMail)
 					{
 						page.TranslationX = Math.Abs(page.Width);
 						await page.TranslateTo(0, 0, 500, Easing.CubicOut);
 						await LoadPage(LoginPageIds.MailSend, false);
 						// do something here;
 
-						return;
+						return result;
 					}
 					else
 					{
@@ -150,7 +151,7 @@ namespace KoorweekendApp2017
 					}
 
 					// maybe do somtehting here?
-					return;
+					return result;
 				}
 				else if (authResult.Code == AuthorizationCode.EmailAddressNotFound)
 				{
@@ -160,16 +161,17 @@ namespace KoorweekendApp2017
 			}
 			else if (authResult.Code == AuthorizationCode.Authorized)
 			{
-				
+				result = true;
 				App.Database.Settings.Set("lastSuccessfullAuthentication", DateTime.Now);
 				App.Database.Settings.Set("lastAuthenticationResult", authResult);
 				App.Database.Settings.Set("lastAuthenticationEmailAddressTried", emailaddress);
 
-                AuthenticationHelper.GetAndWriteCurrentAuthenticatedUserIdToDb();
                 DataSync.RunAllTasksAndWaitForReady(true);
+				AuthenticationHelper.GetAndWriteCurrentAuthenticatedUserIdToDb();
                 
                 Application.Current.MainPage = new KoorweekendApp2017Page();
             }
+			return result;
 		}
 
 		public void SetupPages()
