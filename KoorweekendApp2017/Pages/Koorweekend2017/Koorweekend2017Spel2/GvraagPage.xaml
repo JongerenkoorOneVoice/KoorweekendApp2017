@@ -2,20 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2.GvraagPage"
-             Title="Gesloten vraag">
+             Title="Vraag">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10,10,10,0">
-                <Image Source="Q_logica.png" Aspect="AspectFill"/>
-                <Label Text="Vraag 1:" Font="Bold, 18" HorizontalTextAlignment="Center"/>
-                <Label Text="Je ziet hier 4 blokjes met sterren en 1 leeg blokje. Welk blokje (A, B, C of D) moet hier komen te staan?" HorizontalTextAlignment="Center"/>
-                <StackLayout Padding = "0,10,0,0" Orientation = "Horizontal" HorizontalOptions = "Center" VerticalOptions = "Start">
-                    <Button Text="A" x:Name="A" Font="16" HorizontalOptions="Center" BorderColor="Red" BorderWidth="1" BorderRadius="5" Margin="0,0,20,0"/>
-                    <Button Text="C" x:Name="C" Font="16" HorizontalOptions="Center" BorderColor="Red" BorderWidth="1" BorderRadius="5" Margin="20,0,0,0"/>
+                <Image Aspect="AspectFill" x:Name="QuestionImage"/>
+                <Label Text="Vraag:" Font="Bold, 18" HorizontalTextAlignment="Center"/>
+                <Label x:Name="QuestionDesc" HorizontalTextAlignment="Center"/>
+                <StackLayout Padding = "0,10,0,0" Orientation = "Horizontal" HorizontalOptions = "Center" VerticalOptions = "Start" x:Name="FirstRow">
                 </StackLayout>
-                <StackLayout Padding = "0,10,0,0" Orientation = "Horizontal" HorizontalOptions = "Center" VerticalOptions = "Start">
-                    <Button Text="B" x:Name="B" Font="16" HorizontalOptions="Center" BorderColor="Red" BorderWidth="1" BorderRadius="5" Margin="0,0,20,0"/>
-                    <Button Text="D" x:Name="D" Font="16" HorizontalOptions="Center" BorderColor="Red" BorderWidth="1" BorderRadius="5" Margin="20,0,0,0"/>
+                <StackLayout Padding = "0,10,0,0" Orientation = "Horizontal" HorizontalOptions = "Center" VerticalOptions = "Start" x:Name="SecondRow">
                 </StackLayout>
             </StackLayout>
         </ScrollView>

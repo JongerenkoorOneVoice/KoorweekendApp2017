@@ -7,11 +7,11 @@
         <StackLayout>
             <Label Text="Tijdens dit spel zijn er een aantal bonusopdrachten die uitgevoerd kunnen worden voor extra punten, succes ;)" Font="Italic, Bold, 14" HorizontalTextAlignment="Center" Margin="0,10,0,0"/>
             <Label Text="Foto opdracht:" HorizontalTextAlignment="Center" Font="Bold" Margin="0,10,0,0"/>
-            <Label Text="Jullie moeten een groepsfoto maken van dit fietsgroepje. Maar om extra punten te verdienen moet er wat extra's gebeuren. Jullie rijden voor een deel langs en door de mooie Kalmthoutse Heide, waar behoorlijk wat dieren rondlopen. Maak een groepsfoto met een schaap! Deze foto kan in het huisje doorgestuurd worden naar de leiding" HorizontalTextAlignment="Center" Margin="5,0,5,0"/>
+            <Label x:Name="Foto" HorizontalTextAlignment="Center" Margin="5,0,5,0"/>
             <Label Text="Het fietslied" HorizontalTextAlignment="Center" Font="Bold" Margin="0,10,0,0"/>
-            <Label Text="We zijn een koor, zingen is dus geen probleem voor ons. Maar hoe goed staat het met onze 'songwriting'. Jullie moeten een fietslied maken op een bestaand nummer naar keuze (of voor de echt creatievelingen een nieuwe melodie). Dit nummer moet vanavond tijdens de bontenavond aan de groep gezongen worden." HorizontalTextAlignment="Center" Margin="5,0,5,0"/>
+            <Label x:Name="Lied" HorizontalTextAlignment="Center" Margin="5,0,5,0"/>
             <Label Text="Vanille vla" HorizontalTextAlignment="Center" Font="Bold" Margin="0,10,0,0"/>
-            <Label Text="Nu we toch met barcodes bezig zijn, waarom scannen jullie niet een pak vanille vla voor ons? We willen graag vanille vla hebben voor het eten, maar daar hebben we een barcode voor nodig. Jullie moeten dan niet aankomen met zo'n klein pakje vanille vla. We hebben wel een 'normaal'(groot) pak vla nodig, en dan graag het echte Campina merk. De anderen merken vinden wij persoonlijk toch minder lekker. Als jullie dit weten te scannen, hebben wij wat extra punten voor jullie" HorizontalTextAlignment="Center" Margin="5,0,5,10"/>
+            <Label x:Name="Scan" HorizontalTextAlignment="Center" Margin="5,0,5,10"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

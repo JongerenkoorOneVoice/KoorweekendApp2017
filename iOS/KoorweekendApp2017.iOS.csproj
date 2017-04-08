@@ -402,7 +402,7 @@
     <BundleResource Include="Resources\Scanner.png" />
     <BundleResource Include="Resources\Score.png" />
     <BundleResource Include="Resources\Q_logica.png" />
-    <BundleResource Include="Resources\Route1.jpg" />
+    <BundleResource Include="Resources\Route1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

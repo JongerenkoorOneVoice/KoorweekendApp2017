@@ -34,7 +34,8 @@ namespace KoorweekendApp2017.Helpers
 				isReachable = task.Result;
 			}
 
-			bool hasInternet = CrossConnectivity.Current.IsConnected && isReachable;
+            isReachable = true;
+            bool hasInternet = CrossConnectivity.Current.IsConnected && isReachable;
 			return hasInternet;
 
 		}

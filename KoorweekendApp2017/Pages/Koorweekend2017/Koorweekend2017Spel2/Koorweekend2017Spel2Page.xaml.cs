@@ -7,22 +7,26 @@ using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
 
 using Xamarin.Forms;
+using KoorweekendApp2017.Models;
+using static KoorweekendApp2017.BusinessObjects.AppWebService;
 
 namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
 {
     public partial class Koorweekend2017Spel2Page : ContentPage
     {
+        public List<ChoirWeekendGame2Assignment> Assignments = App.Database.ChoirWeekend2017.Game2.GetAll();
+        //public Task<List<ChoirWeekendGame2Assignment>> Assignments = App.AppWebService.ChoirWeekend.Game2.GetAll();
         public Koorweekend2017Spel2Page()
         {
             InitializeComponent();
             this.BindingContext = this;
-
             ToolbarItems.Add(new ToolbarItem("Add", "Score.png", () => { score(); }));
             ToolbarItems.Add(new ToolbarItem("Add", "Scanner.png", () => { scanning(); }));
             ToolbarItems.Add(new ToolbarItem("Add", "Plus.png", () => { typing(); }));
             Bonusvraag.Clicked += BonusvraagClicked;
-            GVraag.Clicked += GVraagClicked;
+            Vraag.Clicked += VraagClicked;
             Locatie.Clicked += LocatieClicked;
+            SetupTekst();
         }
 
         void BonusvraagClicked(object sender, EventArgs e)
@@ -33,7 +37,7 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
             });
         }
 
-        void GVraagClicked(object sender, EventArgs e)
+        void VraagClicked(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
@@ -51,6 +55,10 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
 
         void scanning()
         {
+            List<ChoirWeekendGame2Assignment> HuidigeAssL = Assignments.FindAll(
+                x => x.Question.IsMultipleChoice == true && x.Question.IsOpenQuestion == false && x.Settings.IsBonus == false);
+            HuidigeAssL.OrderBy(i => i.Settings.ConsecutionIndex);
+            ChoirWeekendGame2Assignment HuidigeAss = HuidigeAssL[0];
             var scanner = new ZXingScannerPage();
 
             Navigation.PushAsync(scanner);
@@ -63,14 +71,14 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                 // Pop the page and show the result
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    if (result.Text != "ik ben daniel")
+                    if (result.Text != HuidigeAss.Location.Code)
                     {
                         await Navigation.PopAsync();
                         await DisplayAlert("Scanned Barcode", result.Text, "OK");
                     }
-                    else if (result.Text == "ik ben daniel")
+                    else if (result.Text == HuidigeAss.Location.Code)
                     {
-                        await Navigation.PushAsync(new HomePage());
+                        await Navigation.PushAsync(new GvraagPage());
                     }
                 });
             };
@@ -90,6 +98,21 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
             {
                 await Navigation.PushAsync(new Koorweekend2017Spel2.TypeBarcodePage());
             });
+        }
+        void SetupTekst()
+        {
+            ChoirWeekendGame2Assignment Assignment = Assignments.Find(
+                x => x.Id.Equals("0") == true);
+
+            if (Assignments.Count != 0)
+            {
+                Uitleg1.Text = Assignment.Settings.Description;
+                Uitleg2.Text = Assignment.Location.Description;
+            }
+            else
+            {
+                Uitleg1.Text = "Geen tekst gevonden";
+            }
         }
     }
 }
