@@ -408,7 +408,11 @@ namespace KoorweekendApp2017.Tasks
 
 					if (schouldUpdateDate < DateTime.Now | overruleLastUpdated)
 					{
-						List<ChoirWeekendGame2Assignment> assignments = App.AppWebService.ChoirWeekend.Game2.GetAll().Result;
+						try
+						{
+
+							List<ChoirWeekendGame2Assignment> assignments = App.AppWebService.ChoirWeekend.Game2.GetAll().Result;
+						
 
 						if (assignments != null)
 						{
@@ -423,6 +427,11 @@ namespace KoorweekendApp2017.Tasks
 								App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(assignment);
 
 							}
+						}
+							}
+						catch (Exception ex)
+						{
+							var x = ex.Message;
 						}
 						App.Database.Settings.Set("lastGame2Update", DateTime.Now.ToString());
 					}
