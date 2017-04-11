@@ -4,6 +4,7 @@ using System.Linq;
 using KoorweekendApp2017.Helpers;
 using KoorweekendApp2017.Models;
 using KoorweekendApp2017.Tasks;
+using Plugin.Connectivity.Abstractions;
 using Xamarin.Forms;
 
 namespace KoorweekendApp2017.Pages
@@ -18,7 +19,10 @@ namespace KoorweekendApp2017.Pages
 			{
 				InitializeComponent();
 				eventListView.ItemSelected += OnEventSelected;
-				eventListView.IsPullToRefreshEnabled = true;
+				SettingsHelper.TogglePullToRefresh(eventListView);
+				App.Network.ConnectivityTypeChanged += (object sender, ConnectivityTypeChangedEventArgs e) => {
+					SettingsHelper.TogglePullToRefresh(eventListView);
+				};
 				eventListView.Refreshing += ReloadEventsFromWebservice;
 				SetupEventDataForList();
 

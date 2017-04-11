@@ -6,11 +6,10 @@
 		Title="Instellingen">
   <ContentPage.Content>
 		<StackLayout VerticalOptions="FillAndExpand">
-			<TableView Intent="Settings">
-				<TableRoot>
-					<TableSection Title="Options">
-			      		<SwitchCell x:Name="errorLogSwitch" Text="Errorlog in menu (restart app)" On="{Binding ShowErrorLogInMenu}" />
-						<SwitchCell x:Name="loginOnStartupSwitch" Text="Login on next start (restart app)" On="{Binding LoginOnNextStartup}" />
+			<TableView Intent="Settings" x:Name="SettingsView">
+				<TableRoot x:Name="SettingsRoot">
+					<TableSection Title="Synchronisatie" x:Name="Options">
+			      		<SwitchCell x:Name="OnlySyncOnWifiSwitch" Text="Alleen synchroniseren met WiFi" On="{Binding OnlySyncOnWifi}"></SwitchCell>
         			</TableSection>
 				</TableRoot>
 			</TableView>

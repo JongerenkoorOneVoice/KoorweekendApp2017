@@ -175,7 +175,7 @@ namespace KoorweekendApp2017
 
 			DateTime lastSync = App.Database.Settings.GetValue<DateTime>("lastDailyBreadSync");
 
-			if (lastSync.Date < DateTime.Now.Date)
+			if (lastSync.Date < DateTime.Now.Date && NetworkHelper.IsReachable("dagelijkswoord.nl"))
 			{
 
 				var network = Resolver.Resolve<INetwork>();

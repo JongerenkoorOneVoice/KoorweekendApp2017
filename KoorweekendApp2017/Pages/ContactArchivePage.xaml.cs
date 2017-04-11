@@ -5,6 +5,7 @@ using KoorweekendApp2017.Models;
 using Xamarin.Forms;
 using System.Linq;
 using KoorweekendApp2017.Tasks;
+using Plugin.Connectivity.Abstractions;
 
 namespace KoorweekendApp2017.Pages
 {
@@ -21,7 +22,10 @@ namespace KoorweekendApp2017.Pages
 			{
 				InitializeComponent();
 				ContactListView.ItemSelected += OnContactSelected;
-				ContactListView.IsPullToRefreshEnabled = true;
+				SettingsHelper.TogglePullToRefresh(ContactListView);
+				App.Network.ConnectivityTypeChanged += (object sender, ConnectivityTypeChangedEventArgs e) => {
+					SettingsHelper.TogglePullToRefresh(ContactListView);
+				};
 				ContactListView.Refreshing += ReloadContactsFromWebservice;
 				SetupContactDataForList();
 

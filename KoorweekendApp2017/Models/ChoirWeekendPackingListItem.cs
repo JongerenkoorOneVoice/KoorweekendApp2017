@@ -27,20 +27,22 @@ namespace KoorweekendApp2017.Models
 			set
 			{
 				_isPacked = value;
-				if (_isPacked)
-				{
-					ToggledImage = "Agenda.png";
-				}
-				else
-				{
-					ToggledImage = "Home.png";
-				}
+
 			}
 	    }
 
 		[Ignore]
-		public String ToggledImage { get; set; }
-			
-		
+		public String ToggledImage { 
+			get { 
+				if (_isPacked)
+				{
+					return "Agenda.png";
+				}
+				else
+				{
+					return "Home.png";
+				}
+			}
+		}
     }
 }

@@ -3,10 +3,7 @@
 	<ContentPage.Content>
 		<StackLayout>
 			<Button x:Name="packinglistButton" Text="Meeneemlijst"></Button>
-			<Button
-				x:Name="game1Button"
-				Text="Spel 1">
-			</Button>
+			<Button x:Name="game1Button" Text="Spel 1"> </Button>
 			<Button x:Name="game2Button" Text="Spel 2"></Button>
 		</StackLayout>
 	</ContentPage.Content>

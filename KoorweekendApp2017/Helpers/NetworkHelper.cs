@@ -13,6 +13,8 @@ using System.Text;
 using XLabs.Platform.Services;
 using XLabs.Ioc;
 using Plugin.Connectivity;
+using Plugin.Connectivity.Abstractions;
+using KoorweekendApp2017.Models;
 
 namespace KoorweekendApp2017.Helpers
 {
@@ -23,8 +25,23 @@ namespace KoorweekendApp2017.Helpers
 		{
 			
 			bool isReachable = false;
+			bool permissionToConnect = true;
+			var onlySyncOnWiFi = false;
+			Setting onlySyncOnWifiSetting = App.Database.Settings.GetByKey("onlySyncOnWifi");
+			if (onlySyncOnWifiSetting != null)
+			{
+				onlySyncOnWiFi = JsonConvert.DeserializeObject<Boolean>(onlySyncOnWifiSetting.Value);
+				if (onlySyncOnWiFi)
+				{
+					var hasWiFi = App.Network.ConnectionTypes.Contains(ConnectionType.WiFi);
+					permissionToConnect = hasWiFi;
+				}
+			}
+				
+
 			if (App.Network.IsConnected)
 			{
+				
 
 				var task = Task.Run(async () =>
 				{
@@ -36,7 +53,7 @@ namespace KoorweekendApp2017.Helpers
 
             isReachable = true;
             bool hasInternet = CrossConnectivity.Current.IsConnected && isReachable;
-			return hasInternet;
+			return hasInternet && permissionToConnect;
 
 		}
 	}

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using KoorweekendApp2017.Helpers;
 using KoorweekendApp2017.Messages;
 using KoorweekendApp2017.Models;
 using KoorweekendApp2017.Pages;
 using KoorweekendApp2017.Tasks;
+using Plugin.Connectivity.Abstractions;
 using Xamarin.Forms;
 
 namespace KoorweekendApp2017.Pages
@@ -35,8 +37,12 @@ namespace KoorweekendApp2017.Pages
 			CurrentUser = App.Database.Contacts.GetById(currentUserId);
 
 			prayerRequestListView.ItemSelected += OnPrayerRequestSelected;
-			prayerRequestListView.IsPullToRefreshEnabled = true;
+			SettingsHelper.TogglePullToRefresh(prayerRequestListView);
 			prayerRequestListView.Refreshing += SyncPrayerRequestsWithWebservice;
+
+			App.Network.ConnectivityTypeChanged += (object sender, ConnectivityTypeChangedEventArgs e) => {
+					SettingsHelper.TogglePullToRefresh(prayerRequestListView);
+				};
 
 			ToolbarItems.Add(new ToolbarItem("Add", "Plus.png", () =>
 			{

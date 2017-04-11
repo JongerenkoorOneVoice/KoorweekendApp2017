@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using KoorweekendApp2017.Tasks;
+using Plugin.Connectivity.Abstractions;
 
 namespace KoorweekendApp2017.Pages
 {
@@ -30,8 +31,13 @@ namespace KoorweekendApp2017.Pages
                 mainSearchBar.TextChanged += OnTextChanged;
                 mainSearchBar.Focused += MainSearchFocused;
 
-				songListView.IsPullToRefreshEnabled = true;
+				SettingsHelper.TogglePullToRefresh(songListView);
 				songListView.Refreshing += ReloadSongsFromWebservice;
+
+				App.Network.ConnectivityTypeChanged += (object sender, ConnectivityTypeChangedEventArgs e) => {
+					SettingsHelper.TogglePullToRefresh(songListView);
+				};
+
 
 				songOccasionsFilter.IsVisible = false;
 				songOccasionsFilter.SelectedIndexChanged += (sender, e) =>

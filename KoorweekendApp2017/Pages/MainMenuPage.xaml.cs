@@ -55,12 +55,16 @@ namespace KoorweekendApp2017.Pages
 				TargetType = typeof(EventArchivePage)
 			});
 
-			masterPageItems.Add(new MasterPageItem
+
+			if (UserHelper.CurrentUserIsDeveloper())
 			{
-				Title = "Gebedspunten",
-				IconSource = "Prayer.png",
-				TargetType = typeof(PrayerRequestArchivePage)
-			});
+				masterPageItems.Add(new MasterPageItem
+				{
+					Title = "Gebedspunten",
+					IconSource = "Prayer.png",
+					TargetType = typeof(PrayerRequestArchivePage)
+				});
+			}
 
 			masterPageItems.Add(new MasterPageItem
 			{
@@ -69,15 +73,14 @@ namespace KoorweekendApp2017.Pages
 				TargetType = typeof(ChoirUniform)
 			});
 
-			if(UserHelper.CurrentUserIsDeveloper())
-			{
-				masterPageItems.Add(new MasterPageItem
-                {
-                    Title = "Koorweekend 2017",
-                    IconSource = "Koorweekend.png",
-                    TargetType = typeof(Koorweekend2017Page)
-                });
-            }
+
+			masterPageItems.Add(new MasterPageItem
+            {
+                Title = "Koorweekend 2017",
+                IconSource = "Koorweekend.png",
+                TargetType = typeof(Koorweekend2017Page)
+            });
+            
             /*
 			masterPageItems.Add(new MasterPageItem
 			{
@@ -92,7 +95,7 @@ namespace KoorweekendApp2017.Pages
 				IconSource = "Instellingen.png",
 				TargetType = typeof(SettingsArchivePage)
 			});
-			/*
+
 			Setting showErrorLogInMenu = App.Database.Settings.GetByKey("showErrorLogInMenu");
 
 			if (showErrorLogInMenu != null)
@@ -109,7 +112,7 @@ namespace KoorweekendApp2017.Pages
 				}
 			}
 
-			*/
+
 
 
 		}

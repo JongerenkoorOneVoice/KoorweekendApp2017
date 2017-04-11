@@ -266,6 +266,8 @@
     <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Objects\DataLayer.cs" />
     <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Objects\DataPoint.cs" />
     <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Objects\Game1Settings.cs" />
+    <Compile Include="Helpers\SettingsHelper.cs" />
+    <Compile Include="Models\HardAppSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using KoorweekendApp2017.Helpers;
 using KoorweekendApp2017.Models;
 using KoorweekendApp2017.Tasks;
+using Plugin.Connectivity.Abstractions;
 using Xamarin.Forms;
 
 namespace KoorweekendApp2017
@@ -18,7 +20,10 @@ namespace KoorweekendApp2017
             {
                 InitializeComponent();
                 NewsListView.ItemSelected += OnNewsSelected;
-                NewsListView.IsPullToRefreshEnabled = true;
+                SettingsHelper.TogglePullToRefresh(NewsListView);
+				App.Network.ConnectivityTypeChanged += (object sender, ConnectivityTypeChangedEventArgs e) => {
+					SettingsHelper.TogglePullToRefresh(NewsListView);
+				};
                 NewsListView.Refreshing += ReloadnewsFromWebservice;
                 SetupNewsDataForList();
 
