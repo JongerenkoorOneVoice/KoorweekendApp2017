@@ -33,10 +33,7 @@ namespace KoorweekendApp2017.Droid
         {
             base.OnResume();
 
-            Task startupWork = new Task(() => {
-             
-                Task.Delay(5000);  // Simulate a bit of startup work.
-            });
+            Task startupWork = new Task(() => {});
 
             startupWork.ContinueWith(t => {
           
