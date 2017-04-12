@@ -19,7 +19,7 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
             if (Assignments.Count != 0)
             {
                 List<ChoirWeekendGame2Assignment> Bonusvragen = Assignments.FindAll(
-                x => x.Settings.IsBonus == true);
+                x => x.Settings.IsBonus == true && x.IsVisible == true);
                 Bonusvragen.OrderBy(i => i.Settings.ConsecutionIndex);
                 Foto.Text = Bonusvragen[0].Location.Description;
                 Lied.Text = Bonusvragen[1].Location.Description;

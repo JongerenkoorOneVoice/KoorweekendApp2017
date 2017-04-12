@@ -24,7 +24,7 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
             ToolbarItems.Add(new ToolbarItem("Add", "Scanner.png", () => { scanning(); }));
             ToolbarItems.Add(new ToolbarItem("Add", "Plus.png", () => { typing(); }));
             Bonusvraag.Clicked += BonusvraagClicked;
-            Vraag.Clicked += VraagClicked;
+            Refresh.Clicked += RefreshClicked;
             Locatie.Clicked += LocatieClicked;
             SetupTekst();
         }
@@ -37,12 +37,23 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
             });
         }
 
-        void VraagClicked(object sender, EventArgs e)
+        void RefreshClicked(object sender, EventArgs e)
         {
-            Device.BeginInvokeOnMainThread(async () =>
+            List<ChoirWeekendGame2Assignment> Beantw = Assignments.FindAll(
+                x => x.Question.IsMultipleChoice == true && x.Question.IsOpenQuestion == true && x.Settings.IsBonus == false);
+            Beantw.OrderBy(i => i.Settings.ConsecutionIndex);
+            for (int i = 0; i < Beantw.Count; i++)
+            {
+                ChoirWeekendGame2Assignment Temp = Beantw[i];
+                Temp.Result.Score = 0;
+                Temp.Question.IsOpenQuestion = false;
+                App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(Temp);
+            }
+
+            /*Device.BeginInvokeOnMainThread(async () =>
             {
                 await Navigation.PushAsync(new Koorweekend2017Spel2.GvraagPage());
-            });
+            });*/
         }
 
         void LocatieClicked(object sender, EventArgs e)
@@ -57,31 +68,35 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
         {
             List<ChoirWeekendGame2Assignment> HuidigeAssL = Assignments.FindAll(
                 x => x.Question.IsMultipleChoice == true && x.Question.IsOpenQuestion == false && x.Settings.IsBonus == false);
-            HuidigeAssL.OrderBy(i => i.Settings.ConsecutionIndex);
-            ChoirWeekendGame2Assignment HuidigeAss = HuidigeAssL[0];
-            var scanner = new ZXingScannerPage();
-
-            Navigation.PushAsync(scanner);
-
-            scanner.OnScanResult += (result) =>
+            if (HuidigeAssL.Count >= 1)
             {
-                // Stop scanning
-                scanner.IsScanning = false;
+                HuidigeAssL.OrderBy(i => i.Settings.ConsecutionIndex);
+                ChoirWeekendGame2Assignment HuidigeAss = HuidigeAssL[0];
+                var scanner = new ZXingScannerPage();
 
-                // Pop the page and show the result
-                Device.BeginInvokeOnMainThread(async () =>
+                Navigation.PushAsync(scanner);
+
+                scanner.OnScanResult += (result) =>
                 {
-                    if (result.Text != HuidigeAss.Location.Code)
+                    // Stop scanning
+                    scanner.IsScanning = false;
+
+                    // Pop the page and show the result
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await Navigation.PopAsync();
-                        await DisplayAlert("Scanned Barcode", result.Text, "OK");
-                    }
-                    else if (result.Text == HuidigeAss.Location.Code)
-                    {
-                        await Navigation.PushAsync(new GvraagPage());
-                    }
-                });
-            };
+                        if (result.Text != HuidigeAss.Location.Code)
+                        {
+                            await Navigation.PopAsync();
+                            await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                        }
+                        else if (result.Text == HuidigeAss.Location.Code)
+                        {
+                            await Navigation.PopAsync();
+                            await Navigation.PushAsync(new GvraagPage());
+                        }
+                    });
+                };
+            }
         }
 
         void score()
@@ -111,8 +126,13 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
             }
             else
             {
-                Uitleg1.Text = "Geen tekst gevonden";
+                Uitleg1.Text = "Geen tekst gevonden, haal data op van het internet";
             }
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Assignments = App.Database.ChoirWeekend2017.Game2.GetAll();
         }
     }
 }

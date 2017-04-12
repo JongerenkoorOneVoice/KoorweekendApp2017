@@ -9,26 +9,26 @@ using Xamarin.Forms;
 
 namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
 {
-	public partial class GvraagPage : ContentPage
-	{
+    public partial class GvraagPage : ContentPage
+    {
         public List<ChoirWeekendGame2Assignment> Assignments = App.Database.ChoirWeekend2017.Game2.GetAll();
         public string Answer = null;
-		public GvraagPage()
-		{
-			InitializeComponent();
+        public GvraagPage()
+        {
+            InitializeComponent();
             List<ChoirWeekendGame2Assignment> HuidigeAssL = Assignments.FindAll(
                 x => x.Question.IsMultipleChoice == true && x.Question.IsOpenQuestion == false && x.Settings.IsBonus == false);
             HuidigeAssL.OrderBy(i => i.Settings.ConsecutionIndex);
-            if(HuidigeAssL.Count >= 1)
-            { 
-            
-            ChoirWeekendGame2Assignment HuidigeAss = HuidigeAssL[0];
-            QuestionDesc.Text = HuidigeAss.Question.Question;
-
-            if (HuidigeAss.Question.Image.ToLower() != "x")
+            if (HuidigeAssL.Count >= 1)
             {
-                QuestionImage.Source = HuidigeAss.Question.Image;
-            }
+
+                ChoirWeekendGame2Assignment HuidigeAss = HuidigeAssL[0];
+                QuestionDesc.Text = HuidigeAss.Question.Question;
+
+                if (HuidigeAss.Question.Image.ToLower() != "x")
+                {
+                    QuestionImage.Source = HuidigeAss.Question.Image;
+                }
 
                 if (HuidigeAss.Question.MultipleChoiceAnswers.Count > 1)
                 {
@@ -42,6 +42,19 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                             {
                                 Answer = HuidigeAss.Question.MultipleChoiceAnswers[0];
                                 Antwoord();
+                            };
+                        }
+                        else
+                        {
+                            var Type = new Entry { HorizontalOptions = LayoutOptions.Center, Placeholder = "Code van leiding", Keyboard = Keyboard.Numeric };
+                            FirstRow.Children.Add(Type);
+                            var Typed = new Button { Text = "Oke", Margin = new Thickness(0, 0, 20, 0), HorizontalOptions = LayoutOptions.Center, FontSize = 16 };
+                            FirstRow.Children.Add(Typed);
+                            Typed.Clicked += (sender, e) =>
+                            {
+                                Answer = Type.Text;
+                                Antwoord();
+                                Type.Text = null;
                             };
                         }
                     }
@@ -90,35 +103,42 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                 }
 
             }
-            else if(HuidigeAssL.Count == 0)
+            else if (HuidigeAssL.Count == 0)
             {
                 QuestionDesc.Text = "Er zijn geen vragen (Meer) beschikbaar";
             }
-		}
-		void Antwoord()
-		{
+        }
+        void Antwoord()
+        {
             List<ChoirWeekendGame2Assignment> HuidigeAssL = Assignments.FindAll(
                 x => x.Question.IsMultipleChoice == true && x.Question.IsOpenQuestion == false && x.Settings.IsBonus == false);
             HuidigeAssL.OrderBy(i => i.Settings.ConsecutionIndex);
             ChoirWeekendGame2Assignment HuidigeAss = HuidigeAssL[0];
 
             Device.BeginInvokeOnMainThread(async () =>
-			{
-				if (Answer == HuidigeAss.Question.Answer)
-				{
-					var Antz = (string.Format("Dit was het goede antwoord! Jullie hebben {0} punten verdiend", HuidigeAss.Settings.MaxScore));
-					await DisplayAlert("Goed!", Antz, "OK");
-					await Navigation.PopAsync();
+            {
+                if (Answer == HuidigeAss.Question.Answer)
+                {
+                    HuidigeAss.Result.Score = HuidigeAss.Settings.MaxScore;
+                    HuidigeAss.Question.IsOpenQuestion = true;
+                    App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(HuidigeAss);
 
-				}
-				else if (Answer != HuidigeAss.Question.Answer)
-				{
-					var AntZ = (string.Format("Het goede antwoord was {0}, jullie hebben helaas geen punten verdiend", Convert.ToString(HuidigeAss.Question.Answer)));
-					await DisplayAlert("Helaas", AntZ, "OK");
-					await Navigation.PopAsync();
+                    var Antz = (string.Format("Dit was het goede antwoord! Jullie hebben {0} punten verdiend", HuidigeAss.Settings.MaxScore));
+                    await DisplayAlert("Goed!", Antz, "OK");
+                    await Navigation.PopAsync();
 
-				}
-			});
-		}
-	}
+                }
+                else if (Answer != HuidigeAss.Question.Answer)
+                {
+                    HuidigeAss.Question.IsOpenQuestion = true;
+                    App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(HuidigeAss);
+
+                    var AntZ = (string.Format("Het goede antwoord was {0}, jullie hebben helaas geen punten verdiend", Convert.ToString(HuidigeAss.Question.Answer)));
+                    await DisplayAlert("Helaas", AntZ, "OK");
+                    await Navigation.PopAsync();
+
+                }
+            });
+        }
+    }
 }

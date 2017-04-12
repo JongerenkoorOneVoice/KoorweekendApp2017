@@ -23,9 +23,9 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
             });*/
             if (Assignments.Count != 0)
             {
-                List<ChoirWeekendGame2Assignment> VragenAll = Assignments.FindAll(x => x.Question.IsMultipleChoice == true && x.Question.IsOpenQuestion == false && x.Settings.IsBonus == false);
+                List<ChoirWeekendGame2Assignment> VragenAll = Assignments.FindAll(x => x.Question.IsMultipleChoice == true && x.Settings.IsBonus == false);
                 List<ChoirWeekendGame2Assignment> VragenBeantwoord = Assignments.FindAll(x => x.Question.IsMultipleChoice == true && x.Question.IsOpenQuestion == true && x.Settings.IsBonus == false);
-                for (int i = 1; i <= VragenBeantwoord.Count; i++)
+                for (int i = 0; i < VragenBeantwoord.Count; i++)
                 {
                     ScoorMax += VragenBeantwoord[i].Settings.MaxScore;
                     ScoorBeh += VragenBeantwoord[i].Result.Score;
