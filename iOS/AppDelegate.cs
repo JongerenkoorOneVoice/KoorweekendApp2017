@@ -80,6 +80,7 @@ namespace KoorweekendApp2017.iOS
 					apiSongOccasionSync.Stop();
 				});
 
+
 				ApiPrayerRequestSyncTask apiPrayerRequestSync = new ApiPrayerRequestSyncTask();
 				MessagingCenter.Subscribe<StartApiPrayerRequestSyncMessage>(this, "StartApiPrayerRequestSyncMessage", async message =>
 				{
@@ -89,6 +90,17 @@ namespace KoorweekendApp2017.iOS
 				MessagingCenter.Subscribe<StopApiPrayerRequestSyncMessage>(this, "StopApiPrayerRequestSyncMessage", message =>
 				{
 					apiPrayerRequestSync.Stop();
+				});
+
+				ApiGlobalSettingsSyncTask apiGlobalSettingsSyncTask = new ApiGlobalSettingsSyncTask();
+				MessagingCenter.Subscribe<StartApiGlobalSettingsSyncMessage>(this, "StartApiGlobalSettingsSyncMessage", async message =>
+				{
+					apiGlobalSettingsSyncTask.Start(); // don't use await
+				});
+
+				MessagingCenter.Subscribe<StopApiGlobalSettingsSyncMessage>(this, "StopApiGlobalSettingsSyncMessage", message =>
+				{
+					apiGlobalSettingsSyncTask.Stop();
 				});
 
 				ApiChoirweekendGame1SyncTask apiChoirweekendGame1Sync = new ApiChoirweekendGame1SyncTask();

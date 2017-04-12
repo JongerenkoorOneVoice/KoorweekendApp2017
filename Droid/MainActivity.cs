@@ -133,6 +133,18 @@ namespace KoorweekendApp2017.Droid
 				StopService(intent);
 			});
 
+			MessagingCenter.Subscribe<StartApiGlobalSettingsSyncMessage>(this, "StartApiGlobalSettingsSyncMessage", message =>
+			{
+				var intent = new Intent(this, typeof(ApiGlobalSettingsSyncTask));
+				StartService(intent);
+			});
+
+			MessagingCenter.Subscribe<StopApiGlobalSettingsSyncMessage>(this, "StopApiGlobalSettingsSyncMessage", message =>
+			{
+				var intent = new Intent(this, typeof(ApiGlobalSettingsSyncTask));
+				StopService(intent);
+			});
+
 			MessagingCenter.Subscribe<StartApiChoirweekendGame1SyncMessage>(this, "StartApiChoirweekendGame1SyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiChoirweekendGame1SyncTask));

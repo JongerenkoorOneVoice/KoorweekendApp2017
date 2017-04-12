@@ -1,8 +1,8 @@
 ﻿using System;
 namespace KoorweekendApp2017
 {
-	public class HardAppSettings
+	public static class HardAppSettings
 	{
-		public string Version { get { return "1.1.0.0"; } }
+		public static string Version { get { return "1.1.0.0"; } }
 	}
 }

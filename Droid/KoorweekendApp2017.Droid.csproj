@@ -332,6 +332,7 @@
     <Compile Include="Tasks\ApiChoirweekendGame1SyncTask.cs" />
     <Compile Include="Tasks\ApiChoirweekendGame2SyncTask.cs" />
     <Compile Include="Tasks\ApiChoirweekendPackinglistSyncTask.cs" />
+    <Compile Include="Tasks\ApiGlobalSettingsSyncTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

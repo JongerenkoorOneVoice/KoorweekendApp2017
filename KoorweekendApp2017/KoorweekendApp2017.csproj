@@ -96,6 +96,12 @@
     <EmbeddedResource Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Koorweekend2017Spel1Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UpdateOverview.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ToLowAppVersion.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -268,6 +274,17 @@
     <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Objects\Game1Settings.cs" />
     <Compile Include="Helpers\SettingsHelper.cs" />
     <Compile Include="Models\HardAppSettings.cs" />
+    <Compile Include="Pages\UpdateOverview.xaml.cs">
+      <DependentUpon>UpdateOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GlobalSetting.cs" />
+    <Compile Include="Helpers\GlobalSettingsHelper.cs" />
+    <Compile Include="Models\GlobalSettings.cs" />
+    <Compile Include="Pages\ToLowAppVersion.xaml.cs">
+      <DependentUpon>ToLowAppVersion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messages\StartApiGlobalSettingsSyncMessage.cs" />
+    <Compile Include="Messages\StopApiGlobalSettingsSyncMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">

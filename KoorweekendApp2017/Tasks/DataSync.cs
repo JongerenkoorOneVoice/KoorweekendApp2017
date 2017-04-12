@@ -22,7 +22,9 @@ namespace KoorweekendApp2017.Tasks
 				MessagingCenter.Send(new StartApiEventSyncMessage(), "StartApiEventSyncMessage");
 				MessagingCenter.Send(new StartApiSongOccasionSyncMessage(), "StartApiSongOccasionSyncMessage");
 				MessagingCenter.Send(new StartApiNewsSyncMessage(), "StartApiNewsSyncMessage");
-				MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
+				//MessagingCenter.Send(new StartApiPrayerRequestSyncMessage(), "StartApiPrayerRequestSyncMessage");
+				MessagingCenter.Send(new StartApiGlobalSettingsSyncMessage(), "StartApiGlobalSettingsSyncMessage");
+				// For choirweekend 2017
 				MessagingCenter.Send(new StartApiChoirweekendGame1SyncMessage(), "StartApiChoirweekendGame1SyncMessage");
 				MessagingCenter.Send(new StartApiChoirweekendGame2SyncMessage(), "StartApiChoirweekendGame2SyncMessage");
 				MessagingCenter.Send(new StartApiChoirweekendPackinglistSyncMessage(), "StartApiChoirweekendPackinglistSyncMessage");
@@ -37,8 +39,8 @@ namespace KoorweekendApp2017.Tasks
 			UpdateEventsInDbFromApi(downloadAll);
 			UpdateSongOccasionsInDbFromApi(downloadAll);
 			UpdateNewsInDbFromApi(downloadAll);
-			SyncPrayerRequests(downloadAll);
-
+			//SyncPrayerRequests(downloadAll);
+			UpdateGlobalSettingsInDbFromApi(downloadAll);
 			// For choirweekend 2017
 			UpdateGame1AssignmentsInDbFromApi(true);
 			UpdateGame2AssignmentsInDbFromApi(true);
@@ -193,6 +195,47 @@ namespace KoorweekendApp2017.Tasks
 			}
 
 		}
+
+		public static void UpdateGlobalSettingsInDbFromApi(bool shouldUpdateAll = false)
+		{
+
+			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
+			{
+				bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
+				if (isAuthenticated)
+				{
+
+					DateTime lastUpdate = DateTime.Parse("1010-01-01");
+					String lastUpdatedString = App.Database.Settings.GetValue<String>("lastGlobalSettingsUpdate");
+					if (!String.IsNullOrEmpty(lastUpdatedString) && !shouldUpdateAll)
+					{
+						lastUpdate = DateTime.Parse(lastUpdatedString);
+						lastUpdate = lastUpdate.AddDays(-1);
+					}
+
+					List<GlobalSetting> globalSettings = App.AppWebService.GlobalSettings.GetAllGlobalSettingsAsync().Result;
+
+					if (globalSettings != null)
+					{
+						foreach (GlobalSetting globalSetting in globalSettings)
+						{
+							App.Database.GlobalSettings.Set(globalSetting);
+						}
+					}
+					App.Database.Settings.Set("lastGlobalSettingsUpdate", DateTime.Now.ToString());
+					var message = App.Database.GlobalSettings.GetByKey("startupMessage");
+					if (message != null && !String.IsNullOrEmpty(message.Value))
+					{
+						Device.BeginInvokeOnMainThread(async () => {
+
+							await new ContentPage().DisplayAlert("Spoedbericht", message.Value, "Oké");
+						});
+					}
+						
+				}
+			}
+		}
+
 
 		public static void UpdatePrayerRequestsInDbFromApi(bool shouldUpdateAll = false)
 		{

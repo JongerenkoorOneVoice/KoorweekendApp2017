@@ -27,6 +27,8 @@ namespace KoorweekendApp2017.BusinessObjects
 
 		public ChoirWeekendEndpoint ChoirWeekend { get; set; }
 
+		public GlobalSettingsEndpoint GlobalSettings { get; set; }
+
 		public AppWebService()
 		{
 			Contacts = new ContactsEndpoint();
@@ -36,6 +38,7 @@ namespace KoorweekendApp2017.BusinessObjects
 			SongOccasions = new SongOccasionsEndpoint();
 			PrayerRequests = new PrayerRequestsEndpoint();
 			ChoirWeekend = new ChoirWeekendEndpoint();
+			GlobalSettings = new GlobalSettingsEndpoint();
 		}
 
 
@@ -102,6 +105,15 @@ namespace KoorweekendApp2017.BusinessObjects
 			{
 				string query = String.Format("http://www.jongerenkooronevoice.nl/apievents/changedafter/{0}", date.ToString("yyyy-MM-dd"));
 				return await RestHelper.GetRestDataFromUrl<List<Event>>(query);
+			}
+		}
+
+		public class GlobalSettingsEndpoint
+		{
+			public async Task<List<GlobalSetting>> GetAllGlobalSettingsAsync()
+			{
+				string query = "http://www.jongerenkooronevoice.nl/globalsettings/all";
+				return await RestHelper.GetRestDataFromUrl<List<GlobalSetting>>(query);
 			}
 		}
 

@@ -32,6 +32,8 @@ namespace KoorweekendApp2017.BusinessObjects
 
 		public ChoirWeekend2017Table ChoirWeekend2017 { get; set; }
 
+		public GlobalSettingTable GlobalSettings { get; set; }
+
 		public LocalDatabase(SQLiteConnection database)
 		{
 			Database = database;
@@ -43,6 +45,7 @@ namespace KoorweekendApp2017.BusinessObjects
 			Database.CreateTable<LogItem>();
 			Database.CreateTable<SongOccasion>();
 			Database.CreateTable<PrayerRequest>();
+			Database.CreateTable<GlobalSetting>();
 			// Choirweekend 2017
 			Database.CreateTable<ChoirWeekendObject>();
 
@@ -56,6 +59,7 @@ namespace KoorweekendApp2017.BusinessObjects
 			PrayerRequests = new PrayerRequestTable();
 			News = new NewsTable();
 			ChoirWeekend2017 = new ChoirWeekend2017Table();
+			GlobalSettings = new GlobalSettingTable();
 		}
 
 		public class SettingTable
@@ -329,6 +333,25 @@ namespace KoorweekendApp2017.BusinessObjects
 		}
 		*/
 
+
+		public class GlobalSettingTable
+		{
+			public GlobalSetting GetByKey(string key)
+			{
+				return (from i in Database.Table<GlobalSetting>() where i.Key == key select i).ToList().FirstOrDefault();
+			}
+
+			public List<GlobalSetting> GetAll()
+			{
+				return (from i in Database.Table<GlobalSetting>() select i).ToList();
+			}
+
+			public void Set(GlobalSetting setting)
+			{
+				Database.InsertOrReplace(setting);
+			}
+
+		}
 
 
 		public class ChoirWeekend2017Table
