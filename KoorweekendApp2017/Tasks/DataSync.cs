@@ -466,6 +466,7 @@ namespace KoorweekendApp2017.Tasks
 								if (existingAssignment != null)
 								{
 									assignment.Result = existingAssignment.Result;
+                                    assignment.Question.IsOpenQuestion = existingAssignment.Question.IsOpenQuestion;
 								}
 								App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(assignment);
 

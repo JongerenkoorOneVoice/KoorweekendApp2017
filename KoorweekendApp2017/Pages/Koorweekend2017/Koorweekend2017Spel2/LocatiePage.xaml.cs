@@ -28,7 +28,12 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                 var Lost = new Button() { Text = "Navigeer", HorizontalOptions = LayoutOptions.Center };
                 Stack.Children.Add(Lost);
 
-                ToolbarItems.Add(new ToolbarItem("Add", "Score.png", () => { score(); }));
+                ChoirWeekendGame2Assignment Assignment = Assignments.Find(
+                    x => x.Id.Equals("0") == true);
+                if (Assignment.Question.IsOpenQuestion == true)
+                {
+                    ToolbarItems.Add(new ToolbarItem("Add", "Score.png", () => { score(); }));
+                }
                 ToolbarItems.Add(new ToolbarItem("Add", "Scanner.png", () => { scanning(); }));
                 ToolbarItems.Add(new ToolbarItem("Add", "Plus.png", () => { typing(); }));
                 Lost.Clicked += navigeren;
@@ -42,6 +47,8 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
         {
             List<ChoirWeekendGame2Assignment> HuidigeAssL = Assignments.FindAll(
                 x => x.Question.IsMultipleChoice == true && x.Question.IsOpenQuestion == false && x.Settings.IsBonus == false);
+            ChoirWeekendGame2Assignment Assignment = Assignments.Find(
+                x => x.Id.Equals("0") == true);
             if (HuidigeAssL.Count >= 1)
             {
                 HuidigeAssL.OrderBy(i => i.Settings.ConsecutionIndex);
@@ -58,16 +65,24 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                     // Pop the page and show the result
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        if (result.Text != HuidigeAss.Location.Code)
+                        if (result.Text == Assignment.Location.Code)
                         {
+                            Assignment.Question.IsOpenQuestion = true;
+                            App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(Assignment);
                             await Navigation.PopAsync();
-                            await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                            await DisplayAlert("Scanned Barcode", "Telefoon is nu de hoofdtelefoon", "OK");
                         }
                         else if (result.Text == HuidigeAss.Location.Code)
                         {
                             await Navigation.PopAsync();
                             await Navigation.PushAsync(new GvraagPage());
                         }
+                        else if (result.Text != HuidigeAss.Location.Code)
+                        {
+                            await Navigation.PopAsync();
+                            await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                        }
+
                     });
                 };
             }
@@ -102,6 +117,8 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                     var answer = await DisplayAlert("Navigeren?", "Weet je zeker dat je wilt navigeren en daarbij punten verliezen", "Ja", "Nee");
                     if (answer == true)
                     {
+                        HuidigeAss.Result.Time = 5;
+                        App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(HuidigeAss);
                         ChoirWeekendBasePosition Location = HuidigeAss.Location.Position;
                         string Lattitude = Convert.ToString(Location.Lattitude);
                         string Longitude = Convert.ToString(Location.Longitude);

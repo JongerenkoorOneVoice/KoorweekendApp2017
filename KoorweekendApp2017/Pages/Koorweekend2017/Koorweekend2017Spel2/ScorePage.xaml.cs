@@ -29,6 +29,10 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                 {
                     ScoorMax += VragenBeantwoord[i].Settings.MaxScore;
                     ScoorBeh += VragenBeantwoord[i].Result.Score;
+                    if (ScoorBeh >= 5)
+                    {
+                        ScoorBeh = ScoorBeh - VragenBeantwoord[i].Result.Time;
+                    }
                 }
                 Score.Text = String.Format("{0}/{1}", ScoorBeh, ScoorMax);
                 Locaties.Text = String.Format("{0}/{1}", VragenBeantwoord.Count, (VragenAll.Count));

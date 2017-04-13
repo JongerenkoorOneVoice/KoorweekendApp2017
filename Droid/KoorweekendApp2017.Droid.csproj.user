@@ -5,6 +5,6 @@
     <ProjectView>ShowAllFiles</ProjectView>
     <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
     <AndroidDesignerPreferredTheme>Theme.DeviceDefault</AndroidDesignerPreferredTheme>
-    <DefaultDevice>Nexus 5 %28Lollipop%29</DefaultDevice>
+    <DefaultDevice>AVD_GalaxyNexus_ToolsForApacheCordova</DefaultDevice>
   </PropertyGroup>
 </Project>

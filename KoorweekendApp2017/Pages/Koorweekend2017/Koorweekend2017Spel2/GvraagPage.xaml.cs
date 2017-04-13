@@ -19,6 +19,8 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
             List<ChoirWeekendGame2Assignment> HuidigeAssL = Assignments.FindAll(
                 x => x.Question.IsMultipleChoice == true && x.Question.IsOpenQuestion == false && x.Settings.IsBonus == false);
             HuidigeAssL.OrderBy(i => i.Settings.ConsecutionIndex);
+            ChoirWeekendGame2Assignment Assignment = Assignments.Find(
+                x => x.Id.Equals("0") == true);
             if (HuidigeAssL.Count >= 1)
             {
 
@@ -38,11 +40,29 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                         {
                             var A = new Button { Text = HuidigeAss.Question.MultipleChoiceAnswers[0], Margin = new Thickness(0, 0, 20, 0), HorizontalOptions = LayoutOptions.Center, FontSize = 16 };
                             FirstRow.Children.Add(A);
-                            A.Clicked += (sender, e) =>
+                            if (Assignment.Question.IsOpenQuestion == true)
                             {
-                                Answer = HuidigeAss.Question.MultipleChoiceAnswers[0];
-                                Antwoord();
-                            };
+                                A.Clicked += (sender, e) =>
+                                {
+                                    Answer = HuidigeAss.Question.MultipleChoiceAnswers[0];
+                                    Antwoord();
+                                };
+                            }
+                            else if(Assignment.Question.IsOpenQuestion == false)
+                            {
+                                A.TextColor = Color.Gray;
+
+                                    A.Clicked += (sender, e) =>
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await DisplayAlert("Niet mogelijk", "Alleen de hoofdtelefoon kan de antwoorden geven op de vragen", "OK");
+                                        HuidigeAss.Question.IsOpenQuestion = true;
+                                        App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(HuidigeAss);
+                                        await Navigation.PopAsync();
+                                    });
+                                };
+                            }
                         }
                         else
                         {
@@ -65,11 +85,29 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                         {
                             var B = new Button { Text = HuidigeAss.Question.MultipleChoiceAnswers[1], Margin = new Thickness(0, 0, 20, 0), HorizontalOptions = LayoutOptions.Center, FontSize = 16 };
                             SecondRow.Children.Add(B);
-                            B.Clicked += (sender, e) =>
+                            if (Assignment.Question.IsOpenQuestion == true)
                             {
-                                Answer = HuidigeAss.Question.MultipleChoiceAnswers[1];
-                                Antwoord();
-                            };
+                                B.Clicked += (sender, e) =>
+                                {
+                                    Answer = HuidigeAss.Question.MultipleChoiceAnswers[1];
+                                    Antwoord();
+                                };
+                            }
+                            else if (Assignment.Question.IsOpenQuestion == false)
+                            {
+                                B.TextColor = Color.Gray;
+
+                                B.Clicked += (sender, e) =>
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await DisplayAlert("Niet mogelijk", "Alleen de hoofdtelefoon kan de antwoorden geven op de vragen", "OK");
+                                        HuidigeAss.Question.IsOpenQuestion = true;
+                                        App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(HuidigeAss);
+                                        await Navigation.PopAsync();
+                                    });
+                                };
+                            }
                         }
                     }
 
@@ -79,11 +117,29 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                         {
                             var C = new Button { Text = HuidigeAss.Question.MultipleChoiceAnswers[2], Margin = new Thickness(0, 0, 20, 0), HorizontalOptions = LayoutOptions.Center, FontSize = 16 };
                             FirstRow.Children.Add(C);
-                            C.Clicked += (sender, e) =>
+                            if (Assignment.Question.IsOpenQuestion == true)
                             {
-                                Answer = HuidigeAss.Question.MultipleChoiceAnswers[2];
-                                Antwoord();
-                            };
+                                C.Clicked += (sender, e) =>
+                                {
+                                    Answer = HuidigeAss.Question.MultipleChoiceAnswers[2];
+                                    Antwoord();
+                                };
+                            }
+                            else if (Assignment.Question.IsOpenQuestion == false)
+                            {
+                                C.TextColor = Color.Gray;
+
+                                C.Clicked += (sender, e) =>
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await DisplayAlert("Niet mogelijk", "Alleen de hoofdtelefoon kan de antwoorden geven op de vragen", "OK");
+                                        HuidigeAss.Question.IsOpenQuestion = true;
+                                        App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(HuidigeAss);
+                                        await Navigation.PopAsync();
+                                    });
+                                };
+                            }
                         }
                     }
 
@@ -93,11 +149,29 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                         {
                             var D = new Button { Text = HuidigeAss.Question.MultipleChoiceAnswers[3], Margin = new Thickness(0, 0, 20, 0), HorizontalOptions = LayoutOptions.Center, FontSize = 16 };
                             SecondRow.Children.Add(D);
-                            D.Clicked += (sender, e) =>
+                            if (Assignment.Question.IsOpenQuestion == true)
                             {
-                                Answer = HuidigeAss.Question.MultipleChoiceAnswers[3];
-                                Antwoord();
-                            };
+                                D.Clicked += (sender, e) =>
+                                {
+                                    Answer = HuidigeAss.Question.MultipleChoiceAnswers[3];
+                                    Antwoord();
+                                };
+                            }
+                            else if (Assignment.Question.IsOpenQuestion == false)
+                            {
+                                D.TextColor = Color.Gray;
+
+                                D.Clicked += (sender, e) =>
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await DisplayAlert("Niet mogelijk", "Alleen de hoofdtelefoon kan de antwoorden geven op de vragen", "OK");
+                                        HuidigeAss.Question.IsOpenQuestion = true;
+                                        App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(HuidigeAss);
+                                        await Navigation.PopAsync();
+                                    });
+                                };
+                            }
                         }
                     }
                 }
