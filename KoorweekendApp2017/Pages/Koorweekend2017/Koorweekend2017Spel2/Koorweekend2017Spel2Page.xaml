@@ -6,15 +6,15 @@
     <ContentPage.Content>
         <Grid x:Name="controlGrid" RowSpacing="5" ColumnSpacing="5">
             <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackLayout Grid.Row="0" Grid.Column="0">
                 <Button Text="Volgende Locatie" x:Name="Locatie" HorizontalOptions="Center" BorderColor="Red" BorderWidth="1" BorderRadius="5"/>
-                <Button Text="Refresh" x:Name="Refresh" HorizontalOptions="Center" BorderColor="Red" BorderWidth="1" BorderRadius="5"/>
+                <!--Button Text="Refresh" x:Name="Refresh" HorizontalOptions="Center" BorderColor="Red" BorderWidth="1" BorderRadius="5"/-->
             </StackLayout>
             <ScrollView Grid.Row="1" Grid.Column="0">
                 <StackLayout>

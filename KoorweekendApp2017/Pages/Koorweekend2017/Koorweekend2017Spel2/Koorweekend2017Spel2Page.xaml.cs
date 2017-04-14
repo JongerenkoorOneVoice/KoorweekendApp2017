@@ -29,7 +29,7 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
             ToolbarItems.Add(new ToolbarItem("Add", "Scanner.png", () => { scanning(); }));
             ToolbarItems.Add(new ToolbarItem("Add", "Plus.png", () => { typing(); }));
             Bonusvraag.Clicked += BonusvraagClicked;
-            Refresh.Clicked += RefreshClicked;
+            //Refresh.Clicked += RefreshClicked;
             Locatie.Clicked += LocatieClicked;
             SetupTekst();
         }
@@ -64,12 +64,6 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
             }
             Bonusvragen[2].Result.Score = 0;
             App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(Bonusvragen[2]);
-
-
-            /*Device.BeginInvokeOnMainThread(async () =>
-            {
-                await Navigation.PushAsync(new Koorweekend2017Spel2.GvraagPage());
-            });*/
         }
 
         void LocatieClicked(object sender, EventArgs e)
