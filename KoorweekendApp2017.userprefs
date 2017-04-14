@@ -1,13 +1,7 @@
 ﻿<Properties StartupConfiguration="{F109F4DB-41F1-41E5-9502-61EAFE494B15}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Models/ChoirWeekendPackingListItem.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs">
     <Files>
-      <File FileName="KoorweekendApp2017/App.xaml.cs" Line="78" Column="9" />
-      <File FileName="KoorweekendApp2017/Helpers/GlobalSettingsHelper.cs" Line="79" Column="6" />
-      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="222" Column="35" />
-      <File FileName="KoorweekendApp2017/Pages/UpdateOverview.xaml.cs" Line="34" Column="57" />
-      <File FileName="KoorweekendApp2017/Helpers/AuthenticationHelper.cs" Line="186" Column="25" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/PackingListArchivePage.xaml.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Models/ChoirWeekendPackingListItem.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" Line="144" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

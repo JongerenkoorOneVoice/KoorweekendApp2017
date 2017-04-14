@@ -149,7 +149,7 @@ namespace KoorweekendApp2017
 		protected override void OnDisappearing()
 		{
 			base.OnDisappearing();
-
+		
 			if (CrossCompass.Current.IsSupported)
 			{
 				CrossCompass.Current.Stop();
