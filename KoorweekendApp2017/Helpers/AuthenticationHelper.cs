@@ -140,6 +140,7 @@ namespace KoorweekendApp2017
 
 			var lastSuccessfullAuthenticationResult = App.Database.Settings.GetValue<DateTime>("lastSuccessfullAuthentication");
 			var lastAuthenticationEmailAddressTried = App.Database.Settings.GetValue<String>("lastAuthenticationEmailAddressTried");
+			var lastAuthenticatedForAppVersion = App.Database.Settings.GetValue<String>("lastAuthenticationEmailAddressTried");
 
 			// Update authentication after 30 days.
 			if (DateTime.Now - lastSuccessfullAuthenticationResult > new TimeSpan(31, 0, 0, 0))
@@ -153,7 +154,11 @@ namespace KoorweekendApp2017
 				shouldUpdateAuthentication = true;
 			}
 
-
+			// Update authentication if app version is different from last authentication
+			if (!String.IsNullOrEmpty(lastAuthenticatedForAppVersion) && lastAuthenticatedForAppVersion != HardAppSettings.Version)
+			{
+				shouldUpdateAuthentication = true;
+			}
 
 			if (shouldUpdateAuthentication)
 			{

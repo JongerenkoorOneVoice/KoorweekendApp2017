@@ -1,57 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using KoorweekendApp2017.Models;
+using KoorweekendApp2017.Pages;
 using Xamarin.Forms;
+using XLabs.Ioc;
+using XLabs.Platform.Device;
 
 namespace KoorweekendApp2017
 {
 	public partial class UpdateOverview : ContentPage
 	{
+		public KoorweekendApp2017Page mainAppPage { get; set; }
+
 		public UpdateOverview()
 		{
 			InitializeComponent();
-
+			updateView.Source = GetHTML();
+			var device = Resolver.Resolve<IDevice>();
+			updateView.HeightRequest = device.Display.Height - okButton.Height;
+			okButton.Clicked += OkButtonClicked;
+			Task.Run(() => { 
+				mainAppPage = new KoorweekendApp2017Page();
+			});
 
 		}
 
-		protected override void OnBindingContextChanged()
+	
+
+		private HtmlWebViewSource GetHTML()
 		{
-			base.OnBindingContextChanged();
-
-			var currentNews = BindingContext as News;
-			updateView.Source = GetHTML(currentNews);
-			updateView.Navigating += OnNavigating;
-		}
-
-
-		private HtmlWebViewSource GetHTML(News currentNews)
-		{
-			StringBuilder css = new StringBuilder();
-			css.Append("* { font-size: 1rem; font-family: helvetica, arial ; }  h1 { font-size: 1.5rem; color: red;} img { display: block; width: 100%; } a { color: red; } .timestamp { font-size: .75rem; display: block; color: grey; margin-top: -10px; margin-bottom: 10px;}");
-
-			StringBuilder html = new StringBuilder();
-			html.AppendFormat("<h1>{0}</h1>", currentNews.Title);
-			html.AppendFormat("<span class=\"timestamp\">{0}</span>", currentNews.LastModifiedDateAndTimeFormatted);
-			html.Append(currentNews.HTML);
-
-			HtmlWebViewSource document = new HtmlWebViewSource()
+			HtmlWebViewSource document = new HtmlWebViewSource();
+			var setting = App.Database.GlobalSettings.GetByKey("currentVersionReleaseNotes");
+			if (setting != null)
 			{
-				Html = String.Format("<html><head><style>{0}</style></head><body>{1}</body></html>", css.ToString(), html.ToString())
-			};
+
+				document.Html = String.Format("<html><head><style>{0}</style></head><body>{1}</body></html>", "", setting.Value);
+
+			}
+			else
+			{
+				document.Html = "Geen gegevens beschikbaar.";
+			}
+
 
 			return document;
 		}
 
-		void OnNavigating(object sender, WebNavigatingEventArgs e)
+		void OkButtonClicked(object sender, EventArgs e)
 		{
-			if (e.Url.StartsWith("mailto", StringComparison.OrdinalIgnoreCase))
-			{
-				var uri = new Uri(e.Url);
-				Device.OpenUri(uri);
-				e.Cancel = true;
+			App.Database.Settings.Set("releasenotesLastShownForVersion", HardAppSettings.Version);
+			Application.Current.MainPage = mainAppPage;
 
-			}
 		}
+
 	}
 }

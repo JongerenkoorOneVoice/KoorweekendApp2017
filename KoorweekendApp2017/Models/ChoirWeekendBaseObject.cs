@@ -10,11 +10,12 @@ using System.Globalization;
 
 namespace KoorweekendApp2017.Models
 {
-    public class ChoirWeekendBaseAssignment : ChoirWeekendBaseObject
+    public class ChoirWeekendBaseObject
     {
-		public ChoirWeekendBaseAssignmentSettings Settings { get; set; }
-		public ChoirWeekendBaseAssignmentResult Result { get; set; }
+		[PrimaryKey]
+		public String Id { get; set; }
 
+		public Boolean IsVisible { get; set;}
 
     }
 }

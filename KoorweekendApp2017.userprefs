@@ -1,42 +1,20 @@
 ﻿<Properties StartupConfiguration="{F109F4DB-41F1-41E5-9502-61EAFE494B15}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/UpdateOverview.xaml.cs">
     <Files>
-      <File FileName="KoorweekendApp2017/Pages/UpdateOverview.xaml" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/UpdateOverview.xaml.cs" Line="39" Column="5" />
-      <File FileName="KoorweekendApp2017/Models/GlobalSetting.cs" Line="15" Column="36" />
-      <File FileName="KoorweekendApp2017/Models/DatabaseItemBase.cs" Line="14" Column="30" />
-      <File FileName="KoorweekendApp2017/Interfaces/IDatabaseItem.cs" Line="4" Column="19" />
-      <File FileName="KoorweekendApp2017/BusinessObjects/LocalDatabase.cs" Line="342" Column="1" />
-      <File FileName="KoorweekendApp2017/BusinessObjects/AppWebService.cs" Line="116" Column="21" />
-      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="231" Column="26" />
-      <File FileName="KoorweekendApp2017/App.xaml.cs" Line="41" Column="1" />
-      <File FileName="KoorweekendApp2017/Helpers/GlobalSettingsHelper.cs" Line="59" Column="1" />
-      <File FileName="KoorweekendApp2017/Models/CustomDevice.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Models/HardAppSettings.cs" Line="6" Column="61" />
-      <File FileName="KoorweekendApp2017/Models/GlobalSettings.cs" Line="43" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/ToLowAppVersion.xaml" Line="11" Column="34" />
-      <File FileName="KoorweekendApp2017/Pages/ToLowAppVersion.xaml.cs" Line="10" Column="25" />
-      <File FileName="KoorweekendApp2017/Pages/SongSinglePage.xaml" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Messages/StartApiGlobalSettingsSyncMessage.cs" Line="3" Column="48" />
-      <File FileName="KoorweekendApp2017/Messages/StopApiGlobalSettingsSyncMessage.cs" Line="3" Column="50" />
-      <File FileName="Droid/MainActivity.cs" Line="142" Column="62" />
-      <File FileName="iOS/AppDelegate.cs" Line="95" Column="30" />
-      <File FileName="Droid/Tasks/ApiGlobalSettingsSyncTask.cs" Line="37" Column="12" />
-      <File FileName="iOS/Tasks/ApiGlobalSettingsSyncTask.cs" Line="27" Column="7" />
-      <File FileName="iOS/Tasks/ApiPrayerRequestSyncTask.cs" Line="1" Column="1" />
-      <File FileName="iOS/Tasks/ApiEventSyncTask.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/App.xaml" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" Line="73" Column="37" />
+      <File FileName="KoorweekendApp2017/Helpers/GlobalSettingsHelper.cs" Line="60" Column="4" />
+      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Models/GlobalSettings.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Helpers/NetworkHelper.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Helpers/UserHelper.cs" Line="23" Column="4" />
+      <File FileName="KoorweekendApp2017/App.xaml.cs" Line="90" Column="30" />
+      <File FileName="KoorweekendApp2017/Pages/UpdateOverview.xaml.cs" Line="26" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.Droid PreferredExecutionTarget="Android.Nexus 4 (Marshmallow) API 23" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/App.xaml.cs" relfile="KoorweekendApp2017/App.xaml.cs" line="41" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/App.xaml.cs" relfile="KoorweekendApp2017/App.xaml.cs" line="38" column="50" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/App.xaml.cs" relfile="KoorweekendApp2017/App.xaml.cs" line="46" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/App.xaml.cs" relfile="KoorweekendApp2017/App.xaml.cs" line="88" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9A9E4F2D-0434-4002-B5D7-8C1858015A8E" />

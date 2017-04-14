@@ -338,7 +338,7 @@ namespace KoorweekendApp2017.BusinessObjects
 		{
 			public GlobalSetting GetByKey(string key)
 			{
-				return (from i in Database.Table<GlobalSetting>() where i.Key == key select i).ToList().FirstOrDefault();
+				return (from i in Database.Table<GlobalSetting>() where i.Key.ToLower() == key.ToLower() select i).ToList().FirstOrDefault();
 			}
 
 			public List<GlobalSetting> GetAll()
@@ -348,9 +348,15 @@ namespace KoorweekendApp2017.BusinessObjects
 
 			public void Set(GlobalSetting setting)
 			{
+				setting.Key = setting.Key.ToLower();
 				Database.InsertOrReplace(setting);
 			}
 
+			public void RemoveByKey(string key)
+			{
+				var setting = GetByKey(key);
+				Database.Delete(setting);
+			}
 		}
 
 

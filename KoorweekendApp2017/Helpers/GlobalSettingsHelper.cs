@@ -1,4 +1,5 @@
 ﻿using System;
+using KoorweekendApp2017.Tasks;
 using Xamarin.Forms;
 
 namespace KoorweekendApp2017.Helpers
@@ -56,6 +57,28 @@ namespace KoorweekendApp2017.Helpers
 			}
 
 			return true;
+		}
+
+		public static bool ShouldShowLatesReleaseNotes()
+		{
+			var loadUpdateOverview = false;
+			             
+			if (HardAppSettings.Version != GlobalSettings.LatestAppVersion && NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
+			{
+				// Make sure I have the lates data from the api
+				DataSync.UpdateGlobalSettingsInDbFromApi(shouldUpdateAll: true);
+			}
+		
+			if (HardAppSettings.Version == GlobalSettings.LatestAppVersion)
+			{
+				loadUpdateOverview = true;
+				var lastShownVersion = App.Database.Settings.GetValue<String>("releasenotesLastShownForVersion");
+				if (!String.IsNullOrEmpty(lastShownVersion))
+				{
+					loadUpdateOverview = lastShownVersion != HardAppSettings.Version;
+				}
+			}
+			return loadUpdateOverview;
 		}
 	}
 }

@@ -221,6 +221,7 @@ namespace KoorweekendApp2017.Tasks
 						{
 							App.Database.GlobalSettings.Set(globalSetting);
 						}
+						GlobalSettings.Reset();
 					}
 					App.Database.Settings.Set("lastGlobalSettingsUpdate", DateTime.Now.ToString());
 					var message = App.Database.GlobalSettings.GetByKey("startupMessage");

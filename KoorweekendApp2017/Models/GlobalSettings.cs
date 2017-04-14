@@ -5,6 +5,21 @@ namespace KoorweekendApp2017
 	{
 		private static string _latestAppVersion { get; set; }
 
+		private static string _minimumVersionToAllowRunning { get; set; }
+
+		private static string _startupMessage { get; set; }
+
+		private static string _currentVersionReleaseNotes { get; set; }
+
+		public static void Reset()
+		{
+			_latestAppVersion = null;
+			_minimumVersionToAllowRunning = null;
+			_startupMessage = null;
+			_currentVersionReleaseNotes = null;
+
+		}
+
 		public static string LatestAppVersion
 		{
 			get
@@ -22,8 +37,6 @@ namespace KoorweekendApp2017
 				return _latestAppVersion;
 			}
 		}
-
-		private static string _minimumVersionToAllowRunning { get; set; }
 
 		public static string MinimumVersionToAllowRunning
 		{
@@ -43,8 +56,6 @@ namespace KoorweekendApp2017
 			}
 		}
 
-		private static string _startupMessage { get; set; }
-
 		public static string StartupMessage
 		{
 			get
@@ -62,8 +73,6 @@ namespace KoorweekendApp2017
 				return _latestAppVersion;
 			}
 		}
-
-		private static string _currentVersionReleaseNotes { get; set; }
 
 		public static string CurrentVersionReleaseNotes
 		{

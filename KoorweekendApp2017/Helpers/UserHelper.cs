@@ -21,7 +21,6 @@ namespace KoorweekendApp2017.Helpers
 
 		public static Boolean CurrentUserIsDeveloper()
 		{
-
 			Int32 currentUserId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
 			if (currentUserId == 0)
 				currentUserId = AuthenticationHelper.GetAndWriteCurrentAuthenticatedUserIdToDb();

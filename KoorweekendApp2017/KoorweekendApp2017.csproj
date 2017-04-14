@@ -215,11 +215,11 @@
     </Compile>
     <Compile Include="Models\AuthenitcationResult.cs" />
     <Compile Include="Models\BasicAuthentication.cs" />
-    <Compile Include="Models\ChoirWeekendBaseAssignment.cs" />
+    <Compile Include="Models\ChoirWeekendBaseObject.cs" />
     <Compile Include="Models\ChoirWeekendBaseAssignmentResult.cs" />
     <Compile Include="Models\ChoirWeekendBaseAssignmentSettings.cs" />
     <Compile Include="Models\ChoirWeekendBaseLocation.cs" />
-    <Compile Include="Models\ChoirWeekendBaseObject.cs" />
+    <Compile Include="Models\ChoirWeekendBaseAssignment.cs" />
     <Compile Include="Models\ChoirWeekendBasePosition.cs" />
     <Compile Include="Models\ChoirWeekendGame1Assignment.cs" />
     <Compile Include="Models\ChoirWeekendGame1Location.cs" />

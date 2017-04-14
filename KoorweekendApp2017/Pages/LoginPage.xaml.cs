@@ -77,8 +77,6 @@ namespace KoorweekendApp2017
 		public async Task LoadPage(LoginPageIds pageId, bool animate = true)
 		{
 
-
-
 			if (animate)
 			{
 				if (pageId >= CurrentPage)
@@ -168,8 +166,16 @@ namespace KoorweekendApp2017
 
                 DataSync.RunAllTasksAndWaitForReady(true);
 				AuthenticationHelper.GetAndWriteCurrentAuthenticatedUserIdToDb();
+
+				if (GlobalSettingsHelper.ShouldShowLatesReleaseNotes())
+				{
+					Application.Current.MainPage = new UpdateOverview();
+				}
+				else
+				{
+					Application.Current.MainPage = new KoorweekendApp2017Page();
+				}
                 
-                Application.Current.MainPage = new KoorweekendApp2017Page();
             }
 			return result;
 		}

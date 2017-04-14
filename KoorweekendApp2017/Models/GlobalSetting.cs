@@ -10,8 +10,12 @@ namespace KoorweekendApp2017.Models
 {
 	public class GlobalSetting : IDatabaseItem
 	{		
+		[Unique]
 		public int Id { get; set; }
+
+		[PrimaryKey][Unique]
 		public string Key { get; set; }
+
 		public string Value { get; set; }
 	}
 }
