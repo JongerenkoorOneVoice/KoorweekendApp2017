@@ -31,6 +31,11 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
         }
         void OnOkeClicked(object sender, EventArgs e)
         {
+            List<ChoirWeekendGame2Assignment> Bonusvragen = Assignments.FindAll(
+                x => x.Settings.IsBonus == true && x.IsVisible == true);
+            Bonusvragen.OrderBy(i => i.Settings.ConsecutionIndex);
+            ChoirWeekendGame2Assignment Assignment = Assignments.Find(
+                x => x.Id.Equals("0") == true);
             List<ChoirWeekendGame2Assignment> HuidigeAssL = Assignments.FindAll(
             x => x.Question.IsMultipleChoice == true && x.Question.IsOpenQuestion == false && x.Settings.IsBonus == false);
             if (HuidigeAssL.Count >= 1)
@@ -40,6 +45,13 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                    if (ent.Text == Assignment.Location.Code)
+                    {
+                        Assignment.Question.IsOpenQuestion = true;
+                        App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(Assignment);
+                        await Navigation.PopAsync();
+                        await DisplayAlert("Hoofdtelefoon", "Telefoon is nu de hoofdtelefoon", "OK");
+                    }
                     if (ent.Text == HuidigeAss.Location.Code)
                     {
                         //await Navigation.PopAsync();
@@ -51,6 +63,13 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                         await DisplayAlert("Barcode", "Vul Een Barcode In", "OK");
                         await Navigation.PopAsync();
                         ent.Text = null;
+                    }
+                    else if (ent.Text == Bonusvragen[2].Location.Code)
+                    {
+                        Bonusvragen[2].Result.Score = 50;
+                        App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(Bonusvragen[2]);
+                        await Navigation.PopAsync();
+                        await DisplayAlert("Vla gevonden!", "Gefeliciteerd jullie hebben de vla gevonden! En daarbij 50 punten verdiend", "OK");
                     }
                     else if (ent.Text != HuidigeAss.Location.Code)
                     {

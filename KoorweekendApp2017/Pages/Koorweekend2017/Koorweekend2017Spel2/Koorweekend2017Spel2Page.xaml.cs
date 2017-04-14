@@ -44,6 +44,9 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
 
         void RefreshClicked(object sender, EventArgs e)
         {
+            List<ChoirWeekendGame2Assignment> Bonusvragen = Assignments.FindAll(
+                x => x.Settings.IsBonus == true && x.IsVisible == true);
+            Bonusvragen.OrderBy(i => i.Settings.ConsecutionIndex);
             List<ChoirWeekendGame2Assignment> Beantw = Assignments.FindAll(
                 x => x.Question.IsMultipleChoice == true && x.Question.IsOpenQuestion == true && x.Settings.IsBonus == false);
             Beantw.OrderBy(i => i.Settings.ConsecutionIndex);
@@ -59,6 +62,9 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                 Temp.Result.Time = 0;
                 App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(Temp);
             }
+            Bonusvragen[2].Result.Score = 0;
+            App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(Bonusvragen[2]);
+
 
             /*Device.BeginInvokeOnMainThread(async () =>
             {
@@ -77,9 +83,12 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
         void scanning()
         {
             List<ChoirWeekendGame2Assignment> HuidigeAssL = Assignments.FindAll(
-                x => x.Question.IsMultipleChoice == true && x.Question.IsOpenQuestion == false && x.Settings.IsBonus == false);
+               x => x.Question.IsMultipleChoice == true && x.Question.IsOpenQuestion == false && x.Settings.IsBonus == false);
             ChoirWeekendGame2Assignment Assignment = Assignments.Find(
                 x => x.Id.Equals("0") == true);
+            List<ChoirWeekendGame2Assignment> Bonusvragen = Assignments.FindAll(
+                x => x.Settings.IsBonus == true && x.IsVisible == true);
+            Bonusvragen.OrderBy(i => i.Settings.ConsecutionIndex);
             if (HuidigeAssL.Count >= 1)
             {
                 HuidigeAssL.OrderBy(i => i.Settings.ConsecutionIndex);
@@ -96,23 +105,31 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                     // Pop the page and show the result
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        if(result.Text ==  Assignment.Location.Code)
+                        if (result.Text == Assignment.Location.Code)
                         {
                             Assignment.Question.IsOpenQuestion = true;
                             App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(Assignment);
                             await Navigation.PopAsync();
-                            await DisplayAlert("Scanned Barcode", "Telefoon is nu de hoofdtelefoon", "OK");
+                            await DisplayAlert("Hoofdtelefoon", "Telefoon is nu de hoofdtelefoon", "OK");
                         }
                         else if (result.Text == HuidigeAss.Location.Code)
                         {
                             await Navigation.PopAsync();
                             await Navigation.PushAsync(new GvraagPage());
                         }
+                        else if (result.Text == Bonusvragen[2].Location.Code)
+                        {
+                            Bonusvragen[2].Result.Score = 50;
+                            App.Database.ChoirWeekend2017.Game2.UpdateOrInsert(Bonusvragen[2]);
+                            await Navigation.PopAsync();
+                            await DisplayAlert("Vla gevonden!", "Gefeliciteerd jullie hebben de vla gevonden! En daarbij 50 punten verdiend", "OK");
+                        }
                         else if (result.Text != HuidigeAss.Location.Code)
                         {
                             await Navigation.PopAsync();
                             await DisplayAlert("Scanned Barcode", "Geen correcte barcode", "OK");
                         }
+
                     });
                 };
             }

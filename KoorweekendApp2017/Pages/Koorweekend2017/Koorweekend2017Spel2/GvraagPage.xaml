@@ -13,6 +13,8 @@
                 </StackLayout>
                 <StackLayout Padding = "0,10,0,0" Orientation = "Horizontal" HorizontalOptions = "Center" VerticalOptions = "Start" x:Name="SecondRow">
                 </StackLayout>
+                <StackLayout Padding = "0,10,0,0" Orientation = "Horizontal" HorizontalOptions = "Center" VerticalOptions = "Start" x:Name="ThirdRow">
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

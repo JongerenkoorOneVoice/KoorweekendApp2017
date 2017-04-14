@@ -10,6 +10,8 @@
                 <Label x:Name="Score" Text="Niet gevonden" Font="18" HorizontalTextAlignment="Center"/>
                 <Label Text="Bezochte locaties" Font="Bold,18" HorizontalTextAlignment="Center" Margin="0,40,0,0"/>
                 <Label x:Name="Locaties" Text="Niet gevonden" Font="18" HorizontalTextAlignment="Center"/>
+                <Label Text="Bonuspunten:" Font="Bold,18" HorizontalTextAlignment="Center" Margin="0,40,0,0"/>
+                <Label x:Name="Bonus" Text="Niet gevonden" Font="18" HorizontalTextAlignment="Center"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

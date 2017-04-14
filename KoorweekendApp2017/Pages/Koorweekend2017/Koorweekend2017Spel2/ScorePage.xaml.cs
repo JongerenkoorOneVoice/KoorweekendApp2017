@@ -25,6 +25,9 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
             {
                 List<ChoirWeekendGame2Assignment> VragenAll = Assignments.FindAll(x => x.Question.IsMultipleChoice == true && x.Settings.IsBonus == false);
                 List<ChoirWeekendGame2Assignment> VragenBeantwoord = Assignments.FindAll(x => x.Question.IsMultipleChoice == true && x.Question.IsOpenQuestion == true && x.Settings.IsBonus == false);
+                List<ChoirWeekendGame2Assignment> Bonusvragen = Assignments.FindAll(
+                    x => x.Settings.IsBonus == true && x.IsVisible == true);
+                Bonusvragen.OrderBy(i => i.Settings.ConsecutionIndex);
                 for (int i = 0; i < VragenBeantwoord.Count; i++)
                 {
                     ScoorMax += VragenBeantwoord[i].Settings.MaxScore;
@@ -36,6 +39,7 @@ namespace KoorweekendApp2017.Pages.Koorweekend2017.Koorweekend2017Spel2
                 }
                 Score.Text = String.Format("{0}/{1}", ScoorBeh, ScoorMax);
                 Locaties.Text = String.Format("{0}/{1}", VragenBeantwoord.Count, (VragenAll.Count));
+                Bonus.Text = String.Format("{0}/50", Bonusvragen[2].Result.Score);
             }
         }
     }

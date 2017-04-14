@@ -243,23 +243,23 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="ZXing.Net.Mobile.Core">
-      <HintPath>..\packages\ZXing.Net.Mobile.2.2.0\lib\Xamarin.iOS10\ZXing.Net.Mobile.Core.dll</HintPath>
+      <HintPath>..\packages\ZXing.Net.Mobile.2.2.6\lib\Xamarin.iOS10\ZXing.Net.Mobile.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ZXing.Net.Mobile.Forms">
-      <HintPath>..\packages\ZXing.Net.Mobile.Forms.2.2.0\lib\Xamarin.iOS10\ZXing.Net.Mobile.Forms.dll</HintPath>
+      <HintPath>..\packages\ZXing.Net.Mobile.Forms.2.2.6\lib\Xamarin.iOS10\ZXing.Net.Mobile.Forms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ZXing.Net.Mobile.Forms.iOS">
-      <HintPath>..\packages\ZXing.Net.Mobile.Forms.2.2.0\lib\Xamarin.iOS10\ZXing.Net.Mobile.Forms.iOS.dll</HintPath>
+      <HintPath>..\packages\ZXing.Net.Mobile.Forms.2.2.6\lib\Xamarin.iOS10\ZXing.Net.Mobile.Forms.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="zxing.portable">
-      <HintPath>..\packages\ZXing.Net.Mobile.2.2.0\lib\Xamarin.iOS10\zxing.portable.dll</HintPath>
+      <HintPath>..\packages\ZXing.Net.Mobile.2.2.6\lib\Xamarin.iOS10\zxing.portable.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ZXingNetMobile">
-      <HintPath>..\packages\ZXing.Net.Mobile.2.2.0\lib\Xamarin.iOS10\ZXingNetMobile.dll</HintPath>
+      <HintPath>..\packages\ZXing.Net.Mobile.2.2.6\lib\Xamarin.iOS10\ZXingNetMobile.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
