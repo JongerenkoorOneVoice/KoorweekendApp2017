@@ -66,7 +66,7 @@ namespace KoorweekendApp2017.Helpers
 			if (HardAppSettings.Version != GlobalSettings.LatestAppVersion && NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
 			{
 				// Make sure I have the lates data from the api
-				DataSync.UpdateGlobalSettingsInDbFromApi(shouldUpdateAll: true);
+				DataSync.UpdateGlobalSettingsInDbFromApi(shouldUpdateAll: true, showAlert: false);
 			}
 		
 			if (HardAppSettings.Version == GlobalSettings.LatestAppVersion)
@@ -78,6 +78,7 @@ namespace KoorweekendApp2017.Helpers
 					loadUpdateOverview = lastShownVersion != HardAppSettings.Version;
 				}
 			}
+		
 			return loadUpdateOverview;
 		}
 	}

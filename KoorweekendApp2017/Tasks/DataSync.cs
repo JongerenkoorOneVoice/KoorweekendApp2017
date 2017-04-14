@@ -196,7 +196,7 @@ namespace KoorweekendApp2017.Tasks
 
 		}
 
-		public static void UpdateGlobalSettingsInDbFromApi(bool shouldUpdateAll = false)
+		public static void UpdateGlobalSettingsInDbFromApi(bool shouldUpdateAll = false, bool showAlert = true)
 		{
 
 			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
@@ -225,7 +225,7 @@ namespace KoorweekendApp2017.Tasks
 					}
 					App.Database.Settings.Set("lastGlobalSettingsUpdate", DateTime.Now.ToString());
 					var message = App.Database.GlobalSettings.GetByKey("startupMessage");
-					if (message != null && !String.IsNullOrEmpty(message.Value))
+					if (message != null && !String.IsNullOrEmpty(message.Value) && showAlert)
 					{
 						Device.BeginInvokeOnMainThread(async () => {
 

@@ -8,7 +8,7 @@
 		<ScrollView Padding="15,15,15,0">
 			<StackLayout VerticalOptions="FillAndExpand">
 				<Label Text="Je moet eerst de app updaten" FontAttributes="Bold" HorizontalTextAlignment="Start"></Label>
-				<Label Text="Je gebruikt een teveel verouderde versie van de koorapp. Je kan de app pas weer gebruiken als je hem geupdated hebt." HorizontalTextAlignment="Start"></Label>
+				<Label x:Name="updateText" HorizontalTextAlignment="Start"></Label>
 			</StackLayout>
 		</ScrollView>
 	</ContentPage.Content>

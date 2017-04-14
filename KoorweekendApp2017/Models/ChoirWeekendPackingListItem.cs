@@ -36,11 +36,11 @@ namespace KoorweekendApp2017.Models
 			get { 
 				if (_isPacked)
 				{
-					return "Agenda.png";
+					return "checked.png";
 				}
 				else
 				{
-					return "Home.png";
+					return "unchecked.png";
 				}
 			}
 		}

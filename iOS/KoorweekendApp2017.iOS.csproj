@@ -361,6 +361,8 @@
     <BundleResource Include="Resources\onevoice_logo_app_less.png" />
     <BundleResource Include="Resources\calendar_small.png" />
     <BundleResource Include="Resources\filter_25.png" />
+    <BundleResource Include="Resources\checked.png" />
+    <BundleResource Include="Resources\unchecked.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Agenda.png" />

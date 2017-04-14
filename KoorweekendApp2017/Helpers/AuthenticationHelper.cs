@@ -138,6 +138,16 @@ namespace KoorweekendApp2017
 			var result = false;
 			var shouldUpdateAuthentication = false;
 
+			// Check if a new login should be forced by usersetting
+			Boolean? forceLogin = App.Database.Settings.GetValue<Boolean?>("loginOnNextStart");
+			if (forceLogin != null && forceLogin == true)
+			{
+				App.Database.Settings.RemoveByKey("lastSuccessfullAuthentication");
+				App.Database.Settings.RemoveByKey("lastAuthenticationResult");
+				App.Database.Settings.RemoveByKey("lastAuthenticationEmailAddressTried");
+				App.Database.Settings.Set("loginOnNextStart", false);
+			}
+
 			var lastSuccessfullAuthenticationResult = App.Database.Settings.GetValue<DateTime>("lastSuccessfullAuthentication");
 			var lastAuthenticationEmailAddressTried = App.Database.Settings.GetValue<String>("lastAuthenticationEmailAddressTried");
 			var lastAuthenticatedForAppVersion = App.Database.Settings.GetValue<String>("lastAuthenticationEmailAddressTried");
@@ -159,6 +169,9 @@ namespace KoorweekendApp2017
 			{
 				shouldUpdateAuthentication = true;
 			}
+
+
+
 
 			if (shouldUpdateAuthentication)
 			{

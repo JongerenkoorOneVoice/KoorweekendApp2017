@@ -34,74 +34,59 @@ namespace KoorweekendApp2017
 			InitializeComponent();
 			var db = DependencyService.Get<ISQLite>().GetConnection();
 			Database = new LocalDatabase(db);
+			AppWebService = new AppWebService();
+			Network = CrossConnectivity.Current;
+			SettingsScreenUri = uri;
 
 			if (GlobalSettingsHelper.VersionBiggerThanAppVersion(GlobalSettings.MinimumVersionToAllowRunning))
 			{
-				// App should be updated before loading can continue;
-				MainPage = new ToLowAppVersion();
-			}
-			else
-			{
-
-				AppWebService = new AppWebService();
-				Network = CrossConnectivity.Current;
-				//DataSync.UpdateContactsInDbFromApi();
-				//DataSync.UpdateSongsInDbFromApi();
-				//DataSync.UpdateEventsInDbFromApi();
-				SettingsScreenUri = uri;
-				//DataSync.UpdateGame1AssignmentsInDbFromApi(true);
-				//DataSync.UpdateGame2AssignmentsInDbFromApi(true);
-				//DataSync.UpdatePackinglistInDbFromApi(true);
-
-
-				//DataSync.RunAllTasksAndWaitForReady();
-				//MessagingCenter.Send(new StopApiContactSyncMessage(), "StopApiContactSyncMessage");
-
-				//var authTask = AuthenticationHelper.IsAuthenticated();
-				//authTask.RunSynchronously();
-				Boolean? forceLogin = App.Database.Settings.GetValue<Boolean?>("loginOnNextStart");
-				if (forceLogin != null && forceLogin == true)
+				// To be sure data is correct, try to update data from web api and check again
+				DataSync.UpdateGlobalSettingsInDbFromApi(shouldUpdateAll: true, showAlert: false);
+				if (GlobalSettingsHelper.VersionBiggerThanAppVersion(GlobalSettings.MinimumVersionToAllowRunning))
 				{
-					App.Database.Settings.RemoveByKey("lastSuccessfullAuthentication");
-					App.Database.Settings.RemoveByKey("lastAuthenticationResult");
-					App.Database.Settings.RemoveByKey("lastAuthenticationEmailAddressTried");
-					App.Database.Settings.Set("loginOnNextStart", false);
-				}
-
-
-				var authTask = AuthenticationHelper.IsAuthenticated();
-				authTask.ConfigureAwait(false);
-
-				var isAuthenticated = authTask.Result;
-
-
-				if (!isAuthenticated)
-				{
-					MainPage = new LoginPage();
+					// App should be updated before loading can continue;
+					MainPage = new ToLowAppVersion();
 				}
 				else
 				{
-					Int32 currentUserId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
-					CurrentUser = App.Database.Contacts.GetById(currentUserId);
+					Load();
+				}
+			}
+			else
+			{
+				Load();
 
+			}
+		}
 
-					if (GlobalSettingsHelper.ShouldShowLatesReleaseNotes())
-					{
-						MainPage = new UpdateOverview();
-					}
-					else
-					{
-						MainPage = new KoorweekendApp2017Page();
-					}
+		public void Load()
+		{
+			var authTask = AuthenticationHelper.IsAuthenticated();
+			authTask.ConfigureAwait(false);
 
+			var isAuthenticated = authTask.Result;
+
+			if (!isAuthenticated)
+			{
+				MainPage = new LoginPage();
+			}
+			else
+			{
+				Int32 currentUserId = App.Database.Settings.GetValue<Int32>("authenticatedContactId");
+				CurrentUser = App.Database.Contacts.GetById(currentUserId);
+
+				if (GlobalSettingsHelper.ShouldShowLatesReleaseNotes())
+				{
+					MainPage = new UpdateOverview();
+				}
+				else
+				{
+					MainPage = new KoorweekendApp2017Page();
 				}
 
-				DataSync.RunAllTasksInBackground();
 			}
 
-
-
-
+			DataSync.RunAllTasksInBackground();
 		}
 
 		protected override void OnStart()
