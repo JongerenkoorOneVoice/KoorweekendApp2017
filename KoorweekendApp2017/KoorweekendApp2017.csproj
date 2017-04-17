@@ -266,6 +266,8 @@
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Koorweekend2017Spel1Page.xaml.cs">
       <DependentUpon>Koorweekend2017Spel1Page.xaml</DependentUpon>
+      <IncludeInPackage>true</IncludeInPackage>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Helpers\GpsHelper.cs" />
     <Compile Include="Models\Point3d.cs" />

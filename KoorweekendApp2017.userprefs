@@ -1,22 +1,24 @@
-﻿<Properties StartupConfiguration="{F109F4DB-41F1-41E5-9502-61EAFE494B15}|Default" GitUserInfo="UsingGIT">
+﻿<Properties StartupConfiguration="{221BC86F-E5E9-4B81-AFD6-4340BF1E34EE}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs">
     <Files>
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" Line="63" Column="1" />
-      <File FileName="KoorweekendApp2017/Scenes/Game1Scene1.cs" Line="239" Column="47" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" Line="54" Column="40" />
+      <File FileName="KoorweekendApp2017/Scenes/Game1Scene1.cs" Line="234" Column="4" />
       <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Objects/DataLayer.cs" Line="102" Column="57" />
       <File FileName="KoorweekendApp2017/Pages/UpdateOverview.xaml.cs" Line="46" Column="4" />
       <File FileName="KoorweekendApp2017/Helpers/GpsHelper.cs" Line="159" Column="57" />
       <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Objects/DataPoint.cs" Line="49" Column="1" />
+      <File FileName="iOS/Tasks/ApiGlobalSettingsSyncTask.cs" Line="39" Column="24" />
+      <File FileName="Droid/Tasks/ApiGlobalSettingsSyncTask.cs" Line="31" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.Droid PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Helpers/RestHelper.cs" relfile="KoorweekendApp2017/Helpers/RestHelper.cs" line="67" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Pages/UpdateOverview.xaml.cs" relfile="KoorweekendApp2017/Pages/UpdateOverview.xaml.cs" line="24" column="1" />
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Pages/UpdateOverview.xaml.cs" relfile="KoorweekendApp2017/Pages/UpdateOverview.xaml.cs" line="25" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" relfile="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" line="63" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" relfile="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" line="64" column="1" />
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Scenes/Game1Scene1.cs" relfile="KoorweekendApp2017/Scenes/Game1Scene1.cs" line="241" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9A9E4F2D-0434-4002-B5D7-8C1858015A8E" />

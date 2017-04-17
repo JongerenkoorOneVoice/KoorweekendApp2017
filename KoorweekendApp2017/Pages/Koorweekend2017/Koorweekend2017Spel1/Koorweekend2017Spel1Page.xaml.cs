@@ -58,7 +58,6 @@ namespace KoorweekendApp2017
 				gameView.DesignResolution = new CCSizeI(1000, 1250);
 				// GameScene is the root of the CocosSharp rendering hierarchy:
 				game1Scene1 = new Game1Scene1(gameView);
-				var x = gameView.ContentManager.RootDirectory;
 				// Starts CocosSharp:
 				gameView.RunWithScene(game1Scene1);
 

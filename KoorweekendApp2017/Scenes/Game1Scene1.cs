@@ -231,19 +231,16 @@ namespace KoorweekendApp2017.Scenes
 			scaleDownButton.PositionY = 100;
 
 
+CCSprite zoominImage = new CCSprite("zoomin.png");
+zoominImage.AnchorPoint = CCPoint.AnchorMiddle;
+			zoominImage.Position = new CCPoint(0, 0);
+scaleDownButton.AddChild(zoominImage);
 
-			try
-			{
-				CCSprite zoominImage = new CCSprite("zoomin.png");
-				zoominImage.AnchorPoint = CCPoint.AnchorMiddle;
-				zoominImage.Position = new CCPoint(200, 200);
-				CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
-				scaleDownButton.AddChild(zoominImage);
-			}
-			catch (Exception ex)
-			{
+CCSprite zoomoutImage = new CCSprite("zoomout.png");
+zoomoutImage.AnchorPoint = CCPoint.AnchorMiddle;
+zoomoutImage.Position = new CCPoint(0, 0);
+scaleUpButton.AddChild(zoomoutImage);
 
-			}
 			ControlsLayer.AddChild(scaleDownButton);
 			//scaleUpButton
 
