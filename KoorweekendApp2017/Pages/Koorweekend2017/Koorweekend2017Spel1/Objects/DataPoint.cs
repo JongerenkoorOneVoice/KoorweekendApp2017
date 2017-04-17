@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using CocosSharp;
+using Geolocator.Plugin.Abstractions;
 using KoorweekendApp2017.Models;
-using Plugin.Geolocator.Abstractions;
 
 namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 {

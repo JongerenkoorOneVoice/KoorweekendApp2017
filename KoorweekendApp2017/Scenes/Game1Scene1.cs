@@ -1,14 +1,15 @@
 ﻿using System;
 using CocosSharp;
-using Plugin.Geolocator.Abstractions;
+//using Plugin.Geolocator.Abstractions;
 using Plugin.Compass;
 using KoorweekendApp2017.Koorweekend2017Spel1.Objects;
 //using GeoCoordinatePortable;
-using Plugin.Geolocator;
+//using Plugin.Geolocator;
 using KoorweekendApp2017.Models;
 using System.Collections.Generic;
 using Xamarin.Forms;
-
+using Geolocator.Plugin;
+using Geolocator.Plugin.Abstractions;
 
 namespace KoorweekendApp2017.Scenes
 {
@@ -20,29 +21,41 @@ namespace KoorweekendApp2017.Scenes
 
 		public CCLayer ControlsLayer { get; set; }
 
-		/*
-		CCDrawNode innerCircle;
-		CCDrawNode outerCircle;
-		CCDrawNode line;
-		public CCLabel label { get; set;}
-*/
-		/*
-		private double SigmaLattitude { get; set; }
-		private double SigmaLongitude { get; set; }
+		public CCLabel ScaleLabel { get; set; }
 
-		private DateTime lastUpdate { get; set; }
+		public CCLabel LongitudeLabel { get; set; }
 
-		private int numberOfMeasurements { get; set;}
+		public CCLabel LatitudeLabel { get; set; }
 
-		private bool _initialPositionSet {get; set;} = false;
+		public CCLabel AccuracyLabel { get; set; }
 
-		private Position _initialPosition { get; set;}
-		*/
 		public Game1Scene1(CCGameView gameView) : base(gameView)
 		{
+			
+
 			// Setup scene
 			RadarLayer = SetupRadarLayer();
 			AddLayer(RadarLayer);
+
+			ScaleLabel = Text(new CCPoint(25f, 25f));
+			ScaleLabel.Text = "Zoomfactor: 1.00";
+			ScaleLabel.AnchorPoint = CCPoint.AnchorLowerLeft;
+			RadarLayer.AddChild(ScaleLabel);
+
+			LongitudeLabel = Text(new CCPoint(25f, 175f));
+			LongitudeLabel.Text = "Lon: 0.000000";
+			LongitudeLabel.AnchorPoint = CCPoint.AnchorLowerLeft;
+			RadarLayer.AddChild(LongitudeLabel);
+
+			LatitudeLabel = Text(new CCPoint(25f, 125f));
+			LatitudeLabel.Text = "Lat: 0.000000";
+			LatitudeLabel.AnchorPoint = CCPoint.AnchorLowerLeft;
+			RadarLayer.AddChild(LatitudeLabel);
+
+			AccuracyLabel = Text(new CCPoint(25f, 75f));
+			AccuracyLabel.Text = "Nauwkeurigheid: 0.0";
+			AccuracyLabel.AnchorPoint = CCPoint.AnchorLowerLeft;
+			RadarLayer.AddChild(AccuracyLabel);
 
 			DataLayer = new DataLayer();
 			AddLayer(DataLayer);
@@ -85,9 +98,14 @@ namespace KoorweekendApp2017.Scenes
 				{
 					timeLastMeasurementSend = DateTime.Now;
 					var numberOfMeasurements = lastMeasuredPositions.Count;
-					var avaragePosition = GpsHelper.GetAvaragePosition(lastMeasuredPositions);
+
+					var bestPosition = GpsHelper.GetMostAccuratePosition(lastMeasuredPositions);
+
 					lastMeasuredPositions.RemoveRange(0, numberOfMeasurements);
-					DataLayer.SetCurrentPosition(avaragePosition);
+					DataLayer.SetCurrentPosition(bestPosition);
+					LatitudeLabel.Text =  String.Format("Lat: {0}", bestPosition.Latitude.ToString());
+					LongitudeLabel.Text = String.Format("Lon: {0}", bestPosition.Longitude.ToString());
+					AccuracyLabel.Text =  String.Format("Nauwkeurigheid: {0}M", bestPosition.Accuracy.ToString());
 					//Application.Current.MainPage.DisplayAlert("test", numberOfMeasurements.ToString(), "test");
 				}
 			};
@@ -147,7 +165,7 @@ namespace KoorweekendApp2017.Scenes
 
 		public CCLabel Text(CCPoint position)
 		{
-			var text = new CCLabel("Schaal 1:1000", "Arial", 50f, CCLabelFormat.SystemFont);
+			var text = new CCLabel("Zoomfactor: 1.00", "Arial", 50f, CCLabelFormat.SystemFont);
 			text.AnchorPoint = CCPoint.AnchorLowerRight;
 			text.Position = position;
 			text.Color = CCColor3B.White;
@@ -177,7 +195,7 @@ namespace KoorweekendApp2017.Scenes
 			RadarLayer.AddChild(Line(new CCPoint(0f, 750f), new CCPoint(1000f, 750f)));
 			RadarLayer.AddChild(Line(new CCPoint(500f, 250f), new CCPoint(500f, 1250f)));
 
-			RadarLayer.AddChild(Text(new CCPoint(975f, 250f)));
+
 
 			return RadarLayer;
 		}
@@ -188,38 +206,53 @@ namespace KoorweekendApp2017.Scenes
 			// create layer
 			ControlsLayer = new CCLayer();
 
-
 			CCDrawNode scaleUpButton = new CCDrawNode();
 			scaleUpButton.DrawCircle(
 				new CCPoint(0, 0),
-				radius: 100,
+				radius: 75,
 				color: CCColor4B.White);
-			scaleUpButton.PositionX = 100;
+			scaleUpButton.PositionX = 700;
 			scaleUpButton.PositionY = 100;
+		
 
+
+
+			ControlsLayer.AddChild(scaleUpButton);
+
+			//scaleUpButton.AddChild(zoominImage, 999);
 			ControlsLayer.AddChild(scaleUpButton);
 
 			CCDrawNode scaleDownButton = new CCDrawNode();
 			scaleDownButton.DrawCircle(
 				new CCPoint(0, 0),
-				radius: 100,
+				radius: 75,
 				color: CCColor4B.White);
-			scaleDownButton.PositionX = 400;
+			scaleDownButton.PositionX = 875;
 			scaleDownButton.PositionY = 100;
 
-			ControlsLayer.AddChild(scaleDownButton);
 
+
+			try
+			{
+				CCSprite zoominImage = new CCSprite("zoomin.png");
+				zoominImage.AnchorPoint = CCPoint.AnchorMiddle;
+				zoominImage.Position = new CCPoint(200, 200);
+				CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
+				scaleDownButton.AddChild(zoominImage);
+			}
+			catch (Exception ex)
+			{
+
+			}
+			ControlsLayer.AddChild(scaleDownButton);
 			//scaleUpButton
 
 			var touchListener = new CCEventListenerTouchOneByOne();
 			touchListener.OnTouchBegan = TouchBegan;
 			AddEventListener(touchListener, ControlsLayer);
 
-
 			B1 = scaleUpButton;
 			B2 = scaleDownButton;
-
-
 
 			return ControlsLayer;
 		}
@@ -236,15 +269,16 @@ namespace KoorweekendApp2017.Scenes
 
 			if (B1.BoundingBoxTransformedToWorld.ContainsPoint(point))
 			{
-				var x = 1;
+
 				DataLayer.CurrentScale = DataLayer.CurrentScale / 2;
+				ScaleLabel.Text = String.Format("Zoomfactor: {0}", DataLayer.CurrentScale.ToString("F2"));
 				DataLayer.UpdateAllLocations();
 			}
 
 			if (B2.BoundingBoxTransformedToWorld.ContainsPoint(point))
 			{
-				var x = 1;
 				DataLayer.CurrentScale = DataLayer.CurrentScale * 2;
+				ScaleLabel.Text = String.Format("Zoomfactor: {0}", DataLayer.CurrentScale.ToString("F2"));
 				DataLayer.UpdateAllLocations();
 			}
 

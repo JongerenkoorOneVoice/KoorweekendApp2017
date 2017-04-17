@@ -4,11 +4,13 @@ using System.Threading.Tasks;
 using CocosSharp;
 using KoorweekendApp2017.Scenes;
 using Plugin.Compass;
-using Plugin.Geolocator;
-using Plugin.Geolocator.Abstractions;
+//using Plugin.Geolocator;
+//using Plugin.Geolocator.Abstractions;
 using Xamarin.Forms;
 using System.Linq;
 using XLabs.Platform.Device;
+using Geolocator.Plugin;
+using Geolocator.Plugin.Abstractions;
 
 namespace KoorweekendApp2017
 {
@@ -23,6 +25,9 @@ namespace KoorweekendApp2017
 			var stackLayout = new StackLayout();
 			Content = stackLayout;
 
+			ToolbarItems.Add(new ToolbarItem("Get GPS", "getlocation.png", async () => {
+				await GetCurrentLocation();
+			}));
 
 
 			var gameView = new CocosSharpView()
@@ -30,11 +35,17 @@ namespace KoorweekendApp2017
 				// Notice it has the same properties as other XamarinForms Views
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.FillAndExpand,
+				ResolutionPolicy = CocosSharpView.ViewResolutionPolicy.ShowAll,
+				DesignResolution = new Size(1000, 1250),
 				ViewCreated = OnHandleViewCreated
+					
 			};
+
 			//gameView.BackgroundColor = Color.Green;
 			// We'll add it to the top half (row 0)
 			stackLayout.Children.Add(gameView);
+
+
 
 		}
 
@@ -47,11 +58,20 @@ namespace KoorweekendApp2017
 				gameView.DesignResolution = new CCSizeI(1000, 1250);
 				// GameScene is the root of the CocosSharp rendering hierarchy:
 				game1Scene1 = new Game1Scene1(gameView);
+				var x = gameView.ContentManager.RootDirectory;
 				// Starts CocosSharp:
 				gameView.RunWithScene(game1Scene1);
+
 			}
 
 		}
+
+		async Task GetCurrentLocation()
+		{
+			var position = game1Scene1.DataLayer.CurrentPosition;
+			await DisplayAlert("Huidige positie", String.Format("Longitude: {0}\r\nLatitude: {1}\r\nNauwkeurigheid: {2}",position.Longitude ,position.Latitude, position.Accuracy ) , "Oké");
+		}
+
 
 		public async Task<Game1Settings> RunChecks(Game1Settings gameSettings)
 		{
@@ -105,14 +125,14 @@ namespace KoorweekendApp2017
 		{
 			base.OnAppearing();
 
-			/*
+
 			var gameSettings = new Game1Settings();
 			gameSettings.CompassIsSupported = CrossCompass.Current.IsSupported;
 			gameSettings.GpsAvailable = CrossGeolocator.Current.IsGeolocationAvailable;
 			gameSettings.GpsEnabled = CrossGeolocator.Current.IsGeolocationEnabled;
 
 
-
+			/*
 			RunChecks(gameSettings).ContinueWith((arg) => {
 				var settings = arg.Result as Game1Settings;
 				if (gameSettings.ShouldRunCheckAgain)
@@ -120,30 +140,25 @@ namespace KoorweekendApp2017
 					RunChecks(gameSettings);
 				}
 
-				var x = 1;
 			});
-
 */
 
-			/*
 
 
-
-			
-*/
 			if (CrossCompass.Current.IsSupported)
 			{
 				CrossCompass.Current.Start();
 			}
 
-			var settings = new ListenerSettings();
-			settings.ActivityType = ActivityType.Fitness;
-			settings.AllowBackgroundUpdates = true;
+			//var settings = new ListenerSettings();
+			//settings.ActivityType = ActivityType.Fitness;
+			//settings.AllowBackgroundUpdates = true;
 
 
 			CrossGeolocator.Current.DesiredAccuracy = 0.25;
-			CrossGeolocator.Current.StartListeningAsync(new TimeSpan(0, 0, 0, 0 , 200), 0.25, true, settings);
-
+			//CrossGeolocator.Current.StartListeningAsync(new TimeSpan(0, 0, 0, 0 , 200), 0.25, true, settings);
+			//CrossGeolocator.Current.StartListeningAsync(200, 0.25, true);
+			CrossGeolocator.Current.StartListening(200, 0.25, true);
 		}
 
 		protected override void OnDisappearing()
@@ -155,7 +170,7 @@ namespace KoorweekendApp2017
 				CrossCompass.Current.Stop();
 			}
 
-			CrossGeolocator.Current.StopListeningAsync();
+			CrossGeolocator.Current.StopListening();
 		}
 	}
 }

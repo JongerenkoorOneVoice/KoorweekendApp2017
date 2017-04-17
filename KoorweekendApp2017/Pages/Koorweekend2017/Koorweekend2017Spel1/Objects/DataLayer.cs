@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using CocosSharp;
+using Geolocator.Plugin.Abstractions;
 using KoorweekendApp2017.Models;
 using Plugin.Compass.Abstractions;
-using Plugin.Geolocator.Abstractions;
+
 
 
 namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
@@ -15,15 +16,16 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 
 		public List<DataPoint> DataPoints { get; set; } = new List<DataPoint>();
 
-		private Position _currentPosition { get; set; }
+		public Position CurrentPosition { get; set; }
 
 		public float CurrentScale { get; set; }
 
 
 
+
 		public DataLayer()
 		{
-			CurrentScale = 3.0f;
+			CurrentScale = 1.0f;
 
 			RotatingDataLayer.AnchorPoint = CCPoint.AnchorMiddle;
 			RotatingDataLayer.Position = new CCPoint(500f, 750f);
@@ -50,7 +52,7 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 
 		public void SetCurrentPosition(Position position)
 		{
-			_currentPosition = position;
+			CurrentPosition = position;
 			UpdateAllLocations();
 		}
 
@@ -102,8 +104,8 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 			var point3d = GpsHelper.GpsPositionToXY(
 				currentPosition: new ChoirWeekendBasePosition()
 				{
-					Lattitude = (float)_currentPosition.Latitude,
-					Longitude = (float)_currentPosition.Longitude
+					Lattitude = (float)CurrentPosition.Latitude,
+					Longitude = (float)CurrentPosition.Longitude
 				},
 				targetPosition: new ChoirWeekendBasePosition()
 				{
