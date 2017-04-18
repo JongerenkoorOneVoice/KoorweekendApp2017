@@ -20,7 +20,7 @@ namespace KoorweekendApp2017
 
 		void BackButtonClicked(object sender, EventArgs e)
 		{
-			Navigation.PopModalAsync();
+			Navigation.PopAsync();
 		}
 
 		private HtmlWebViewSource GetHTML()

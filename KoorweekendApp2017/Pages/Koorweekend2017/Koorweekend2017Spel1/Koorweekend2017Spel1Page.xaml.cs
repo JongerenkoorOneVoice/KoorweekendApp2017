@@ -59,16 +59,16 @@ namespace KoorweekendApp2017
 
 			ToolbarItems.Add(new ToolbarItem("Get GPS", "Home.png", () => {
 				RunActionOnMainThreadAfterLogin(() => { 
-					Navigation.PushModalAsync(new Koorweekend2017Spel1_AdminPage());
+					Navigation.PushAsync(new Koorweekend2017Spel1_AdminPage());
 				});
 			}));
 
 			ToolbarItems.Add(new ToolbarItem("Get GPS", "News.png", () => {
-				Navigation.PushModalAsync(new Koorweekend2017Spel1_ScorePage());
+				Navigation.PushAsync(new Koorweekend2017Spel1_ScorePage());
 			}));
 
 			ToolbarItems.Add(new ToolbarItem("Get GPS", "Music.png", () => {
-				Navigation.PushModalAsync(new Koorweekend2017Spel1_DescriptionPage());
+				Navigation.PushAsync(new Koorweekend2017Spel1_DescriptionPage());
 			}));
 
 			var gameView = new CocosSharpView()

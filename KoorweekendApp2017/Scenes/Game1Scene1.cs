@@ -129,13 +129,7 @@ namespace KoorweekendApp2017.Scenes
 */
 				//if (assignment.Location.Name == "Locatie 1")
 				//{
-				DataLayer.PlotNewNode(
-					new Position()
-					{
-						Longitude = assignment.Location.Position.Longitude,
-						Latitude = assignment.Location.Position.Lattitude
-					}
-				);
+				DataLayer.PlotNewNode(assignment);
 
 				//}
 			}

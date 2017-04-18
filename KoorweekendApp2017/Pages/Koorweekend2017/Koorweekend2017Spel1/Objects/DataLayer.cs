@@ -120,17 +120,45 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 			return point3d;
 		}
 
-		public void PlotNewNode(Position position)
+		public void PlotNewNode(ChoirWeekendGame1Assignment assignment)
 		{
-
+			var position = new Position()
+			{
+				Longitude = assignment.Location.Position.Longitude,
+				Latitude = assignment.Location.Position.Lattitude
+			};
 			var point3d = GetRelativePositionXY(position);
-			var dataPoint = new DataPoint(point3d, position);
+			var dataPoint = new DataPoint(point3d, position, _getColorForLocation(assignment));
+			dataPoint.OrignialAssignment = assignment;
 
 			RotatingDataLayer.AddChild(dataPoint.Node);
 			DataPoints.Add(dataPoint);
 		}
 
-
+		private CCColor4B _getColorForLocation(ChoirWeekendGame1Assignment assignment)
+		{
+			var maxScore = assignment.Settings.MaxScore;
+			if (maxScore == 0)
+			{
+				return CCColor4B.Blue;
+			}
+			else if (maxScore == 1)
+			{
+				return CCColor4B.Green;
+			}
+			else if (maxScore == 5)
+			{
+				return CCColor4B.Yellow;
+			}
+			else if (maxScore == 10)
+			{
+				return CCColor4B.Red;
+			}
+			else
+			{
+				return CCColor4B.Gray;
+			}
+		}
 
 	}
 }
