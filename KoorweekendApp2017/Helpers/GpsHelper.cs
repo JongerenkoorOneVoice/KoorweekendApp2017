@@ -119,6 +119,7 @@ namespace KoorweekendApp2017
 					lowestAccuracy = pos.Accuracy;
 				}
 			}
+			return measuredPositions.Find(x => x.Accuracy == lowestAccuracy);
 
 			List<Position> bestMeasurements = measuredPositions.FindAll(
 				x => x.Accuracy > Math.Ceiling(lowestAccuracy - 1) && x.Accuracy < Math.Floor(lowestAccuracy + 1)

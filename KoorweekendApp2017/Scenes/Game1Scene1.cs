@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using Geolocator.Plugin;
 using Geolocator.Plugin.Abstractions;
+using KoorweekendApp2017.BusinessObjects;
+using System.Threading.Tasks;
 
 namespace KoorweekendApp2017.Scenes
 {
@@ -29,9 +31,11 @@ namespace KoorweekendApp2017.Scenes
 
 		public CCLabel AccuracyLabel { get; set; }
 
+
+
 		public Game1Scene1(CCGameView gameView) : base(gameView)
 		{
-			
+
 
 			// Setup scene
 			RadarLayer = SetupRadarLayer();
@@ -200,6 +204,10 @@ namespace KoorweekendApp2017.Scenes
 			return RadarLayer;
 		}
 
+		public void Test()
+		{
+		}
+
 		public CCLayer SetupControlLayer()
 		{
 
@@ -213,7 +221,6 @@ namespace KoorweekendApp2017.Scenes
 				color: CCColor4B.White);
 			scaleUpButton.PositionX = 700;
 			scaleUpButton.PositionY = 100;
-		
 
 
 
@@ -231,15 +238,15 @@ namespace KoorweekendApp2017.Scenes
 			scaleDownButton.PositionY = 100;
 
 
-CCSprite zoominImage = new CCSprite("zoomin.png");
-zoominImage.AnchorPoint = CCPoint.AnchorMiddle;
+			CCSprite zoominImage = new CCSprite("zoomin.png");
+			zoominImage.AnchorPoint = CCPoint.AnchorMiddle;
 			zoominImage.Position = new CCPoint(0, 0);
-scaleDownButton.AddChild(zoominImage);
+			scaleDownButton.AddChild(zoominImage);
 
-CCSprite zoomoutImage = new CCSprite("zoomout.png");
-zoomoutImage.AnchorPoint = CCPoint.AnchorMiddle;
-zoomoutImage.Position = new CCPoint(0, 0);
-scaleUpButton.AddChild(zoomoutImage);
+			CCSprite zoomoutImage = new CCSprite("zoomout.png");
+			zoomoutImage.AnchorPoint = CCPoint.AnchorMiddle;
+			zoomoutImage.Position = new CCPoint(0, 0);
+			scaleUpButton.AddChild(zoomoutImage);
 
 			ControlsLayer.AddChild(scaleDownButton);
 			//scaleUpButton

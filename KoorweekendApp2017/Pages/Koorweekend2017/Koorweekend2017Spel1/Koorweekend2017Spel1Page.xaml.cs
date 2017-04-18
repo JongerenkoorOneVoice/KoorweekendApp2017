@@ -11,16 +11,44 @@ using System.Linq;
 using XLabs.Platform.Device;
 using Geolocator.Plugin;
 using Geolocator.Plugin.Abstractions;
+using KoorweekendApp2017.BusinessObjects;
+using KoorweekendApp2017.Enums;
+using Acr.UserDialogs;
 
 namespace KoorweekendApp2017
 {
 	public partial class Koorweekend2017Spel1Page : ContentPage
 	{
+		public bool TimerRunning { get; set; }
+
 		public Game1Scene1 game1Scene1 { get; set; }
+
+		private Timer _oneSecondInterval { get; set; }
+
+		private DateTime _gameStartedAt { get; set; }
+
+
 
 		public Koorweekend2017Spel1Page()
 		{
 			InitializeComponent();
+
+
+
+			var gameStartedAt = App.Database.Settings.GetValue<DateTime>("2017Game1StartedAt");
+			if (gameStartedAt == DateTime.MinValue)
+			{
+				_gameStartedAt = DateTime.Now;
+				App.Database.Settings.Set("2017Game1StartedAt", _gameStartedAt);
+			}
+			else
+			{
+				_gameStartedAt = gameStartedAt;
+			}
+
+			_oneSecondInterval = new Timer(TimeSpan.FromSeconds(1), OneSecondIntervalHandler, TimerType.Interval);
+
+
 			// This is the top-level grid, which will split our page in half
 			var stackLayout = new StackLayout();
 			Content = stackLayout;
@@ -29,6 +57,19 @@ namespace KoorweekendApp2017
 				await GetCurrentLocation();
 			}));
 
+			ToolbarItems.Add(new ToolbarItem("Get GPS", "Home.png", () => {
+				RunActionOnMainThreadAfterLogin(() => { 
+					Navigation.PushModalAsync(new Koorweekend2017Spel1_AdminPage());
+				});
+			}));
+
+			ToolbarItems.Add(new ToolbarItem("Get GPS", "News.png", () => {
+				Navigation.PushModalAsync(new Koorweekend2017Spel1_ScorePage());
+			}));
+
+			ToolbarItems.Add(new ToolbarItem("Get GPS", "Music.png", () => {
+				Navigation.PushModalAsync(new Koorweekend2017Spel1_DescriptionPage());
+			}));
 
 			var gameView = new CocosSharpView()
 			{
@@ -47,6 +88,50 @@ namespace KoorweekendApp2017
 
 
 
+		}
+
+		void RunActionOnMainThreadAfterLogin(Action action)
+		{
+			var loginScreen = new LoginConfig();
+			loginScreen.Title = "Voeg gebruikesnaam en wachtwoord in";
+			loginScreen.OkText = "Oké";
+			loginScreen.CancelText = "Annuleren";
+			loginScreen.LoginPlaceholder = "Gebruikersnaam";
+			loginScreen.PasswordPlaceholder = "Wachtwoord";
+			loginScreen.LoginValue = "Beheerder"; 
+
+			var task = UserDialogs.Instance.LoginAsync(loginScreen);
+			task.ContinueWith((resultData) => {
+				var loginResult = resultData.Result;
+				if (loginResult.Ok)
+				{
+					if (loginResult.Value.UserName == "Beheerder" && loginResult.Value.Password == "KoorweekendEOTB")
+					{
+						Device.BeginInvokeOnMainThread(() => {
+							action.Invoke();
+						});
+					}
+				}
+			});
+		}
+
+		void OneSecondIntervalHandler()
+		{
+			UpdateGameTime();
+		}
+
+		void UpdateGameTime()
+		{
+			var timeToPlay = TimeSpan.FromHours(2);
+			var timePlayed = DateTime.Now - _gameStartedAt;
+			var timeLeft = timeToPlay - timePlayed;
+
+			if (timeLeft < TimeSpan.FromSeconds(0))
+			{
+				timeLeft = TimeSpan.FromSeconds(0);
+			}
+
+			Title = String.Format("{0}:{1}:{2}", timeLeft.ToString("hh"), timeLeft.ToString("mm"), timeLeft.ToString("ss"));
 		}
 
 		void OnHandleViewCreated(object sender, EventArgs e)
@@ -68,7 +153,14 @@ namespace KoorweekendApp2017
 		async Task GetCurrentLocation()
 		{
 			var position = game1Scene1.DataLayer.CurrentPosition;
-			await DisplayAlert("Huidige positie", String.Format("Longitude: {0}\r\nLatitude: {1}\r\nNauwkeurigheid: {2}",position.Longitude ,position.Latitude, position.Accuracy ) , "Oké");
+			if (position != null)
+			{
+				await DisplayAlert("Huidige positie", String.Format("Longitude: {0}\r\nLatitude: {1}\r\nNauwkeurigheid: {2}", position.Longitude, position.Latitude, position.Accuracy), "Oké");
+			}
+			else
+			{
+				await DisplayAlert("Huidige positie", "Helaas is er nog geen positie beschikbaar" , "Oké");
+			}
 		}
 
 
@@ -124,7 +216,7 @@ namespace KoorweekendApp2017
 		{
 			base.OnAppearing();
 
-
+			_oneSecondInterval.Start();
 			var gameSettings = new Game1Settings();
 			gameSettings.CompassIsSupported = CrossCompass.Current.IsSupported;
 			gameSettings.GpsAvailable = CrossGeolocator.Current.IsGeolocationAvailable;
@@ -163,7 +255,9 @@ namespace KoorweekendApp2017
 		protected override void OnDisappearing()
 		{
 			base.OnDisappearing();
-		
+
+			_oneSecondInterval.Stop();
+
 			if (CrossCompass.Current.IsSupported)
 			{
 				CrossCompass.Current.Stop();

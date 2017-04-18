@@ -32,6 +32,7 @@ namespace KoorweekendApp2017
 		public App(string uri)
 		{
 			InitializeComponent();
+
 			var db = DependencyService.Get<ISQLite>().GetConnection();
 			Database = new LocalDatabase(db);
 			AppWebService = new AppWebService();

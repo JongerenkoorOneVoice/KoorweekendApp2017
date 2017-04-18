@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -16,6 +15,7 @@ using XLabs.Ioc;
 using XLabs.Platform.Device;
 using XLabs.Platform.Services;
 using Plugin.Permissions;
+using Acr.UserDialogs;
 
 namespace KoorweekendApp2017.Droid
 {
@@ -195,6 +195,7 @@ namespace KoorweekendApp2017.Droid
 			#endregion
             
 			//Application.service
+			UserDialogs.Init(this);
 
 			App oneVoiceApp = new App("");
             LoadApplication(oneVoiceApp);
