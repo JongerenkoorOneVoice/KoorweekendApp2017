@@ -38,7 +38,6 @@ namespace KoorweekendApp2017
 			AppWebService = new AppWebService();
 			Network = CrossConnectivity.Current;
 			SettingsScreenUri = uri;
-
 			if (GlobalSettingsHelper.VersionBiggerThanAppVersion(GlobalSettings.MinimumVersionToAllowRunning))
 			{
 				// To be sure data is correct, try to update data from web api and check again

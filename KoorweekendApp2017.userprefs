@@ -1,29 +1,7 @@
 ﻿<Properties StartupConfiguration="{F109F4DB-41F1-41E5-9502-61EAFE494B15}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Models/HardAppSettings.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Helpers/GlobalSettingsHelper.cs">
     <Files>
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_AdminPage.xaml.cs" Line="46" Column="4" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" Line="168" Column="6" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_AdminPage.xaml" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_ScorePage.xaml.cs" Line="147" Column="30" />
-      <File FileName="KoorweekendApp2017/Pages/ContactSinglePage.xaml.cs" Line="110" Column="4" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_ScorePage.xaml" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Objects/DataLayer.cs" Line="138" Column="7" />
-      <File FileName="KoorweekendApp2017/Helpers/GpsHelper.cs" Line="110" Column="49" />
-      <File FileName="KoorweekendApp2017/Scenes/Game1Scene1.cs" Line="82" Column="3" />
-      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="506" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/MainMenuPage.xaml.cs" Line="33" Column="42" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_DescriptionPage.xaml.cs" Line="116" Column="30" />
-      <File FileName="KoorweekendApp2017/BusinessObjects/LocalDatabase.cs" Line="396" Column="6" />
-      <File FileName="Droid/Tasks/ApiChoirweekendPackinglistSyncTask.cs" Line="24" Column="1" />
-      <File FileName="Droid/MainActivity.cs" Line="175" Column="1" />
-      <File FileName="KoorweekendApp2017/App.xaml.cs" Line="90" Column="1" />
-      <File FileName="KoorweekendApp2017/Models/ChoirWeekendPackingListItem.cs" Line="27" Column="7" />
-      <File FileName="KoorweekendApp2017/Models/ChoirWeekendBaseObject.cs" Line="13" Column="18" />
-      <File FileName="KoorweekendApp2017/Models/ChoirWeekendObject.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/PackingListArchivePage.xaml" Line="5" Column="95" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/PackingListArchivePage.xaml.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Models/HardAppSettings.cs" Line="6" Column="53" />
+      <File FileName="KoorweekendApp2017/Helpers/GlobalSettingsHelper.cs" Line="56" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
