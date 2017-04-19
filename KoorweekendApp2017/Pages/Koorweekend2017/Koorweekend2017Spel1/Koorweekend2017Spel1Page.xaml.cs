@@ -14,6 +14,8 @@ using Geolocator.Plugin.Abstractions;
 using KoorweekendApp2017.BusinessObjects;
 using KoorweekendApp2017.Enums;
 using Acr.UserDialogs;
+using KoorweekendApp2017.Helpers;
+using Plugin.Connectivity.Abstractions;
 
 namespace KoorweekendApp2017
 {
@@ -27,7 +29,7 @@ namespace KoorweekendApp2017
 
 		private DateTime _gameStartedAt { get; set; }
 
-
+		private bool _gameOverAlertShown { get; set; } = false;
 
 		public Koorweekend2017Spel1Page()
 		{
@@ -45,16 +47,16 @@ namespace KoorweekendApp2017
 			}));
 
 			ToolbarItems.Add(new ToolbarItem("Manage game", "gear_white.png", () => {
-				RunActionOnMainThreadAfterLogin(() => { 
+				RunActionOnMainThreadAfterLogin(() => {
 					Navigation.PushAsync(new Koorweekend2017Spel1_AdminPage());
-				});
+                 });
 			}));
 
-			ToolbarItems.Add(new ToolbarItem("Game rules", "game_rules.png", () => {
-				Navigation.PushAsync(new Koorweekend2017Spel1_ScorePage());
+			ToolbarItems.Add(new ToolbarItem("Game rules", "score_cup.png", () => {
+				 Navigation.PushAsync(new Koorweekend2017Spel1_ScorePage());
 			}));
 
-			ToolbarItems.Add(new ToolbarItem("View score", "score_cup.png", () => {
+			ToolbarItems.Add(new ToolbarItem("View score", "game_rules_list.png", () => {
 				Navigation.PushAsync(new Koorweekend2017Spel1_DescriptionPage());
 			}));
 
@@ -107,7 +109,7 @@ namespace KoorweekendApp2017
 			UpdateGameTime();
 		}
 
-		void UpdateGameTime()
+		async void UpdateGameTime()
 		{
 			var timeToPlay = TimeSpan.FromHours(2);
 			var timePlayed = DateTime.Now - _gameStartedAt;
@@ -116,6 +118,19 @@ namespace KoorweekendApp2017
 			if (timeLeft < TimeSpan.FromSeconds(0))
 			{
 				timeLeft = TimeSpan.FromSeconds(0);
+				if (game1Scene1 != null)
+				{
+					game1Scene1.DataLayer.GameEnded = true;
+					if (game1Scene1.DataLayer.GameEnded && !_gameOverAlertShown)
+					{
+						_gameOverAlertShown = true;
+						await DisplayAlert("Game over", "De tijd is voorbij. Alleen het eindpunt blijft zichtbaar", "Oké");
+
+					}
+					game1Scene1.DataLayer.UpdateAllLocations();
+
+				}
+				
 			}
 
 			Title = String.Format("{0}:{1}:{2}", timeLeft.ToString("hh"), timeLeft.ToString("mm"), timeLeft.ToString("ss"));
@@ -142,10 +157,21 @@ namespace KoorweekendApp2017
 			var position = game1Scene1.DataLayer.CurrentPosition;
 			if (position != null)
 			{
-				var result1 = await DisplayAlert("Huidige positie", String.Format("Longitude: {0}\r\nLatitude: {1}\r\nNauwkeurigheid: {2}", position.Longitude, position.Latitude, position.Accuracy), "Oké", "Google Maps");
-				if (!result1)
+
+				var dontShowGoogleMaps = true;
+				if (App.Network.IsConnected
+				    && (App.Network.ConnectionTypes.Contains(ConnectionType.Cellular) || App.Network.ConnectionTypes.Contains(ConnectionType.WiFi)))
 				{
-					var result2 = await DisplayAlert("Google Maps", "Je lokatie in Google Maps bekijken kost je 1 strafpunt. Wil je doorgaan?", "Ja", "Nee");
+					dontShowGoogleMaps = await DisplayAlert("Huidige positie", String.Format("Longitude: {0}\r\nLatitude: {1}\r\nNauwkeurigheid: {2}", position.Longitude, position.Latitude, position.Accuracy), "Oké", "Google Maps");
+				}
+				else
+				{
+					await DisplayAlert("Huidige positie", String.Format("Longitude: {0}\r\nLatitude: {1}\r\nNauwkeurigheid: {2}", position.Longitude, position.Latitude, position.Accuracy), "Oké");
+				}
+
+				if (!dontShowGoogleMaps)
+				{
+					var result2 = await DisplayAlert("Google Maps", "Je lokatie in Google Maps bekijken kost je 1 strafpunt (internet vereist). Wil je doorgaan?", "Ja", "Nee");
 					if (result2)
 					{
 						int penalyPoints = 0;
@@ -154,9 +180,17 @@ namespace KoorweekendApp2017
 						{
 							penalyPoints = Convert.ToInt32(setting.Value);
 						}
-						penalyPoints++;
-						App.Database.Settings.Set("2017game1PenaltyPoints", penalyPoints);
 
+						if (NetworkHelper.IsReachable("google.com"))
+						{
+							penalyPoints++;
+							App.Database.Settings.Set("2017game1PenaltyPoints", penalyPoints);
+							Device.OpenUri(new Uri(string.Format("http://maps.google.com/maps?q={0},{1}", position.Latitude, position.Longitude)));
+						}
+						else
+						{
+							await DisplayAlert("Mislukt", "Google.com is niet bereikbaar. Je strafpunten zijn niet afgeschreven", "Oké");
+						}
 					}
 				}
 

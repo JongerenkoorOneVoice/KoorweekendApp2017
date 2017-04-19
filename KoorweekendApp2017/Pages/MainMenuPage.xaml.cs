@@ -73,14 +73,16 @@ namespace KoorweekendApp2017.Pages
 				TargetType = typeof(ChoirUniform)
 			});
 
-
-			masterPageItems.Add(new MasterPageItem
-            {
-                Title = "Koorweekend 2017",
-                IconSource = "Koorweekend.png",
-                TargetType = typeof(Koorweekend2017Page)
-            });
-            
+			var lastUpdateDate = new DateTime(2017, 04, 24);
+			if (lastUpdateDate > DateTime.Now)
+			{
+				masterPageItems.Add(new MasterPageItem
+				{
+					Title = "Koorweekend 2017",
+					IconSource = "Koorweekend.png",
+					TargetType = typeof(Koorweekend2017Page)
+				});
+			}
             /*
 			masterPageItems.Add(new MasterPageItem
 			{

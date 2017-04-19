@@ -1,11 +1,19 @@
 ﻿<Properties StartupConfiguration="{F109F4DB-41F1-41E5-9502-61EAFE494B15}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_ScorePage.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_DescriptionPage.xaml.cs">
     <Files>
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_AdminPage.xaml.cs" Line="25" Column="26" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" Line="148" Column="44" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_AdminPage.xaml" Line="10" Column="35" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_AdminPage.xaml.cs" Line="46" Column="4" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" Line="129" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_AdminPage.xaml" Line="1" Column="1" />
       <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_ScorePage.xaml.cs" Line="54" Column="4" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_ScorePage.xaml.cs" Line="147" Column="30" />
+      <File FileName="KoorweekendApp2017/Pages/ContactSinglePage.xaml.cs" Line="110" Column="4" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_ScorePage.xaml" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Objects/DataLayer.cs" Line="180" Column="27" />
+      <File FileName="KoorweekendApp2017/Helpers/GpsHelper.cs" Line="110" Column="49" />
+      <File FileName="KoorweekendApp2017/Scenes/Game1Scene1.cs" Line="82" Column="3" />
+      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="493" Column="52" />
+      <File FileName="KoorweekendApp2017/Pages/MainMenuPage.xaml.cs" Line="33" Column="42" />
+      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1_DescriptionPage.xaml.cs" Line="60" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
@@ -13,7 +21,6 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Helpers/RestHelper.cs" relfile="KoorweekendApp2017/Helpers/RestHelper.cs" line="67" column="1" />
-      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" relfile="KoorweekendApp2017/Pages/Koorweekend2017/Koorweekend2017Spel1/Koorweekend2017Spel1Page.xaml.cs" line="223" column="4" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />

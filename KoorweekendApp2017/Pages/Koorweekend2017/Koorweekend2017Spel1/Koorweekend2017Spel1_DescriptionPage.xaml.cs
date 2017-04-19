@@ -57,7 +57,7 @@ namespace KoorweekendApp2017
 				<td>1 punt</td>
 				</tr>
 				<tr>
-				<td><div class=""circle yellow""></div></td>
+				<td><div class=""circle orange""></div></td>
 				<td>Lastiger</td>
 				<td>5 punten</td>
 				</tr>
@@ -112,8 +112,8 @@ namespace KoorweekendApp2017
 					background-color: green;
 				}
 
-				.circle.yellow{
-					background-color: yellow;
+				.circle.orange{
+					background-color: orange;
 				}
 
 				.circle.red{

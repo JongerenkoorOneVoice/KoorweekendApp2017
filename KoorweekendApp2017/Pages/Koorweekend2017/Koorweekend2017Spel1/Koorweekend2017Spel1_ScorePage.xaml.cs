@@ -76,7 +76,7 @@ namespace KoorweekendApp2017
 				<td>{6} punt(en)</td>
 				</tr>
 				<tr>
-				<td><div class=""circle yellow""></div></td>
+				<td><div class=""circle orange""></div></td>
 				<td>{2}</td>
 				<td>{5} punten</td>
 				</tr>
@@ -86,9 +86,9 @@ namespace KoorweekendApp2017
 				<td>{4} punten</td>
 				</tr>
 				<tr>
-				<td>Strafpunten</td>
-				<td>{7}</td>
-				<td>-{7} punten</td>
+				<td></td>
+				<td></td>
+				<td>{7} strafpunten</td>
 				</tr>
 				</tbody>
 				</table>
@@ -143,8 +143,8 @@ namespace KoorweekendApp2017
 					background-color: green;
 				}
 
-				.circle.yellow{
-					background-color: yellow;
+				.circle.orange{
+					background-color: orange;
 				}
 
 				.circle.red{

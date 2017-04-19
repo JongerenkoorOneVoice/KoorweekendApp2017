@@ -125,7 +125,12 @@ namespace KoorweekendApp2017
 				x => x.Accuracy > Math.Ceiling(lowestAccuracy - 1) && x.Accuracy < Math.Floor(lowestAccuracy + 1)
            	).ToList();
 
-			return GetAvaragePosition(bestMeasurements);
+			var position =  GetAvaragePosition(bestMeasurements);
+			if (position.Accuracy > 500)
+			{
+				return null;
+			}
+			return position;
 		}
 
 		public static Position GetAvaragePosition(List<Position> measuredPositions)

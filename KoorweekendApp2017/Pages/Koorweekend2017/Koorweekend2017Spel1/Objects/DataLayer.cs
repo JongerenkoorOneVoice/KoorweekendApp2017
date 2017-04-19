@@ -19,6 +19,13 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 
 		public float CurrentScale { get; set; }
 
+		public bool GameEnded { get; set;}
+
+		public bool NodesMadeInvisible { get; set;}
+
+		private bool _startPointAlertShowing { get; set; } = false;
+
+		private bool _currentLocationFoundAlertShowing { get; set; } = false;
 
 
 
@@ -32,7 +39,8 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 			//RotatingDataLayer.IgnoreAnchorPointForPosition = true;
 			RotatingDataLayer.Color = CCColor3B.Blue;
 			AddChild(RotatingDataLayer);
-
+			NodesMadeInvisible = false;
+			GameEnded = false;
 
 		}
 
@@ -59,49 +67,83 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 		{
 			//foreach (var dataPoint in DataPoints)
 			//{
+
 			foreach (var dataPoint in DataPoints)
 			{
-				
-				var point3d = GetRelativePositionXY(dataPoint.OrignalGpsLocation);
 
-				var alreadyFound = dataPoint.OrignialAssignment.Result.Score != 0;
-				if (!alreadyFound)
+				if (GameEnded)
 				{
-
-					var baseCurrent = new ChoirWeekendBasePosition()
+					if (dataPoint.OrignialAssignment.Settings.MaxScore != 0 && dataPoint.Node.Parent != null)
 					{
-						Longitude = CurrentPosition.Longitude,
-						Lattitude = CurrentPosition.Latitude
-					};
-
-					var baseDataPoint = new ChoirWeekendBasePosition()
-					{
-						Longitude = dataPoint.OrignalGpsLocation.Longitude,
-						Lattitude = dataPoint.OrignalGpsLocation.Latitude
-					};
-
-					var distance = GpsHelper.GetDistance(baseCurrent, baseDataPoint);
-
-					if (distance <= 2)
-					{
-						var assignment = dataPoint.OrignialAssignment;
-						assignment.Result.Score = assignment.Settings.MaxScore;
-						App.Database.ChoirWeekend2017.Game1.UpdateOrInsert(assignment);
-
-						Application.Current.MainPage.DisplayAlert("Gevonden!", "Je hebt deze lokatie gevonden.\r\n Ga snel verder naar de volgende!", "Oké");
-
-						dataPoint.Node.Color = CCColor3B.White;
-						dataPoint.Node.DrawSolidCircle(
-							new CCPoint(0, 0),
-							10,
-							CCColor4B.White
-						);
+						dataPoint.Node.Parent.RemoveChild(dataPoint.Node);
 					}
+
+				}
+				else if (GameEnded && NodesMadeInvisible)
+				{
+					// Do nothing
+				}
+				else
+				{
+					var alreadyFound = dataPoint.OrignialAssignment.Result.Score != 0;
+					if (!alreadyFound)
+					{
+
+						var baseCurrent = new ChoirWeekendBasePosition()
+						{
+							Longitude = CurrentPosition.Longitude,
+							Lattitude = CurrentPosition.Latitude
+						};
+
+						var baseDataPoint = new ChoirWeekendBasePosition()
+						{
+							Longitude = dataPoint.OrignalGpsLocation.Longitude,
+							Lattitude = dataPoint.OrignalGpsLocation.Latitude
+						};
+
+						var distance = GpsHelper.GetDistance(baseCurrent, baseDataPoint);
+
+						if (distance <= 2)
+						{
+							var assignment = dataPoint.OrignialAssignment;
+							assignment.Result.Score = assignment.Settings.MaxScore;
+
+
+							if (assignment.Settings.MaxScore != 0)
+							{
+								if (!_currentLocationFoundAlertShowing)
+								{
+									_currentLocationFoundAlertShowing = true;
+									App.Database.ChoirWeekend2017.Game1.UpdateOrInsert(assignment);
+									Application.Current.MainPage.DisplayAlert("Gevonden!", "Je hebt deze lokatie gevonden.\r\n Ga snel verder naar de volgende!", "Oké");
+
+									dataPoint.Node.Color = CCColor3B.White;
+									dataPoint.Node.DrawSolidCircle(
+										new CCPoint(0, 0),
+										10,
+										CCColor4B.White
+									);
+									_currentLocationFoundAlertShowing = false;
+								}
+							}
+							else
+							{
+								if (!_startPointAlertShowing)
+								{
+									_startPointAlertShowing = true;
+									Application.Current.MainPage.DisplayAlert("Begin-/Eindpunt!", "Welkom terug bij het begin-/eindpunt.\r\nVoor deze lokatie krijg je geen punten.", "Oké");
+									_startPointAlertShowing = false;
+								}
+							}
+						}
+					}
+
+
 				}
 
+				var point3d = GetRelativePositionXY(dataPoint.OrignalGpsLocation);
 				dataPoint.UpdatePosition(point3d);
 			}
-			//}
 		}
 
 		public Point3d GetRelativePositionXY(Position position)
@@ -159,7 +201,7 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 			}
 			else if (maxScore == 5)
 			{
-				return CCColor4B.Yellow;
+				return CCColor4B.Orange;
 			}
 			else if (maxScore == 10)
 			{

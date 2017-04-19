@@ -74,9 +74,9 @@ namespace KoorweekendApp2017.Scenes
 			}
 
 			DateTime timeLastMeasurementSend = DateTime.Now;
-			List<Position> routeLog = new List<Position>();
+			//List<Position> routeLog = new List<Position>();
 			List<Position> lastMeasuredPositions = new List<Position>();
-
+			bool firstPositionFound = false;
 			// Set some position so the value isn't null
 			/*
 			var currentAssignment = gameAssignments.Find(x => x.Location.Description == "Thuis");
@@ -90,13 +90,14 @@ namespace KoorweekendApp2017.Scenes
 			CrossGeolocator.Current.PositionChanged += (object sender, PositionEventArgs e) =>
 			{
 				var position = e.Position as Position;
-				if (routeLog.Count == 0)
+				if (!firstPositionFound)
 				{
 					DataLayer.SetCurrentPosition(position);
 					SetupDataLayer();
 				}
 
-				routeLog.Add(position);
+				firstPositionFound = true;
+				//routeLog.Add(position);
 				lastMeasuredPositions.Add(position);
 				if (DateTime.Now - timeLastMeasurementSend >= new TimeSpan(0, 0, 2))
 				{
@@ -104,13 +105,22 @@ namespace KoorweekendApp2017.Scenes
 					var numberOfMeasurements = lastMeasuredPositions.Count;
 
 					var bestPosition = GpsHelper.GetMostAccuratePosition(lastMeasuredPositions);
+					if (bestPosition != null)
+					{
 
-					lastMeasuredPositions.RemoveRange(0, numberOfMeasurements);
-					DataLayer.SetCurrentPosition(bestPosition);
-					LatitudeLabel.Text =  String.Format("Lat: {0}", bestPosition.Latitude.ToString());
-					LongitudeLabel.Text = String.Format("Lon: {0}", bestPosition.Longitude.ToString());
-					AccuracyLabel.Text =  String.Format("Nauwkeurigheid: {0}M", bestPosition.Accuracy.ToString());
-					//Application.Current.MainPage.DisplayAlert("test", numberOfMeasurements.ToString(), "test");
+						lastMeasuredPositions.RemoveRange(0, numberOfMeasurements);
+						DataLayer.SetCurrentPosition(bestPosition);
+						LatitudeLabel.Text = String.Format("Lat: {0}", bestPosition.Latitude.ToString());
+						LongitudeLabel.Text = String.Format("Lon: {0}", bestPosition.Longitude.ToString());
+						AccuracyLabel.Text = String.Format("Nauwkeurigheid: {0}M", bestPosition.Accuracy.ToString());
+						//Application.Current.MainPage.DisplayAlert("test", numberOfMeasurements.ToString(), "test");
+					}
+					else
+					{
+						LatitudeLabel.Text = "Lokatie niet bijgewerkt.";
+						LongitudeLabel.Text = "De GPS positie";
+						AccuracyLabel.Text = "was te onnauwkeurig";
+					}
 				}
 			};
 		}
