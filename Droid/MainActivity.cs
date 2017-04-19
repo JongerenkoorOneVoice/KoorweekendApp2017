@@ -152,7 +152,7 @@ namespace KoorweekendApp2017.Droid
 				StartService(intent);
 			});
 
-			MessagingCenter.Subscribe<StartApiChoirweekendGame1SyncMessage>(this, "StopApiChoirweekendGame1SyncMessage", message =>
+			MessagingCenter.Subscribe<StopApiChoirweekendGame1SyncMessage>(this, "StopApiChoirweekendGame1SyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiChoirweekendGame1SyncTask));
 				StopService(intent);
@@ -164,13 +164,13 @@ namespace KoorweekendApp2017.Droid
 				StartService(intent);
 			});
 
-			MessagingCenter.Subscribe<StartApiChoirweekendGame2SyncMessage>(this, "StopApiChoirweekendGame2SyncMessage", message =>
+			MessagingCenter.Subscribe<StopApiChoirweekendGame2SyncMessage>(this, "StopApiChoirweekendGame2SyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiChoirweekendGame2SyncTask));
 				StopService(intent);
 			});
 
-			MessagingCenter.Subscribe<StopApiChoirweekendPackinglistSyncMessage>(this, "StartApiChoirweekendPackinglistSyncMessage", message =>
+			MessagingCenter.Subscribe<StartApiChoirweekendPackinglistSyncMessage>(this, "StartApiChoirweekendPackinglistSyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiChoirweekendPackinglistSyncTask));
 				StartService(intent);

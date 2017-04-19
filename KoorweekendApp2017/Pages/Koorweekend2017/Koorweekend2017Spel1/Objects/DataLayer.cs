@@ -23,7 +23,7 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 
 		public bool NodesMadeInvisible { get; set;}
 
-		private bool _startPointAlertShowing { get; set; } = false;
+		private DateTime _lastStartTimeAlertShow { get; set; }
 
 		private bool _currentLocationFoundAlertShowing { get; set; } = false;
 
@@ -32,7 +32,7 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 		public DataLayer()
 		{
 			CurrentScale = 1.0f;
-
+			_lastStartTimeAlertShow = DateTime.Now;
 			RotatingDataLayer.AnchorPoint = CCPoint.AnchorMiddle;
 			RotatingDataLayer.Position = new CCPoint(500f, 750f);
 			RotatingDataLayer.ContentSize = new CCSize(1000f, 1000f);
@@ -128,11 +128,10 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 							}
 							else
 							{
-								if (!_startPointAlertShowing)
+								if (DateTime.Now - _lastStartTimeAlertShow > TimeSpan.FromSeconds(30))
 								{
-									_startPointAlertShowing = true;
+									_lastStartTimeAlertShow = DateTime.Now;
 									Application.Current.MainPage.DisplayAlert("Begin-/Eindpunt!", "Welkom terug bij het begin-/eindpunt.\r\nVoor deze lokatie krijg je geen punten.", "Oké");
-									_startPointAlertShowing = false;
 								}
 							}
 						}
