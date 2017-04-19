@@ -15,7 +15,8 @@ namespace KoorweekendApp2017
 
 			var device = Resolver.Resolve<IDevice>();
 			desciptionHtmlView.Source = GetHTML();
-			backButton.Clicked += BackButtonClicked;
+			backButton.IsVisible = false;
+			//backButton.Clicked += BackButtonClicked;
 			desciptionHtmlView.HeightRequest = device.Display.Height - backButton.Height;
 		}
 

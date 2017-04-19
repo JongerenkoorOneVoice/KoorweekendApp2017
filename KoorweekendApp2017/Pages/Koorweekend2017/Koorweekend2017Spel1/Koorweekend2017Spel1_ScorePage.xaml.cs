@@ -14,7 +14,8 @@ namespace KoorweekendApp2017
 			InitializeComponent();
 			var device = Resolver.Resolve<IDevice>();
 			scoreHtmlView.Source = GetHTML();
-			backButton.Clicked += BackButtonClicked;
+			backButton.IsVisible = false;
+			//backButton.Clicked += BackButtonClicked;
 			scoreHtmlView.HeightRequest = device.Display.Height - backButton.Height;
 		}
 
@@ -25,21 +26,24 @@ namespace KoorweekendApp2017
 
 		private HtmlWebViewSource GetHTML()
 		{
+			var assignmentList = App.Database.ChoirWeekend2017.Game1.GetAll();
 
-			int redsFound = 3;
-			int yellowsFound = 5;
-			int greensFound = 10;
-			int redPoints = 30;
-			int yellowPoints = 25;
-			int greenPoints = 10;
-			int totalScore = redPoints + yellowPoints + greenPoints;
+			int redsFound = assignmentList.FindAll(x=>x.Result.Score != 0 && x.Settings.MaxScore == 10).Count;
+			int yellowsFound = assignmentList.FindAll(x => x.Result.Score != 0 && x.Settings.MaxScore == 5).Count;
+			int greensFound = assignmentList.FindAll(x => x.Result.Score != 0 && x.Settings.MaxScore == 1).Count;
+			int penaltyPoints = 0;
+			var setting = App.Database.Settings.GetByKey("2017game1PenaltyPoints");
+			if (setting != null)
+			{
+				penaltyPoints = Convert.ToInt32(setting.Value);
+			}
 
 
 			HtmlWebViewSource document = new HtmlWebViewSource();
 			document.Html = String.Format(
 				"<html><head><style>{0}</style></head><body>{1}</body></html>",
 				_getCss(),
-				_getHtml(totalScore, redsFound, yellowsFound, greensFound, redPoints, yellowPoints, greenPoints)
+				_getHtml(redsFound, yellowsFound, greensFound, penaltyPoints)
 			);
 
 
@@ -47,8 +51,14 @@ namespace KoorweekendApp2017
 			return document;
 		}
 
-		private string _getHtml(int totalScore, int redsFound, int yellowsFound, int greensFound, int redPoints, int yellowPoints, int greenPoints)
+		private string _getHtml(int redsFound, int yellowsFound, int greensFound, int penaltyPoints)
 		{
+
+			int redPoints = redsFound * 10;
+			int yellowPoints = yellowsFound * 5;
+			int greenPoints = greensFound;
+			int totalScore = redPoints + yellowPoints + greenPoints - penaltyPoints;
+
 			return String.Format(@"
 				<p class=""score"">{0}</p>
 				<p class=""scoretext"">PUNTEN</p>
@@ -75,10 +85,15 @@ namespace KoorweekendApp2017
 				<td>{1}</td>
 				<td>{4} punten</td>
 				</tr>
+				<tr>
+				<td>Strafpunten</td>
+				<td>{7}</td>
+				<td>-{7} punten</td>
+				</tr>
 				</tbody>
 				</table>
 				<p></p>
-			", totalScore, redsFound, yellowsFound, greensFound, redPoints, yellowPoints, greenPoints);
+			", totalScore, redsFound, yellowsFound, greensFound, redPoints, yellowPoints, greenPoints, penaltyPoints);
 
 		}
 
@@ -97,6 +112,8 @@ namespace KoorweekendApp2017
 					height: 1rem;
 					display: block;
 					border-radius: 50%;
+					margin-left: auto;
+					margin-right: auto;
 				}
 
 				h3{

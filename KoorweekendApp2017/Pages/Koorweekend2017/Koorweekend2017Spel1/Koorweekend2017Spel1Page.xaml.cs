@@ -33,19 +33,6 @@ namespace KoorweekendApp2017
 		{
 			InitializeComponent();
 
-
-
-			var gameStartedAt = App.Database.Settings.GetValue<DateTime>("2017Game1StartedAt");
-			if (gameStartedAt == DateTime.MinValue)
-			{
-				_gameStartedAt = DateTime.Now;
-				App.Database.Settings.Set("2017Game1StartedAt", _gameStartedAt);
-			}
-			else
-			{
-				_gameStartedAt = gameStartedAt;
-			}
-
 			_oneSecondInterval = new Timer(TimeSpan.FromSeconds(1), OneSecondIntervalHandler, TimerType.Interval);
 
 
@@ -57,17 +44,17 @@ namespace KoorweekendApp2017
 				await GetCurrentLocation();
 			}));
 
-			ToolbarItems.Add(new ToolbarItem("Get GPS", "Home.png", () => {
+			ToolbarItems.Add(new ToolbarItem("Manage game", "gear_white.png", () => {
 				RunActionOnMainThreadAfterLogin(() => { 
 					Navigation.PushAsync(new Koorweekend2017Spel1_AdminPage());
 				});
 			}));
 
-			ToolbarItems.Add(new ToolbarItem("Get GPS", "News.png", () => {
+			ToolbarItems.Add(new ToolbarItem("Game rules", "game_rules.png", () => {
 				Navigation.PushAsync(new Koorweekend2017Spel1_ScorePage());
 			}));
 
-			ToolbarItems.Add(new ToolbarItem("Get GPS", "Music.png", () => {
+			ToolbarItems.Add(new ToolbarItem("View score", "score_cup.png", () => {
 				Navigation.PushAsync(new Koorweekend2017Spel1_DescriptionPage());
 			}));
 
@@ -155,7 +142,24 @@ namespace KoorweekendApp2017
 			var position = game1Scene1.DataLayer.CurrentPosition;
 			if (position != null)
 			{
-				await DisplayAlert("Huidige positie", String.Format("Longitude: {0}\r\nLatitude: {1}\r\nNauwkeurigheid: {2}", position.Longitude, position.Latitude, position.Accuracy), "Oké");
+				var result1 = await DisplayAlert("Huidige positie", String.Format("Longitude: {0}\r\nLatitude: {1}\r\nNauwkeurigheid: {2}", position.Longitude, position.Latitude, position.Accuracy), "Oké", "Google Maps");
+				if (!result1)
+				{
+					var result2 = await DisplayAlert("Google Maps", "Je lokatie in Google Maps bekijken kost je 1 strafpunt. Wil je doorgaan?", "Ja", "Nee");
+					if (result2)
+					{
+						int penalyPoints = 0;
+						var setting = App.Database.Settings.GetByKey("2017game1PenaltyPoints");
+						if (setting != null)
+						{
+							penalyPoints = Convert.ToInt32(setting.Value);
+						}
+						penalyPoints++;
+						App.Database.Settings.Set("2017game1PenaltyPoints", penalyPoints);
+
+					}
+				}
+
 			}
 			else
 			{
@@ -215,6 +219,17 @@ namespace KoorweekendApp2017
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
+
+			var gameStartedAt = App.Database.Settings.GetValue<DateTime>("2017Game1StartedAt");
+			if (gameStartedAt == DateTime.MinValue)
+			{
+				_gameStartedAt = DateTime.Now;
+				App.Database.Settings.Set("2017Game1StartedAt", _gameStartedAt);
+			}
+			else
+			{
+				_gameStartedAt = gameStartedAt;
+			}
 
 			_oneSecondInterval.Start();
 			var gameSettings = new Game1Settings();

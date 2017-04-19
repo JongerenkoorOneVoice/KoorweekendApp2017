@@ -409,6 +409,18 @@
     <AndroidResource Include="Resources\drawable-xhdpi\zoomout.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\zoomin.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\zoomout.png" />
+    <AndroidResource Include="Resources\drawable\game_rules_list.png" />
+    <AndroidResource Include="Resources\drawable\gear_white.png" />
+    <AndroidResource Include="Resources\drawable\score_cup.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\game_rules_list.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\gear_white.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\score_cup.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\game_rules_list.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\gear_white.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\score_cup.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\game_rules_list.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\gear_white.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\score_cup.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="zxing.net.mobile.forms">

@@ -5,8 +5,7 @@ using CocosSharp;
 using Geolocator.Plugin.Abstractions;
 using KoorweekendApp2017.Models;
 using Plugin.Compass.Abstractions;
-
-
+using Xamarin.Forms;
 
 namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 {
@@ -62,39 +61,45 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 			//{
 			foreach (var dataPoint in DataPoints)
 			{
-
+				
 				var point3d = GetRelativePositionXY(dataPoint.OrignalGpsLocation);
+
+				var alreadyFound = dataPoint.OrignialAssignment.Result.Score != 0;
+				if (!alreadyFound)
+				{
+
+					var baseCurrent = new ChoirWeekendBasePosition()
+					{
+						Longitude = CurrentPosition.Longitude,
+						Lattitude = CurrentPosition.Latitude
+					};
+
+					var baseDataPoint = new ChoirWeekendBasePosition()
+					{
+						Longitude = dataPoint.OrignalGpsLocation.Longitude,
+						Lattitude = dataPoint.OrignalGpsLocation.Latitude
+					};
+
+					var distance = GpsHelper.GetDistance(baseCurrent, baseDataPoint);
+
+					if (distance <= 2)
+					{
+						var assignment = dataPoint.OrignialAssignment;
+						assignment.Result.Score = assignment.Settings.MaxScore;
+						App.Database.ChoirWeekend2017.Game1.UpdateOrInsert(assignment);
+
+						Application.Current.MainPage.DisplayAlert("Gevonden!", "Je hebt deze lokatie gevonden.\r\n Ga snel verder naar de volgende!", "Oké");
+
+						dataPoint.Node.Color = CCColor3B.White;
+						dataPoint.Node.DrawSolidCircle(
+							new CCPoint(0, 0),
+							10,
+							CCColor4B.White
+						);
+					}
+				}
+
 				dataPoint.UpdatePosition(point3d);
-
-				/*
-				var baseCurrent = new ChoirWeekendBasePosition()
-				{
-					Longitude = _currentPosition.Longitude,
-					Lattitude = _currentPosition.Latitude
-				};
-
-				var baseDataPoint = new ChoirWeekendBasePosition()
-				{
-					Longitude = dataPoint.OrignalGpsLocation.Longitude,
-					Lattitude = dataPoint.OrignalGpsLocation.Latitude
-				};
-
-
-				if (GpsHelper.GetDistance(baseCurrent, baseDataPoint) <= 5)
-				{
-					dataPoint.Node.Color = CCColor3B.Orange;
-					dataPoint.Node.UpdateColor();
-					//dataPoint.Node.UpdateDisplayedColor(CCColor3B.Magenta);
-
-				}
-
-				if (GpsHelper.GetDistance(baseCurrent, baseDataPoint) <= 2)
-				{
-					dataPoint.Node.Color = CCColor3B.Red;
-					dataPoint.Node.UpdateColor();
-					//dataPoint.Node.UpdateDisplayedColor(CCColor3B.White);
-				}
-				*/
 			}
 			//}
 		}
@@ -138,7 +143,13 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 		private CCColor4B _getColorForLocation(ChoirWeekendGame1Assignment assignment)
 		{
 			var maxScore = assignment.Settings.MaxScore;
-			if (maxScore == 0)
+			var alreadyFound = assignment.Result.Score != 0;
+
+			if (alreadyFound)
+			{
+				return CCColor4B.White;
+			}
+			else if (maxScore == 0)
 			{
 				return CCColor4B.Blue;
 			}
