@@ -36,9 +36,6 @@
     <EmbeddedResource Include="Pages\ContactSinglePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Koorweekend2017\Koorweekend2017Spel2\Koorweekend2017Spel2Page.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\SongSinglePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -81,34 +78,10 @@
     <EmbeddedResource Include="Pages\DailyBibleVersSingle.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Koorweekend2017\PackingListArchivePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Koorweekend2017\Koorweekend2017Page.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Koorweekend2017\Koorweekend2017Spel2\GvraagPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Koorweekend2017\Koorweekend2017Spel2\LocatiePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Koorweekend2017Spel1Page.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\UpdateOverview.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\ToLowAppVersion.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Koorweekend2017Spel1_ScorePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Koorweekend2017Spel1_AdminPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Koorweekend2017Spel1_DescriptionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -121,15 +94,6 @@
     <Compile Include="Helpers\RestHelper.cs" />
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel2\Bonusvragen.xaml.cs">
-      <DependentUpon>Bonusvragen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel2\ScorePage.xaml.cs">
-      <DependentUpon>ScorePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel2\TypeBarcodePage.xaml.cs">
-      <DependentUpon>TypeBarcodePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\KoorweekendApp2017Page.xaml.cs">
       <DependentUpon>KoorweekendApp2017Page.xaml</DependentUpon>
@@ -149,9 +113,6 @@
     </Compile>
     <Compile Include="Pages\ContactSinglePage.xaml.cs">
       <DependentUpon>ContactSinglePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel2\Koorweekend2017Spel2Page.xaml.cs">
-      <DependentUpon>Koorweekend2017Spel2Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IDatabaseItem.cs" />
     <Compile Include="Interfaces\ISQLite.cs" />
@@ -182,7 +143,6 @@
     <Compile Include="Pages\LogSinglePage.xaml.cs">
       <DependentUpon>LogSinglePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Scenes\Game1Scene1.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -224,17 +184,6 @@
     </Compile>
     <Compile Include="Models\AuthenitcationResult.cs" />
     <Compile Include="Models\BasicAuthentication.cs" />
-    <Compile Include="Models\ChoirWeekendBaseObject.cs" />
-    <Compile Include="Models\ChoirWeekendBaseAssignmentResult.cs" />
-    <Compile Include="Models\ChoirWeekendBaseAssignmentSettings.cs" />
-    <Compile Include="Models\ChoirWeekendBaseLocation.cs" />
-    <Compile Include="Models\ChoirWeekendBaseAssignment.cs" />
-    <Compile Include="Models\ChoirWeekendBasePosition.cs" />
-    <Compile Include="Models\ChoirWeekendGame1Assignment.cs" />
-    <Compile Include="Models\ChoirWeekendGame1Location.cs" />
-    <Compile Include="Models\ChoirWeekendGame2Assignment.cs" />
-    <Compile Include="Models\ChoirWeekendGame2Location.cs" />
-    <Compile Include="Models\ChoirWeekendGame2Question.cs" />
     <Compile Include="Models\ChoirWeekendPackingListItem.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\CustomDevice.cs" />
@@ -251,18 +200,6 @@
     <Compile Include="Models\Setting.cs" />
     <Compile Include="Models\Song.cs" />
     <Compile Include="Models\SongOccasion.cs" />
-    <Compile Include="Pages\Koorweekend2017\PackingListArchivePage.xaml.cs">
-      <DependentUpon>PackingListArchivePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Page.xaml.cs">
-      <DependentUpon>Koorweekend2017Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel2\GvraagPage.xaml.cs">
-      <DependentUpon>GvraagPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel2\LocatiePage.xaml.cs">
-      <DependentUpon>LocatiePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Models\ChoirWeekendObject.cs" />
     <Compile Include="Mappers\ObjectToChoirweekendObjectMapper.cs" />
     <Compile Include="Messages\StartApiChoirweekendGame1SyncMessage.cs" />
@@ -273,16 +210,8 @@
     <Compile Include="Messages\StopApiChoirweekendGame1SyncMessage.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
-    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Koorweekend2017Spel1Page.xaml.cs">
-      <DependentUpon>Koorweekend2017Spel1Page.xaml</DependentUpon>
-      <IncludeInPackage>true</IncludeInPackage>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="Helpers\GpsHelper.cs" />
     <Compile Include="Models\Point3d.cs" />
-    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Objects\DataLayer.cs" />
-    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Objects\DataPoint.cs" />
-    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Objects\Game1Settings.cs" />
     <Compile Include="Helpers\SettingsHelper.cs" />
     <Compile Include="Models\HardAppSettings.cs" />
     <Compile Include="Pages\UpdateOverview.xaml.cs">
@@ -299,15 +228,7 @@
     <Compile Include="BusinessObjects\Timer.cs" />
     <Compile Include="Enums\TimerType.cs" />
     <Compile Include="Enums\SkillIndication.cs" />
-    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Koorweekend2017Spel1_ScorePage.xaml.cs">
-      <DependentUpon>Koorweekend2017Spel1_ScorePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Koorweekend2017Spel1_AdminPage.xaml.cs">
-      <DependentUpon>Koorweekend2017Spel1_AdminPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Koorweekend2017\Koorweekend2017Spel1\Koorweekend2017Spel1_DescriptionPage.xaml.cs">
-      <DependentUpon>Koorweekend2017Spel1_DescriptionPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Helpers\UpdateHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\HomePage.xaml">
@@ -327,24 +248,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\RepertoirePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\Koorweekend2017\Koorweekend2017Spel2\Bonusvragen.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\Koorweekend2017\Koorweekend2017Spel2\ScorePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\Koorweekend2017\Koorweekend2017Spel2\TypeBarcodePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -1,11 +1,22 @@
 ﻿<Properties StartupConfiguration="{F109F4DB-41F1-41E5-9502-61EAFE494B15}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Helpers/GlobalSettingsHelper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Helpers/Default.cs">
     <Files>
       <File FileName="KoorweekendApp2017/Helpers/GlobalSettingsHelper.cs" Line="56" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/MainNavigationPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Pages/MainMenuPage.xaml.cs" Line="75" Column="4" />
+      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="41" Column="49" />
+      <File FileName="KoorweekendApp2017/Helpers/UpdateHelper.cs" Line="4" Column="1" />
+      <File FileName="KoorweekendApp2017/BusinessObjects/LocalDatabase.cs" Line="311" Column="4" />
+      <File FileName="KoorweekendApp2017/App.xaml.cs" Line="36" Column="62" />
+      <File FileName="KoorweekendApp2017/Models/ChoirWeekendObject.cs" Line="27" Column="1" />
+      <File FileName="KoorweekendApp2017/Models/CustomDevice.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Messages/TickedMessage.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Helpers/GpsHelper.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Helpers/Default.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.Droid PreferredExecutionTarget="Android.0c6e6c70" />
+  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.Droid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Helpers/RestHelper.cs" relfile="KoorweekendApp2017/Helpers/RestHelper.cs" line="67" column="1" />
