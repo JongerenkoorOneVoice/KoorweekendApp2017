@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -15,6 +14,8 @@ using KoorweekendApp2017.Droid.Tasks;
 using XLabs.Ioc;
 using XLabs.Platform.Device;
 using XLabs.Platform.Services;
+using Plugin.Permissions;
+using Acr.UserDialogs;
 
 namespace KoorweekendApp2017.Droid
 {
@@ -151,7 +152,7 @@ namespace KoorweekendApp2017.Droid
 				StartService(intent);
 			});
 
-			MessagingCenter.Subscribe<StartApiChoirweekendGame1SyncMessage>(this, "StopApiChoirweekendGame1SyncMessage", message =>
+			MessagingCenter.Subscribe<StopApiChoirweekendGame1SyncMessage>(this, "StopApiChoirweekendGame1SyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiChoirweekendGame1SyncTask));
 				StopService(intent);
@@ -163,13 +164,13 @@ namespace KoorweekendApp2017.Droid
 				StartService(intent);
 			});
 
-			MessagingCenter.Subscribe<StartApiChoirweekendGame2SyncMessage>(this, "StopApiChoirweekendGame2SyncMessage", message =>
+			MessagingCenter.Subscribe<StopApiChoirweekendGame2SyncMessage>(this, "StopApiChoirweekendGame2SyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiChoirweekendGame2SyncTask));
 				StopService(intent);
 			});
 
-			MessagingCenter.Subscribe<StopApiChoirweekendPackinglistSyncMessage>(this, "StartApiChoirweekendPackinglistSyncMessage", message =>
+			MessagingCenter.Subscribe<StartApiChoirweekendPackinglistSyncMessage>(this, "StartApiChoirweekendPackinglistSyncMessage", message =>
 			{
 				var intent = new Intent(this, typeof(ApiChoirweekendPackinglistSyncTask));
 				StartService(intent);
@@ -194,6 +195,7 @@ namespace KoorweekendApp2017.Droid
 			#endregion
             
 			//Application.service
+			UserDialogs.Init(this);
 
 			App oneVoiceApp = new App("");
             LoadApplication(oneVoiceApp);
@@ -201,8 +203,9 @@ namespace KoorweekendApp2017.Droid
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
-			//PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+			PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             global::ZXing.Net.Mobile.Forms.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
     }
 }

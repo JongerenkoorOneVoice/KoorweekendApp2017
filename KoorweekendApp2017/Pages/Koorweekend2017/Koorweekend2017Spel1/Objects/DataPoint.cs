@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using CocosSharp;
+using Geolocator.Plugin.Abstractions;
 using KoorweekendApp2017.Models;
-using Plugin.Geolocator.Abstractions;
 
 namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 {
@@ -18,12 +18,15 @@ namespace KoorweekendApp2017.Koorweekend2017Spel1.Objects
 
 		public Position OrignalGpsLocation { get; set; }
 
-		public DataPoint(Point3d point, Position position)
+		public ChoirWeekendGame1Assignment OrignialAssignment { get; set; }
+
+		public DataPoint(Point3d point, Position position, CCColor4B color)
 		{
+			
 			Node.DrawSolidCircle(
 				new CCPoint(0, 0),
 				10,
-				CCColor4B.Green
+				color
 			);
 			Node.PositionX = point.X;
 			Node.PositionY = point.Y;

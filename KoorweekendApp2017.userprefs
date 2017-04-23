@@ -1,21 +1,17 @@
 ﻿<Properties StartupConfiguration="{F109F4DB-41F1-41E5-9502-61EAFE494B15}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Models/ChoirWeekendPackingListItem.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KoorweekendApp2017/Helpers/GlobalSettingsHelper.cs">
     <Files>
-      <File FileName="KoorweekendApp2017/App.xaml.cs" Line="78" Column="9" />
-      <File FileName="KoorweekendApp2017/Helpers/GlobalSettingsHelper.cs" Line="79" Column="6" />
-      <File FileName="KoorweekendApp2017/Tasks/DataSync.cs" Line="222" Column="35" />
-      <File FileName="KoorweekendApp2017/Pages/UpdateOverview.xaml.cs" Line="34" Column="57" />
-      <File FileName="KoorweekendApp2017/Helpers/AuthenticationHelper.cs" Line="186" Column="25" />
-      <File FileName="KoorweekendApp2017/Pages/Koorweekend2017/PackingListArchivePage.xaml.cs" Line="1" Column="1" />
-      <File FileName="KoorweekendApp2017/Models/ChoirWeekendPackingListItem.cs" Line="1" Column="1" />
+      <File FileName="KoorweekendApp2017/Helpers/GlobalSettingsHelper.cs" Line="56" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.Droid PreferredExecutionTarget="Android.Nexus 4 (Marshmallow) API 23" />
+  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.Droid PreferredExecutionTarget="Android.0c6e6c70" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/marcvannieuwenhuijzen/Git/KoorweekendApp2017/KoorweekendApp2017/Helpers/RestHelper.cs" relfile="KoorweekendApp2017/Helpers/RestHelper.cs" line="67" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9A9E4F2D-0434-4002-B5D7-8C1858015A8E" />
+  <MonoDevelop.Ide.ItemProperties.KoorweekendApp2017.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
 </Properties>

@@ -414,13 +414,13 @@ namespace KoorweekendApp2017.BusinessObjects
 					var items = (from i in Database.Table<ChoirWeekendObject>() where i.ObjectType == type select i).ToList();
 					if (items == null) return null;
 
-					/*
+
 					return items.Select((ChoirWeekendObject item) =>
 					{
 						return JsonConvert.DeserializeObject<ChoirWeekendGame1Assignment>(item.Json);
 					}).OrderBy(i => i.Settings.ConsecutionIndex).ToList();
-					*/
 
+					/*
 					// hardcoded test values
 					return new List<ChoirWeekendGame1Assignment>()
 					{
@@ -495,6 +495,7 @@ namespace KoorweekendApp2017.BusinessObjects
 							}
 						}
 					};
+					*/
 				}
 
 				public void UpdateOrInsert(ChoirWeekendGame1Assignment assignment)

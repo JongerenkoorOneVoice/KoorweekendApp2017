@@ -368,8 +368,8 @@ namespace KoorweekendApp2017.Tasks
 
 		public static void UpdateGame1AssignmentsInDbFromApi(bool overruleLastUpdated = false)
 		{
-
-			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
+			var lastUpdateDate = new DateTime(2017, 04, 23);
+			if (lastUpdateDate > DateTime.Now && NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
 			{
 				bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
 				if (isAuthenticated)
@@ -426,8 +426,8 @@ namespace KoorweekendApp2017.Tasks
 
 		public static void UpdateGame2AssignmentsInDbFromApi(bool overruleLastUpdated = false)
 		{
-
-			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
+			var lastUpdateDate = new DateTime(2017, 04, 23);
+			if (lastUpdateDate > DateTime.Now && NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
 			{
 				bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
 				if (isAuthenticated)
@@ -490,48 +490,28 @@ namespace KoorweekendApp2017.Tasks
 
 		public static void UpdatePackinglistInDbFromApi(bool overruleLastUpdated = false)
 		{
-
-			if (NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
+			var lastUpdateDate = new DateTime(2017, 04, 23);
+			if (lastUpdateDate > DateTime.Now && NetworkHelper.IsReachable("jongerenkooronevoice.nl"))
 			{
 				bool isAuthenticated = Task.Run(AuthenticationHelper.IsAuthenticated).Result;
 				if (isAuthenticated)
 				{
+					List<ChoirWeekendPackingListItem> packingListItems = App.AppWebService.ChoirWeekend.PackingList.GetAll().Result;
 
-					DateTime lastUpdate = DateTime.Parse("1010-01-01");
-					String lastUpdatedString = App.Database.Settings.GetValue<String>("lastPackinglistUpdate");
-					if (!String.IsNullOrEmpty(lastUpdatedString) && !overruleLastUpdated)
+					if (packingListItems != null)
 					{
-						lastUpdate = DateTime.Parse(lastUpdatedString);
-					}
-
-					// Update more often from two days before the weekend.
-					DateTime firstDayOfChoirWeekend = new DateTime(2017, 4, 21);
-					DateTime twoDaysBeforeChoirWeekend = firstDayOfChoirWeekend.AddDays(-2);
-					DateTime schouldUpdateDate = lastUpdate.AddDays(1);
-
-					if (DateTime.Now > twoDaysBeforeChoirWeekend)
-					{
-						schouldUpdateDate = lastUpdate.AddHours(1);
-					}
-
-					if (schouldUpdateDate < DateTime.Now | overruleLastUpdated)
-					{
-						List<ChoirWeekendPackingListItem> packingListItems = App.AppWebService.ChoirWeekend.PackingList.GetAll().Result;
-
-						if (packingListItems != null)
+						foreach (ChoirWeekendPackingListItem item in packingListItems)
 						{
-							foreach (ChoirWeekendPackingListItem item in packingListItems)
+							var existingItem = App.Database.ChoirWeekend2017.PackingList.GetById(item.Id);
+							if (existingItem != null)
 							{
-								var existingItem = App.Database.ChoirWeekend2017.PackingList.GetById(item.Id);
-								if (existingItem != null)
-								{
-									item.IsPacked = existingItem.IsPacked;
-								}
-								App.Database.ChoirWeekend2017.PackingList.UpdateOrInsert(item);
+								item.IsPacked = existingItem.IsPacked;
 							}
+							App.Database.ChoirWeekend2017.PackingList.UpdateOrInsert(item);
 						}
-						App.Database.Settings.Set("lastPackinglistUpdate", DateTime.Now.ToString());
 					}
+					App.Database.Settings.Set("lastPackinglistUpdate", DateTime.Now.ToString());
+
 				}
 			}
 

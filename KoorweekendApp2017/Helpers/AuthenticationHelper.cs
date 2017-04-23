@@ -134,7 +134,6 @@ namespace KoorweekendApp2017
 
 		public async static Task<bool> IsAuthenticated(String emailaddress)
 		{
-
 			var result = false;
 			var shouldUpdateAuthentication = false;
 
@@ -150,7 +149,7 @@ namespace KoorweekendApp2017
 
 			var lastSuccessfullAuthenticationResult = App.Database.Settings.GetValue<DateTime>("lastSuccessfullAuthentication");
 			var lastAuthenticationEmailAddressTried = App.Database.Settings.GetValue<String>("lastAuthenticationEmailAddressTried");
-			var lastAuthenticatedForAppVersion = App.Database.Settings.GetValue<String>("lastAuthenticationEmailAddressTried");
+			var lastAuthenticatedForAppVersion = App.Database.Settings.GetValue<String>("lastAuthenticatedForAppVersion");
 
 			// Update authentication after 30 days.
 			if (DateTime.Now - lastSuccessfullAuthenticationResult > new TimeSpan(31, 0, 0, 0))
@@ -165,7 +164,7 @@ namespace KoorweekendApp2017
 			}
 
 			// Update authentication if app version is different from last authentication
-			if (!String.IsNullOrEmpty(lastAuthenticatedForAppVersion) && lastAuthenticatedForAppVersion != HardAppSettings.Version)
+ 			if (String.IsNullOrEmpty(lastAuthenticatedForAppVersion) || lastAuthenticatedForAppVersion != HardAppSettings.Version)
 			{
 				shouldUpdateAuthentication = true;
 			}
@@ -186,6 +185,7 @@ namespace KoorweekendApp2017
 					if (authResult.Code == AuthorizationCode.Authorized)
 					{
 						App.Database.Settings.Set("lastSuccessfullAuthentication", DateTime.Now);
+						App.Database.Settings.Set("lastAuthenticatedForAppVersion", HardAppSettings.Version);
 
 						Contact authenticatedContact = App.Database.Contacts.GetAll().Find(x => x.Email1 == emailaddress);
 						if (authenticatedContact != null)

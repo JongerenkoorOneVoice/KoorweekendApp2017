@@ -51,6 +51,10 @@ namespace KoorweekendApp2017
 		void OkButtonClicked(object sender, EventArgs e)
 		{
 			App.Database.Settings.Set("releasenotesLastShownForVersion", HardAppSettings.Version);
+			if (mainAppPage == null)
+			{
+				mainAppPage = new KoorweekendApp2017Page();
+			}
 			Application.Current.MainPage = mainAppPage;
 
 		}

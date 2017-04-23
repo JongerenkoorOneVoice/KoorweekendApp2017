@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Geolocator.Plugin.Abstractions;
 using KoorweekendApp2017.Models;
-using Plugin.Geolocator.Abstractions;
+
 
 namespace KoorweekendApp2017
 {
@@ -11,13 +12,13 @@ namespace KoorweekendApp2017
 
 		public static float GetDistance(ChoirWeekendBasePosition pos1, ChoirWeekendBasePosition pos2)
 		{
-			
+
 			float R = 6378.137f; // Radius of earth in KM
 			float dLat = (float)(pos2.Lattitude * Math.PI / 180 - pos1.Lattitude * Math.PI / 180);
 			float dLon = (float)(pos2.Longitude * Math.PI / 180 - pos1.Longitude * Math.PI / 180);
 			float a = (float)(Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
 					   Math.Cos(pos1.Lattitude * Math.PI / 180) * Math.Cos(pos2.Lattitude * Math.PI / 180) *
-			           Math.Sin(dLon / 2) * Math.Sin(dLon / 2));
+					   Math.Sin(dLon / 2) * Math.Sin(dLon / 2));
 			float c = (float)(2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a)));
 			float d = R * c;
 			return d * 1000; // meters
@@ -97,7 +98,7 @@ namespace KoorweekendApp2017
 				point3d.X = x + halfRastersize;
 			}
 
-			point3d.Y =  y + halfRastersize;
+			point3d.Y = y + halfRastersize;
 			if (currentPosition.Longitude - targetPosition.Longitude < 0)
 			{
 				point3d.Y = halfRastersize - y;
@@ -106,9 +107,35 @@ namespace KoorweekendApp2017
 			return point3d;
 		}
 
+		public static Position GetMostAccuratePosition(List<Position> measuredPositions)
+		{
+			if (measuredPositions.Count == 0) return new Position();
+
+			Double lowestAccuracy = 1000000;
+			foreach (var pos in measuredPositions)
+			{
+				if (pos.Accuracy < lowestAccuracy)
+				{
+					lowestAccuracy = pos.Accuracy;
+				}
+			}
+			return measuredPositions.Find(x => x.Accuracy == lowestAccuracy);
+
+			List<Position> bestMeasurements = measuredPositions.FindAll(
+				x => x.Accuracy > Math.Ceiling(lowestAccuracy - 1) && x.Accuracy < Math.Floor(lowestAccuracy + 1)
+           	).ToList();
+
+			var position =  GetAvaragePosition(bestMeasurements);
+			if (position.Accuracy > 500)
+			{
+				return null;
+			}
+			return position;
+		}
+
 		public static Position GetAvaragePosition(List<Position> measuredPositions)
 		{
-			if (measuredPositions.Count == 0) return null;
+			if (measuredPositions.Count == 0) return new Position();
 
 			var lastMeassuredTimeStamp = measuredPositions.First().Timestamp - measuredPositions.First().Timestamp;
 
@@ -123,13 +150,13 @@ namespace KoorweekendApp2017
 
 			foreach (var position in measuredPositions)
 			{
-				cumulativeAccuracy += position.Accuracy;
-				cumulativeAltitude += position.Altitude;
-				cumulativeAAltitudeAccuracy += position.AltitudeAccuracy;
-				cumulativeHeading += position.Heading;
-				cumulativeLatitude += position.Latitude;
-				cumulativeLongitude += position.Longitude;
-				cumulativeSpeed += position.Speed;
+				cumulativeAccuracy += Convert.ToDouble(position.Accuracy);
+				cumulativeAltitude += Convert.ToDouble(position.Altitude);
+				cumulativeAAltitudeAccuracy += Convert.ToDouble(position.AltitudeAccuracy);
+				cumulativeHeading += Convert.ToDouble(position.Heading);
+				cumulativeLatitude += Convert.ToDouble(position.Latitude);
+				cumulativeLongitude += Convert.ToDouble(position.Longitude);
+				cumulativeSpeed += Convert.ToDouble(position.Speed);
 			}
 
 			var numberOfMeasurements = measuredPositions.Count;

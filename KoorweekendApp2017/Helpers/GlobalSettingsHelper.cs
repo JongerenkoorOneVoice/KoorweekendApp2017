@@ -14,7 +14,7 @@ namespace KoorweekendApp2017.Helpers
 			if (String.IsNullOrEmpty(targetVersion)) return false;
 			if (targetVersion == currentVersion) return false;
 
-			var currentVersionArray = targetVersion.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+			var currentVersionArray = currentVersion.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
 			var targetVersionArray = targetVersion.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
 
 			if (currentVersion.Length < 4 || targetVersion.Length < 4)
@@ -40,7 +40,7 @@ namespace KoorweekendApp2017.Helpers
 			if (String.IsNullOrEmpty(targetVersion)) return false;
 			if (targetVersion == currentVersion) return false;
 
-			var currentVersionArray = targetVersion.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+			var currentVersionArray = currentVersion.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
 			var targetVersionArray = targetVersion.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
 
 			if (currentVersion.Length < 4 || targetVersion.Length < 4)

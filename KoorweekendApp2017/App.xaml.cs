@@ -32,12 +32,12 @@ namespace KoorweekendApp2017
 		public App(string uri)
 		{
 			InitializeComponent();
+
 			var db = DependencyService.Get<ISQLite>().GetConnection();
 			Database = new LocalDatabase(db);
 			AppWebService = new AppWebService();
 			Network = CrossConnectivity.Current;
 			SettingsScreenUri = uri;
-
 			if (GlobalSettingsHelper.VersionBiggerThanAppVersion(GlobalSettings.MinimumVersionToAllowRunning))
 			{
 				// To be sure data is correct, try to update data from web api and check again

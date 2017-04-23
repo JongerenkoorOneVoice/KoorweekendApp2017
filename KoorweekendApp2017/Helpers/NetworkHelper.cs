@@ -38,7 +38,7 @@ namespace KoorweekendApp2017.Helpers
 				}
 			}
 				
-
+			/*
 			if (App.Network.IsConnected)
 			{
 				
@@ -49,9 +49,12 @@ namespace KoorweekendApp2017.Helpers
 				});
 				task.ConfigureAwait(false);
 				isReachable = task.Result;
-			}
 
-            isReachable = true;
+
+			}
+			*/
+
+            isReachable	 = true;
             bool hasInternet = CrossConnectivity.Current.IsConnected && isReachable;
 			return hasInternet && permissionToConnect;
 
