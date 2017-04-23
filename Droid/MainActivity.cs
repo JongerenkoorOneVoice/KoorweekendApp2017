@@ -146,42 +146,6 @@ namespace KoorweekendApp2017.Droid
 				StopService(intent);
 			});
 
-			MessagingCenter.Subscribe<StartApiChoirweekendGame1SyncMessage>(this, "StartApiChoirweekendGame1SyncMessage", message =>
-			{
-				var intent = new Intent(this, typeof(ApiChoirweekendGame1SyncTask));
-				StartService(intent);
-			});
-
-			MessagingCenter.Subscribe<StopApiChoirweekendGame1SyncMessage>(this, "StopApiChoirweekendGame1SyncMessage", message =>
-			{
-				var intent = new Intent(this, typeof(ApiChoirweekendGame1SyncTask));
-				StopService(intent);
-			});
-
-			MessagingCenter.Subscribe<StartApiChoirweekendGame2SyncMessage>(this, "StartApiChoirweekendGame2SyncMessage", message =>
-			{
-				var intent = new Intent(this, typeof(ApiChoirweekendGame2SyncTask));
-				StartService(intent);
-			});
-
-			MessagingCenter.Subscribe<StopApiChoirweekendGame2SyncMessage>(this, "StopApiChoirweekendGame2SyncMessage", message =>
-			{
-				var intent = new Intent(this, typeof(ApiChoirweekendGame2SyncTask));
-				StopService(intent);
-			});
-
-			MessagingCenter.Subscribe<StartApiChoirweekendPackinglistSyncMessage>(this, "StartApiChoirweekendPackinglistSyncMessage", message =>
-			{
-				var intent = new Intent(this, typeof(ApiChoirweekendPackinglistSyncTask));
-				StartService(intent);
-			});
-
-			MessagingCenter.Subscribe<StopApiChoirweekendPackinglistSyncMessage>(this, "StopApiChoirweekendPackinglistSyncMessage", message =>
-			{
-				var intent = new Intent(this, typeof(ApiChoirweekendPackinglistSyncTask));
-				StopService(intent);
-			});
-
             #region Resolver Init
             if (!Resolver.IsSet)
             {
