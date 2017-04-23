@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using KoorweekendApp2017.Helpers;
 using KoorweekendApp2017.Models;
-using KoorweekendApp2017.Pages.Koorweekend2017;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
