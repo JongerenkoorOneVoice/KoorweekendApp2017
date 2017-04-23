@@ -364,9 +364,6 @@
     <Compile Include="Tasks\ApiPrayerRequestSyncTask.cs" />
     <Compile Include="Tasks\ApiSongOccasionSyncTask.cs" />
     <Compile Include="Tasks\ApiNewsSyncTask.cs" />
-    <Compile Include="Tasks\ApiChoirweekendGame1SyncTask.cs" />
-    <Compile Include="Tasks\ApiChoirweekendGame2SyncTask.cs" />
-    <Compile Include="Tasks\ApiChoirweekendPackinglistSyncTask.cs" />
     <Compile Include="Tasks\ApiGlobalSettingsSyncTask.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -727,10 +724,6 @@
     <AndroidResource Include="Resources\drawable\Rubikscube.png" />
     <AndroidResource Include="Resources\drawable\Tafels.png" />
     <AndroidResource Include="Resources\drawable\Yshoeve.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\zoomin.png" />
-    <AndroidAsset Include="Assets\Content\zoomout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

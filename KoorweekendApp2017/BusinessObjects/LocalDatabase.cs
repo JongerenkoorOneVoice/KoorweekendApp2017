@@ -30,8 +30,6 @@ namespace KoorweekendApp2017.BusinessObjects
 
 		public NewsTable News { get; set; }
 
-		public ChoirWeekend2017Table ChoirWeekend2017 { get; set; }
-
 		public GlobalSettingTable GlobalSettings { get; set; }
 
 		public LocalDatabase(SQLiteConnection database)
@@ -46,9 +44,6 @@ namespace KoorweekendApp2017.BusinessObjects
 			Database.CreateTable<SongOccasion>();
 			Database.CreateTable<PrayerRequest>();
 			Database.CreateTable<GlobalSetting>();
-			// Choirweekend 2017
-			Database.CreateTable<ChoirWeekendObject>();
-
 
 			Settings = new SettingTable();
 			Contacts = new ContactTable();
@@ -58,7 +53,6 @@ namespace KoorweekendApp2017.BusinessObjects
 			SongOccasions = new SongOccasionTable();
 			PrayerRequests = new PrayerRequestTable();
 			News = new NewsTable();
-			ChoirWeekend2017 = new ChoirWeekend2017Table();
 			GlobalSettings = new GlobalSettingTable();
 		}
 
@@ -316,24 +310,6 @@ namespace KoorweekendApp2017.BusinessObjects
 			}
 		}
 
-
-
-		/*
-		public IEnumerable<TodoItem> GetItemsNotDone()
-		{
-			return database.Query<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
-		}
-		public TodoItem GetItem(int id)
-		{
-			return database.Table<TodoItem>().FirstOrDefault(x => x.ID == id);
-		}
-		public int DeleteItem(int id)
-		{
-			return database.Delete<TodoItem>(id);
-		}
-		*/
-
-
 		public class GlobalSettingTable
 		{
 			public GlobalSetting GetByKey(string key)
@@ -359,178 +335,5 @@ namespace KoorweekendApp2017.BusinessObjects
 			}
 		}
 
-
-		public class ChoirWeekend2017Table
-		{
-
-			public Game1AssignmentTable Game1 = new Game1AssignmentTable();
-
-			public Game2AssignmentTable Game2 = new Game2AssignmentTable();
-
-			public PackinglistTable PackingList = new PackinglistTable();
-
-			public class PackinglistTable
-			{
-				public ChoirWeekendPackingListItem GetById(String id)
-				{
-					var type = typeof(ChoirWeekendPackingListItem).Name;
-					var tempId = String.Format("{0}_{1}", type, id);
-					var item =  (from i in Database.Table<ChoirWeekendObject>() where i.Id == tempId select i).ToList().FirstOrDefault();
-					if (item == null) return null;
-					return JsonConvert.DeserializeObject<ChoirWeekendPackingListItem>(item.Json);
-				}
-
-				public List<ChoirWeekendPackingListItem> GetAll()
-				{
-					var type = typeof(ChoirWeekendPackingListItem).Name;
-					var items = (from i in Database.Table<ChoirWeekendObject>() where i.ObjectType == type select i).ToList();
-					if (items == null) return null;
-					return items.Select((ChoirWeekendObject item) => {
-						return JsonConvert.DeserializeObject<ChoirWeekendPackingListItem>(item.Json);
-					}).OrderBy(i => i.Name).ToList();
-
-				}
-
-				public void UpdateOrInsert(ChoirWeekendPackingListItem packinglistItem)
-				{
-					Database.InsertOrReplace(ObjectToChoirweekendObjectMapper.Map(packinglistItem));
-				}
-			}
-
-			public class Game1AssignmentTable
-			{
-				public ChoirWeekendGame1Assignment GetById(String id)
-				{
-					var type = typeof(ChoirWeekendGame1Assignment).Name;
-					var tempId = String.Format("{0}_{1}", type, id);
-					var item = (from i in Database.Table<ChoirWeekendObject>() where i.Id == tempId select i).ToList().FirstOrDefault();
-					if (item == null) return null;
-					return JsonConvert.DeserializeObject<ChoirWeekendGame1Assignment>(item.Json);
-				}
-
-				public List<ChoirWeekendGame1Assignment> GetAll()
-				{
-					var type = typeof(ChoirWeekendGame1Assignment).Name;
-					var items = (from i in Database.Table<ChoirWeekendObject>() where i.ObjectType == type select i).ToList();
-					if (items == null) return null;
-
-
-					return items.Select((ChoirWeekendObject item) =>
-					{
-						return JsonConvert.DeserializeObject<ChoirWeekendGame1Assignment>(item.Json);
-					}).OrderBy(i => i.Settings.ConsecutionIndex).ToList();
-
-					/*
-					// hardcoded test values
-					return new List<ChoirWeekendGame1Assignment>()
-					{
-						new ChoirWeekendGame1Assignment()
-						{
-							Location = new ChoirWeekendGame1Location()
-							{
-								Position = new ChoirWeekendBasePosition()
-								{
-									Longitude = 4.578520,
-									Lattitude = 51.897761
-								},
-								Name = "Locatie 1",
-								Description = "Prins Claus straat"
-
-							}
-						},
-						new ChoirWeekendGame1Assignment()
-						{
-							Location = new ChoirWeekendGame1Location()
-							{
-								Position = new ChoirWeekendBasePosition()
-								{
-									Longitude = 4.604537299999947,
-									Lattitude = 51.8827908
-								},
-								Name = "Locatie 2",
-								Description = "De Kern"
-
-							}
-						},
-						new ChoirWeekendGame1Assignment()
-						{
-							Location = new ChoirWeekendGame1Location()
-							{
-								Position = new ChoirWeekendBasePosition()
-								{
-									Longitude = 4.577484899999945,
-									Lattitude = 51.8981004
-								},
-								Name = "Locatie 3",
-								Description = "Thuis"
-
-							}
-						},
-						new ChoirWeekendGame1Assignment()
-						{
-							Location = new ChoirWeekendGame1Location()
-							{
-								Position = new ChoirWeekendBasePosition()
-								{
-									Longitude = 4.577734,
-									Lattitude = 51.899459
-								},
-								Name = "Locatie 4",
-								Description = "Einde van de straat"
-
-							}
-						},
-						new ChoirWeekendGame1Assignment()
-						{
-							Location = new ChoirWeekendGame1Location()
-							{
-								Position = new ChoirWeekendBasePosition()
-								{
-									Longitude = 4.567674,
-									Lattitude = 51.900058
-								},
-								Name = "Locatie 5",
-								Description = "Richard"
-
-							}
-						}
-					};
-					*/
-				}
-
-				public void UpdateOrInsert(ChoirWeekendGame1Assignment assignment)
-				{
-					Database.InsertOrReplace(ObjectToChoirweekendObjectMapper.Map(assignment));
-				}
-			}
-
-			public class Game2AssignmentTable
-			{
-				public ChoirWeekendGame2Assignment GetById(String id)
-				{
-					var type = typeof(ChoirWeekendGame2Assignment).Name;
-					var tempId = String.Format("{0}_{1}", type, id);
-					var item = (from i in Database.Table<ChoirWeekendObject>() where i.Id == tempId select i).ToList().FirstOrDefault();
-					if (item == null) return null;
-					return JsonConvert.DeserializeObject<ChoirWeekendGame2Assignment>(item.Json);
-				}
-
-				public List<ChoirWeekendGame2Assignment> GetAll()
-				{
-					var type = typeof(ChoirWeekendGame2Assignment).Name;
-					var items = (from i in Database.Table<ChoirWeekendObject>() where i.ObjectType == type select i).ToList();
-					if (items == null) return null;
-					return items.Select((ChoirWeekendObject item) =>
-					{
-						return JsonConvert.DeserializeObject<ChoirWeekendGame2Assignment>(item.Json);
-					}).OrderBy(i => i.Settings.ConsecutionIndex).ToList();
-				}
-
-				public void UpdateOrInsert(ChoirWeekendGame2Assignment assignment)
-				{
-					Database.InsertOrReplace(ObjectToChoirweekendObjectMapper.Map(assignment));
-				}
-			}
-		}
 	}
 }
