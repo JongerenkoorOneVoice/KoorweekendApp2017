@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using KoorweekendApp2017.Helpers;
 using KoorweekendApp2017.Interfaces;
-using KoorweekendApp2017.Mappers;
 using KoorweekendApp2017.Models;
 using Newtonsoft.Json;
 using SQLite;

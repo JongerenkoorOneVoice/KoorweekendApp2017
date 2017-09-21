@@ -79,8 +79,20 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Acr.UserDialogs">
+      <HintPath>..\packages\Acr.UserDialogs.6.5.1\lib\Xamarin.iOS10\Acr.UserDialogs.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Acr.UserDialogs.Interface">
+      <HintPath>..\packages\Acr.UserDialogs.6.5.1\lib\Xamarin.iOS10\Acr.UserDialogs.Interface.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="box2d">
       <HintPath>..\packages\CocosSharp.1.7.1.0\lib\Xamarin.iOS10\box2d.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BTProgressHUD">
+      <HintPath>..\packages\BTProgressHUD.1.2.0.5\lib\Xamarin.iOS10\BTProgressHUD.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="CocosSharp">
@@ -119,60 +131,44 @@
       <HintPath>..\packages\CocosSharp.1.7.1.0\lib\Xamarin.iOS10\MonoGame.Framework.Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Plugin.Compass">
-      <HintPath>..\packages\Plugin.Compass.2.0.0\lib\Xamarin.iOS10\Plugin.Compass.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Plugin.Compass.Abstractions">
-      <HintPath>..\packages\Plugin.Compass.2.0.0\lib\Xamarin.iOS10\Plugin.Compass.Abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Plugin.Connectivity">
-      <HintPath>..\packages\Xam.Plugin.Connectivity.2.4.0.66-beta\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Plugin.Connectivity.Abstractions">
-      <HintPath>..\packages\Xam.Plugin.Connectivity.2.4.0.66-beta\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Plugin.DeviceInfo">
-      <HintPath>..\packages\Xam.Plugin.DeviceInfo.2.1.2\lib\Xamarin.iOS10\Plugin.DeviceInfo.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugin.DeviceInfo.3.0.1\lib\Xamarin.iOS10\Plugin.DeviceInfo.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Plugin.DeviceInfo.Abstractions">
-      <HintPath>..\packages\Xam.Plugin.DeviceInfo.2.1.2\lib\Xamarin.iOS10\Plugin.DeviceInfo.Abstractions.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugin.DeviceInfo.3.0.1\lib\Xamarin.iOS10\Plugin.DeviceInfo.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Rg.Plugins.Popup">
-      <HintPath>..\packages\Rg.Plugins.Popup.1.0.4\lib\Xamarin.IOS\Rg.Plugins.Popup.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Rg.Plugins.Popup.IOS">
-      <HintPath>..\packages\Rg.Plugins.Popup.1.0.4\lib\Xamarin.IOS\Rg.Plugins.Popup.IOS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Rg.Plugins.Popup.Platform">
-      <HintPath>..\packages\Rg.Plugins.Popup.1.0.4\lib\Xamarin.IOS\Rg.Plugins.Popup.Platform.dll</HintPath>
+    <Reference Include="Splat">
+      <HintPath>..\packages\Splat.2.0.0\lib\Xamarin.iOS10\Splat.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SQLite-net">
-      <HintPath>..\packages\sqlite-net-pcl.1.3.1\lib\netstandard1.1\SQLite-net.dll</HintPath>
+      <HintPath>..\packages\sqlite-net-pcl.1.4.118\lib\netstandard1.1\SQLite-net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SQLitePCLRaw.batteries_green">
-      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.3-pre20170220084037\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_green.dll</HintPath>
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.8\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_green.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SQLitePCLRaw.batteries_v2">
-      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.3-pre20170220084037\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.8\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SQLitePCLRaw.core">
-      <HintPath>..\packages\SQLitePCLRaw.core.1.1.3-pre20170220084037\lib\Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
+      <HintPath>..\packages\SQLitePCLRaw.core.1.1.8\lib\Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SQLitePCLRaw.provider.sqlite3">
-      <HintPath>..\packages\SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.3-pre20170220084037\lib\Xamarin.iOS10\SQLitePCLRaw.provider.sqlite3.dll</HintPath>
+      <HintPath>..\packages\SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.8\lib\Xamarin.iOS10\SQLitePCLRaw.provider.sqlite3.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -189,19 +185,19 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\packages\Xamarin.Forms.2.3.4.231\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform">
-      <HintPath>..\packages\Xamarin.Forms.2.3.4.231\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform.iOS">
-      <HintPath>..\packages\Xamarin.Forms.2.3.4.231\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\packages\Xamarin.Forms.2.3.4.231\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.iOS" />
@@ -234,32 +230,8 @@
       <HintPath>..\packages\XLabs.Serialization.2.3.0-pre05\lib\NETStandard1.0\XLabs.Serialization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ZXing.Net.Mobile.Core">
-      <HintPath>..\packages\ZXing.Net.Mobile.2.2.9\lib\Xamarin.iOS10\ZXing.Net.Mobile.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="zxing.portable">
-      <HintPath>..\packages\ZXing.Net.Mobile.2.2.9\lib\Xamarin.iOS10\zxing.portable.dll</HintPath>
-    </Reference>
-    <Reference Include="ZXingNetMobile">
-      <HintPath>..\packages\ZXing.Net.Mobile.2.2.9\lib\Xamarin.iOS10\ZXingNetMobile.dll</HintPath>
-    </Reference>
-    <Reference Include="ZXing.Net.Mobile.Forms">
-      <HintPath>..\packages\ZXing.Net.Mobile.Forms.2.2.9\lib\Xamarin.iOS10\ZXing.Net.Mobile.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="ZXing.Net.Mobile.Forms.iOS">
-      <HintPath>..\packages\ZXing.Net.Mobile.Forms.2.2.9\lib\Xamarin.iOS10\ZXing.Net.Mobile.Forms.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="Acr.Support.iOS">
       <HintPath>..\packages\Acr.Support.2.1.0\lib\Xamarin.iOS10\Acr.Support.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Splat">
-      <HintPath>..\packages\Splat.1.6.2\lib\Xamarin.iOS10\Splat.dll</HintPath>
-    </Reference>
-    <Reference Include="Acr.UserDialogs">
-      <HintPath>..\packages\Acr.UserDialogs.6.3.10\lib\Xamarin.iOS10\Acr.UserDialogs.dll</HintPath>
-    </Reference>
-    <Reference Include="Acr.UserDialogs.Interface">
-      <HintPath>..\packages\Acr.UserDialogs.6.3.10\lib\Xamarin.iOS10\Acr.UserDialogs.Interface.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -351,7 +323,7 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\app_logo_red.jpg" />
-    <BundleResource Include="Resources\SplashScreenBackground.jpg" />
+    <BundleResource Include="Resources\SplashScreenBackgroundOld.jpg" />
     <BundleResource Include="SplashScreenBackground.jpg" />
     <BundleResource Include="Resources\AppBackground.jpg" />
     <BundleResource Include="Resources\ov_logo_white.png" />
@@ -360,8 +332,6 @@
     <BundleResource Include="Resources\onevoice_logo_app_less.png" />
     <BundleResource Include="Resources\calendar_small.png" />
     <BundleResource Include="Resources\filter_25.png" />
-    <BundleResource Include="Resources\checked.png" />
-    <BundleResource Include="Resources\unchecked.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Agenda.png" />
@@ -377,9 +347,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Koorleden.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Koorweekend.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Login.png" />
@@ -401,48 +368,7 @@
   <ItemGroup>
     <Content Include="PluginsHelp\ConnectivityReadme.txt" />
     <BundleResource Include="Resources\Plus.png" />
-    <BundleResource Include="Resources\Scanner.png" />
-    <BundleResource Include="Resources\Score.png" />
-    <BundleResource Include="Resources\Q_logica.png" />
-    <BundleResource Include="Resources\Route1.png" />
-    <BundleResource Include="Resources\End.png" />
-    <BundleResource Include="Resources\Gagel.png" />
-    <BundleResource Include="Resources\Huis.png" />
-    <BundleResource Include="Resources\Log1.png" />
-    <BundleResource Include="Resources\Log2.png" />
-    <BundleResource Include="Resources\Log3.png" />
-    <BundleResource Include="Resources\Log4.png" />
-    <BundleResource Include="Resources\Route2.png" />
-    <BundleResource Include="Resources\Route3.png" />
-    <BundleResource Include="Resources\Route4.png" />
-    <BundleResource Include="Resources\Route5.png" />
-    <BundleResource Include="Resources\Route6.png" />
-    <BundleResource Include="Resources\Route7.png" />
-    <BundleResource Include="Resources\Route8.png" />
-    <BundleResource Include="Resources\Route9.png" />
-    <BundleResource Include="Resources\Route10.png" />
-    <BundleResource Include="Resources\Route11.png" />
-    <BundleResource Include="Resources\Route12.png" />
-    <BundleResource Include="Resources\Route13.png" />
-    <BundleResource Include="Resources\Route14.png" />
-    <BundleResource Include="Resources\Route15.png" />
-    <BundleResource Include="Resources\Route16.png" />
-    <BundleResource Include="Resources\Route17.png" />
-    <BundleResource Include="Resources\Route18.png" />
-    <BundleResource Include="Resources\Route19.png" />
-    <BundleResource Include="Resources\Route20.png" />
-    <BundleResource Include="Resources\Route21.png" />
-    <BundleResource Include="Resources\Route22.png" />
-    <BundleResource Include="Resources\Route23.png" />
-    <BundleResource Include="Resources\Route24.png" />
-    <BundleResource Include="Resources\Route25.png" />
-    <BundleResource Include="Resources\Route26.png" />
-    <BundleResource Include="Resources\Route27.png" />
-    <BundleResource Include="Resources\Route28.png" />
-    <BundleResource Include="Resources\Route29.png" />
-    <BundleResource Include="Resources\Rubikscube.png" />
-    <BundleResource Include="Resources\Tafels.png" />
-    <BundleResource Include="Resources\Yshoeve.png" />
+    <Content Include="Resources\SplashScreenBackground.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -451,9 +377,11 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-    <Error Condition="!Exists('..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
   </Target>
   <Import Project="..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Import Project="..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
+  <Import Project="..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
 </Project>

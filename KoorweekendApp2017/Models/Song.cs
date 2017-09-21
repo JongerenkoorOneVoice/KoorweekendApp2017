@@ -15,8 +15,9 @@ namespace KoorweekendApp2017.Models
         public String Title { get; set; }
         public String Lyrics { get; set; }
 		public String YoutubeId { get; set; }
+        public Boolean IsVisible { get; set; }
 
-		[Ignore]
+        [Ignore]
 		private List<int> _songOccasions { get; set; }
 
 		[Ignore]

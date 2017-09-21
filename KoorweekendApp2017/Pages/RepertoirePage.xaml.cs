@@ -110,7 +110,7 @@ namespace KoorweekendApp2017.Pages
 
 		private void SetupPickerData()
 		{
-			SongOccasions = App.Database.SongOccasions.GetAll();
+			SongOccasions = App.Database.SongOccasions.GetAll().FindAll(x => x.IsVisible != false);
 			List<int> indexedOccasionsFromSongs = new List<int>();
 			foreach (Song song in Songs)
 			{
@@ -134,7 +134,7 @@ namespace KoorweekendApp2017.Pages
 
 		private void SetupRepertoireDataForList()
 		{
-			Songs = App.Database.Songs.GetAll();
+			Songs = App.Database.Songs.GetAll().FindAll(x => x.IsVisible != false);
 			Songs = Songs.OrderBy(Songs => Songs.Title).ToList();
 			songListView.ItemsSource = Songs;
 		}

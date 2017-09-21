@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using KoorweekendApp2017.Models;
+using KoorweekendApp2017.Tasks;
 using Xamarin.Forms;
 using XLabs.Ioc;
 using XLabs.Platform.Device;
@@ -14,7 +15,7 @@ namespace KoorweekendApp2017.Pages
 
 	public partial class ContactSinglePage : ContentPage
 	{
-		private IMediaPicker _mediaPicker {get; set;}
+        private IMediaPicker _mediaPicker {get; set;}
 
 		private readonly TaskScheduler _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
 
@@ -24,15 +25,32 @@ namespace KoorweekendApp2017.Pages
 			InitializeComponent();
 
 			_mediaPicker = DependencyService.Get<IMediaPicker>();
-	
-			var openCamera = new TapGestureRecognizer();
+            
+            var currentLid = BindingContext as Contact;
+            var openCamera = new TapGestureRecognizer();
 			openCamera.Tapped += OnImageTap;
 
-			userImage.GestureRecognizers.Add(openCamera);
+			//userImage.GestureRecognizers.Add(openCamera);
 
 		}
 
-		private void Setup()
+        protected override void OnBindingContextChanged()
+        {
+            string[] names = new string[17] { "Adriaan", "Willeke", "Jens", "Martin", "Stephan", "Lianne", "Rianne", "Noortje", "Melany", "Lotte", "Palma", "Daniel", "Irene", "Marc", "Emma", "Corina", "Linda" };
+
+            base.OnBindingContextChanged();
+
+            var currentLid = BindingContext as Contact;
+            foreach (string i in names)
+            {
+                if (currentLid.FirstName == i)
+                {
+                    userImage.Source = string.Format("{0}.png", i);
+                }
+            }
+        }
+
+            private void Setup()
 		{
 			if (_mediaPicker != null)
 			{

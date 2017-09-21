@@ -6,7 +6,6 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using ZXing.Net.Mobile.Forms;
 using System.Threading.Tasks;
 using KoorweekendApp2017.Messages;
 using Xamarin.Forms;
@@ -55,7 +54,6 @@ namespace KoorweekendApp2017.Droid
 			ToolbarResource = Resource.Layout.Toolbar;
 
 			base.OnCreate(bundle);
-            ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             //SetPage(App.GetMainPage());
@@ -168,7 +166,6 @@ namespace KoorweekendApp2017.Droid
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
 			PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            global::ZXing.Net.Mobile.Forms.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
     }

@@ -43,7 +43,7 @@ namespace KoorweekendApp2017.Pages
 
 		private void SetupContactDataForList()
 		{
-			Contacts = App.Database.Contacts.GetAll();
+			Contacts = App.Database.Contacts.GetAll().FindAll(x => x.IsVisible != false);
 			Contacts = Contacts.OrderBy(Contact => Contact.FirstName).ToList();
 			ContactListView.ItemsSource = Contacts;
 		}

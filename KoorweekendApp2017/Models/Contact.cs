@@ -18,8 +18,9 @@ namespace KoorweekendApp2017.Models
 		public string Phone1 { get; set; }
 		public string Mobile1 { get; set; }
 		public string Email1 { get; set; }
+        public Boolean IsVisible { get; set; }
 
-		[Ignore]
+        [Ignore]
 		public string FullName
 		{
 			get
