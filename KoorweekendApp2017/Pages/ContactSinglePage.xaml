@@ -9,7 +9,7 @@
 			<ScrollView  Orientation = "Vertical" VerticalOptions="StartAndExpand">
 				<StackLayout VerticalOptions="FillAndExpand">
 
-                    <Image x:Name="userImage" Source="http://kazete.com.tr/img/blogger/0.png" HorizontalOptions="Center" Margin="70,0,70,0"></Image>
+                    <Image x:Name="userImage" Source="http://kazete.com.tr/img/blogger/0.png" HorizontalOptions="Center" Margin="70,10,70,0"></Image>
     <Label Text="{Binding FullName}" HorizontalTextAlignment="Center" Font="Bold,20"></Label>
           
       <Label Text="Adres:" HorizontalTextAlignment="Center" Font="Bold"></Label>  
